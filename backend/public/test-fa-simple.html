@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Awesome Test</title>
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            font-size: 24px;
+        }
+        .test-icon {
+            color: blue;
+            font-size: 48px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Font Awesome Test</h1>
+    <p>Если вы видите иконки ниже - Font Awesome работает:</p>
+
+    <div>
+        <i class="fa-solid fa-bars test-icon"></i> fa-bars (меню)
+    </div>
+    <div>
+        <i class="fa-solid fa-users test-icon"></i> fa-users (пользователи)
+    </div>
+    <div>
+        <i class="fa-solid fa-shield-halved test-icon"></i> fa-shield-halved (щит)
+    </div>
+    <div>
+        <i class="fa-solid fa-phone test-icon"></i> fa-phone (телефон)
+    </div>
+
+    <p style="color: red; margin-top: 30px;">Если вместо иконок вы видите пустые квадратики - Font Awesome заблокирован или не загружается!</p>
+
+    <script>
+        // Проверка загрузки Font Awesome
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var testIcon = document.querySelector('.fa-bars');
+                var computed = window.getComputedStyle(testIcon, ':before');
+                var content = computed.getPropertyValue('content');
+
+                if (content && content !== 'none' && content !== '""') {
+                    console.log('✅ Font Awesome загружен успешно!');
+                    document.body.insertAdjacentHTML('beforeend', '<h2 style="color: green;">✅ Font Awesome работает!</h2>');
+                } else {
+                    console.log('❌ Font Awesome НЕ загружен!');
+                    document.body.insertAdjacentHTML('beforeend', '<h2 style="color: red;">❌ Font Awesome НЕ загружается! Возможно CDN заблокирован.</h2>');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

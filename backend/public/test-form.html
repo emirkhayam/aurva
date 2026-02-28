@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #999;
+        }
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .log {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 5px;
+            border-left: 3px solid #2563EB;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Contact Form</h1>
+    <p>Testing form submission to: <strong>/api/contacts</strong></p>
+
+    <form id="contactForm">
+        <div class="form-group">
+            <label>Название компании / Имя:</label>
+            <input type="text" id="contactName" name="name" required placeholder="Введите имя">
+        </div>
+
+        <div class="form-group">
+            <label>Контактный телефон:</label>
+            <input type="tel" id="contactPhone" name="phone" required placeholder="+996 XXX XXX XXX">
+        </div>
+
+        <div class="form-group">
+            <label>Email (опционально):</label>
+            <input type="email" id="contactEmail" name="email" placeholder="email@example.com">
+        </div>
+
+        <button type="submit" id="submitBtn">Отправить заявку</button>
+
+        <div id="formMessage" class="message"></div>
+    </form>
+
+    <div class="log" id="log">
+        <strong>Лог выполнения:</strong>
+    </div>
+
+    <script>
+        const log = document.getElementById('log');
+
+        function addLog(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            log.appendChild(entry);
+            console.log(message);
+        }
+
+        addLog('✅ Страница загружена');
+        addLog('✅ Скрипт инициализирован');
+
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            addLog('✅ Форма найдена (ID: contactForm)');
+        } else {
+            addLog('❌ Форма НЕ найдена!', 'error');
+        }
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            addLog('📝 Форма отправлена (submit event)');
+
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+
+            addLog(`📋 Данные: name="${name}", phone="${phone}", email="${email}"`);
+
+            if (!name || !phone) {
+                addLog('❌ Валидация: пустые поля', 'error');
+                showMessage('Пожалуйста, заполните все обязательные поля', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            addLog('🔄 Кнопка заблокирована, начинаем fetch...');
+
+            const payload = { name, phone };
+            if (email) payload.email = email;
+
+            addLog(`📤 Отправка POST на /api/contacts`);
+            addLog(`📦 Payload: ${JSON.stringify(payload)}`);
+
+            try {
+                const response = await fetch('/api/contacts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                addLog(`📥 Ответ получен: HTTP ${response.status} ${response.statusText}`);
+
+                const data = await response.json();
+                addLog(`📄 Данные ответа: ${JSON.stringify(data)}`);
+
+                if (response.ok) {
+                    addLog('✅ Успех! Заявка создана', 'success');
+                    showMessage(`Успех! Заявка #${data.contact?.id} создана. ${data.message}`, 'success');
+                    contactForm.reset();
+                } else {
+                    addLog(`❌ Ошибка сервера: ${data.message || data.error}`, 'error');
+                    showMessage(data.message || data.error || 'Произошла ошибка', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ Ошибка fetch: ${error.message}`, 'error');
+                addLog(`❌ Stack: ${error.stack}`, 'error');
+                showMessage('Не удалось отправить заявку. Проверьте подключение.', 'error');
+                console.error('Fetch error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
+                addLog('🔓 Кнопка разблокирована');
+            }
+        });
+
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `message ${type}`;
+
+            setTimeout(() => {
+                formMessage.className = 'message';
+            }, 5000);
+        }
+
+        addLog('✅ Event listener добавлен на форму');
+        addLog('🚀 Готов к тестированию!');
+    </script>
+</body>
+</html>

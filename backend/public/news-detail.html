@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новость - AURVA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: 255, 255, 255;
+      --bg-card: 250, 250, 250;
+      --bg-surface: 245, 245, 245;
+      --text: 17, 24, 39;
+      --text-muted: 107, 114, 128;
+      --text-subtle: 156, 163, 175;
+      --accent: 59, 130, 246;
+      --accent-hover: 37, 99, 235;
+      --border: 229, 231, 235;
+      --success: 34, 197, 94;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: rgb(var(--bg));
+      color: rgb(var(--text));
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .article-content h2 {
+      font-size: 1.875rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-content p {
+      margin-bottom: 1.25rem;
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    .article-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .article-content ul, .article-content ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background-color: rgb(var(--accent));
+      color: white;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: rgb(var(--bg-card));
+      color: rgb(var(--text));
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+      border: 1px solid rgb(var(--border));
+    }
+
+    .back-button:hover {
+      background-color: rgb(var(--bg-surface));
+    }
+
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    .skeleton {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      background-color: rgb(var(--bg-surface));
+      border-radius: 0.5rem;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b" style="border-color: rgb(var(--border))">
+    <div class="container mx-auto px-6 py-5">
+      <nav class="flex items-center justify-between">
+        <a href="/" class="flex items-center">
+          <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="h-10 md:h-16 w-auto object-contain">
+        </a>
+        <div class="flex gap-6">
+          <a href="/" class="text-sm font-medium hover:text-[rgb(var(--accent))] transition-colors">Главная</a>
+          <a href="/about.html" class="text-sm font-medium hover:text-[rgb(var(--accent))] transition-colors">О нас</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Loading Skeleton -->
+  <div id="loading-skeleton" class="container py-12">
+    <div class="article-content">
+      <a href="/" class="back-button mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Назад к новостям
+      </a>
+
+      <div class="skeleton h-8 w-32 mb-8"></div>
+      <div class="skeleton h-16 w-full mb-4"></div>
+      <div class="skeleton h-6 w-48 mb-8"></div>
+      <div class="skeleton h-96 w-full mb-8"></div>
+      <div class="skeleton h-4 w-full mb-4"></div>
+      <div class="skeleton h-4 w-full mb-4"></div>
+      <div class="skeleton h-4 w-3/4 mb-4"></div>
+    </div>
+  </div>
+
+  <!-- Article Content -->
+  <article id="article-content" class="container py-12 hidden">
+    <div class="article-content">
+      <a href="/" class="back-button mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Назад к новостям
+      </a>
+
+      <div id="article-header" class="mb-8">
+        <!-- Category and date will be inserted here -->
+      </div>
+
+      <h1 id="article-title" class="mb-6"></h1>
+
+      <div id="article-meta" class="flex items-center gap-4 mb-8 text-sm" style="color: rgb(var(--text-muted))">
+        <!-- Meta info will be inserted here -->
+      </div>
+
+      <div id="article-images" class="mb-8">
+        <!-- Images will be inserted here -->
+      </div>
+
+      <div id="article-excerpt" class="text-xl mb-8" style="color: rgb(var(--text))">
+        <!-- Excerpt will be inserted here -->
+      </div>
+
+      <div id="article-body" class="prose max-w-none">
+        <!-- Article content will be inserted here -->
+      </div>
+    </div>
+  </article>
+
+  <!-- Error Message -->
+  <div id="error-message" class="container py-12 hidden">
+    <div class="article-content text-center">
+      <svg class="mx-auto h-12 w-12 mb-4" style="color: rgb(var(--text-subtle))" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h2 class="text-2xl font-bold mb-2">Новость не найдена</h2>
+      <p class="mb-6" style="color: rgb(var(--text-muted))">Запрашиваемая новость не существует или была удалена.</p>
+      <a href="/" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Вернуться на главную
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t mt-20" style="border-color: rgb(var(--border)); background-color: rgb(var(--bg-card))">
+    <div class="container mx-auto px-6 py-12">
+      <div class="text-center" style="color: rgb(var(--text-muted))">
+        <p class="text-sm">© 2026 AURVA. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const categoryLabels = {
+      'regulation': 'Регулирование',
+      'events': 'События',
+      'analytics': 'Аналитика',
+      'other': 'Другое'
+    };
+
+    async function loadArticle() {
+      try {
+        // Get slug from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('slug');
+
+        if (!slug) {
+          showError();
+          return;
+        }
+
+        const response = await fetch(`/api/news/${slug}`);
+
+        if (!response.ok) {
+          showError();
+          return;
+        }
+
+        const data = await response.json();
+        const article = data.news;
+
+        // Update document title
+        document.title = `${article.title} - AURVA`;
+
+        // Hide loading, show content
+        document.getElementById('loading-skeleton').classList.add('hidden');
+        document.getElementById('article-content').classList.remove('hidden');
+
+        // Set header (category badge)
+        const headerHtml = `
+          <span class="category-badge">${categoryLabels[article.category]}</span>
+        `;
+        document.getElementById('article-header').innerHTML = headerHtml;
+
+        // Set title
+        document.getElementById('article-title').textContent = article.title;
+
+        // Set meta info
+        const publishDate = new Date(article.publishedAt || article.createdAt);
+        const formattedDate = publishDate.toLocaleDateString('ru-RU', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+
+        const metaHtml = `
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+              <line x1="16" x2="16" y1="2" y2="6"/>
+              <line x1="8" x2="8" y1="2" y2="6"/>
+              <line x1="3" x2="21" y1="10" y2="10"/>
+            </svg>
+            ${formattedDate}
+          </div>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            ${article.views || 0} просмотров
+          </div>
+        `;
+        document.getElementById('article-meta').innerHTML = metaHtml;
+
+        // Set images
+        const imagesContainer = document.getElementById('article-images');
+        if (article.images && article.images.length > 0) {
+          if (article.images.length === 1) {
+            // Single image - full width
+            imagesContainer.innerHTML = `
+              <img src="${article.images[0].imageUrl}" alt="${article.title}" />
+            `;
+          } else {
+            // Multiple images - grid
+            const imagesHtml = article.images
+              .sort((a, b) => a.displayOrder - b.displayOrder)
+              .map(img => `<img src="${img.imageUrl}" alt="${article.title}" />`)
+              .join('');
+            imagesContainer.innerHTML = `<div class="image-gallery">${imagesHtml}</div>`;
+          }
+        } else if (article.imageUrl) {
+          // Fallback to main image
+          imagesContainer.innerHTML = `
+            <img src="${article.imageUrl}" alt="${article.title}" />
+          `;
+        }
+
+        // Set excerpt
+        document.getElementById('article-excerpt').textContent = article.excerpt;
+
+        // Set body content
+        const contentHtml = article.content
+          .split('\n')
+          .filter(line => line.trim())
+          .map(line => `<p>${line}</p>`)
+          .join('');
+        document.getElementById('article-body').innerHTML = contentHtml;
+
+      } catch (error) {
+        console.error('Error loading article:', error);
+        showError();
+      }
+    }
+
+    function showError() {
+      document.getElementById('loading-skeleton').classList.add('hidden');
+      document.getElementById('article-content').classList.add('hidden');
+      document.getElementById('error-message').classList.remove('hidden');
+    }
+
+    // Load article on page load
+    loadArticle();
+  </script>
+</body>
+</html>

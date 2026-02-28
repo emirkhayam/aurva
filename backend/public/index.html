@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURVA — Ассоциация Участников Рынка Виртуальных Активов Кыргызстана</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/fontawesome/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+--bg-main: #F4F6F8;
+--bg-surface: #EDEFF2;
+--bg-card: #FFFFFF;
+--bg-card-hover: #F9FAFB;
+--border: #D9DEE3;
+--shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+--text: #0F172A;
+--text-muted: #475569;
+--text-subtle: #64748B;
+--accent: #2563EB;
+--accent-hover: #1D4ED8;
+--accent-soft: #EFF6FF;
+}
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--bg-main);
+color: var(--text-muted);
+overflow-x: hidden;
+}
+.font-display { font-family: 'Oswald', sans-serif; }
+.noise-overlay {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 50;
+opacity: .02;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+::selection { background: var(--accent); color: #ffffff; }
+.section { position: relative; overflow: hidden; }
+.section--main { background-color: transparent; }
+.section--surface { background-color: rgba(15, 23, 42, 0.02); }
+.section-divider { border-top: 1px solid rgba(217, 222, 227, 0.55); }
+.surface-seam {
+position: absolute;
+left: 0;
+right: 0;
+bottom: -1px;
+height: 22px;
+pointer-events: none;
+z-index: 2;
+background: linear-gradient(to bottom,
+rgba(15,23,42,0.035) 0%,
+rgba(15,23,42,0.018) 18%,
+rgba(15,23,42,0.008) 45%,
+rgba(15,23,42,0.0) 78%
+);
+}
+.surface-seam::before {
+content: "";
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+height: 1px;
+background: rgba(255,255,255,0.55);
+opacity: 0.5;
+}
+.spotlight {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 400px;
+background: radial-gradient(700px circle at top center, rgba(37,99,235,0.08), transparent 65%);
+pointer-events: none;
+opacity: 0;
+z-index: 0;
+}
+.section-content { position: relative; z-index: 10; }
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+</style><!-- aura-ga4-start -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2M6V79H761');
+</script>
+<!-- aura-ga4-end --></head>
+<body class="antialiased overflow-x-hidden">
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-40 bg-[color:var(--bg-card)]/90 backdrop-blur-md border-b border-[color:var(--border)] transition-all duration-300">
+        <div class="sm:px-6 flex h-20 max-w-7xl mr-auto ml-auto pr-4 pl-4 items-center justify-between transition-all duration-300">
+            <!-- Logo -->
+            <div class="flex items-center flex-shrink-0 md:mr-4 gap-3">
+                <a href="index.html">
+                    <img id="navbar-logo" src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="md:h-12 w-auto h-10 object-contain transition-all duration-300">
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">
+                <a href="about.html" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">О нас</a>
+                <a href="#directions" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Направления</a>
+                <a href="#benefits" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Преимущества</a>
+                <a href="#news" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Новости</a>
+            </div>
+
+            <!-- CTA & Mobile toggle -->
+            <div class="flex items-center gap-3 sm:gap-6">
+                <button id="mobile-menu-btn" class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded border border-[color:var(--border)] bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-card)]">
+                    <i class="fa-solid fa-bars text-[color:var(--text)] text-lg"></i>
+                </button>
+                <a href="#contact" class="hidden sm:block text-xs px-5 py-2.5 bg-[color:var(--accent)] text-white font-semibold rounded tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] shadow-[var(--shadow)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-card)]">
+                    Стать членом
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-[color:var(--bg-card)] border-b border-[color:var(--border)]">
+            <div class="px-4 pt-2 pb-6 flex flex-col gap-2 text-center">
+                <a href="about.html" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">О нас</a>
+                <a href="#directions" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Направления</a>
+                <a href="#benefits" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Преимущества</a>
+                <a href="#news" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Новости</a>
+                <a href="#contact" class="block mt-4 px-3 py-3 text-center rounded text-sm font-semibold text-white bg-[color:var(--accent)]">Стать членом</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="section section--main overflow-hidden min-h-screen flex flex-col sm:px-6 sm:pb-24 sm:pt-12 z-10 pt-36 pr-4 pb-24 pl-4 relative">
+        <div class="absolute inset-0 pointer-events-none" data-container-bg="true">
+            <div class="spline-container absolute top-0 left-0 w-full h-full -z-10 transform scale-[1.8] translate-y-[45%]">
+                <iframe src="https://my.spline.design/crystalball-de222de54d6fc4752fa850b54fb654de/" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+        </div>
+
+        <div class="spotlight"></div>
+        <div class="absolute -top-20 sm:-top-32 left-1/2 -translate-x-1/2 w-[90vw] sm:w-[600px] h-[200px] sm:h-[300px] blur-[80px] sm:blur-[100px] rounded-full pointer-events-none bg-[color:var(--accent)]/10"></div>
+
+        <div class="flex-1 flex flex-col text-center h-full max-w-7xl mr-auto ml-auto relative items-center justify-center">
+            <div class="flex flex-col animate-on-scroll w-full max-w-5xl z-10 relative top--12 items-center">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
+                    <span class="text-[10px] sm:text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[color:var(--text-subtle)]">
+                        Основана в 2024 году
+                    </span>
+                    <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
+                </div>
+
+                <h1 class="sm:text-6xl md:text-7xl uppercase leading-[0.95] text-4xl font-medium text-[color:var(--text)] tracking-tighter font-display mb-3 drop-shadow-[0_1px_0_rgba(255,255,255,0.4)]">
+                    Ассоциация Участников Рынка
+                    <br>
+                    <span class="text-[color:var(--accent)] font-semibold">
+                        Виртуальных Активов.
+                    </span>
+                </h1>
+                
+                <p class="text-[color:var(--text)] text-lg sm:text-xl font-normal tracking-tight mb-8 leading-tight">
+                    Объединяем лидеров индустрии в Кыргызстане.
+                </p>
+
+                <p class="text-base sm:text-lg text-[color:var(--text)] max-w-2xl mx-auto mb-10 leading-relaxed font-medium text-center bg-[color:var(--bg-card)]/80 backdrop-blur-sm rounded-lg px-6 py-4 shadow-sm border border-[color:var(--border)]/50">
+                    Содействуем развитию безопасного, прозрачного и инновационного криптовалютного рынка. Платформа создана для выстраивания конструктивного диалога между государством, бизнесом и пользователями.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 mb-16">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3 bg-[color:var(--accent)] text-white text-sm font-semibold rounded tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] shadow-[var(--shadow)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)]">
+                        Вступить в ассоциацию
+                    </a>
+                    <a href="#about" class="w-full sm:w-auto px-6 py-3 bg-[color:var(--bg-card)] text-[color:var(--text)] border border-[color:var(--border)] hover:bg-[color:var(--bg-card-hover)] text-sm font-medium rounded transition-all flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative overflow-hidden">
+                        <span class="relative z-10">Изучить манифест</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="surface-seam" aria-hidden="true"></div>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="section section--surface section-divider py-24 md:py-32">
+        <div class="spotlight"></div>
+        <div class="section-content max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
+                <div class="relative z-10 animate-on-scroll">
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-3 block">
+                        // О нас
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-display text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4 font-medium">
+                        Двигатель прогресса
+                        <br>
+                        <span class="font-semibold text-[color:var(--accent)]">
+                            ЦИФРОВОЙ ЭКОНОМИКИ
+                        </span>
+                    </h2>
+                    <p class="text-[color:var(--text)] text-sm font-light leading-relaxed mb-6 max-w-md">
+                        AURVA — это независимая платформа, созданная для выстраивания конструктивного диалога между государством, бизнесом и пользователями. Мы формируем стандарты качества и прозрачности в сфере цифровых активов.
+                    </p>
+                    <p class="text-[color:var(--text)] text-sm font-light leading-relaxed mb-12 max-w-md">
+                        Наша миссия — создать благоприятную экосистему для интеграции виртуальных активов в традиционную экономику Кыргызской Республики, обеспечивая защиту интересов всех участников.
+                    </p>
+                    <a href="#directions" class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--accent)] hover:underline transition-colors">
+                        Изучить направления работы
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <div class="relative w-full border border-[color:var(--border)] rounded-2xl bg-[color:var(--bg-card)] shadow-[var(--shadow)] flex flex-col group animate-on-scroll overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-3 border-b border-[color:var(--border)] bg-[color:var(--bg-card)]/70 backdrop-blur-md z-20">
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[color:var(--bg-surface)] border border-[color:var(--border)]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[color:var(--bg-surface)] border border-[color:var(--border)]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[color:var(--bg-surface)] border border-[color:var(--border)]"></div>
+                        </div>
+                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest">
+                            AURVA :: INFO_PANEL
+                        </span>
+                        <div class="text-[9px] font-mono font-semibold text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-2 py-1 rounded border border-[color:var(--border)]">
+                            STATUS::ACTIVE
+                        </div>
+                    </div>
+
+                    <div class="relative flex-1 w-full bg-[color:var(--bg-card)] p-8">
+                        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(17,24,39,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(17,24,39,0.02)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-60 pointer-events-none"></div>
+                        
+                        <div class="relative z-10 space-y-8">
+                            <div class="flex justify-between items-start pb-6 border-b border-[color:var(--border)]">
+                                <div>
+                                    <span class="text-[9px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1 font-mono block">Основание</span>
+                                    <h3 class="text-lg font-semibold text-[color:var(--text)] tracking-tight">14 октября 2024</h3>
+                                </div>
+                                <div class="w-8 h-8 rounded bg-[color:var(--bg-surface)] flex items-center justify-center border border-[color:var(--border)]">
+                                    <i class="fa-regular fa-calendar text-sm text-[color:var(--text)]"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-start pb-6 border-b border-[color:var(--border)]">
+                                <div>
+                                    <span class="text-[9px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1 font-mono block">Масштаб</span>
+                                    <h3 class="text-lg font-semibold text-[color:var(--text)] tracking-tight">10+ компаний-лидеров</h3>
+                                </div>
+                                <div class="w-8 h-8 rounded bg-[color:var(--bg-surface)] flex items-center justify-center border border-[color:var(--border)]">
+                                    <i class="fa-solid fa-building text-sm text-[color:var(--text)]"></i>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[9px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1 font-mono block">Фокус</span>
+                                    <h3 class="text-lg font-semibold text-[color:var(--text)] tracking-tight">1 общая цель</h3>
+                                    <p class="text-xs text-[color:var(--text)] mt-1 font-light">Безопасный и регулируемый рынок</p>
+                                </div>
+                                <div class="w-8 h-8 rounded bg-[color:var(--bg-surface)] flex items-center justify-center border border-[color:var(--border)]">
+                                    <i class="fa-solid fa-bullseye text-sm text-[color:var(--text)]"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="surface-seam" aria-hidden="true"></div>
+    </section>
+
+    <!-- Directions Section -->
+    <section id="directions" class="section section--main section-divider py-28 md:py-36">
+        <div class="spotlight"></div>
+        <div class="section-content max-w-7xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16 md:mb-20 animate-on-scroll">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
+                    <span class="text-[11px] font-medium font-mono uppercase tracking-[0.2em] text-[color:var(--text-subtle)]">
+                        Векторы развития
+                    </span>
+                    <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-display text-[color:var(--text)] uppercase tracking-tighter leading-[0.95] mb-6 font-medium">
+                    Направления
+                    <span class="text-[color:var(--accent)] font-semibold">
+                        → Работы
+                    </span>
+                </h2>
+                <p class="text-base text-[color:var(--text)] leading-relaxed font-light mb-8 max-w-2xl mx-auto">
+                    Мы сфокусированы на четырех ключевых векторах развития, которые формируют фундамент здоровой индустрии виртуальных активов.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 md:mb-20">
+                <!-- Card 1 -->
+                <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
+                    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
+                            Экосистема
+                        </span>
+                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">01</span>
+                    </div>
+                    <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
+                        Развитие и поддержка
+                    </h3>
+                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                        Платформа для эффективного обмена знаниями, экспертизой и практическим опытом между всеми участниками рынка.
+                    </p>
+                    <div class="mt-auto">
+                        <i class="fa-solid fa-users text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
+                    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
+                            Правовая база
+                        </span>
+                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">02</span>
+                    </div>
+                    <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
+                        Регулирование
+                    </h3>
+                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                        Активное содействие государственным органам в разработке сбалансированных нормативных актов для безопасности и роста рынка.
+                    </p>
+                    <div class="mt-auto">
+                        <i class="fa-solid fa-shield-halved text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
+                    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
+                            Квалификация
+                        </span>
+                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">03</span>
+                    </div>
+                    <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
+                        Образование
+                    </h3>
+                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                        Проведение профильных обучающих программ, семинаров и конференций для повышения квалификации специалистов.
+                    </p>
+                    <div class="mt-auto">
+                        <i class="fa-solid fa-graduation-cap text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
+                    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
+                            Технологии
+                        </span>
+                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">04</span>
+                    </div>
+                    <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
+                        Инновации
+                    </h3>
+                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                        Поиск, тестирование и внедрение передовых технологических решений, определяющих будущее цифровой экономики.
+                    </p>
+                    <div class="mt-auto">
+                        <i class="fa-solid fa-lightbulb text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="surface-seam" aria-hidden="true"></div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section section--surface section-divider py-24 md:py-32">
+        <div class="spotlight"></div>
+        <div class="section-content max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 animate-on-scroll">
+                <div class="max-w-2xl">
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-3 block">
+                        // Членство
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
+                        Почему стоит
+                        <br>
+                        <span class="text-[color:var(--accent)] font-semibold">
+                            → ВСТУПИТЬ
+                        </span>
+                    </h2>
+                    <p class="text-sm text-[color:var(--text)] leading-relaxed font-light">
+                        Присоединяйтесь к сообществу лидеров индустрии и получите инструменты для масштабирования вашего бизнеса.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 overflow-hidden bg-[color:var(--border)] border border-[color:var(--border)] rounded-[2rem] shadow-[var(--shadow)] gap-px animate-on-scroll">
+                
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-8 flex flex-col justify-between h-full relative">
+                    <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
+                            // ПАРТНЕРСТВА
+                        </span>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
+                            Нетворкинг с лидерами
+                        </h3>
+                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                            Прямой доступ к ключевым игрокам рынка и партнерам.
+                        </p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors flex items-center gap-2 relative z-10">
+                        Связи → Контракты
+                    </div>
+                </div>
+
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-8 flex flex-col justify-between h-full relative">
+                    <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
+                            // ЗАЩИТА
+                        </span>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
+                            Влияние на законы
+                        </h3>
+                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                            Возможность участвовать в формировании правовой базы.
+                        </p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors flex items-center gap-2 relative z-10">
+                        Голос → Регулирование
+                    </div>
+                </div>
+
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-8 flex flex-col justify-between h-full relative">
+                    <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
+                            // РАЗВИТИЕ
+                        </span>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
+                            Образование
+                        </h3>
+                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                            Эксклюзивные материалы, аналитика и профильные тренинги.
+                        </p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors flex items-center gap-2 relative z-10">
+                        Знания → Рост
+                    </div>
+                </div>
+
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-8 flex flex-col justify-between h-full relative">
+                    <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
+                            // МАРКЕТИНГ
+                        </span>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
+                            Продвижение
+                        </h3>
+                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                            Поддержка ваших инициатив и узнаваемость бренда на рынке.
+                        </p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors flex items-center gap-2 relative z-10">
+                        Инициатива → Узнаваемость
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center animate-on-scroll">
+                <a href="#contact" class="inline-flex w-full sm:w-auto px-10 py-3.5 bg-[color:var(--accent)] text-white text-sm font-semibold rounded tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] shadow-[0_4px_14px_rgba(37,99,235,0.3)] items-center justify-center gap-2">
+                    Подать заявку
+                </a>
+            </div>
+        </div>
+        <div class="surface-seam" aria-hidden="true"></div>
+    </section>
+
+    <!-- Members Section -->
+    <section class="section section--main section-divider pt-32 pb-32" id="members">
+        <div class="spotlight"></div>
+        <div class="section-content max-w-7xl mr-auto ml-auto pr-6 pl-6">
+            <div class="mb-16 max-w-4xl mx-auto text-center animate-on-scroll">
+                <div class="flex items-center gap-3 mb-6 justify-center">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)]">
+                        AURVA :: Партнеры
+                    </span>
+                    <div class="h-px w-8 bg-[color:var(--border)]"></div>
+                    <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">
+                        Экосистема
+                    </span>
+                </div>
+
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-[0.9] mb-6">
+                    Участники
+                    <br>
+                    <span class="text-[color:var(--accent)] font-semibold">
+                        Ассоциации.
+                    </span>
+                </h2>
+
+                <p class="text-base text-[color:var(--text)] font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+                    Ведущие компании рынка, определяющие будущее цифровой экономики и формирующие надежную инфраструктуру для всех.
+                </p>
+            </div>
+
+            <!-- Logo Slider -->
+            <div id="membersContainer" class="flex overflow-x-auto gap-6 pb-6 animate-on-scroll scroll-smooth" style="scrollbar-width: thin; scrollbar-color: #D9DEE3 #F4F6F8;">
+                <!-- Members loaded dynamically from API -->
+                <a href="https://bithub.kg/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="https://optim.tildacdn.one/tild6462-6364-4861-b166-353964656433/-/resize/302x/-/format/webp/__2025-06-16__145801.png.webp" alt="BitHub" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+                
+                <a href="https://envoys.vision/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="https://optim.tildacdn.one/tild6165-3935-4238-b766-393266333636/-/resize/302x/-/format/webp/A5_-_3.jpg.webp" alt="Envoys" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+                
+                <a href="https://www.royal.inc/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="https://optim.tildacdn.one/tild6134-3135-4035-b864-646261356130/-/resize/302x/-/format/webp/photo_2024-12-04_141.jpeg.webp" alt="Royal Inc." class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+                
+                <a href="https://kln.kg/#contact" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="https://optim.tildacdn.one/tild3564-3437-4363-b366-386533666434/-/resize/302x/-/format/webp/_.png.webp" alt="KLN" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+                
+                <a href="https://www.wechange.kg/?utm_referrer=https%3A%2F%2Fwww.google.com%2F" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="https://optim.tildacdn.one/tild3134-6436-4130-a239-393831666532/-/resize/302x/-/format/webp/photo_2025-09-11_183.jpeg.webp" alt="WeChange" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+                
+                <a href="https://primefinance.kg/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="https://optim.tildacdn.one/tild3565-6661-4436-b262-363130616237/-/resize/302x/-/format/webp/Logo_2.png.webp" alt="Prime Finance" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+            </div>
+
+            <div class="mt-20 border-t border-[color:var(--border)] pt-8 text-center animate-on-scroll">
+                <p class="text-[10px] font-mono text-[color:var(--text-subtle)] uppercase tracking-[0.2em]">
+                    Официальный реестр участников.
+                </p>
+            </div>
+        </div>
+        <div class="surface-seam" aria-hidden="true"></div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section section--surface section-divider md:py-36 pt-28 pb-28" id="news">
+        <div class="spotlight"></div>
+        <div class="section-content max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 animate-on-scroll">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-5xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
+                        Последние
+                        <br>
+                        <span class="text-[color:var(--accent)] font-semibold">
+                            → СОБЫТИЯ
+                        </span>
+                    </h2>
+                    <p class="text-sm text-[color:var(--text)] leading-relaxed font-light">
+                        Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
+                    </p>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] hover:text-[color:var(--text)] transition-colors pb-1 border-b border-transparent hover:border-[color:var(--text)]">
+                    Все новости
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <div id="newsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll">
+                <!-- News loaded dynamically from API -->
+                <!-- News Card 1 -->
+                <a href="#" class="group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                    <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
+                        <div class="group-hover:scale-105 transition-transform duration-500 bg-cover bg-center absolute top-0 right-0 bottom-0 left-0 cursor-pointer" style="background-image: url('https://fsa.gov.kg/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-27-at-09.48.33-960x720.jpeg');" role="button"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 relative z-10 bg-[color:var(--bg-card)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-1.5 py-0.5 rounded border border-[color:var(--border)] uppercase tracking-wide">Регулирование</span>
+                            <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">24 Окт 2024</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight line-clamp-2">Обсуждение нового законопроекта о виртуальных активах</h3>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">Представители АУРВА приняли участие в рабочем совещании по вопросам налогообложения майнинга и криптовалютных операций.</p>
+                        <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
+                            <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
+                                Читать
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- News Card 2 -->
+                <a href="#" class="group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                    <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
+                        <div class="group-hover:scale-105 transition-transform duration-500 bg-center bg-cover absolute top-0 right-0 bottom-0 left-0" style="background-image: url('https://fsa.gov.kg/wp-content/uploads/2025/09/IMG_20250916_105410_229.jpg')"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 relative z-10 bg-[color:var(--bg-card)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-1.5 py-0.5 rounded border border-[color:var(--border)] uppercase tracking-wide">События</span>
+                            <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">15 Окт 2024</span>
+                        </div>
+                        <h3 class="text-[color:var(--text)] line-clamp-2 text-lg font-semibold tracking-tight mb-2">Подписан Меморандум о сотрудничестве между Службой регулирования</h3>
+                        <p class="text-[color:var(--text)] line-clamp-3 leading-relaxed text-xs font-light mb-8">В городе Бишкек состоялось официальное подписание Меморандума о сотрудничестве между Службой регулирования и надзора за финансовым рынком...</p>
+                        <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
+                            <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
+                                Читать
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- News Card 3 -->
+                <a href="#" class="hidden md:flex group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                    <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
+                        <div class="group-hover:scale-105 transition-transform duration-500 bg-center bg-cover absolute top-0 right-0 bottom-0 left-0" style="background-image: url('https://caravan-info.kg/netcat_files/generated/17/27/1000x500/27743/cf10b2b8ca679d5ef79776490c2a18f3.jpg?crop=0%3A0%3A0%3A0&amp;hash=240a529b6b2cb45213eeb061393802ed&amp;resize_mode=1&amp;wm_m=0')"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 relative z-10 bg-[color:var(--bg-card)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-1.5 py-0.5 rounded border border-[color:var(--border)] uppercase tracking-wide">Аналитика</span>
+                            <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">10 Окт 2024</span>
+                        </div>
+                        <h3 class="text-[color:var(--text)] line-clamp-2 text-lg font-semibold tracking-tight mb-2">Анализ рынка виртуальных активов ЦА 2026</h3>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">Опубликован новый отчет с обзором трендов, перспектив и ключевых показателей развития криптоиндустрии в регионе.</p>
+                        <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
+                            <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
+                                Читать
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <a href="#" class="md:hidden mt-8 inline-flex items-center justify-center w-full gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] hover:text-[color:var(--text)] transition-colors">
+                Все новости
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+        <div class="surface-seam" aria-hidden="true"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section--main section-divider py-32">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent),_transparent_90%)] opacity-[0.04] pointer-events-none z-0"></div>
+        <div class="spotlight absolute top-[-20%] left-0 right-0 h-[600px] bg-[radial-gradient(800px_circle_at_top,_rgba(37,99,235,0.12),_transparent_70%)] pointer-events-none z-0"></div>
+        
+        <div class="section-content max-w-4xl mx-auto px-6 relative z-10 animate-on-scroll">
+            <div class="relative rounded-3xl border border-[color:var(--accent)]/10 bg-[color:var(--bg-card)]/90 backdrop-blur-xl p-8 md:p-14 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1),_inset_0_1px_0_rgba(255,255,255,0.7)] ring-1 ring-[color:var(--border)] group">
+                <div class="absolute top-0 left-0 w-80 h-80 bg-[radial-gradient(circle_at_top_left,_var(--accent),_transparent_70%)] opacity-[0.04] pointer-events-none"></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/60 to-transparent shadow-[0_1px_6px_rgba(37,99,235,0.4)]"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+                    <!-- Info -->
+                    <div class="">
+                        <h2 class="text-4xl font-display text-[color:var(--text)] mb-6 uppercase tracking-tighter leading-[0.95] font-medium relative z-10">
+                            Свяжитесь
+                            <br>
+                            <span class="text-[color:var(--accent)] font-semibold">
+                                с нами.
+                            </span>
+                        </h2>
+                        <p class="text-sm text-[color:var(--text)]/80 mb-10 max-w-sm leading-relaxed font-normal relative z-10">
+                            Готовы стать частью ассоциации или есть вопросы? Оставьте заявку, и мы свяжемся с вами.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-2 h-2 rounded-full bg-[color:var(--accent)] shadow-[0_0_8px_rgba(37,99,235,0.4)] mt-1.5"></div>
+                                    <div class="w-px h-8 bg-[color:var(--border)] my-1"></div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Офис</p>
+                                    <p class="text-sm font-medium text-[color:var(--text)]">Кыргызская Республика,<br>г. Бишкек</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-2 h-2 rounded-full bg-[color:var(--text-subtle)] mt-1.5"></div>
+                                    <div class="w-px h-8 bg-[color:var(--border)] my-1"></div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Телефон</p>
+                                    <a href="tel:+996550999010" class="text-sm font-medium text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">+996 550 99 90 10</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-2 h-2 rounded-full bg-[color:var(--text-subtle)] mt-1.5"></div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Email</p>
+                                    <a href="mailto:aurva.kg@gmail.com" class="text-sm font-medium text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">aurva.kg@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="flex flex-col justify-center">
+                        <form id="contactForm" class="space-y-4">
+                            <div class="">
+                                <input type="text" id="contactName" name="name" required class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="Название компании / Имя">
+                            </div>
+
+                            <div class="">
+                                <input type="tel" id="contactPhone" name="phone" required class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="Контактный телефон">
+                            </div>
+
+                            <div class="">
+                                <input type="email" id="contactEmail" name="email" class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="Email (опционально)">
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="w-full py-3.5 bg-[color:var(--accent)] text-white text-sm font-semibold rounded-lg tracking-tight shadow-[0_4px_14px_rgba(37,99,235,0.3)] hover:bg-[color:var(--accent-hover)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-card)] mt-2">
+                                Оставить заявку
+                            </button>
+                            <p id="formMessage" class="text-xs text-center mt-4 hidden"></p>
+                            <p class="text-[10px] text-center text-[color:var(--text-subtle)] mt-4">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[color:var(--bg-card)] border-t border-[color:var(--border)] pt-8 pb-6 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-start gap-10 w-full mb-10 gap-x-10 gap-y-10 items-center justify-between">
+                <!-- Branding & Connect -->
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="h-8 w-auto object-contain">
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)] opacity-70">
+                        Связь с нами
+                    </span>
+                    <div class="flex flex-col gap-2.5 text-center md:text-left">
+                        <a href="mailto:aurva.kg@gmail.com" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                            <i class="fa-solid fa-envelope text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="tel:+996550999010" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                            <i class="fa-solid fa-phone text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                            <span>Телефон</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="flex flex-col items-center justify-center gap-2.5 mt-2 md:mt-0">
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-1.5 w-1.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--accent)] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[color:var(--accent)]"></span>
+                        </span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text)]">
+                            Ассоциация активна
+                        </span>
+                    </div>
+                    <div class="flex gap-3 text-[9px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest opacity-80">
+                        <span>AURVA::КР</span>
+                        <span class="text-[color:var(--border)]">|</span>
+                        <span>Основано в 2024</span>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex flex-col items-center md:items-end gap-4">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)] opacity-70">
+                        Навигация
+                    </span>
+                    <div class="flex flex-col gap-2.5 text-center md:text-right">
+                        <a href="about.html" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">О нас</a>
+                        <a href="#directions" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Направления</a>
+                        <a href="#benefits" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Преимущества</a>
+                        <a href="#members" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Участники</a>
+                        <a href="#news" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Новости</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-[color:var(--border)] flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-[10px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest text-center sm:text-left">
+                    © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+                </span>
+                <div class="flex gap-6">
+                    <a href="#" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                        Политика конфиденциальности
+                    </a>
+                    <a href="#" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                        Устав
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mobile Menu
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+            const mobileLinks = menu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            // GSAP Animations
+            gsap.registerPlugin(ScrollTrigger);
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            if (prefersReducedMotion) {
+                gsap.set(".animate-on-scroll", { opacity: 1, y: 0, visibility: "visible" });
+                return;
+            }
+
+            // Hero General Animation
+            const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            const heroElements = document.querySelector('main').querySelectorAll('.animate-on-scroll > *');
+            
+            if(heroElements.length) {
+                heroTl.from(heroElements, { y: 20, opacity: 0, duration: 0.5, stagger: 0.08, delay: 0.1 });
+            }
+
+            // Scroll Animations for Sections
+            const sections = gsap.utils.toArray(".section");
+            sections.forEach((section) => {
+                if (section.classList.contains('section--main') && section.querySelector('h1')) return; // skip hero
+
+                const spotlight = section.querySelector(".spotlight");
+                const content = section.querySelector(".section-content");
+                const children = section.querySelectorAll(".animate-on-scroll");
+
+                const stTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse",
+                    }
+                });
+
+                if (spotlight) {
+                    stTl.from(spotlight, { opacity: 0, duration: 0.5 });
+                }
+
+                if (content && children.length === 0) {
+                    stTl.from(content, { y: 20, opacity: 0, duration: 0.4 }, "<");
+                }
+
+                if (children.length > 0) {
+                    stTl.from(children, {
+                        y: 20,
+                        opacity: 0,
+                        duration: 0.4,
+                        stagger: 0.05,
+                        clearProps: "all"
+                    }, "<+=0.1");
+                }
+            });
+
+            ScrollTrigger.refresh();
+        });
+
+        // Navbar Shrink on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const navbarContainer = navbar.querySelector('div');
+            const logo = document.getElementById('navbar-logo');
+
+            if (window.scrollY > 50) {
+                navbarContainer.classList.remove('h-20');
+                navbarContainer.classList.add('h-16');
+                logo.classList.remove('h-10', 'md:h-12');
+                logo.classList.add('h-6', 'md:h-8');
+            } else {
+                navbarContainer.classList.remove('h-16');
+                navbarContainer.classList.add('h-20');
+                logo.classList.remove('h-6', 'md:h-8');
+                logo.classList.add('h-10', 'md:h-12');
+            }
+        });
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('contactName').value.trim();
+                const phone = document.getElementById('contactPhone').value.trim();
+
+                if (!name || !phone) {
+                    showMessage('Пожалуйста, заполните все поля', 'error');
+                    return;
+                }
+
+                // Disable button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Отправка...';
+
+                try {
+                    const response = await fetch('/api/contacts', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ name, phone })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        showMessage('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
+                        contactForm.reset();
+                    } else {
+                        showMessage(data.message || 'Произошла ошибка. Пожалуйста, попробуйте позже.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showMessage('Не удалось отправить заявку. Проверьте подключение к интернету.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Оставить заявку';
+                }
+            });
+        }
+
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.classList.remove('hidden');
+
+            if (type === 'success') {
+                formMessage.classList.remove('text-red-600');
+                formMessage.classList.add('text-green-600');
+            } else {
+                formMessage.classList.remove('text-green-600');
+                formMessage.classList.add('text-red-600');
+            }
+
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+
+    <!-- Dynamic News & Members Loading -->
+    <script>
+        const API_URL = '/api';
+
+        // Load News
+        async function loadNews() {
+            const newsContainer = document.getElementById('newsContainer');
+            if (!newsContainer) return;
+
+            // Show loading state
+            newsContainer.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <p class="text-[color:var(--text-muted)]">Загрузка новостей...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_URL}/news?published=true&limit=3`);
+                const data = await response.json();
+
+                if (data.news && data.news.length > 0) {
+                    renderNews(data.news);
+                } else {
+                    newsContainer.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-[color:var(--text-muted)]">Новостей пока нет</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading news:', error);
+                newsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-red-500">Ошибка загрузки новостей. Попробуйте обновить страницу.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderNews(newsItems) {
+            const newsContainer = document.getElementById('newsContainer');
+            if (!newsContainer) return;
+
+            newsContainer.innerHTML = newsItems.map((item, index) => `
+                <a href="news-detail.html?slug=${item.slug}" class="${index === 2 ? 'hidden md:flex' : ''} group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                    <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
+                        <div class="group-hover:scale-105 transition-transform duration-500 bg-cover bg-center absolute top-0 right-0 bottom-0 left-0" style="background-image: url('${item.imageUrl || 'https://via.placeholder.com/400x300'}');"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 relative z-10 bg-[color:var(--bg-card)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-1.5 py-0.5 rounded border border-[color:var(--border)] uppercase tracking-wide">
+                                ${getCategoryLabel(item.category)}
+                            </span>
+                            <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">
+                                ${formatDate(item.publishedAt)}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight line-clamp-2">
+                            ${item.title}
+                        </h3>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">
+                            ${item.excerpt}
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
+                            <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
+                                Читать
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'regulation': 'Регулирование',
+                'events': 'События',
+                'analytics': 'Аналитика',
+                'other': 'Новости'
+            };
+            return labels[category] || 'Новости';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+        }
+
+        // Load Members
+        async function loadMembers() {
+            const membersContainer = document.getElementById('membersContainer');
+            if (!membersContainer) return;
+
+            // Show loading state
+            membersContainer.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <p class="text-[color:var(--text-muted)]">Загрузка участников...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_URL}/members?isActive=true`);
+                const data = await response.json();
+
+                if (data.members && data.members.length > 0) {
+                    renderMembers(data.members);
+                } else {
+                    membersContainer.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-[color:var(--text-muted)]">Участников пока нет</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading members:', error);
+                membersContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-red-500">Ошибка загрузки участников. Попробуйте обновить страницу.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderMembers(members) {
+            const membersContainer = document.getElementById('membersContainer');
+            if (!membersContainer) return;
+
+            membersContainer.innerHTML = members.map(member => `
+                <a href="${member.website || '#'}" target="_blank"
+                   class="h-32 md:h-40 w-48 md:w-64 flex-shrink-0 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                    <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
+                         alt="${member.name}"
+                         class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                </a>
+            `).join('');
+        }
+
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadNews();
+            loadMembers();
+        });
+    </script>
+
+</body></html>

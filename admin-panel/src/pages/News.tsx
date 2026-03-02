@@ -23,6 +23,7 @@ export default function News() {
   const [category, setCategory] = useState<NewsType['category']>('regulation');
   const [published, setPublished] = useState(false);
   const [images, setImages] = useState<FileList | null>(null);
+  const [imageUrls, setImageUrls] = useState(''); // Multiple URLs, comma-separated
 
   useEffect(() => {
     loadNews();
@@ -50,6 +51,7 @@ export default function News() {
     setCategory('regulation');
     setPublished(false);
     setImages(null);
+    setImageUrls('');
     setEditing(null);
     setShowForm(false);
   };
@@ -74,11 +76,24 @@ export default function News() {
     formData.append('category', category);
     formData.append('published', String(published));
 
-    // Append multiple images
+    // Append multiple images (file uploads)
     if (images && images.length > 0) {
       Array.from(images).forEach((file) => {
         formData.append('images', file);
       });
+    }
+
+    // Append image URLs (if provided)
+    if (imageUrls.trim()) {
+      // Split by comma, trim each URL, filter empty
+      const urls = imageUrls
+        .split(',')
+        .map(url => url.trim())
+        .filter(url => url.length > 0);
+
+      if (urls.length > 0) {
+        formData.append('imageUrls', JSON.stringify(urls));
+      }
     }
 
     try {
@@ -184,26 +199,26 @@ export default function News() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium text-[rgb(var(--text))]">
-                    Категория
-                  </label>
-                  <select
-                    className="flex h-10 w-full rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] px-3 py-2 text-sm"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value as NewsType['category'])}
-                  >
-                    <option value="regulation">Регулирование</option>
-                    <option value="events">События</option>
-                    <option value="analytics">Аналитика</option>
-                    <option value="other">Другое</option>
-                  </select>
-                </div>
+              <div>
+                <label className="text-sm font-medium text-[rgb(var(--text))]">
+                  Категория
+                </label>
+                <select
+                  className="flex h-10 w-full rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] px-3 py-2 text-sm"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as NewsType['category'])}
+                >
+                  <option value="regulation">Регулирование</option>
+                  <option value="events">События</option>
+                  <option value="analytics">Аналитика</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-[rgb(var(--text))]">
-                    Изображения (можно выбрать несколько)
+                    Загрузить изображения (можно выбрать несколько)
                   </label>
                   <Input
                     type="file"
@@ -216,6 +231,21 @@ export default function News() {
                       Выбрано файлов: {images.length}
                     </p>
                   )}
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-[rgb(var(--text))]">
+                    URL изображений (через запятую)
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="https://example.com/image1.jpg, https://..."
+                    value={imageUrls}
+                    onChange={(e) => setImageUrls(e.target.value)}
+                  />
+                  <p className="text-xs text-[rgb(var(--text-muted))] mt-1">
+                    Введите URL изображений через запятую
+                  </p>
                 </div>
               </div>
 

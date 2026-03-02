@@ -1061,14 +1061,107 @@ gtag('config', 'G-2M6V79H761');
             const membersContainer = document.getElementById('membersContainer');
             if (!membersContainer) return;
 
-            membersContainer.innerHTML = members.map(member => `
-                <a href="${member.website || '#'}" target="_blank"
-                   class="h-32 md:h-40 w-48 md:w-64 flex-shrink-0 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
-                         alt="${member.name}"
-                         class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
-            `).join('');
+            membersContainer.innerHTML = members.map(member => {
+                // Увеличенные логотипы для Trade Wave и OsonX
+                const largeLogoSlugs = ['trade-wave', 'osonx'];
+                const logoSizeClass = largeLogoSlugs.includes(member.slug)
+                    ? 'max-h-20 md:max-h-32'
+                    : 'max-h-16 md:max-h-24';
+
+                return `
+                    <a href="${member.website || '#'}" target="_blank"
+                       class="h-32 md:h-40 w-48 md:w-64 flex-shrink-0 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                        <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
+                             alt="${member.name}"
+                             class="${logoSizeClass} w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                    </a>
+                `;
+            }).join('');
+
+            // Запуск автоплея после рендеринга с небольшой задержкой
+            setTimeout(() => {
+                initMembersCarousel();
+            }, 100);
+        }
+
+        // Автоплей карусель для участников
+        function initMembersCarousel() {
+            const container = document.getElementById('membersContainer');
+            if (!container) {
+                console.log('Members container not found');
+                return;
+            }
+
+            console.log('Initializing members carousel autoplay');
+            console.log('Container scrollWidth:', container.scrollWidth, 'clientWidth:', container.clientWidth);
+
+            let isUserScrolling = false;
+            let isProgrammaticScroll = false; // Флаг программной прокрутки
+            let scrollTimeout;
+            let lastScrollTime = Date.now();
+
+            // Автопрокрутка с requestAnimationFrame
+            function autoScroll() {
+                const now = Date.now();
+                const deltaTime = now - lastScrollTime;
+
+                if (!isUserScrolling && deltaTime >= 30) { // 30ms между обновлениями
+                    const maxScroll = container.scrollWidth - container.clientWidth;
+
+                    if (maxScroll > 0) {
+                        let currentScroll = container.scrollLeft;
+                        currentScroll += 1; // Прокрутка на 1px
+
+                        if (currentScroll >= maxScroll) {
+                            currentScroll = 0; // Вернуться в начало
+                        }
+
+                        isProgrammaticScroll = true; // Отмечаем программную прокрутку
+                        container.scrollLeft = currentScroll;
+                        isProgrammaticScroll = false;
+                    }
+
+                    lastScrollTime = now;
+                }
+
+                requestAnimationFrame(autoScroll);
+            }
+
+            // Запуск автопрокрутки
+            requestAnimationFrame(autoScroll);
+            console.log('Autoplay started with requestAnimationFrame');
+
+            // Остановка при взаимодействии пользователя
+            container.addEventListener('mouseenter', () => {
+                isUserScrolling = true;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                isUserScrolling = false;
+            });
+
+            // Определение ручной прокрутки (игнорируем программную)
+            container.addEventListener('scroll', () => {
+                if (isProgrammaticScroll) return; // Игнорируем программную прокрутку
+
+                isUserScrolling = true;
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isUserScrolling = false;
+                }, 2000); // Возобновить автопрокрутку через 2 секунды после остановки
+            });
+
+            // Остановка при клике/тач
+            container.addEventListener('touchstart', () => {
+                isUserScrolling = true;
+            });
+
+            container.addEventListener('touchend', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isUserScrolling = false;
+                }, 3000);
+            });
         }
 
         // Load content when page loads

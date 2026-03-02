@@ -31,12 +31,14 @@ const createApp = (): Application => {
           "https://cdnjs.cloudflare.com",
           "https://code.iconify.design",
           "https://www.googletagmanager.com",
-          "https://my.spline.design"
+          "https://my.spline.design",
+          "https://cdn.jsdelivr.net"
         ],
         styleSrc: [
           "'self'",
           "'unsafe-inline'",
-          "https://fonts.googleapis.com"
+          "https://fonts.googleapis.com",
+          "https://cdn.jsdelivr.net"
         ],
         imgSrc: [
           "'self'",

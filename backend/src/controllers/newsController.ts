@@ -94,15 +94,32 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
       return;
     }
 
-    const { title, slug, excerpt, content, category, published } = req.body;
+    const { title, slug, excerpt, content, category, published, imageUrls } = req.body;
 
-    // Handle multiple images
+    // Handle multiple images (uploaded files)
     const files = req.files as Express.Multer.File[] || [];
+
+    // Handle image URLs from form
+    let parsedImageUrls: string[] = [];
+    if (imageUrls) {
+      try {
+        parsedImageUrls = typeof imageUrls === 'string' ? JSON.parse(imageUrls) : imageUrls;
+        if (!Array.isArray(parsedImageUrls)) {
+          parsedImageUrls = [parsedImageUrls];
+        }
+      } catch {
+        // If not JSON, treat as single URL
+        parsedImageUrls = [imageUrls];
+      }
+    }
+
     let imageUrl = undefined;
 
-    // Set main imageUrl to first image for backward compatibility
+    // Set main imageUrl (prioritize uploaded files, then URLs)
     if (files.length > 0) {
       imageUrl = `/uploads/news/${files[0].filename}`;
+    } else if (parsedImageUrls.length > 0) {
+      imageUrl = parsedImageUrls[0];
     }
 
     // Generate slug from title if not provided
@@ -125,16 +142,39 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
 
     const news = await News.create(newsData);
 
-    // Create NewsImage records for all uploaded images
+    const allImagePromises = [];
+
+    // Create NewsImage records for uploaded files
     if (files.length > 0) {
-      const imagePromises = files.map((file, index) =>
-        NewsImage.create({
-          newsId: news.id,
-          imageUrl: `/uploads/news/${file.filename}`,
-          displayOrder: index
-        })
-      );
-      await Promise.all(imagePromises);
+      files.forEach((file, index) => {
+        allImagePromises.push(
+          NewsImage.create({
+            newsId: news.id,
+            imageUrl: `/uploads/news/${file.filename}`,
+            displayOrder: index
+          })
+        );
+      });
+    }
+
+    // Create NewsImage records for image URLs
+    if (parsedImageUrls.length > 0) {
+      const startIndex = files.length;
+      parsedImageUrls.forEach((url, index) => {
+        if (url && url.trim()) {
+          allImagePromises.push(
+            NewsImage.create({
+              newsId: news.id,
+              imageUrl: url.trim(),
+              displayOrder: startIndex + index
+            })
+          );
+        }
+      });
+    }
+
+    if (allImagePromises.length > 0) {
+      await Promise.all(allImagePromises);
     }
 
     // Fetch the created news with images
@@ -156,7 +196,7 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
 export const updateNews = async (req: any, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { title, excerpt, content, category, published } = req.body;
+    const { title, excerpt, content, category, published, imageUrls } = req.body;
 
     const news = await News.findByPk(id, {
       include: [{
@@ -180,38 +220,84 @@ export const updateNews = async (req: any, res: Response): Promise<void> => {
     // Handle multiple image uploads
     const files = req.files as Express.Multer.File[] || [];
 
-    if (files.length > 0) {
+    // Handle image URLs from form
+    let parsedImageUrls: string[] = [];
+    if (imageUrls) {
+      try {
+        parsedImageUrls = typeof imageUrls === 'string' ? JSON.parse(imageUrls) : imageUrls;
+        if (!Array.isArray(parsedImageUrls)) {
+          parsedImageUrls = [parsedImageUrls];
+        }
+      } catch {
+        parsedImageUrls = [imageUrls];
+      }
+    }
+
+    // If we have new files or URLs, replace all images
+    if (files.length > 0 || parsedImageUrls.length > 0) {
       // Delete old images from filesystem and database
       const oldImages = await NewsImage.findAll({ where: { newsId: id } });
 
       for (const oldImage of oldImages) {
-        const oldImagePath = path.join(process.cwd(), oldImage.imageUrl);
-        if (fs.existsSync(oldImagePath)) {
-          fs.unlinkSync(oldImagePath);
+        // Only delete from filesystem if it's a local upload (not URL)
+        if (oldImage.imageUrl.startsWith('/uploads/')) {
+          const oldImagePath = path.join(process.cwd(), oldImage.imageUrl);
+          if (fs.existsSync(oldImagePath)) {
+            fs.unlinkSync(oldImagePath);
+          }
         }
         await oldImage.destroy();
       }
 
-      // Delete old main image if exists
-      if (news.imageUrl) {
+      // Delete old main image if exists and is local
+      if (news.imageUrl && news.imageUrl.startsWith('/uploads/')) {
         const oldMainImagePath = path.join(process.cwd(), news.imageUrl);
         if (fs.existsSync(oldMainImagePath)) {
           fs.unlinkSync(oldMainImagePath);
         }
       }
 
-      // Update main imageUrl to first new image
-      news.imageUrl = `/uploads/news/${files[0].filename}`;
+      // Update main imageUrl (prioritize uploaded files, then URLs)
+      if (files.length > 0) {
+        news.imageUrl = `/uploads/news/${files[0].filename}`;
+      } else if (parsedImageUrls.length > 0) {
+        news.imageUrl = parsedImageUrls[0];
+      }
 
-      // Create new NewsImage records
-      const imagePromises = files.map((file, index) =>
-        NewsImage.create({
-          newsId: news.id,
-          imageUrl: `/uploads/news/${file.filename}`,
-          displayOrder: index
-        })
-      );
-      await Promise.all(imagePromises);
+      const allImagePromises = [];
+
+      // Create new NewsImage records for uploaded files
+      if (files.length > 0) {
+        files.forEach((file, index) => {
+          allImagePromises.push(
+            NewsImage.create({
+              newsId: news.id,
+              imageUrl: `/uploads/news/${file.filename}`,
+              displayOrder: index
+            })
+          );
+        });
+      }
+
+      // Create new NewsImage records for image URLs
+      if (parsedImageUrls.length > 0) {
+        const startIndex = files.length;
+        parsedImageUrls.forEach((url, index) => {
+          if (url && url.trim()) {
+            allImagePromises.push(
+              NewsImage.create({
+                newsId: news.id,
+                imageUrl: url.trim(),
+                displayOrder: startIndex + index
+              })
+            );
+          }
+        });
+      }
+
+      if (allImagePromises.length > 0) {
+        await Promise.all(allImagePromises);
+      }
     }
 
     await news.save();

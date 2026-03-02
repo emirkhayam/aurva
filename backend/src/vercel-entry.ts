@@ -1,33 +1,42 @@
 import dotenv from 'dotenv';
+import { Application } from 'express';
 import { connectDatabase } from './config/database';
 import createApp from './app';
 
 // Load environment variables
 dotenv.config();
 
-// Connect to database and export app
-let app: any;
+// Initialize database connection and create app
+let appInstance: Application | null = null;
+let dbConnected = false;
 
-const initialize = async () => {
-  try {
-    // Connect to database
-    await connectDatabase();
-
-    // Create Express app
-    app = createApp();
-
-    console.log('✅ Vercel serverless function initialized');
-    return app;
-  } catch (error) {
-    console.error('❌ Failed to initialize:', error);
-    throw error;
+const getApp = async (): Promise<Application> => {
+  if (!dbConnected) {
+    try {
+      await connectDatabase();
+      dbConnected = true;
+      console.log('✅ Database connected for Vercel serverless');
+    } catch (error) {
+      console.error('❌ Database connection failed:', error);
+      throw error;
+    }
   }
+
+  if (!appInstance) {
+    appInstance = createApp();
+    console.log('✅ Express app created for Vercel serverless');
+  }
+
+  return appInstance;
 };
 
-// Initialize and export
-export default async (req: any, res: any) => {
-  if (!app) {
-    app = await initialize();
+// Export handler for Vercel
+module.exports = async (req: any, res: any) => {
+  try {
+    const app = await getApp();
+    return app(req, res);
+  } catch (error) {
+    console.error('❌ Serverless function error:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
-  return app(req, res);
 };

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "NODE_ENV=production node dist/server.js",
+    "postinstall": "npm run build",
     "seed:admin": "ts-node src/scripts/seedAdmin.ts",
     "seed:data": "ts-node src/scripts/seedData.ts",
     "seed:news": "ts-node src/scripts/seedRealNews.ts",

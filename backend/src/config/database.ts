@@ -4,17 +4,36 @@ import path from 'path';
 
 dotenv.config();
 
-// Use SQLite for easy setup (no MySQL installation required)
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.join(__dirname, '../../database.sqlite'),
-  logging: process.env.NODE_ENV === 'development' ? console.log : false,
-  define: {
-    timestamps: true,
-    underscored: true,
-    freezeTableName: true
-  }
-});
+// Use PostgreSQL in production (Vercel), SQLite for local development
+const isProduction = process.env.NODE_ENV === 'production';
+const DATABASE_URL = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+
+const sequelize = isProduction && DATABASE_URL
+  ? new Sequelize(DATABASE_URL, {
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      },
+      logging: false,
+      define: {
+        timestamps: true,
+        underscored: true,
+        freezeTableName: true
+      }
+    })
+  : new Sequelize({
+      dialect: 'sqlite',
+      storage: path.join(__dirname, '../../database.sqlite'),
+      logging: process.env.NODE_ENV === 'development' ? console.log : false,
+      define: {
+        timestamps: true,
+        underscored: true,
+        freezeTableName: true
+      }
+    });
 
 export const connectDatabase = async (): Promise<Sequelize> => {
   try {

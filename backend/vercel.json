@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "dist/server.js"
+    },
+    {
+      "src": "/health",
+      "dest": "dist/server.js"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "public/admin/$1"
+    },
+    {
+      "src": "/(.*\\.(css|js|json|ico|svg|png|jpg|jpeg|gif|webp|woff|woff2|ttf|eot))",
+      "dest": "public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "public/$1"
+    }
+  ]
+}

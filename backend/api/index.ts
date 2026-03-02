@@ -1,33 +1,25 @@
+// Entry point for Vercel serverless functions
 import { Request, Response } from 'express';
-import { connectDatabase } from '../src/config/database';
 import createApp from '../src/app';
-import { Application } from 'express';
+import { connectDatabase } from '../src/config/database';
 
-let app: Application | null = null;
-let dbInitialized = false;
+// Lazy initialization
+let appPromise: Promise<any> | null = null;
 
-export default async function handler(req: Request, res: Response) {
-  try {
-    // Initialize database once
-    if (!dbInitialized) {
-      await connectDatabase();
-      dbInitialized = true;
-      console.log('✅ Database initialized');
-    }
-
-    // Create app instance once
-    if (!app) {
-      app = createApp();
-      console.log('✅ App initialized');
-    }
-
-    // Handle request
-    return app(req as any, res as any);
-  } catch (error) {
-    console.error('❌ Error:', error);
-    return res.status(500).json({
-      error: 'Internal Server Error',
-      message: error instanceof Error ? error.message : 'Unknown error'
+function getApp() {
+  if (!appPromise) {
+    appPromise = connectDatabase().then(() => {
+      console.log('✅ Database connected for Vercel');
+      return createApp();
     });
   }
+  return appPromise;
+}
+
+// Export handler for Vercel
+export default function handler(req: Request, res: Response) {
+  return getApp().then((app) => app(req, res)).catch((error: any) => {
+    console.error('❌ Handler error:', error);
+    res.status(500).json({ error: 'Internal server error', message: error.message });
+  });
 }

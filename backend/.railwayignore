@@ -1,0 +1,50 @@
+# Railway ignore file - files to exclude from deployment
+
+# Development
+node_modules/
+*.log
+npm-debug.log*
+.env.local
+.env.development
+
+# Tests
+coverage/
+*.test.ts
+*.spec.ts
+__tests__/
+jest.config.js
+
+# TypeScript source (we only need compiled dist/)
+src/
+
+# Build artifacts (will be rebuilt on Railway)
+dist/
+
+# Database files (use Railway PostgreSQL instead)
+*.sqlite
+*.sqlite3
+database.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Version control
+.git/
+.gitignore
+
+# Vercel specific
+.vercel/
+vercel.json
+.vercelignore
+api/
+
+# Documentation
+README.md
+*.md
+
+# Logs
+logs/
+*.log

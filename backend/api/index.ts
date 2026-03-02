@@ -1,12 +1,12 @@
 // Entry point for Vercel serverless functions
-import { Request, Response } from 'express';
+import { Request, Response, Application } from 'express';
 import createApp from '../src/app';
 import { connectDatabase } from '../src/config/database';
 
 // Lazy initialization
-let appPromise: Promise<any> | null = null;
+let appPromise: Promise<Application> | null = null;
 
-function getApp() {
+async function getApp(): Promise<Application> {
   if (!appPromise) {
     appPromise = connectDatabase().then(() => {
       console.log('✅ Database connected for Vercel');
@@ -17,9 +17,16 @@ function getApp() {
 }
 
 // Export handler for Vercel
-export default function handler(req: Request, res: Response) {
-  return getApp().then((app) => app(req, res)).catch((error: any) => {
+export default async function handler(req: Request, res: Response) {
+  try {
+    const app = await getApp();
+    // Pass request to Express app
+    return app(req, res);
+  } catch (error: any) {
     console.error('❌ Handler error:', error);
-    res.status(500).json({ error: 'Internal server error', message: error.message });
-  });
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
 }

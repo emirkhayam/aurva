@@ -1,4 +1,4 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import { Request, Response } from 'express';
 import { connectDatabase } from '../src/config/database';
 import createApp from '../src/app';
 import { Application } from 'express';
@@ -6,7 +6,7 @@ import { Application } from 'express';
 let app: Application | null = null;
 let dbInitialized = false;
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: Request, res: Response) {
   try {
     // Initialize database once
     if (!dbInitialized) {

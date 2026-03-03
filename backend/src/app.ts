@@ -31,6 +31,8 @@ const createApp = (): Application => {
           "https://cdnjs.cloudflare.com",
           "https://code.iconify.design",
           "https://www.googletagmanager.com",
+          "https://www.google-analytics.com",
+          "https://googleads.g.doubleclick.net",
           "https://my.spline.design",
           "https://cdn.jsdelivr.net"
         ],
@@ -48,17 +50,22 @@ const createApp = (): Application => {
         ],
         fontSrc: [
           "'self'",
+          "data:",
           "https://fonts.gstatic.com"
         ],
         connectSrc: [
           "'self'",
           "http://localhost:9000",
           "http://localhost:5175",
-          "https://www.google-analytics.com"
+          "https://www.google-analytics.com",
+          "https://www.google.com",
+          "https://analytics.google.com",
+          "https://googleads.g.doubleclick.net"
         ],
         frameSrc: [
           "'self'",
-          "https://my.spline.design"
+          "https://my.spline.design",
+          "https://www.googletagmanager.com"
         ]
       }
     }

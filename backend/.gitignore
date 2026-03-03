@@ -5,6 +5,8 @@ yarn.lock
 
 # Environment variables
 .env
+.env.production
+.env.vercel
 
 # Database files
 *.sqlite

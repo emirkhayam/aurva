@@ -74,10 +74,12 @@
     }
 
     .article-content img {
+      max-width: 600px;
       width: 100%;
       height: auto;
       border-radius: 0.5rem;
-      margin: 2rem 0;
+      margin: 1.5rem auto;
+      display: block;
     }
 
     .article-content ul, .article-content ol {
@@ -171,7 +173,7 @@
   <!-- Loading Skeleton -->
   <div id="loading-skeleton" class="container py-12">
     <div class="article-content">
-      <a href="/" class="back-button mb-8">
+      <a href="/news.html" class="back-button mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"/>
         </svg>
@@ -191,7 +193,7 @@
   <!-- Article Content -->
   <article id="article-content" class="container py-12 hidden">
     <div class="article-content">
-      <a href="/" class="back-button mb-8">
+      <a href="/news.html" class="back-button mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"/>
         </svg>
@@ -208,7 +210,7 @@
         <!-- Meta info will be inserted here -->
       </div>
 
-      <div id="article-images" class="mb-8">
+      <div id="article-images" class="mb-6" style="max-width: 600px; margin: 0 auto;">
         <!-- Images will be inserted here -->
       </div>
 
@@ -262,19 +264,30 @@
         const urlParams = new URLSearchParams(window.location.search);
         const slug = urlParams.get('slug');
 
+        console.log('Original slug from URL:', slug);
+
         if (!slug) {
+          console.error('No slug in URL');
           showError();
           return;
         }
 
-        const response = await fetch(`/api/news/${slug}`);
+        const encodedSlug = encodeURIComponent(slug);
+        const apiUrl = `/api/news/${encodedSlug}`;
+        console.log('Fetching from:', apiUrl);
+
+        const response = await fetch(apiUrl);
 
         if (!response.ok) {
+          console.error('API response not ok:', response.status, response.statusText);
+          const errorText = await response.text();
+          console.error('Error response:', errorText);
           showError();
           return;
         }
 
         const data = await response.json();
+        console.log('News data received:', data);
         const article = data.news;
 
         // Update document title
@@ -339,21 +352,89 @@
           }
         } else if (article.imageUrl) {
           // Fallback to main image
+          const imageUrl = article.imageUrl.startsWith('http') ? article.imageUrl : `http://localhost:3000${article.imageUrl}`;
           imagesContainer.innerHTML = `
-            <img src="${article.imageUrl}" alt="${article.title}" />
+            <img src="${imageUrl}" alt="${article.title}" />
           `;
         }
 
-        // Set excerpt
-        document.getElementById('article-excerpt').textContent = article.excerpt;
+        // Set excerpt (clean it from unwanted text)
+        function cleanExcerpt(text) {
+          return text
+            .replace(/Log In To Your Account/g, '')
+            .replace(/- Facebookhttps:\/\/[^\s]+/g, '')
+            .replace(/Email/g, '')
+            .replace(/Password/g, '')
+            .replace(/Log in/g, '')
+            .replace(/Forgot password\?/g, '')
+            .replace(/Новости/g, '')
+            .replace(/- Facebook/g, '')
+            .replace(/- Twitter/g, '')
+            .trim();
+        }
+        document.getElementById('article-excerpt').textContent = cleanExcerpt(article.excerpt);
 
-        // Set body content
-        const contentHtml = article.content
-          .split('\n')
-          .filter(line => line.trim())
-          .map(line => `<p>${line}</p>`)
-          .join('');
-        document.getElementById('article-body').innerHTML = contentHtml;
+        // Set body content - simple markdown rendering
+        function simpleMarkdown(text) {
+          // Remove unwanted Tilda interface elements
+          const unwantedPhrases = [
+            'Log In To Your Account',
+            'Email',
+            'Password',
+            'Log in',
+            'Forgot password\\?',
+            'Новости',
+            '- Facebook',
+            '- Twitter',
+            'Facebookhttps://www\\.facebook\\.com/sharer',
+            'https://www\\.facebook\\.com/sharer',
+            'https://twitter\\.com/intent/tweet'
+          ];
+
+          let cleanedText = text;
+
+          // Remove unwanted phrases
+          unwantedPhrases.forEach(phrase => {
+            cleanedText = cleanedText.replace(new RegExp(phrase, 'g'), '');
+          });
+
+          // Remove social media share links
+          cleanedText = cleanedText.replace(/\[Facebook\]\(https:\/\/www\.facebook\.com\/sharer[^\)]*\)/g, '');
+          cleanedText = cleanedText.replace(/\[Twitter\]\(https:\/\/twitter\.com\/intent\/tweet[^\)]*\)/g, '');
+
+          return cleanedText
+            // Remove images (already shown above)
+            .replace(/!\[.*?\]\(.*?\)/g, '')
+            // Remove Tilda SVG images
+            .replace(/!\[\]\(https:\/\/static\.tildacdn[^\)]*\)/g, '')
+            // Convert headings
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            // Convert bold
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            // Convert links (but filter out share links)
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+              if (url.includes('facebook.com') || url.includes('twitter.com') || text === 'Facebook' || text === 'Twitter') {
+                return '';
+              }
+              return `<a href="${url}" class="text-blue-600 hover:underline">${text}</a>`;
+            })
+            // Convert line breaks to paragraphs
+            .split('\n\n')
+            .filter(para => {
+              const trimmed = para.trim();
+              // Filter out empty paragraphs and unwanted content
+              if (!trimmed) return false;
+              if (trimmed.length < 10) return false; // Very short lines are likely UI elements
+              if (trimmed.match(/^-\s*$/)) return false; // Just dashes
+              return true;
+            })
+            .map(para => `<p>${para.trim().replace(/\n/g, '<br>')}</p>`)
+            .join('');
+        }
+
+        document.getElementById('article-body').innerHTML = simpleMarkdown(article.content);
 
       } catch (error) {
         console.error('Error loading article:', error);

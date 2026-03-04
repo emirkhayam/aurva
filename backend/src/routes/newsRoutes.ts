@@ -9,6 +9,7 @@ import {
 } from '../controllers/newsController';
 import { authenticateToken, requireAdminOrModerator } from '../middleware/auth';
 import upload from '../middleware/upload';
+import { optimizeImages } from '../middleware/imageOptimizer';
 
 const router = Router();
 
@@ -36,6 +37,7 @@ router.post(
   authenticateToken,
   requireAdminOrModerator,
   upload.array('images', 10), // Support up to 10 images
+  optimizeImages, // Optimize uploaded images
   validateNews,
   createNews
 );
@@ -50,6 +52,7 @@ router.put(
   authenticateToken,
   requireAdminOrModerator,
   upload.array('images', 10), // Support up to 10 images
+  optimizeImages, // Optimize uploaded images
   updateNews
 );
 

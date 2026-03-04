@@ -55,6 +55,7 @@ const createApp = (): Application => {
         ],
         connectSrc: [
           "'self'",
+          "http://localhost:3000",
           "http://localhost:9000",
           "http://localhost:5175",
           "https://www.google-analytics.com",

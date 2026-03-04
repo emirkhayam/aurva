@@ -27,7 +27,7 @@ export default function Login() {
         password,
       });
 
-      login(response.data.token, response.data.user);
+      login(response.data.token, response.data.refreshToken, response.data.user);
       navigate('/admin');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Ошибка входа. Проверьте данные.');
@@ -49,7 +49,7 @@ export default function Login() {
         password: 'admin123',
       });
 
-      login(response.data.token, response.data.user);
+      login(response.data.token, response.data.refreshToken, response.data.user);
       navigate('/admin');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Ошибка входа. Проверьте данные.');

@@ -8,6 +8,7 @@ export interface User {
 export interface LoginResponse {
   message: string;
   token: string;
+  refreshToken: string;
   user: User;
 }
 

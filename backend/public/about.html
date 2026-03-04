@@ -961,7 +961,7 @@ gtag('config', 'G-2M6V79H761');
         // Partners functionality
         async function loadPartners() {
             try {
-                const response = await fetch('http://localhost:5000/api/partners?isActive=true');
+                const response = await fetch('http://localhost:3000/api/partners?isActive=true');
                 const data = await response.json();
                 const partners = data.partners || [];
 

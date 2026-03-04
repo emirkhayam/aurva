@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { login, getProfile, changePassword } from '../controllers/authController';
+import { login, getProfile, changePassword, refreshToken } from '../controllers/authController';
 import { authenticateToken } from '../middleware/auth';
 import { authLimiter } from '../middleware/rateLimiter';
 
@@ -11,6 +11,13 @@ const router = Router();
  * @access  Public
  */
 router.post('/login', authLimiter, login);
+
+/**
+ * @route   POST /api/auth/refresh
+ * @desc    Refresh access token using refresh token
+ * @access  Public
+ */
+router.post('/refresh', refreshToken);
 
 /**
  * @route   GET /api/auth/profile

@@ -87,80 +87,66 @@ z-index: 0;
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
 
-/* Swiper Custom Styles */
-.members-swiper {
+/* Swiper Carousel Styles */
+.members-swiper, .partners-swiper {
     padding-bottom: 60px !important;
     user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
-.members-swiper .swiper-pagination {
+.members-swiper .swiper-pagination, .partners-swiper .swiper-pagination {
     bottom: 0 !important;
 }
-.members-swiper .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
+.members-swiper .swiper-pagination-bullet, .partners-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
     background: var(--border);
     opacity: 1;
     transition: all 0.3s ease;
-    user-select: none;
 }
-.members-swiper .swiper-pagination-bullet-active {
+.members-swiper .swiper-pagination-bullet-active, .partners-swiper .swiper-pagination-bullet-active {
     background: var(--accent);
-    width: 24px;
-    border-radius: 4px;
+    width: 28px;
+    border-radius: 5px;
 }
 .members-swiper .swiper-button-next,
-.members-swiper .swiper-button-prev {
-    width: 48px;
-    height: 48px;
+.members-swiper .swiper-button-prev,
+.partners-swiper .swiper-button-next,
+.partners-swiper .swiper-button-prev {
+    width: 52px;
+    height: 52px;
     background: var(--text);
-    border: none;
     border-radius: 50%;
     transition: all 0.3s ease;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.2);
 }
 .members-swiper .swiper-button-next::after,
-.members-swiper .swiper-button-prev::after {
+.members-swiper .swiper-button-prev::after,
+.partners-swiper .swiper-button-next::after,
+.partners-swiper .swiper-button-prev::after {
     display: none;
+}
+.members-swiper .swiper-button-next:hover,
+.members-swiper .swiper-button-prev:hover,
+.partners-swiper .swiper-button-next:hover,
+.partners-swiper .swiper-button-prev:hover {
+    background: var(--accent);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+.members-swiper .swiper-button-next i,
+.members-swiper .swiper-button-prev i,
+.partners-swiper .swiper-button-next i,
+.partners-swiper .swiper-button-prev i {
+    color: white;
+    font-size: 22px;
 }
 @media (max-width: 640px) {
     .members-swiper .swiper-button-next,
-    .members-swiper .swiper-button-prev {
+    .members-swiper .swiper-button-prev,
+    .partners-swiper .swiper-button-next,
+    .partners-swiper .swiper-button-prev {
         display: none;
     }
-}
-.members-swiper .swiper-button-next:hover,
-.members-swiper .swiper-button-prev:hover {
-    background: var(--accent);
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
-}
-.members-swiper .swiper-button-next:active,
-.members-swiper .swiper-button-prev:active {
-    transform: scale(0.95);
-}
-.members-swiper .swiper-button-next i,
-.members-swiper .swiper-button-prev i {
-    color: white;
-    font-size: 20px;
-    user-select: none;
-}
-.members-swiper .swiper-slide {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-.members-swiper .swiper-slide img {
-    pointer-events: none;
-    user-select: none;
 }
 </style><!-- aura-ga4-start -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
@@ -180,7 +166,7 @@ gtag('config', 'G-2M6V79H761');
             <!-- Logo -->
             <div class="flex items-center flex-shrink-0 md:mr-4 gap-3">
                 <a href="index.html">
-                    <img id="navbar-logo" src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="h-12 md:h-16 w-auto object-contain transition-all duration-300">
+                    <img id="navbar-logo" src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="md:h-12 w-auto h-10 object-contain transition-all duration-300">
                 </a>
             </div>
 
@@ -244,11 +230,11 @@ gtag('config', 'G-2M6V79H761');
                     </span>
                 </h1>
                 
-                <p class="text-[color:var(--text)] text-lg sm:text-xl font-normal tracking-tight mb-8 leading-tight">
+                <p class="text-[color:var(--text)] text-lg sm:text-xl font-normal tracking-tight mb-8 leading-tight bg-[color:var(--bg-card)]/70 backdrop-blur-sm rounded-lg px-4 py-3 shadow-[var(--shadow)] border border-[color:var(--border)]">
                     Объединяем лидеров индустрии в Кыргызстане.
                 </p>
 
-                <p class="text-base sm:text-lg text-[color:var(--text)] max-w-2xl mx-auto mb-10 leading-relaxed font-medium text-center bg-[color:var(--bg-card)]/80 backdrop-blur-sm rounded-lg px-6 py-4 shadow-sm border border-[color:var(--border)]/50">
+                <p class="text-sm sm:text-base text-[color:var(--text)] max-w-2xl mx-auto mb-10 leading-relaxed font-light text-center">
                     Содействуем развитию безопасного, прозрачного и инновационного криптовалютного рынка. Платформа создана для выстраивания конструктивного диалога между государством, бизнесом и пользователями.
                 </p>
 
@@ -642,7 +628,7 @@ gtag('config', 'G-2M6V79H761');
                         Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
                     </p>
                 </div>
-                <a href="#" class="hidden md:inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] hover:text-[color:var(--text)] transition-colors pb-1 border-b border-transparent hover:border-[color:var(--text)]">
+                <a href="/news.html" class="hidden md:inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] hover:text-[color:var(--text)] transition-colors pb-1 border-b border-transparent hover:border-[color:var(--text)]">
                     Все новости
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </a>
@@ -714,7 +700,7 @@ gtag('config', 'G-2M6V79H761');
                 </a>
             </div>
             
-            <a href="#" class="md:hidden mt-8 inline-flex items-center justify-center w-full gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] hover:text-[color:var(--text)] transition-colors">
+            <a href="/news.html" class="md:hidden mt-8 inline-flex items-center justify-center w-full gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] hover:text-[color:var(--text)] transition-colors">
                 Все новости
                 <i class="fa-solid fa-arrow-right text-xs"></i>
             </a>
@@ -966,13 +952,13 @@ gtag('config', 'G-2M6V79H761');
             if (window.scrollY > 50) {
                 navbarContainer.classList.remove('h-20');
                 navbarContainer.classList.add('h-16');
-                logo.classList.remove('h-12', 'md:h-16');
-                logo.classList.add('h-8', 'md:h-10');
+                logo.classList.remove('h-10', 'md:h-12');
+                logo.classList.add('h-6', 'md:h-8');
             } else {
                 navbarContainer.classList.remove('h-16');
                 navbarContainer.classList.add('h-20');
-                logo.classList.remove('h-8', 'md:h-10');
-                logo.classList.add('h-12', 'md:h-16');
+                logo.classList.remove('h-6', 'md:h-8');
+                logo.classList.add('h-10', 'md:h-12');
             }
         });
 
@@ -998,7 +984,7 @@ gtag('config', 'G-2M6V79H761');
                 submitBtn.textContent = 'Отправка...';
 
                 try {
-                    const response = await fetch('/api/contacts', {
+                    const response = await fetch('http://localhost:3000/api/contacts', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -1044,40 +1030,19 @@ gtag('config', 'G-2M6V79H761');
 
     <!-- Dynamic News & Members Loading -->
     <script>
-        const API_URL = '/api';
+        const API_URL = 'http://localhost:3000/api';
 
         // Load News
         async function loadNews() {
-            const newsContainer = document.getElementById('newsContainer');
-            if (!newsContainer) return;
-
-            // Show loading state
-            newsContainer.innerHTML = `
-                <div class="col-span-full text-center py-12">
-                    <p class="text-[color:var(--text-muted)]">Загрузка новостей...</p>
-                </div>
-            `;
-
             try {
                 const response = await fetch(`${API_URL}/news?published=true&limit=3`);
                 const data = await response.json();
 
                 if (data.news && data.news.length > 0) {
                     renderNews(data.news);
-                } else {
-                    newsContainer.innerHTML = `
-                        <div class="col-span-full text-center py-12">
-                            <p class="text-[color:var(--text-muted)]">Новостей пока нет</p>
-                        </div>
-                    `;
                 }
             } catch (error) {
                 console.error('Error loading news:', error);
-                newsContainer.innerHTML = `
-                    <div class="col-span-full text-center py-12">
-                        <p class="text-red-500">Ошибка загрузки новостей. Попробуйте обновить страницу.</p>
-                    </div>
-                `;
             }
         }
 
@@ -1086,7 +1051,7 @@ gtag('config', 'G-2M6V79H761');
             if (!newsContainer) return;
 
             newsContainer.innerHTML = newsItems.map((item, index) => `
-                <a href="news-detail.html?slug=${item.slug}" class="${index === 2 ? 'hidden md:flex' : ''} group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                <a href="/news-detail.html?slug=${encodeURIComponent(item.slug)}" class="${index === 2 ? 'hidden md:flex' : ''} group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
                     <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
                         <div class="group-hover:scale-105 transition-transform duration-500 bg-cover bg-center absolute top-0 right-0 bottom-0 left-0" style="background-image: url('${item.imageUrl || 'https://via.placeholder.com/400x300'}');"></div>
                     </div>
@@ -1137,36 +1102,15 @@ gtag('config', 'G-2M6V79H761');
 
         // Load Members
         async function loadMembers() {
-            const membersContainer = document.getElementById('membersContainer');
-            if (!membersContainer) return;
-
-            // Show loading state
-            membersContainer.innerHTML = `
-                <div class="col-span-full text-center py-12">
-                    <p class="text-[color:var(--text-muted)]">Загрузка участников...</p>
-                </div>
-            `;
-
             try {
                 const response = await fetch(`${API_URL}/members?isActive=true`);
                 const data = await response.json();
 
                 if (data.members && data.members.length > 0) {
                     renderMembers(data.members);
-                } else {
-                    membersContainer.innerHTML = `
-                        <div class="col-span-full text-center py-12">
-                            <p class="text-[color:var(--text-muted)]">Участников пока нет</p>
-                        </div>
-                    `;
                 }
             } catch (error) {
                 console.error('Error loading members:', error);
-                membersContainer.innerHTML = `
-                    <div class="col-span-full text-center py-12">
-                        <p class="text-red-500">Ошибка загрузки участников. Попробуйте обновить страницу.</p>
-                    </div>
-                `;
             }
         }
 
@@ -1175,61 +1119,53 @@ gtag('config', 'G-2M6V79H761');
             if (!membersContainer) return;
 
             // Render members as Swiper slides
-            membersContainer.innerHTML = members.map(member => {
-                // Увеличенные логотипы для Trade Wave и OsonX
-                const largeLogoSlugs = ['trade-wave', 'osonx'];
-                const logoSizeClass = largeLogoSlugs.includes(member.slug)
-                    ? 'max-h-20 md:max-h-32'
-                    : 'max-h-16 md:max-h-24';
+            membersContainer.innerHTML = members.map(member => `
+                <div class="swiper-slide">
+                    <a href="${member.website || '#'}" target="_blank"
+                       class="h-32 md:h-40 w-full group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                        <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
+                             alt="${member.name}"
+                             class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                    </a>
+                </div>
+            `).join('');
 
-                return `
-                    <div class="swiper-slide">
-                        <a href="${member.website || '#'}" target="_blank"
-                           class="h-32 md:h-40 w-full group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                            <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
-                                 alt="${member.name}"
-                                 class="${logoSizeClass} w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                        </a>
-                    </div>
-                `;
-            }).join('');
-
-            // Запуск автоплея после рендеринга с небольшой задержкой
+            // Initialize Swiper after rendering
             setTimeout(() => {
                 initMembersCarousel();
             }, 100);
         }
 
-        // Инициализация Swiper карусели для участников
+        // Initialize Swiper carousel
         let membersSwiper = null;
 
         function initMembersCarousel() {
-            // Уничтожить предыдущий экземпляр, если существует
+            // Destroy previous instance if exists
             if (membersSwiper) {
                 membersSwiper.destroy(true, true);
             }
 
-            // Инициализация Swiper с autoplay, navigation и адаптивными слайдами
+            // Initialize Swiper with beautiful configuration
             membersSwiper = new Swiper('.members-swiper', {
-                // Adaptive slides per view: 1 → 3 → 5
                 slidesPerView: 1,
                 spaceBetween: 20,
 
                 breakpoints: {
-                    // Mobile: 1 card
                     640: {
                         slidesPerView: 2,
                         spaceBetween: 20
                     },
-                    // Tablet: 3 cards
                     768: {
                         slidesPerView: 3,
                         spaceBetween: 24
                     },
-                    // Desktop: 5 cards
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 24
+                    },
                     1280: {
                         slidesPerView: 5,
-                        spaceBetween: 24
+                        spaceBetween: 28
                     }
                 },
 
@@ -1246,26 +1182,24 @@ gtag('config', 'G-2M6V79H761');
                 // Speed
                 speed: 600,
 
-                // Navigation arrows
+                // Navigation
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
 
-                // Pagination dots
+                // Pagination
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
                     dynamicBullets: true
                 },
 
+                // Smooth transitions
+                effect: 'slide',
+
                 // Enable grab cursor
                 grabCursor: true,
-
-                // Touch/swipe settings
-                touchRatio: 1,
-                touchAngle: 45,
-                simulateTouch: true,
 
                 // Accessibility
                 a11y: {
@@ -1273,7 +1207,7 @@ gtag('config', 'G-2M6V79H761');
                 }
             });
 
-            console.log('Swiper carousel initialized with autoplay');
+            console.log('✨ Members Swiper carousel initialized with autoplay');
         }
 
         // Load content when page loads

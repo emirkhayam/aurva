@@ -8,14 +8,25 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === 'production';
 const DATABASE_URL = process.env.POSTGRES_URL || process.env.DATABASE_URL;
 
-const sequelize = isProduction && DATABASE_URL
-  ? new Sequelize(DATABASE_URL, {
+// Build DATABASE_URL from individual env vars if not provided
+const buildDatabaseUrl = () => {
+  const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD } = process.env;
+  if (POSTGRES_HOST && POSTGRES_USER && POSTGRES_PASSWORD && POSTGRES_DB) {
+    return `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT || 5432}/${POSTGRES_DB}`;
+  }
+  return null;
+};
+
+const connectionUrl = DATABASE_URL || buildDatabaseUrl();
+
+const sequelize = isProduction && connectionUrl
+  ? new Sequelize(connectionUrl, {
       dialect: 'postgres',
       dialectOptions: {
-        ssl: {
+        ssl: process.env.POSTGRES_SSL !== 'false' ? {
           require: true,
           rejectUnauthorized: false
-        }
+        } : false
       },
       logging: false,
       define: {

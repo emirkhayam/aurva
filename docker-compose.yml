@@ -6,10 +6,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: aurva-backend
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -57,17 +56,25 @@ services:
       retries: 3
       start_period: 40s
     networks:
-      - aurva-network
+      - coolify
+      - internal
+      - supabase
 
   # Admin Panel Service
   admin-panel:
     build:
       context: ./admin-panel
       dockerfile: Dockerfile
-    container_name: aurva-admin-panel
     restart: unless-stopped
-    ports:
-      - "80:80"
+    expose:
+      - "80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.admin-panel.rule=Host(`aurva.kg`)"
+      - "traefik.http.routers.admin-panel.entrypoints=https"
+      - "traefik.http.routers.admin-panel.tls=true"
+      - "traefik.http.routers.admin-panel.tls.certresolver=letsencrypt"
+      - "traefik.http.services.admin-panel.loadbalancer.server.port=80"
     environment:
       - VITE_API_URL=${BACKEND_URL}/api
       - VITE_SUPABASE_URL=${SUPABASE_URL}
@@ -76,12 +83,19 @@ services:
       backend:
         condition: service_healthy
     networks:
-      - aurva-network
+      - coolify
+      - internal
 
 volumes:
   backend-uploads:
   backend-data:
 
 networks:
-  aurva-network:
+  coolify:
+    external: true
+    name: coolify
+  supabase:
+    external: true
+    name: a048ksg80wksowg4s0skogcw
+  internal:
     driver: bridge

@@ -6,17 +6,20 @@ FROM node:20-alpine AS builder
 # Set working directory
 WORKDIR /app
 
+# Install TypeScript globally first (to avoid npm timeout issues)
+RUN npm install -g typescript
+
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies (including devDependencies for build)
-RUN npm install
+# Install dependencies with timeout workaround
+RUN npm install --verbose || npm install --verbose
 
 # Copy source code
 COPY . .
 
-# Build TypeScript
-RUN npm run build
+# Build TypeScript using global tsc
+RUN tsc
 
 # Production stage
 FROM node:20-alpine

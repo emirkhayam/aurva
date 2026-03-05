@@ -194,26 +194,53 @@ Backend отправляет email уведомления при новых за
 
 ## 🚢 Deployment
 
-### Frontend
-- **Vercel** (рекомендуется)
+### 🎯 Рекомендуемый способ: Coolify (Docker Compose)
+
+**Статус:** ✅ Готово к развертыванию
+**Платформа:** Coolify (self-hosted)
+**Архитектура:** Multi-container (Backend + Admin Panel + Supabase)
+
+📖 **[ПОЛНАЯ ИНСТРУКЦИЯ ПО НАСТРОЙКЕ COOLIFY →](./COOLIFY_SETUP_GUIDE.md)**
+
+**Что включено:**
+- ✅ Docker Compose конфигурация готова
+- ✅ Автоматическое развертывание при push в GitHub
+- ✅ Подключение к Supabase PostgreSQL
+- ✅ Traefik proxy с автоматическим HTTPS
+- ✅ Multi-network архитектура
+
+**Быстрый старт:**
+1. Откройте Coolify: https://coolify.aurva.kg/
+2. Измените тип билда на "Docker Compose"
+3. Добавьте переменные окружения из `.env.production.example`
+4. Deploy!
+
+📄 См. также: [COOLIFY_DEPLOYMENT.md](./COOLIFY_DEPLOYMENT.md) для деталей
+
+---
+
+### Альтернативные варианты
+
+#### Frontend (Admin Panel)
+- **Vercel** (рекомендуется для статики)
 - Netlify
 - GitHub Pages
 - Любой статический хостинг
 
-### Backend
+#### Backend API
 - **VPS** (DigitalOcean, Hetzner, Vultr)
 - Heroku
 - Railway
 - AWS EC2
 
 **Production чеклист:**
-- [ ] Настроить HTTPS (Let's Encrypt)
-- [ ] Настроить nginx reverse proxy
-- [ ] Использовать PM2 для Node.js
-- [ ] Настроить firewall
-- [ ] Регулярные бэкапы базы данных
+- [x] Docker Compose конфигурация
+- [x] Supabase интеграция
+- [x] Traefik proxy настроен
+- [x] HTTPS (Let's Encrypt)
+- [ ] Production email настройки
 - [ ] Monitoring (Grafana, Prometheus)
-- [ ] Обновить CORS_ORIGIN на production домен
+- [ ] Регулярные бэкапы базы данных
 
 ---
 

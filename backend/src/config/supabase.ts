@@ -49,4 +49,79 @@ export async function checkSupabaseConnection(): Promise<boolean> {
   }
 }
 
+// Storage configuration
+export const STORAGE_BUCKET = 'uploads';
+
+// Helper function to get public URL for a file
+export function getPublicUrl(bucketName: string, filePath: string): string {
+  const client = supabaseAdmin || supabase;
+  const { data } = client.storage.from(bucketName).getPublicUrl(filePath);
+  return data.publicUrl;
+}
+
+// Helper function to upload file to Supabase Storage
+export async function uploadToSupabase(
+  file: Express.Multer.File,
+  folder: string
+): Promise<{ publicUrl: string; path: string }> {
+  try {
+    const client = supabaseAdmin || supabase;
+
+    const fileExt = file.originalname.split('.').pop();
+    const fileName = `${Date.now()}-${Math.round(Math.random() * 1E9)}.${fileExt}`;
+    const filePath = `${folder}/${fileName}`;
+
+    console.log(`📤 Uploading file to Supabase Storage: ${filePath}`);
+
+    // Upload file to Supabase Storage
+    const { data, error } = await client.storage
+      .from(STORAGE_BUCKET)
+      .upload(filePath, file.buffer, {
+        contentType: file.mimetype,
+        upsert: false
+      });
+
+    if (error) {
+      console.error('❌ Supabase upload error:', error);
+      throw new Error(`Failed to upload file: ${error.message}`);
+    }
+
+    console.log(`✅ File uploaded successfully: ${data.path}`);
+
+    // Get public URL
+    const publicUrl = getPublicUrl(STORAGE_BUCKET, data.path);
+
+    return {
+      publicUrl,
+      path: data.path
+    };
+  } catch (error: any) {
+    console.error('❌ Error in uploadToSupabase:', error);
+    throw error;
+  }
+}
+
+// Helper function to delete file from Supabase Storage
+export async function deleteFromSupabase(filePath: string): Promise<void> {
+  try {
+    const client = supabaseAdmin || supabase;
+
+    console.log(`🗑️ Deleting file from Supabase Storage: ${filePath}`);
+
+    const { error } = await client.storage
+      .from(STORAGE_BUCKET)
+      .remove([filePath]);
+
+    if (error) {
+      console.error('❌ Supabase delete error:', error);
+      throw new Error(`Failed to delete file: ${error.message}`);
+    }
+
+    console.log(`✅ File deleted successfully: ${filePath}`);
+  } catch (error: any) {
+    console.error('❌ Error in deleteFromSupabase:', error);
+    throw error;
+  }
+}
+
 export default supabase;

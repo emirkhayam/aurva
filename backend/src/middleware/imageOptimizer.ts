@@ -1,6 +1,5 @@
 import sharp from 'sharp';
 import path from 'path';
-import fs from 'fs';
 import { Request, Response, NextFunction } from 'express';
 
 /**
@@ -8,7 +7,7 @@ import { Request, Response, NextFunction } from 'express';
  * - Resizes large images to max 1920x1920
  * - Converts to WebP for better compression
  * - Reduces quality to 85% (good balance)
- * - Keeps original filename structure
+ * - Works with memory storage (Buffer) instead of disk
  */
 export const optimizeImages = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -43,39 +42,34 @@ export const optimizeImages = async (req: Request, res: Response, next: NextFunc
       }
 
       try {
-        const originalPath = file.path;
-        const ext = path.extname(file.filename);
-        const nameWithoutExt = file.filename.replace(ext, '');
+        // Get file extension and name
+        const ext = path.extname(file.originalname);
+        const nameWithoutExt = path.basename(file.originalname, ext);
 
-        // Convert to WebP for better compression
-        const optimizedFilename = `${nameWithoutExt}.webp`;
-        const optimizedPath = path.join(path.dirname(originalPath), optimizedFilename);
-
-        // Optimize image
-        await sharp(originalPath)
+        // Optimize image buffer
+        const optimizedBuffer = await sharp(file.buffer)
           .resize(1920, 1920, {
             fit: 'inside',
             withoutEnlargement: true
           })
           .webp({ quality: 85 })
-          .toFile(optimizedPath);
+          .toBuffer();
 
-        // Delete original file
-        fs.unlinkSync(originalPath);
-
-        // Update file object with new path and filename
-        file.path = optimizedPath;
-        file.filename = optimizedFilename;
+        // Update file object with optimized buffer
+        file.buffer = optimizedBuffer;
+        file.originalname = `${nameWithoutExt}.webp`;
         file.mimetype = 'image/webp';
+
+        console.log(`✅ Optimized image: ${file.originalname} (${(file.buffer.length / 1024).toFixed(2)} KB)`);
       } catch (imageError) {
-        console.error(`Error optimizing image ${file.filename}:`, imageError);
+        console.error(`❌ Error optimizing image ${file.originalname}:`, imageError);
         // Continue with original file if optimization fails
       }
     }
 
     next();
   } catch (error) {
-    console.error('Image optimization middleware error:', error);
+    console.error('❌ Image optimization middleware error:', error);
     // Don't block the request if optimization fails
     next();
   }

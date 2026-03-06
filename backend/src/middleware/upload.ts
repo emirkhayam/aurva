@@ -1,29 +1,8 @@
 import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
 
-// Ensure upload directories exist
-const uploadDirs = ['uploads/logos', 'uploads/news'];
-uploadDirs.forEach(dir => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-});
-
-// Configure storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Determine upload directory based on field name
-    const uploadPath = file.fieldname === 'logo' ? 'uploads/logos' : 'uploads/news';
-    cb(null, uploadPath);
-  },
-  filename: (req, file, cb) => {
-    // Generate unique filename
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + '-' + uniqueSuffix + ext);
-  }
-});
+// Use memory storage instead of disk storage
+// Files will be stored in memory as Buffer objects and uploaded to Supabase
+const storage = multer.memoryStorage();
 
 // File filter for images only
 const fileFilter = (req: Express.Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {

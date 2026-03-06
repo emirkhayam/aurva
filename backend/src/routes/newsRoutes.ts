@@ -10,6 +10,7 @@ import {
 import { authenticateToken, requireAdminOrModerator } from '../middleware/auth';
 import upload from '../middleware/upload';
 import { optimizeImages } from '../middleware/imageOptimizer';
+import { uploadMultipleToSupabase } from '../middleware/supabaseUpload';
 
 const router = Router();
 
@@ -38,6 +39,7 @@ router.post(
   requireAdminOrModerator,
   upload.array('images', 10), // Support up to 10 images
   optimizeImages, // Optimize uploaded images
+  uploadMultipleToSupabase('news'), // Upload to Supabase Storage
   validateNews,
   createNews
 );
@@ -53,6 +55,7 @@ router.put(
   requireAdminOrModerator,
   upload.array('images', 10), // Support up to 10 images
   optimizeImages, // Optimize uploaded images
+  uploadMultipleToSupabase('news'), // Upload to Supabase Storage
   updateNews
 );
 

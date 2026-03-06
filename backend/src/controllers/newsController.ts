@@ -96,8 +96,8 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
 
     const { title, slug, excerpt, content, category, published, imageUrls } = req.body;
 
-    // Handle multiple images (uploaded files)
-    const files = req.files as Express.Multer.File[] || [];
+    // Handle multiple images from Supabase Storage
+    const supabaseFiles = req.supabaseFiles || [];
 
     // Handle image URLs from form
     let parsedImageUrls: string[] = [];
@@ -115,9 +115,9 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
 
     let imageUrl = undefined;
 
-    // Set main imageUrl (prioritize uploaded files, then URLs)
-    if (files.length > 0) {
-      imageUrl = `/uploads/news/${files[0].filename}`;
+    // Set main imageUrl (prioritize uploaded files from Supabase, then URLs)
+    if (supabaseFiles.length > 0) {
+      imageUrl = supabaseFiles[0].publicUrl;
     } else if (parsedImageUrls.length > 0) {
       imageUrl = parsedImageUrls[0];
     }
@@ -144,13 +144,13 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
 
     const allImagePromises = [];
 
-    // Create NewsImage records for uploaded files
-    if (files.length > 0) {
-      files.forEach((file, index) => {
+    // Create NewsImage records for uploaded files from Supabase
+    if (supabaseFiles.length > 0) {
+      supabaseFiles.forEach((file, index) => {
         allImagePromises.push(
           NewsImage.create({
             newsId: news.id,
-            imageUrl: `/uploads/news/${file.filename}`,
+            imageUrl: file.publicUrl,
             displayOrder: index
           })
         );
@@ -159,7 +159,7 @@ export const createNews = async (req: any, res: Response): Promise<void> => {
 
     // Create NewsImage records for image URLs
     if (parsedImageUrls.length > 0) {
-      const startIndex = files.length;
+      const startIndex = supabaseFiles.length;
       parsedImageUrls.forEach((url, index) => {
         if (url && url.trim()) {
           allImagePromises.push(
@@ -217,8 +217,8 @@ export const updateNews = async (req: any, res: Response): Promise<void> => {
     if (category) news.category = category;
     if (published !== undefined) news.published = published === 'true' || published === true;
 
-    // Handle multiple image uploads
-    const files = req.files as Express.Multer.File[] || [];
+    // Handle multiple image uploads from Supabase
+    const supabaseFiles = req.supabaseFiles || [];
 
     // Handle image URLs from form
     let parsedImageUrls: string[] = [];
@@ -234,45 +234,30 @@ export const updateNews = async (req: any, res: Response): Promise<void> => {
     }
 
     // If we have new files or URLs, replace all images
-    if (files.length > 0 || parsedImageUrls.length > 0) {
-      // Delete old images from filesystem and database
+    if (supabaseFiles.length > 0 || parsedImageUrls.length > 0) {
+      // Delete old images from database (Supabase files deletion handled separately)
       const oldImages = await NewsImage.findAll({ where: { newsId: id } });
 
       for (const oldImage of oldImages) {
-        // Only delete from filesystem if it's a local upload (not URL)
-        if (oldImage.imageUrl.startsWith('/uploads/')) {
-          const oldImagePath = path.join(process.cwd(), oldImage.imageUrl);
-          if (fs.existsSync(oldImagePath)) {
-            fs.unlinkSync(oldImagePath);
-          }
-        }
         await oldImage.destroy();
       }
 
-      // Delete old main image if exists and is local
-      if (news.imageUrl && news.imageUrl.startsWith('/uploads/')) {
-        const oldMainImagePath = path.join(process.cwd(), news.imageUrl);
-        if (fs.existsSync(oldMainImagePath)) {
-          fs.unlinkSync(oldMainImagePath);
-        }
-      }
-
-      // Update main imageUrl (prioritize uploaded files, then URLs)
-      if (files.length > 0) {
-        news.imageUrl = `/uploads/news/${files[0].filename}`;
+      // Update main imageUrl (prioritize uploaded files from Supabase, then URLs)
+      if (supabaseFiles.length > 0) {
+        news.imageUrl = supabaseFiles[0].publicUrl;
       } else if (parsedImageUrls.length > 0) {
         news.imageUrl = parsedImageUrls[0];
       }
 
       const allImagePromises = [];
 
-      // Create new NewsImage records for uploaded files
-      if (files.length > 0) {
-        files.forEach((file, index) => {
+      // Create new NewsImage records for uploaded files from Supabase
+      if (supabaseFiles.length > 0) {
+        supabaseFiles.forEach((file, index) => {
           allImagePromises.push(
             NewsImage.create({
               newsId: news.id,
-              imageUrl: `/uploads/news/${file.filename}`,
+              imageUrl: file.publicUrl,
               displayOrder: index
             })
           );
@@ -281,7 +266,7 @@ export const updateNews = async (req: any, res: Response): Promise<void> => {
 
       // Create new NewsImage records for image URLs
       if (parsedImageUrls.length > 0) {
-        const startIndex = files.length;
+        const startIndex = supabaseFiles.length;
         parsedImageUrls.forEach((url, index) => {
           if (url && url.trim()) {
             allImagePromises.push(

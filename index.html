@@ -4,6 +4,8 @@
 <title>AURVA — Ассоциация Участников Рынка Виртуальных Активов Кыргызстана</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
@@ -84,6 +86,68 @@ z-index: 0;
 ::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+
+/* Swiper Carousel Styles */
+.members-swiper, .partners-swiper {
+    padding-bottom: 60px !important;
+    user-select: none;
+}
+.members-swiper .swiper-pagination, .partners-swiper .swiper-pagination {
+    bottom: 0 !important;
+}
+.members-swiper .swiper-pagination-bullet, .partners-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--border);
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.members-swiper .swiper-pagination-bullet-active, .partners-swiper .swiper-pagination-bullet-active {
+    background: var(--accent);
+    width: 28px;
+    border-radius: 5px;
+}
+.members-swiper .swiper-button-next,
+.members-swiper .swiper-button-prev,
+.partners-swiper .swiper-button-next,
+.partners-swiper .swiper-button-prev {
+    width: 52px;
+    height: 52px;
+    background: var(--text);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.2);
+}
+.members-swiper .swiper-button-next::after,
+.members-swiper .swiper-button-prev::after,
+.partners-swiper .swiper-button-next::after,
+.partners-swiper .swiper-button-prev::after {
+    display: none;
+}
+.members-swiper .swiper-button-next:hover,
+.members-swiper .swiper-button-prev:hover,
+.partners-swiper .swiper-button-next:hover,
+.partners-swiper .swiper-button-prev:hover {
+    background: var(--accent);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+.members-swiper .swiper-button-next i,
+.members-swiper .swiper-button-prev i,
+.partners-swiper .swiper-button-next i,
+.partners-swiper .swiper-button-prev i {
+    color: white;
+    font-size: 22px;
+}
+@media (max-width: 640px) {
+    .members-swiper .swiper-button-next,
+    .members-swiper .swiper-button-prev,
+    .partners-swiper .swiper-button-next,
+    .partners-swiper .swiper-button-prev {
+        display: none;
+    }
+}
 </style><!-- aura-ga4-start -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
 <script>
@@ -520,32 +584,22 @@ gtag('config', 'G-2M6V79H761');
                 </p>
             </div>
 
-            <!-- Logo Grid -->
-            <div id="membersContainer" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 animate-on-scroll">
-                <!-- Members loaded dynamically from API -->
-                <a href="https://bithub.kg/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="https://optim.tildacdn.one/tild6462-6364-4861-b166-353964656433/-/resize/302x/-/format/webp/__2025-06-16__145801.png.webp" alt="BitHub" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
-                
-                <a href="https://envoys.vision/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="https://optim.tildacdn.one/tild6165-3935-4238-b766-393266333636/-/resize/302x/-/format/webp/A5_-_3.jpg.webp" alt="Envoys" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
-                
-                <a href="https://www.royal.inc/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="https://optim.tildacdn.one/tild6134-3135-4035-b864-646261356130/-/resize/302x/-/format/webp/photo_2024-12-04_141.jpeg.webp" alt="Royal Inc." class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
-                
-                <a href="https://kln.kg/#contact" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="https://optim.tildacdn.one/tild3564-3437-4363-b366-386533666434/-/resize/302x/-/format/webp/_.png.webp" alt="KLN" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
-                
-                <a href="https://www.wechange.kg/?utm_referrer=https%3A%2F%2Fwww.google.com%2F" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="https://optim.tildacdn.one/tild3134-6436-4130-a239-393831666532/-/resize/302x/-/format/webp/photo_2025-09-11_183.jpeg.webp" alt="WeChange" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
-                
-                <a href="https://primefinance.kg/" target="_blank" class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="https://optim.tildacdn.one/tild3565-6661-4436-b262-363130616237/-/resize/302x/-/format/webp/Logo_2.png.webp" alt="Prime Finance" class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
+            <!-- Swiper Carousel -->
+            <div class="swiper members-swiper animate-on-scroll">
+                <div class="swiper-wrapper" id="membersContainer">
+                    <!-- Members loaded dynamically from API -->
+                </div>
+
+                <!-- Navigation buttons with Font Awesome icons -->
+                <div class="swiper-button-next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+
+                <!-- Pagination dots -->
+                <div class="swiper-pagination"></div>
             </div>
 
             <div class="mt-20 border-t border-[color:var(--border)] pt-8 text-center animate-on-scroll">
@@ -930,7 +984,7 @@ gtag('config', 'G-2M6V79H761');
                 submitBtn.textContent = 'Отправка...';
 
                 try {
-                    const response = await fetch('http://localhost:9000/api/contacts', {
+                    const response = await fetch('http://localhost:3000/api/contacts', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -976,7 +1030,7 @@ gtag('config', 'G-2M6V79H761');
 
     <!-- Dynamic News & Members Loading -->
     <script>
-        const API_URL = 'http://localhost:9000/api';
+        const API_URL = 'http://localhost:3000/api';
 
         // Load News
         async function loadNews() {
@@ -997,7 +1051,7 @@ gtag('config', 'G-2M6V79H761');
             if (!newsContainer) return;
 
             newsContainer.innerHTML = newsItems.map((item, index) => `
-                <a href="#" class="${index === 2 ? 'hidden md:flex' : ''} group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                <a href="/news-detail.html?slug=${encodeURIComponent(item.slug)}" class="${index === 2 ? 'hidden md:flex' : ''} group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
                     <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
                         <div class="group-hover:scale-105 transition-transform duration-500 bg-cover bg-center absolute top-0 right-0 bottom-0 left-0" style="background-image: url('${item.imageUrl || 'https://via.placeholder.com/400x300'}');"></div>
                     </div>
@@ -1064,14 +1118,96 @@ gtag('config', 'G-2M6V79H761');
             const membersContainer = document.getElementById('membersContainer');
             if (!membersContainer) return;
 
+            // Render members as Swiper slides
             membersContainer.innerHTML = members.map(member => `
-                <a href="${member.website || '#'}" target="_blank"
-                   class="h-32 md:h-40 group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
-                    <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
-                         alt="${member.name}"
-                         class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
-                </a>
+                <div class="swiper-slide">
+                    <a href="${member.website || '#'}" target="_blank"
+                       class="h-32 md:h-40 w-full group bg-white border border-[color:var(--border)] rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-[var(--shadow)] overflow-hidden px-6">
+                        <img src="${member.logoUrl || 'https://via.placeholder.com/200x100'}"
+                             alt="${member.name}"
+                             class="max-h-16 md:max-h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105">
+                    </a>
+                </div>
             `).join('');
+
+            // Initialize Swiper after rendering
+            setTimeout(() => {
+                initMembersCarousel();
+            }, 100);
+        }
+
+        // Initialize Swiper carousel
+        let membersSwiper = null;
+
+        function initMembersCarousel() {
+            // Destroy previous instance if exists
+            if (membersSwiper) {
+                membersSwiper.destroy(true, true);
+            }
+
+            // Initialize Swiper with beautiful configuration
+            membersSwiper = new Swiper('.members-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 24
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 24
+                    },
+                    1280: {
+                        slidesPerView: 5,
+                        spaceBetween: 28
+                    }
+                },
+
+                // Autoplay
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+
+                // Loop
+                loop: true,
+
+                // Speed
+                speed: 600,
+
+                // Navigation
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // Pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true
+                },
+
+                // Smooth transitions
+                effect: 'slide',
+
+                // Enable grab cursor
+                grabCursor: true,
+
+                // Accessibility
+                a11y: {
+                    enabled: true
+                }
+            });
+
+            console.log('✨ Members Swiper carousel initialized with autoplay');
         }
 
         // Load content when page loads
@@ -1080,5 +1216,8 @@ gtag('config', 'G-2M6V79H761');
             loadMembers();
         });
     </script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </body></html>

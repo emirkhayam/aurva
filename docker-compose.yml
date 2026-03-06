@@ -75,7 +75,7 @@ services:
       - "traefik.http.routers.frontend.tls=true"
       - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
-      - "traefik.http.routers.frontend.priority=1"
+      - "traefik.http.routers.frontend.priority=100"
     depends_on:
       backend:
         condition: service_healthy

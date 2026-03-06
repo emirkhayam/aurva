@@ -19,6 +19,10 @@ import partnerRoutes from './routes/partnerRoutes';
 const createApp = (): Application => {
   const app: Application = express();
 
+  // Trust proxy - required for rate limiting behind nginx/Cloudflare
+  // This allows Express to correctly identify client IPs from X-Forwarded-For header
+  app.set('trust proxy', true);
+
   // Middleware
   app.use(helmet({
     contentSecurityPolicy: {

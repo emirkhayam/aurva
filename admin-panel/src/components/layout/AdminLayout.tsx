@@ -23,8 +23,8 @@ export default function AdminLayout() {
   };
 
   const openMainSite = () => {
-    // Открываем главную страницу на локальном сервере
-    window.open('http://localhost:9000/', '_blank');
+    // Открываем главную страницу сайта
+    window.open('/', '_blank');
   };
 
   const navItems = [

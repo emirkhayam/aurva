@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Icons</title>
+    <script src="https://code.iconify.design/iconify-icon/2.1.2/iconify-icon.min.js"></script>
+    <style>
+        body { padding: 40px; font-family: Arial; }
+        .test { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        iconify-icon { font-size: 32px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Icon Test Page</h1>
+
+    <div class="test">
+        <h2>Solar Icons (текущие):</h2>
+        <iconify-icon icon="solar:calendar-linear"></iconify-icon>
+        <iconify-icon icon="solar:buildings-linear"></iconify-icon>
+        <iconify-icon icon="solar:target-linear"></iconify-icon>
+        <iconify-icon icon="solar:users-group-rounded-linear"></iconify-icon>
+    </div>
+
+    <div class="test">
+        <h2>Material Design Icons (альтернатива):</h2>
+        <iconify-icon icon="mdi:calendar"></iconify-icon>
+        <iconify-icon icon="mdi:office-building"></iconify-icon>
+        <iconify-icon icon="mdi:target"></iconify-icon>
+        <iconify-icon icon="mdi:account-group"></iconify-icon>
+    </div>
+
+    <div class="test">
+        <h2>Font Awesome Icons (альтернатива):</h2>
+        <iconify-icon icon="fa:calendar"></iconify-icon>
+        <iconify-icon icon="fa:building"></iconify-icon>
+        <iconify-icon icon="fa:bullseye"></iconify-icon>
+        <iconify-icon icon="fa:users"></iconify-icon>
+    </div>
+
+    <script>
+        // Проверка загрузки
+        window.addEventListener('load', () => {
+            console.log('Страница загружена');
+            setTimeout(() => {
+                const icons = document.querySelectorAll('iconify-icon');
+                console.log('Найдено иконок:', icons.length);
+                icons.forEach((icon, i) => {
+                    console.log(`Icon ${i}:`, icon.getAttribute('icon'), icon.innerHTML);
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

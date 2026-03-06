@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURVA News URLs Extractor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .progress {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 AURVA News URL Extractor</h1>
+        <p class="subtitle">Шаг 1: Получение списка URL всех новостей</p>
+
+        <div class="info-box">
+            <h3>📋 Что делает этот инструмент:</h3>
+            <p>Получает список всех URL новостей из Tilda Feed API и сохраняет в файл <code>aurva-news-urls.json</code></p>
+        </div>
+
+        <button id="extractBtn" onclick="extractUrls()">🔽 Получить список URL</button>
+
+        <div class="progress" id="progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText"></div>
+        </div>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <script>
+        async function extractUrls() {
+            const btn = document.getElementById('extractBtn');
+            const progress = document.getElementById('progress');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const status = document.getElementById('status');
+
+            try {
+                btn.disabled = true;
+                progress.style.display = 'block';
+                status.style.display = 'none';
+
+                progressFill.style.width = '30%';
+                progressText.textContent = '📡 Подключение к Tilda API...';
+
+                const feedUrl = 'https://feed.tildacdn.com/api/getfeed/?feeduid=390736647451&size=100&sort[date]=desc';
+                const response = await fetch(feedUrl);
+
+                if (!response.ok) {
+                    throw new Error('API вернул ошибку: ' + response.status);
+                }
+
+                progressFill.style.width = '60%';
+                progressText.textContent = '⚙️ Обработка данных...';
+
+                const data = await response.json();
+
+                if (!data.posts || data.posts.length === 0) {
+                    throw new Error('Не найдено новостей в feed');
+                }
+
+                // Extract URLs
+                const urls = data.posts
+                    .filter(post => post.url)
+                    .map(post => ({
+                        url: post.url,
+                        title: post.title,
+                        date: post.date,
+                        img: post.img || post.imgSmall || ''
+                    }));
+
+                progressFill.style.width = '90%';
+                progressText.textContent = '💾 Сохранение файла...';
+
+                // Create and download JSON file
+                const jsonContent = JSON.stringify(urls, null, 2);
+                const blob = new Blob([jsonContent], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'aurva-news-urls.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                progressFill.style.width = '100%';
+                progressText.textContent = '✅ Готово!';
+
+                status.className = 'status success';
+                status.style.display = 'block';
+                status.innerHTML = `
+                    ✅ Файл успешно скачан!<br><br>
+                    📊 Найдено: ${urls.length} новостей<br>
+                    💾 Файл: aurva-news-urls.json<br><br>
+                    <strong>Следующий шаг:</strong><br>
+                    1. Переместите файл в: <code>backend/aurva-news-urls.json</code><br>
+                    2. Запустите: <code>npm run import:firecrawl-batch</code>
+                `;
+
+                btn.textContent = '✅ Успешно! Файл скачан';
+
+            } catch (error) {
+                console.error('Error:', error);
+
+                status.className = 'status error';
+                status.style.display = 'block';
+                status.innerHTML = `
+                    ❌ Ошибка: ${error.message}<br><br>
+                    <strong>Попробуйте:</strong><br>
+                    1. Откройте https://aurva.kg/news в новой вкладке<br>
+                    2. Подождите 5 секунд<br>
+                    3. Вернитесь сюда и нажмите снова
+                `;
+
+                btn.disabled = false;
+                progress.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

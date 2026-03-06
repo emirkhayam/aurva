@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости — AURVA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #F4F6F8;
+            --bg-surface: #EDEFF2;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F9FAFB;
+            --border: #D9DEE3;
+            --shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+            --text: #0F172A;
+            --text-muted: #475569;
+            --text-subtle: #64748B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --accent-soft: #EFF6FF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+        }
+        .font-display { font-family: 'Oswald', sans-serif; }
+        ::selection { background: var(--accent); color: #ffffff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+
+        .filter-button {
+            transition: all 0.2s ease;
+        }
+        .filter-button.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .filter-button:hover {
+            background-color: var(--accent-soft);
+            border-color: var(--accent);
+        }
+        .filter-button.active:hover {
+            background-color: var(--accent-hover);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-[color:var(--bg-card)]/90 backdrop-blur-md border-b border-[color:var(--border)]">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[color:var(--accent)] rounded-lg flex items-center justify-center">
+                        <span class="text-white font-display font-semibold text-lg">A</span>
+                    </div>
+                    <span class="font-display font-semibold text-xl text-[color:var(--text)] uppercase tracking-tight">AURVA</span>
+                </a>
+                <a href="/index.html" class="text-sm text-[color:var(--text-muted)] hover:text-[color:var(--accent)] transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    На главную
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
+                    Все
+                    <br>
+                    <span class="text-[color:var(--accent)] font-semibold">→ НОВОСТИ</span>
+                </h1>
+                <p class="text-sm text-[color:var(--text-muted)] leading-relaxed font-light max-w-2xl mx-auto">
+                    Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации
+                </p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="filterNews('all')" class="filter-button active px-4 py-2 text-xs font-semibold uppercase tracking-wide border border-[color:var(--border)] rounded-lg" data-category="all">
+                    Все новости
+                </button>
+                <button onclick="filterNews('regulation')" class="filter-button px-4 py-2 text-xs font-semibold uppercase tracking-wide border border-[color:var(--border)] rounded-lg text-[color:var(--text-muted)]" data-category="regulation">
+                    Регулирование
+                </button>
+                <button onclick="filterNews('events')" class="filter-button px-4 py-2 text-xs font-semibold uppercase tracking-wide border border-[color:var(--border)] rounded-lg text-[color:var(--text-muted)]" data-category="events">
+                    События
+                </button>
+                <button onclick="filterNews('analytics')" class="filter-button px-4 py-2 text-xs font-semibold uppercase tracking-wide border border-[color:var(--border)] rounded-lg text-[color:var(--text-muted)]" data-category="analytics">
+                    Аналитика
+                </button>
+                <button onclick="filterNews('other')" class="filter-button px-4 py-2 text-xs font-semibold uppercase tracking-wide border border-[color:var(--border)] rounded-lg text-[color:var(--text-muted)]" data-category="other">
+                    Другое
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <section class="pb-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[color:var(--border)] border-t-[color:var(--accent)]"></div>
+                <p class="mt-4 text-sm text-[color:var(--text-muted)]">Загрузка новостей...</p>
+            </div>
+
+            <!-- News Grid Container -->
+            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                <!-- News cards will be inserted here -->
+            </div>
+
+            <!-- No Results -->
+            <div id="noResults" class="hidden text-center py-12">
+                <i class="fa-solid fa-inbox text-6xl text-[color:var(--border)] mb-4"></i>
+                <p class="text-lg text-[color:var(--text-muted)]">Новостей не найдено</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[color:var(--bg-card)] border-t border-[color:var(--border)] py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-xs text-[color:var(--text-subtle)]">
+                © 2024 AURVA. Ассоциация Участников Рынка Виртуальных Активов Кыргызстана
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const API_URL = 'http://localhost:9000/api';
+        let allNews = [];
+        let currentFilter = 'all';
+
+        // Load All News
+        async function loadAllNews() {
+            try {
+                const response = await fetch(`${API_URL}/news?published=true&limit=100`);
+                const data = await response.json();
+
+                if (data.news && data.news.length > 0) {
+                    allNews = data.news;
+                    renderNews(allNews);
+                    document.getElementById('loadingState').classList.add('hidden');
+                    document.getElementById('newsGrid').classList.remove('hidden');
+                } else {
+                    document.getElementById('loadingState').classList.add('hidden');
+                    document.getElementById('noResults').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading news:', error);
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('noResults').classList.remove('hidden');
+            }
+        }
+
+        function renderNews(newsItems) {
+            const newsGrid = document.getElementById('newsGrid');
+            if (!newsGrid || newsItems.length === 0) {
+                newsGrid.classList.add('hidden');
+                document.getElementById('noResults').classList.remove('hidden');
+                return;
+            }
+
+            newsGrid.classList.remove('hidden');
+            document.getElementById('noResults').classList.add('hidden');
+
+            newsGrid.innerHTML = newsItems.map(item => `
+                <a href="#" class="group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                    <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)]">
+                        <div class="group-hover:scale-105 transition-transform duration-500 bg-cover bg-center absolute inset-0" style="background-image: url('${item.imageUrl ? 'http://localhost:9000' + item.imageUrl : 'https://via.placeholder.com/400x300'}');"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 relative z-10 bg-[color:var(--bg-card)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-1.5 py-0.5 rounded border border-[color:var(--border)] uppercase tracking-wide">
+                                ${getCategoryLabel(item.category)}
+                            </span>
+                            <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">
+                                ${formatDate(item.publishedAt)}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight line-clamp-2">
+                            ${item.title}
+                        </h3>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">
+                            ${item.excerpt}
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
+                            <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
+                                Читать
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'regulation': 'Регулирование',
+                'events': 'События',
+                'analytics': 'Аналитика',
+                'other': 'Новости'
+            };
+            return labels[category] || 'Новости';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+        }
+
+        function filterNews(category) {
+            currentFilter = category;
+
+            // Update active button
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter news
+            const filteredNews = category === 'all'
+                ? allNews
+                : allNews.filter(news => news.category === category);
+
+            renderNews(filteredNews);
+
+            // Scroll to top of news grid
+            document.getElementById('newsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Load news when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllNews();
+        });
+    </script>
+
+</body>
+</html>

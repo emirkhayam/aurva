@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURVA News Extractor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 20px auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #063cc1;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-left: 4px solid #063cc1;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .instructions h3 {
+            color: #063cc1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        button {
+            background: #063cc1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 10px 10px 0;
+            transition: background 0.3s;
+        }
+
+        button:hover:not(:disabled) {
+            background: #0042e6;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .status {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .output-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+        }
+
+        .stats {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .stats h3 {
+            color: #063cc1;
+            margin-bottom: 10px;
+        }
+
+        .stats p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .hidden-frame {
+            width: 1px;
+            height: 1px;
+            position: absolute;
+            left: -9999px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 AURVA News Extractor</h1>
+        <div class="subtitle">Инструмент для извлечения новостей с сайта AURVA</div>
+
+        <div class="instructions">
+            <h3>Инструкция по использованию:</h3>
+            <ol>
+                <li>Нажмите кнопку "Извлечь новости"</li>
+                <li>Дождитесь завершения загрузки (10-15 секунд)</li>
+                <li>Скопируйте JSON из текстового поля ниже</li>
+                <li>Сохраните в файл <code>aurva-news-data.json</code></li>
+                <li>Передайте файл Claude для импорта в базу данных</li>
+            </ol>
+        </div>
+
+        <button id="extractBtn" onclick="extractNews()">Извлечь новости</button>
+        <button id="copyBtn" onclick="copyToClipboard()" style="display:none;">Скопировать JSON</button>
+        <button id="downloadBtn" onclick="downloadJSON()" style="display:none;">Скачать файл</button>
+
+        <div id="status"></div>
+
+        <div id="stats" class="stats"></div>
+
+        <div id="outputSection" class="output-section">
+            <h3>Извлеченные данные (JSON):</h3>
+            <textarea id="output" readonly></textarea>
+        </div>
+
+        <iframe id="proxyFrame" class="hidden-frame"></iframe>
+    </div>
+
+    <script>
+        let newsData = [];
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = 'status ' + type;
+            statusDiv.innerHTML = message;
+            statusDiv.style.display = 'block';
+        }
+
+        function showStats() {
+            if (newsData.length === 0) return;
+
+            const statsDiv = document.getElementById('stats');
+            const totalNews = newsData.length;
+            const withImages = newsData.filter(n => n.imageUrl).length;
+            const withDates = newsData.filter(n => n.date).length;
+
+            statsDiv.innerHTML = `
+                <h3>📊 Статистика извлечения:</h3>
+                <p><strong>Всего новостей:</strong> ${totalNews}</p>
+                <p><strong>С изображениями:</strong> ${withImages}</p>
+                <p><strong>С датами:</strong> ${withDates}</p>
+            `;
+            statsDiv.style.display = 'block';
+        }
+
+        async function extractNews() {
+            const extractBtn = document.getElementById('extractBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const outputSection = document.getElementById('outputSection');
+            const output = document.getElementById('output');
+
+            extractBtn.disabled = true;
+            showStatus('⏳ Загрузка страницы AURVA...', 'loading');
+
+            try {
+                // Load the AURVA news page in iframe
+                const iframe = document.getElementById('proxyFrame');
+                const newsUrl = 'https://aurva.kg/news';
+
+                showStatus('⏳ Загрузка новостной страницы...', 'loading');
+
+                // Use fetch with CORS proxy or direct load
+                let pageHtml = '';
+                try {
+                    const response = await fetch(newsUrl);
+                    pageHtml = await response.text();
+                } catch (e) {
+                    throw new Error('Не удалось загрузить страницу. Откройте эту страницу непосредственно на https://aurva.kg/news');
+                }
+
+                showStatus('⏳ Извлечение данных из Feed API...', 'loading');
+
+                // Try to extract feed UID from page
+                const feedMatch = pageHtml.match(/feeduid['":\s]+['"]?(\d+)['"]?/);
+                if (!feedMatch) {
+                    throw new Error('Feed ID не найден на странице');
+                }
+
+                const feedUid = feedMatch[1];
+                const feedUrl = `https://feed.tildacdn.com/api/getfeed/?feeduid=${feedUid}&size=100&sort[date]=desc`;
+
+                showStatus('⏳ Загрузка новостей из Tilda Feed API...', 'loading');
+
+                const feedResponse = await fetch(feedUrl);
+                const feedData = await feedResponse.json();
+
+                if (!feedData || !feedData.posts || feedData.posts.length === 0) {
+                    throw new Error('Новости не найдены в API');
+                }
+
+                showStatus('⏳ Обработка новостей...', 'loading');
+
+                // Process news data
+                newsData = feedData.posts.map((post, index) => {
+                    // Extract clean image URL
+                    let imageUrl = post.img || post.imgSmall || '';
+
+                    // Clean up Tilda image URLs
+                    if (imageUrl) {
+                        imageUrl = imageUrl.replace(/^\/\//, 'https://');
+                    }
+
+                    return {
+                        id: index + 1,
+                        title: post.title || '',
+                        excerpt: post.descr || post.text?.substring(0, 300) || '',
+                        content: post.text || post.descr || '',
+                        imageUrl: imageUrl,
+                        date: post.date || '',
+                        link: post.url || '',
+                        category: post.part || ''
+                    };
+                });
+
+                // Display results
+                const jsonStr = JSON.stringify(newsData, null, 2);
+                output.value = jsonStr;
+                outputSection.style.display = 'block';
+                copyBtn.style.display = 'inline-block';
+                downloadBtn.style.display = 'inline-block';
+
+                showStats();
+                showStatus(`✅ Успешно извлечено ${newsData.length} новостей!`, 'success');
+
+            } catch (error) {
+                showStatus(`❌ Ошибка: ${error.message}`, 'error');
+                console.error('Extraction error:', error);
+
+                // Show alternative method
+                setTimeout(() => {
+                    showStatus(`
+                        ❌ Автоматическое извлечение не удалось.<br><br>
+                        <strong>Альтернативный метод:</strong><br>
+                        1. Откройте эту страницу находясь на https://aurva.kg/news<br>
+                        2. Или используйте расширение браузера для обхода CORS<br>
+                        3. Или запустите скрипт из консоли разработчика
+                    `, 'error');
+                }, 2000);
+            } finally {
+                extractBtn.disabled = false;
+            }
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('output');
+            output.select();
+            document.execCommand('copy');
+            showStatus('✅ JSON скопирован в буфер обмена!', 'success');
+        }
+
+        function downloadJSON() {
+            const jsonStr = JSON.stringify(newsData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'aurva-news-data.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStatus('✅ Файл aurva-news-data.json загружен!', 'success');
+        }
+
+        // Alternative: Console script for manual extraction
+        console.log(`
+            🔧 АЛЬТЕРНАТИВНЫЙ МЕТОД - Скопируйте и вставьте в консоль на странице https://aurva.kg/news:
+
+            (async () => {
+                const feedMatch = document.documentElement.innerHTML.match(/feeduid['":\\s]+['"]?(\\d+)['"]?/);
+                if (!feedMatch) { console.error('Feed ID не найден'); return; }
+                const feedUrl = \`https://feed.tildacdn.com/api/getfeed/?feeduid=\${feedMatch[1]}&size=100&sort[date]=desc\`;
+                const response = await fetch(feedUrl);
+                const data = await response.json();
+                const newsData = data.posts.map((post, idx) => ({
+                    id: idx + 1,
+                    title: post.title || '',
+                    excerpt: post.descr || '',
+                    content: post.text || '',
+                    imageUrl: (post.img || post.imgSmall || '').replace(/^\\/\\//, 'https://'),
+                    date: post.date || '',
+                    link: post.url || '',
+                    category: post.part || ''
+                }));
+                console.log('Найдено новостей:', newsData.length);
+                console.log(JSON.stringify(newsData, null, 2));
+                const blob = new Blob([JSON.stringify(newsData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'aurva-news-data.json';
+                a.click();
+            })();
+        `);
+    </script>
+</body>
+</html>

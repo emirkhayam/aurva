@@ -36,8 +36,8 @@ RUN npm ci --only=production
 # Copy compiled code from builder
 COPY --from=builder /app/dist ./dist
 
-# Create uploads directory with proper permissions
-RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
+# Create uploads and logs directories with proper permissions
+RUN mkdir -p /app/uploads /app/logs && chown -R node:node /app/uploads /app/logs
 
 # Switch to non-root user
 USER node

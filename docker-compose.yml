@@ -66,7 +66,7 @@ services:
       context: ./admin-panel
       dockerfile: Dockerfile
       args:
-        - VITE_API_URL=${BACKEND_URL}/api
+        - VITE_API_URL=/api
         - VITE_SUPABASE_URL=${SUPABASE_URL}
         - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
     restart: unless-stopped

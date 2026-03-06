@@ -232,7 +232,7 @@
     <script>
         async function loadNews() {
             try {
-                const response = await fetch('http://localhost:5000/api/news?limit=100');
+                const response = await fetch('/api/news?limit=100');
                 const data = await response.json();
 
                 const news = data.news;
@@ -253,7 +253,7 @@
                     card.className = 'news-card';
 
                     const imageUrl = item.imageUrl && item.imageUrl.startsWith('/uploads')
-                        ? `http://localhost:5000${item.imageUrl}`
+                        ? item.imageUrl
                         : null;
 
                     const date = new Date(item.publishedAt).toLocaleDateString('ru-RU', {
@@ -283,7 +283,7 @@
                     <div class="error">
                         ❌ Ошибка загрузки новостей: ${error.message}
                         <br><br>
-                        Убедитесь что backend сервер запущен на http://localhost:5000
+                        Проверьте подключение к серверу API
                     </div>
                 `;
             }

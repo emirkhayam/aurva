@@ -19,7 +19,7 @@ export default function AdminLayout() {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/admin/login');
   };
 
   const openMainSite = () => {

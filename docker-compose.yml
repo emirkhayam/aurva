@@ -65,6 +65,10 @@ services:
     build:
       context: ./admin-panel
       dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=${BACKEND_URL}/api
+        - VITE_SUPABASE_URL=${SUPABASE_URL}
+        - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
     restart: unless-stopped
     expose:
       - "80"
@@ -75,10 +79,6 @@ services:
       - "traefik.http.routers.admin-panel.tls=true"
       - "traefik.http.routers.admin-panel.tls.certresolver=letsencrypt"
       - "traefik.http.services.admin-panel.loadbalancer.server.port=80"
-    environment:
-      - VITE_API_URL=${BACKEND_URL}/api
-      - VITE_SUPABASE_URL=${SUPABASE_URL}
-      - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
     depends_on:
       backend:
         condition: service_healthy

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка новостей AURVA - Простой метод</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #063cc1;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .step-card {
+            background: #f8f9fa;
+            border-left: 5px solid #063cc1;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #063cc1;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .step-content {
+            color: #555;
+            line-height: 1.8;
+            margin-left: 55px;
+        }
+
+        .code-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .code-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .code-box::after {
+            content: '📋 Кликни чтобы скопировать';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #063cc1;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .code-box.copied::after {
+            content: '✅ Скопировано!';
+            background: #28a745;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        .button {
+            background: #063cc1;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .button:hover {
+            background: #0042e6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 60, 193, 0.3);
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #856404;
+        }
+
+        .warning-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #155724;
+        }
+
+        .path {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+            margin: 5px 0;
+            color: #063cc1;
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        ul {
+            margin-left: 55px;
+            line-height: 2;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .final-command {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+        }
+
+        .final-command code {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Простой метод загрузки новостей</h1>
+        <p class="subtitle">Следуй пошаговой инструкции ниже</p>
+
+        <div class="warning">
+            <div class="warning-title">⚠️ Внимание</div>
+            <p>Браузер блокирует автоматическую загрузку из-за CORS политики. Используй этот простой метод:</p>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                Открой сайт AURVA
+            </div>
+            <div class="step-content">
+                <p>Открой в браузере Chrome или Firefox:</p>
+                <a href="https://aurva.kg/news" target="_blank" class="button" style="width: auto; display: inline-block; margin-top: 10px;">
+                    🌐 Открыть aurva.kg/news
+                </a>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                Открой консоль разработчика
+            </div>
+            <div class="step-content">
+                <p>Нажми одну из этих клавиш:</p>
+                <ul>
+                    <li><span class="highlight">F12</span> - самый простой способ</li>
+                    <li><span class="highlight">Ctrl + Shift + J</span> (Windows/Linux)</li>
+                    <li><span class="highlight">Cmd + Option + J</span> (Mac)</li>
+                </ul>
+                <p style="margin-top: 15px;">Перейди на вкладку <span class="highlight">Console</span> (Консоль)</p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                Скопируй и вставь этот код
+            </div>
+            <div class="step-content">
+                <p>Кликни на код ниже чтобы скопировать:</p>
+                <div class="code-box" id="codeBox" onclick="copyCode()">
+fetch('https://feed.tildacdn.com/api/getfeed/?feeduid=390736647451&size=100&sort[date]=desc')
+  .then(r => r.json())
+  .then(data => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'aurva-news-manual.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    alert('✅ Файл aurva-news-manual.json скачан! Теперь перемести его в папку backend');
+  })
+  .catch(e => alert('❌ Ошибка: ' + e.message));
+                </div>
+                <p style="color: #dc3545; font-weight: 600;">⚠️ Если Chrome просит ввести "разрешить вставку" - введи это и нажми Enter, потом вставь код снова</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                Нажми Enter
+            </div>
+            <div class="step-content">
+                <p>После вставки кода нажми <span class="highlight">Enter</span></p>
+                <p style="margin-top: 10px;">Файл <strong>aurva-news-manual.json</strong> автоматически скачается в папку "Загрузки"</p>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">5</span>
+                Перемести файл
+            </div>
+            <div class="step-content">
+                <p>Перемести скачанный файл из папки "Загрузки" в:</p>
+                <div class="path">C:\Users\user\Desktop\aurva - beta\backend\</div>
+                <p style="margin-top: 15px;">Просто перетащи файл в эту папку</p>
+            </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">6</span>
+                Запусти импорт
+            </div>
+            <div class="step-content">
+                <p>Открой терминал в папке <span class="path">backend</span> и выполни команду:</p>
+                <div class="code-box" id="commandBox" onclick="copyCommand()">
+npm run import:manual
+                </div>
+                <p style="margin-top: 15px; color: #28a745; font-weight: 600;">✅ Все новости автоматически импортируются в базу данных!</p>
+            </div>
+        </div>
+
+        <div class="success">
+            <div style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">
+                🎉 После выполнения всех шагов
+            </div>
+            <p>Все новости с aurva.kg будут импортированы в твой проект с:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>✅ Оригинальными заголовками и текстом</li>
+                <li>✅ Всеми изображениями (скачанными локально)</li>
+                <li>✅ Правильными датами публикации</li>
+                <li>✅ Категориями новостей</li>
+            </ul>
+        </div>
+
+        <div class="final-command" onclick="copyFinalCommand()">
+            🚀 Финальная команда для импорта:<br>
+            <code id="finalCommand">cd backend && npm run import:manual</code>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeBox = document.getElementById('codeBox');
+            const code = codeBox.textContent.trim();
+
+            navigator.clipboard.writeText(code).then(() => {
+                codeBox.classList.add('copied');
+                setTimeout(() => {
+                    codeBox.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Не удалось скопировать. Выдели текст вручную и нажми Ctrl+C');
+            });
+        }
+
+        function copyCommand() {
+            const commandBox = document.getElementById('commandBox');
+            const command = commandBox.textContent.trim();
+
+            navigator.clipboard.writeText(command).then(() => {
+                commandBox.classList.add('copied');
+                setTimeout(() => {
+                    commandBox.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Не удалось скопировать. Выдели текст вручную и нажми Ctrl+C');
+            });
+        }
+
+        function copyFinalCommand() {
+            const command = document.getElementById('finalCommand').textContent;
+
+            navigator.clipboard.writeText(command).then(() => {
+                alert('✅ Команда скопирована в буфер обмена!');
+            });
+        }
+    </script>
+</body>
+</html>

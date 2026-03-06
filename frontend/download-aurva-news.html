@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоматическая загрузка новостей AURVA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #063cc1;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .status-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .status-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .status-subtext {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #063cc1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .button {
+            background: #063cc1;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background: #0042e6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 60, 193, 0.3);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #bee5eb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .info ol {
+            margin-left: 20px;
+        }
+
+        .info li {
+            margin: 5px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #063cc1, #0042e6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AURVA News Downloader</h1>
+        <p class="subtitle">Автоматическая загрузка новостей с aurva.kg</p>
+
+        <div class="status-box" id="statusBox">
+            <div class="status-icon">📥</div>
+            <div class="status-text">Готов к загрузке</div>
+            <div class="status-subtext">Нажми кнопку ниже для начала</div>
+        </div>
+
+        <div class="progress-bar" id="progressBar" style="display: none;">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <button class="button" id="downloadBtn" onclick="startDownload()">
+            Скачать новости автоматически
+        </button>
+
+        <div class="info">
+            <strong>Что произойдет:</strong>
+            <ol>
+                <li>Скрипт подключится к API aurva.kg</li>
+                <li>Загрузит все новости (до 100 штук)</li>
+                <li>Автоматически скачает JSON файл</li>
+                <li>Ты переместишь файл в папку backend</li>
+                <li>Запустишь импорт командой</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let newsData = null;
+
+        function updateStatus(icon, text, subtext, type = '') {
+            const statusBox = document.getElementById('statusBox');
+            statusBox.className = 'status-box ' + type;
+            statusBox.innerHTML = `
+                <div class="status-icon">${icon}</div>
+                <div class="status-text">${text}</div>
+                <div class="status-subtext">${subtext}</div>
+            `;
+        }
+
+        function showLoader() {
+            const statusBox = document.getElementById('statusBox');
+            statusBox.className = 'status-box';
+            statusBox.innerHTML = `
+                <div class="loader"></div>
+                <div class="status-text">Загружаю данные...</div>
+                <div class="status-subtext">Подождите несколько секунд</div>
+            `;
+        }
+
+        function updateProgress(percent) {
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            progressBar.style.display = 'block';
+            progressFill.style.width = percent + '%';
+        }
+
+        async function startDownload() {
+            const btn = document.getElementById('downloadBtn');
+            btn.disabled = true;
+            btn.textContent = 'Загружаю...';
+
+            showLoader();
+            updateProgress(0);
+
+            try {
+                // Step 1: Try direct API call
+                updateProgress(20);
+                updateStatus('🌐', 'Подключаюсь к API...', 'feed.tildacdn.com');
+
+                const feedUrl = 'https://feed.tildacdn.com/api/getfeed/?feeduid=390736647451&size=100&sort[date]=desc';
+
+                updateProgress(40);
+
+                const response = await fetch(feedUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                    mode: 'cors'
+                });
+
+                updateProgress(60);
+
+                if (!response.ok) {
+                    throw new Error('API недоступен: ' + response.status);
+                }
+
+                const data = await response.json();
+
+                updateProgress(80);
+
+                if (!data || !data.posts || !Array.isArray(data.posts)) {
+                    throw new Error('Неверный формат данных');
+                }
+
+                newsData = data;
+
+                updateProgress(90);
+                updateStatus('✅', 'Данные получены!', `Найдено ${data.posts.length} новостей`, 'success');
+
+                // Auto download
+                setTimeout(() => {
+                    downloadJSON();
+                }, 500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                updateProgress(0);
+
+                updateStatus(
+                    '❌',
+                    'Ошибка загрузки',
+                    error.message || 'Не удалось подключиться к API',
+                    'error'
+                );
+
+                btn.disabled = false;
+                btn.textContent = 'Попробовать снова';
+
+                // Show alternative method
+                setTimeout(() => {
+                    showAlternativeMethod();
+                }, 1000);
+            }
+        }
+
+        function downloadJSON() {
+            try {
+                updateProgress(100);
+
+                const dataStr = JSON.stringify(newsData, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'aurva-news-manual.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                updateStatus(
+                    '🎉',
+                    'Файл скачан успешно!',
+                    'Теперь перемести его в папку backend',
+                    'success'
+                );
+
+                const btn = document.getElementById('downloadBtn');
+                btn.textContent = '✅ Готово! Следуй инструкциям ниже';
+                btn.style.background = '#28a745';
+
+                showNextSteps();
+
+            } catch (error) {
+                updateStatus('❌', 'Ошибка сохранения', error.message, 'error');
+            }
+        }
+
+        function showNextSteps() {
+            const container = document.querySelector('.container');
+            const nextSteps = document.createElement('div');
+            nextSteps.className = 'info success';
+            nextSteps.style.marginTop = '20px';
+            nextSteps.innerHTML = `
+                <strong>✅ Отлично! Теперь сделай следующее:</strong>
+                <ol>
+                    <li>Найди скачанный файл <code>aurva-news-manual.json</code> в папке загрузок</li>
+                    <li>Перемести его сюда:<br><code>C:\\Users\\user\\Desktop\\aurva - beta\\backend\\</code></li>
+                    <li>Открой терминал в папке <code>backend</code></li>
+                    <li>Запусти команду: <code><strong>npm run import:manual</strong></code></li>
+                </ol>
+                <div style="margin-top: 15px; padding: 10px; background: white; border-radius: 5px; border: 2px dashed #28a745;">
+                    <strong>🎯 Команда для копирования:</strong><br>
+                    <code style="font-size: 16px; color: #063cc1;">npm run import:manual</code>
+                </div>
+            `;
+            container.appendChild(nextSteps);
+        }
+
+        function showAlternativeMethod() {
+            const container = document.querySelector('.container');
+            const altMethod = document.createElement('div');
+            altMethod.className = 'info error';
+            altMethod.style.marginTop = '20px';
+            altMethod.innerHTML = `
+                <strong>⚠️ Альтернативный метод:</strong>
+                <ol>
+                    <li>Открой: <a href="https://aurva.kg/news" target="_blank">aurva.kg/news</a></li>
+                    <li>Нажми <strong>F12</strong> → вкладка <strong>Console</strong></li>
+                    <li>Вставь этот код и нажми Enter:</li>
+                </ol>
+                <textarea readonly onclick="this.select()" style="width: 100%; height: 100px; margin-top: 10px; padding: 10px; font-family: monospace; font-size: 11px; border-radius: 5px; border: 1px solid #ddd;">fetch('https://feed.tildacdn.com/api/getfeed/?feeduid=390736647451&size=100&sort[date]=desc').then(r=>r.json()).then(data=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='aurva-news-manual.json';a.click();alert('✅ Файл скачан!')}).catch(e=>alert('❌ Ошибка: '+e.message));</textarea>
+            `;
+            container.appendChild(altMethod);
+        }
+
+        // Auto-start on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const btn = document.getElementById('downloadBtn');
+                btn.style.animation = 'pulse 2s infinite';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

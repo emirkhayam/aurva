@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURVA News Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #063cc1;
+            margin-bottom: 20px;
+        }
+        .step {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #063cc1;
+            border-radius: 4px;
+        }
+        button {
+            background: #063cc1;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0042e6;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        #output {
+            display: none;
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .iframe-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 AURVA News Scraper</h1>
+
+        <div class="step">
+            <strong>Инструкция:</strong>
+            <ol>
+                <li>Нажми кнопку "Начать загрузку"</li>
+                <li>Дождись завершения (5-10 секунд)</li>
+                <li>Скопируй JSON из текстового поля</li>
+                <li>Вставь его в ответ Claude</li>
+            </ol>
+        </div>
+
+        <div id="status"></div>
+
+        <button id="startBtn" onclick="startScraping()">Начать загрузку новостей</button>
+
+        <div id="output">
+            <h3>✅ Данные получены! Скопируй этот JSON:</h3>
+            <textarea id="jsonOutput" readonly></textarea>
+            <button onclick="copyToClipboard()">📋 Копировать в буфер обмена</button>
+            <button onclick="downloadJSON()">💾 Скачать как файл</button>
+        </div>
+    </div>
+
+    <div class="iframe-container">
+        <iframe id="scrapeFrame" style="width:100%; height:600px; border:1px solid #ccc;"></iframe>
+    </div>
+
+    <script>
+        let newsData = [];
+
+        function showStatus(message, type = 'loading') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = 'status ' + type;
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+        }
+
+        function startScraping() {
+            document.getElementById('startBtn').disabled = true;
+            showStatus('⏳ Загружаю страницу aurva.kg/news...', 'loading');
+
+            const iframe = document.getElementById('scrapeFrame');
+            iframe.src = 'https://aurva.kg/news';
+
+            iframe.onload = function() {
+                showStatus('⏳ Страница загружена, извлекаю данные...', 'loading');
+
+                // Wait for dynamic content to load
+                setTimeout(() => {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        extractNews(iframeDoc);
+                    } catch (error) {
+                        // CORS error - try alternative method
+                        showStatus('⚠️ Прямой доступ заблокирован. Используем альтернативный метод...', 'loading');
+                        fetchViaProxy();
+                    }
+                }, 3000);
+            };
+
+            iframe.onerror = function() {
+                showStatus('❌ Ошибка загрузки страницы. Попробуй Способ 1 из инструкции.', 'error');
+                document.getElementById('startBtn').disabled = false;
+            };
+        }
+
+        async function fetchViaProxy() {
+            try {
+                // Try to fetch feed data directly
+                const feedUrl = 'https://feed.tildacdn.com/api/getfeed/?feeduid=390736647451&size=100&sort[date]=desc';
+
+                showStatus('⏳ Попытка прямого подключения к API...', 'loading');
+
+                const response = await fetch(feedUrl, {
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    processFeedData(data);
+                } else {
+                    throw new Error('API unavailable');
+                }
+            } catch (error) {
+                showStatus('❌ Не удалось получить данные автоматически. Используй Способ 1 (Network tab).', 'error');
+                document.getElementById('startBtn').disabled = false;
+                showManualInstructions();
+            }
+        }
+
+        function extractNews(doc) {
+            newsData = [];
+            const articles = doc.querySelectorAll('.t-feed__post');
+
+            if (articles.length === 0) {
+                showStatus('⚠️ Новости не найдены. Попробуй Способ 1 (Network tab).', 'error');
+                document.getElementById('startBtn').disabled = false;
+                return;
+            }
+
+            articles.forEach((article, index) => {
+                try {
+                    const titleEl = article.querySelector('.t-feed__post-title');
+                    const descrEl = article.querySelector('.t-feed__post-descr');
+                    const dateEl = article.querySelector('.t-feed__post-date');
+                    const linkEl = article.querySelector('a[href*="post"]');
+
+                    // Try multiple selectors for image
+                    let imageUrl = '';
+                    const imgEl = article.querySelector('.t-feed__post-img img');
+                    if (imgEl && imgEl.src) {
+                        imageUrl = imgEl.src;
+                    } else {
+                        const bgEl = article.querySelector('[data-original]');
+                        if (bgEl) {
+                            imageUrl = bgEl.getAttribute('data-original');
+                        } else {
+                            const styleEl = article.querySelector('[style*="background-image"]');
+                            if (styleEl) {
+                                const match = styleEl.style.backgroundImage.match(/url\(['"]?([^'"]+)['"]?\)/);
+                                if (match) imageUrl = match[1];
+                            }
+                        }
+                    }
+
+                    const newsItem = {
+                        title: titleEl ? titleEl.textContent.trim() : '',
+                        excerpt: descrEl ? descrEl.textContent.trim() : '',
+                        imageUrl: imageUrl,
+                        date: dateEl ? dateEl.textContent.trim() : '',
+                        link: linkEl ? linkEl.href : '',
+                        category: 'other'
+                    };
+
+                    if (newsItem.title) {
+                        newsData.push(newsItem);
+                    }
+                } catch (e) {
+                    console.error('Error parsing article:', e);
+                }
+            });
+
+            if (newsData.length > 0) {
+                showResults();
+            } else {
+                showStatus('❌ Не удалось извлечь данные. Используй Способ 1.', 'error');
+                document.getElementById('startBtn').disabled = false;
+            }
+        }
+
+        function processFeedData(data) {
+            // Process Tilda feed format
+            if (data && data.posts) {
+                newsData = data.posts.map(post => ({
+                    title: post.title || '',
+                    excerpt: post.descr || '',
+                    content: post.text || '',
+                    imageUrl: post.img || '',
+                    date: post.date || '',
+                    link: post.url || '',
+                    category: 'other'
+                }));
+                showResults();
+            } else {
+                throw new Error('Invalid feed format');
+            }
+        }
+
+        function showResults() {
+            showStatus(`✅ Успешно! Найдено ${newsData.length} новостей`, 'success');
+            document.getElementById('output').style.display = 'block';
+            document.getElementById('jsonOutput').value = JSON.stringify(newsData, null, 2);
+        }
+
+        function copyToClipboard() {
+            const textarea = document.getElementById('jsonOutput');
+            textarea.select();
+            document.execCommand('copy');
+            alert('✅ Скопировано в буфер обмена!');
+        }
+
+        function downloadJSON() {
+            const dataStr = JSON.stringify(newsData, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'aurva-news.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function showManualInstructions() {
+            const instructions = `
+
+📌 АЛЬТЕРНАТИВНЫЙ СПОСОБ (Network Tab):
+
+1. Открой https://aurva.kg/news в новой вкладке
+2. Нажми F12 → вкладка "Network" (Сеть)
+3. В поиске напиши: getfeed
+4. Обнови страницу (F5)
+5. Кликни на запрос "getfeed"
+6. Вкладка "Response" → скопируй весь JSON
+7. Вставь в ответ Claude
+
+            `;
+            alert(instructions);
+        }
+    </script>
+</body>
+</html>

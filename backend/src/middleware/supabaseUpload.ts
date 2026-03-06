@@ -30,17 +30,17 @@ export const uploadSingleToSupabase = (folder: string) => {
         return next();
       }
 
-      console.log(`=ä Processing single file upload to folder: ${folder}`);
+      console.log(`Processing single file upload to folder: ${folder}`);
 
       const result = await uploadToSupabase(req.file, folder);
 
       req.supabaseFile = result;
 
-      console.log(` Single file uploaded: ${result.publicUrl}`);
+      console.log(`Single file uploaded: ${result.publicUrl}`);
 
       next();
     } catch (error: any) {
-      console.error('L Error uploading file to Supabase:', error);
+      console.error('Error uploading file to Supabase:', error);
       res.status(500).json({
         success: false,
         message: 'Failed to upload file',
@@ -61,7 +61,7 @@ export const uploadMultipleToSupabase = (folder: string) => {
         return next();
       }
 
-      console.log(`=ä Processing ${req.files.length} files upload to folder: ${folder}`);
+      console.log(`Processing ${req.files.length} files upload to folder: ${folder}`);
 
       const uploadPromises = req.files.map(async (file) => {
         const result = await uploadToSupabase(file, folder);
@@ -74,11 +74,11 @@ export const uploadMultipleToSupabase = (folder: string) => {
 
       req.supabaseFiles = await Promise.all(uploadPromises);
 
-      console.log(` ${req.supabaseFiles.length} files uploaded successfully`);
+      console.log(`${req.supabaseFiles.length} files uploaded successfully`);
 
       next();
     } catch (error: any) {
-      console.error('L Error uploading files to Supabase:', error);
+      console.error('Error uploading files to Supabase:', error);
       res.status(500).json({
         success: false,
         message: 'Failed to upload files',
@@ -99,14 +99,14 @@ export async function deleteSupabaseFile(imageUrl: string): Promise<void> {
     const match = imageUrl.match(/\/storage\/v1\/object\/public\/uploads\/(.+)$/);
 
     if (!match) {
-      console.warn(`  Could not extract path from URL: ${imageUrl}`);
+      console.warn(`Could not extract path from URL: ${imageUrl}`);
       return;
     }
 
     const filePath = match[1];
     await deleteFromSupabase(filePath);
   } catch (error: any) {
-    console.error('L Error deleting file from Supabase:', error);
+    console.error('Error deleting file from Supabase:', error);
     // Don't throw error - file deletion should not block other operations
   }
 }

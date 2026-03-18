@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(wc -l /Users/emir/Downloads/aurva-master-2/backend/src/**/*.ts)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx|js\\)$\")",
+      "Bash(wc -l /Users/emir/Downloads/aurva-master-2/admin-panel/src/**/*.tsx)",
+      "Bash(du -sh /Users/emir/Downloads/aurva-master-2/*/)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

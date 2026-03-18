@@ -1,0 +1,20 @@
+[variables]
+NIXPACKS_NODE_VERSION = "22"
+
+[phases.setup]
+nixPkgs = ["nodejs", "npm"]
+
+[phases.install]
+cmds = [
+  "cd backend && npm ci",
+  "cd ../admin-panel && npm ci && npm run build",
+  "cp -r admin-panel/dist backend/public/admin"
+]
+
+[phases.build]
+cmds = [
+  "cd backend && npm run build"
+]
+
+[start]
+cmd = "cd backend && npm start"

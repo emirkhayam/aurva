@@ -1,0 +1,42 @@
+# AURVA Development Environment
+# Backend with Supabase (cloud-hosted database, auth, and storage)
+#
+# Usage: docker-compose -f docker-compose.dev.yml up
+# Access: http://localhost:3000
+#
+# Requirements:
+# - Supabase project created at https://app.supabase.com
+# - .env file with SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_KEY
+
+version: '3.8'
+
+services:
+  # ==================================================
+  # Backend - Main Service (API + Public Site + Admin)
+  # ==================================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: aurva-backend-dev
+    env_file:
+      - ./backend/.env
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      # Hot reload support
+      - ./backend/src:/app/src
+      - ./backend/public:/app/public
+      # Prevent node_modules from being overwritten
+      - /app/node_modules
+    networks:
+      - aurva-dev
+    restart: unless-stopped
+    command: npm run dev
+
+networks:
+  aurva-dev:
+    driver: bridge

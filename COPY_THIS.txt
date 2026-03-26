@@ -1,0 +1,26 @@
+==================================================
+  СКОПИРУЙТЕ ВСЁ ЧТО НИЖЕ И ВСТАВЬТЕ ПОСЛЕ: ssh aurva
+==================================================
+
+sudo bash << 'END_SCRIPT'
+set -e
+GREEN='\033[0;32m'; RED='\033[0;31m'; YELLOW='\033[1;33m'; NC='\033[0m'
+echo -e "${YELLOW}Исправление DNS...${NC}"
+cat > /etc/docker/daemon.json << 'EOF'
+{"dns": ["8.8.8.8", "8.8.4.4", "1.1.1.1"]}
+EOF
+echo -e "${GREEN}✓ DNS конфиг обновлен${NC}"
+systemctl restart docker && sleep 5
+echo -e "${GREEN}✓ Docker перезапущен${NC}"
+docker restart coolify && sleep 15
+echo -e "${GREEN}✓ Coolify перезапущен${NC}"
+echo ""
+echo -e "${YELLOW}Проверка GitHub API:${NC}"
+docker exec coolify curl -s https://api.github.com/zen && echo "" && echo -e "${GREEN}✓✓✓ ВСЁ РАБОТАЕТ! ✓✓✓${NC}" || echo -e "${RED}Ошибка${NC}"
+echo ""
+echo "Теперь откройте: https://c.aurva.kg"
+echo "Добавьте репозиторий: emirkhayam/aurva"
+echo "И нажмите Deploy!"
+END_SCRIPT
+
+==================================================

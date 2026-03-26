@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Новость — AURVA</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="mask-icon" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" color="#2563EB">
+    <meta name="theme-color" content="#2563EB">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #F4F6F8;
+            --bg-surface: #EDEFF2;
+            --bg-card: #FFFFFF;
+            --border: #D9DEE3;
+            --shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+            --text: #0F172A;
+            --text-muted: #475569;
+            --text-subtle: #64748B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --accent-soft: #EFF6FF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+        }
+        .font-display { font-family: 'Oswald', sans-serif; }
+        ::selection { background: var(--accent); color: #ffffff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+
+        .prose {
+            max-width: none;
+        }
+        .prose p {
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            color: #000000;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: var(--text);
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .prose h1 { font-size: 2rem; }
+        .prose h2 { font-size: 1.5rem; }
+        .prose h3 { font-size: 1.25rem; }
+        .prose ul, .prose ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+        .prose img {
+            border-radius: 12px;
+            margin: 2rem 0;
+            max-width: 100%;
+        }
+        .prose a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .prose a:hover {
+            color: var(--accent-hover);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-[color:var(--bg-card)]/90 backdrop-blur-md border-b border-[color:var(--border)]">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="https://vtkyejkhezzktzguojbr.supabase.co/storage/v1/object/public/uploads/logos/aurva-logo.svg" alt="AURVA" class="h-12 w-auto">
+                </a>
+                <a href="/news.html" class="text-sm text-[color:var(--text-muted)] hover:text-[color:var(--accent)] transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    Все новости
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div id="loadingState" class="pt-32 pb-16 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[color:var(--border)] border-t-[color:var(--accent)]"></div>
+            <p class="mt-4 text-sm text-[color:var(--text-muted)]">Загрузка новости...</p>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <article id="articleContent" class="hidden pt-32 pb-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <!-- Category Badge -->
+            <div class="mb-6">
+                <span id="categoryBadge" class="inline-block text-xs font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-3 py-1.5 rounded border border-[color:var(--border)] uppercase tracking-wide">
+                    Категория
+                </span>
+            </div>
+
+            <!-- Title -->
+            <h1 id="newsTitle" class="text-4xl md:text-5xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-tight mb-6">
+                Загрузка...
+            </h1>
+
+            <!-- Meta Info -->
+            <div class="flex items-center gap-6 text-sm text-[color:var(--text-subtle)] mb-12">
+                <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="newsDate">Дата</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-eye"></i>
+                    <span id="newsViews">0</span> просмотров
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div id="featuredImageContainer" class="hidden mb-12">
+                <img id="featuredImage" src="" alt="" class="w-full max-w-3xl mx-auto h-[400px] object-cover rounded-2xl border border-[color:var(--border)] shadow-[var(--shadow)]">
+            </div>
+
+            <!-- Article Body -->
+            <div id="newsContent" class="prose text-base leading-relaxed">
+                <p>Загрузка контента...</p>
+            </div>
+
+            <!-- Share Section -->
+            <div class="mt-16 pt-8 border-t border-[color:var(--border)]">
+                <h3 class="text-sm font-mono text-[color:var(--text)] uppercase tracking-wide mb-4">Поделиться</h3>
+                <div class="flex gap-3">
+                    <a id="shareTwitter" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 bg-[color:var(--bg-surface)] rounded-lg hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] transition-colors">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a id="shareFacebook" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 bg-[color:var(--bg-surface)] rounded-lg hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] transition-colors">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a id="shareTelegram" href="#" target="_blank" class="flex items-center justify-center w-10 h-10 bg-[color:var(--bg-surface)] rounded-lg hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] transition-colors">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Error State -->
+    <div id="errorState" class="hidden pt-32 pb-16 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <i class="fa-solid fa-exclamation-triangle text-6xl text-[color:var(--border)] mb-4"></i>
+            <h2 class="text-2xl font-display font-medium text-[color:var(--text)] mb-2">Новость не найдена</h2>
+            <p class="text-[color:var(--text-muted)] mb-6">К сожалению, запрошенная новость не существует или была удалена.</p>
+            <a href="/news.html" class="inline-block px-6 py-3 bg-[color:var(--accent)] text-white rounded-lg hover:bg-[color:var(--accent-hover)] transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Вернуться к новостям
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[color:var(--bg-card)] border-t border-[color:var(--border)] py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="text-xs text-[color:var(--text-subtle)]">
+                © 2024 AURVA. Ассоциация Участников Рынка Виртуальных Активов Кыргызстана
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const API_URL = '/api';
+
+        // Get slug from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const newsSlug = urlParams.get('slug');
+
+        if (!newsSlug) {
+            showError();
+        } else {
+            loadNewsDetail(newsSlug);
+        }
+
+        async function loadNewsDetail(slug) {
+            try {
+                console.log('Loading news with slug:', slug);
+
+                // Encode slug for URL
+                const encodedSlug = encodeURIComponent(slug);
+                console.log('Encoded slug:', encodedSlug);
+
+                const url = `${API_URL}/news/${encodedSlug}`;
+                console.log('Fetching URL:', url);
+
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
+                    throw new Error('News not found');
+                }
+
+                const data = await response.json();
+                console.log('Received data:', data);
+
+                if (!data.news) {
+                    throw new Error('No news data in response');
+                }
+
+                renderNews(data.news);
+
+            } catch (error) {
+                console.error('Error loading news:', error);
+                showError();
+            }
+        }
+
+        function renderNews(item) {
+            // Update page title
+            document.getElementById('pageTitle').textContent = `${item.title} — AURVA`;
+
+            // Update category badge
+            const categoryBadge = document.getElementById('categoryBadge');
+            categoryBadge.textContent = getCategoryLabel(item.category);
+
+            // Update title
+            document.getElementById('newsTitle').textContent = item.title;
+
+            // Update date
+            document.getElementById('newsDate').textContent = formatDate(item.published_at);
+
+            // Update views
+            document.getElementById('newsViews').textContent = item.views || 0;
+
+            // Update featured image
+            if (item.image_url) {
+                document.getElementById('featuredImage').src = item.image_url;
+                document.getElementById('featuredImage').alt = item.title;
+                document.getElementById('featuredImageContainer').classList.remove('hidden');
+            }
+
+            // Update content (convert markdown to HTML)
+            const contentDiv = document.getElementById('newsContent');
+            contentDiv.innerHTML = convertMarkdownToHTML(item.content);
+
+            // Update share links
+            const pageUrl = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(item.title);
+            document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${pageUrl}`;
+            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+            document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${pageUrl}&text=${title}`;
+
+            // Show content
+            document.getElementById('loadingState').classList.add('hidden');
+            document.getElementById('articleContent').classList.remove('hidden');
+        }
+
+        function convertMarkdownToHTML(markdown) {
+            // Basic markdown conversion
+            let html = markdown;
+
+            // Remove login forms and social sharing
+            html = html.replace(/Log In To Your Account[\s\S]*?Log in/g, '');
+            html = html.replace(/\[Forgot password\?\][\s\S]*?\)/g, '');
+            html = html.replace(/- \[Facebook\][\s\S]*?\)/g, '');
+            html = html.replace(/- \[Twitter\][\s\S]*?\)/g, '');
+            html = html.replace(/!\[\]\(https:\/\/static\.tildacdn\.com[\s\S]*?\)/g, '');
+            html = html.replace(/Новости\n\n/g, '');
+            html = html.replace(/\|[\s\S]*?\|/g, ''); // Remove tables
+
+            // Convert headings
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+
+            // Convert bold
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Convert links
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+            // Convert line breaks to paragraphs
+            html = html.split('\n\n').map(p => {
+                p = p.trim();
+                if (!p) return '';
+                if (p.startsWith('<h')) return p;
+                if (p.startsWith('<')) return p;
+                return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+            }).join('');
+
+            return html;
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'regulation': 'Регулирование',
+                'events': 'События',
+                'analytics': 'Аналитика',
+                'other': 'Новости'
+            };
+            return labels[category] || 'Новости';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        function showError() {
+            document.getElementById('loadingState').classList.add('hidden');
+            document.getElementById('errorState').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

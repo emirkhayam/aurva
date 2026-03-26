@@ -1,0 +1,32 @@
+# SQLite database files (not needed on Vercel)
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite.backup
+
+# Development files
+.env
+.env.local
+.env.development
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Tests
+__tests__
+*.test.ts
+*.spec.ts
+coverage
+
+# Uploads (should be handled by cloud storage in production)
+uploads
+
+# Cache
+.cache
+.npm
+
+# Git
+.git
+.gitignore

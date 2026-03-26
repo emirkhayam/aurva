@@ -1,0 +1,55 @@
+# .dockerignore - Exclude from Docker build context
+
+# Dependencies (will be installed in container)
+node_modules/
+
+# Environment files (set via Railway dashboard)
+.env
+.env.*
+
+# Development files
+*.log
+npm-debug.log*
+*.swp
+*.swo
+
+# Tests
+coverage/
+__tests__/
+*.test.ts
+*.spec.ts
+jest.config.js
+
+# Database files
+*.sqlite
+*.sqlite3
+database.sqlite
+
+# Build artifacts (created during build)
+dist/
+
+# Version control
+.git/
+.gitignore
+.github/
+
+# IDE
+.vscode/
+.idea/
+
+# Vercel specific
+.vercel/
+vercel.json
+.vercelignore
+api/
+src/vercel-entry.ts
+
+# Documentation
+README.md
+*.md
+
+# Railway
+.railway/
+
+# Logs
+logs/

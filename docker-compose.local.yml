@@ -1,0 +1,60 @@
+services:
+  # Backend API Service
+  backend:
+    image: aurva-backend:latest
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # JWT Configuration
+      - JWT_SECRET=${JWT_SECRET:-your-jwt-secret-change-in-production}
+      - JWT_EXPIRES_IN=7d
+      # Supabase Configuration
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      # Supabase Postgres (using public URL for local testing)
+      - POSTGRES_HOST=aws-0-eu-central-1.pooler.supabase.com
+      - POSTGRES_PORT=6543
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres.vtkyejkhezzktzguojbr
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-your-postgres-password}
+      - POSTGRES_SSL=true
+      # Admin
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@aurva.kg}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      # CORS
+      - CORS_ORIGIN=http://localhost:8080,http://localhost:3000
+    volumes:
+      - backend-uploads:/app/uploads
+      - backend-data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - aurva-local
+
+  # Admin Panel Service
+  admin-panel:
+    image: aurva-admin-panel:latest
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - aurva-local
+
+volumes:
+  backend-uploads:
+  backend-data:
+
+networks:
+  aurva-local:
+    driver: bridge

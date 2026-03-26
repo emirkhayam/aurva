@@ -1,0 +1,52 @@
+# Coolify Configuration for AURVA Project
+# This file tells Coolify to use Docker Compose for deployment
+
+# Use Docker Compose for multi-container deployment
+type: docker-compose
+
+# Docker Compose file location
+compose_file: docker-compose.yml
+
+# Domain configuration
+domains:
+  - aurva.kg
+
+# Environment variables required for deployment
+# These should be configured in Coolify UI
+env_required:
+  - JWT_SECRET
+  - POSTGRES_HOST
+  - POSTGRES_PORT
+  - POSTGRES_DB
+  - POSTGRES_USER
+  - POSTGRES_PASSWORD
+  - POSTGRES_SSL
+  - NODE_ENV
+  - SUPABASE_URL
+  - SUPABASE_ANON_KEY
+  - SUPABASE_SERVICE_KEY
+  - AUTH_JWT_SECRET
+  - GOTRUE_SITE_URL
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - MINIO_ROOT_USER
+  - MINIO_ROOT_PASSWORD
+  - EMAIL_HOST
+  - EMAIL_PORT
+  - EMAIL_SECURE
+  - EMAIL_USER
+  - EMAIL_PASSWORD
+  - EMAIL_FROM
+  - ADMIN_EMAIL
+  - ADMIN_PASSWORD
+  - CORS_ORIGIN
+  - BACKEND_URL
+
+# Health check configuration
+healthcheck:
+  enabled: true
+  path: /health
+  port: 3000
+  interval: 30s
+  timeout: 10s
+  retries: 3

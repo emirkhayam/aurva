@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы — AURVA</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #F4F6F8;
+            --bg-surface: #EDEFF2;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F9FAFB;
+            --border: #D9DEE3;
+            --shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+            --text: #0F172A;
+            --text-muted: #475569;
+            --text-subtle: #64748B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --accent-soft: #EFF6FF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+        }
+
+        .font-display { font-family: 'Oswald', sans-serif; }
+
+        .course-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(15,23,42,0.08), 0 12px 32px rgba(15,23,42,0.12);
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-surface);
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lesson-item:hover {
+            background: var(--bg-card-hover);
+            transform: translateX(4px);
+        }
+
+        .lesson-item i {
+            color: var(--accent);
+            margin-right: 1rem;
+        }
+
+        .material-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .material-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .material-link i {
+            margin-right: 0.5rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #DEF7EC;
+            color: #03543F;
+        }
+
+        .badge-info {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="font-display text-2xl font-semibold text-gray-900">AURVA</a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-blue-600">Главная</a>
+                    <a href="/about" class="text-gray-600 hover:text-blue-600">О нас</a>
+                    <a href="/news" class="text-gray-600 hover:text-blue-600">Новости</a>
+                    <a href="/courses" class="text-blue-600 font-medium">Курсы</a>
+                    <a href="/cabinet" class="text-gray-600 hover:text-blue-600">Кабинет</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" id="app">
+        <!-- Loading State -->
+        <div v-if="loading" class="text-center py-12">
+            <i class="fas fa-spinner fa-spin text-4xl text-blue-600"></i>
+            <p class="mt-4 text-gray-600">Загрузка курсов...</p>
+        </div>
+
+        <!-- Courses List -->
+        <div v-else-if="!selectedCourse">
+            <h1 class="font-display text-4xl font-semibold text-gray-900 mb-8">Курсы</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div v-for="course in courses" :key="course.id"
+                     class="course-card cursor-pointer"
+                     @click="selectCourse(course.slug)">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+                            {{ course.title }}
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            {{ course.short_description }}
+                        </p>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="badge badge-info">
+                                <i class="fas fa-clock mr-1"></i>
+                                {{ course.duration }}
+                            </span>
+                            <span class="badge badge-success" v-if="course.is_published">
+                                Доступен
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Detail -->
+        <div v-else>
+            <!-- Back Button -->
+            <button @click="selectedCourse = null"
+                    class="mb-6 flex items-center text-blue-600 hover:text-blue-700">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Назад к курсам
+            </button>
+
+            <!-- Course Header -->
+            <div class="course-card p-8 mb-8">
+                <h1 class="font-display text-3xl font-semibold text-gray-900 mb-4">
+                    {{ selectedCourse.title }}
+                </h1>
+                <p class="text-gray-600 text-lg mb-6">
+                    {{ selectedCourse.description }}
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="badge badge-info">
+                        <i class="fas fa-clock mr-1"></i>
+                        {{ selectedCourse.duration }}
+                    </span>
+                    <span class="badge badge-info">
+                        <i class="fas fa-signal mr-1"></i>
+                        {{ selectedCourse.level }}
+                    </span>
+                    <span class="badge badge-success">
+                        <i class="fas fa-check-circle mr-1"></i>
+                        Бесплатно
+                    </span>
+                </div>
+            </div>
+
+            <!-- Modules and Lessons -->
+            <div v-for="module in selectedCourse.modules" :key="module.id" class="mb-8">
+                <div class="module-card">
+                    <h2 class="font-display text-2xl font-semibold text-blue-600 mb-4">
+                        {{ module.title }}
+                    </h2>
+                    <p v-if="module.description" class="text-gray-600 mb-6">
+                        {{ module.description }}
+                    </p>
+
+                    <!-- Lessons -->
+                    <div class="space-y-3">
+                        <div v-for="lesson in module.lessons" :key="lesson.id">
+                            <div class="lesson-item" @click="toggleLesson(lesson.id)">
+                                <i class="fas fa-play-circle text-2xl"></i>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-900">{{ lesson.title }}</h4>
+                                    <p class="text-sm text-gray-500">{{ lesson.duration }}</p>
+                                </div>
+                                <i class="fas" :class="expandedLessons.includes(lesson.id) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                            </div>
+
+                            <!-- Lesson Content (Expanded) -->
+                            <div v-if="expandedLessons.includes(lesson.id)" class="mt-4 ml-4 p-6 bg-white rounded-lg border border-gray-200">
+                                <!-- Video -->
+                                <div v-if="lesson.video_url" class="video-container">
+                                    <iframe :src="getYouTubeEmbedUrl(lesson.video_url)"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                                <!-- Lesson Content -->
+                                <div v-if="lesson.content" class="prose max-w-none mb-6">
+                                    <p>{{ lesson.content }}</p>
+                                </div>
+
+                                <!-- Materials -->
+                                <div v-if="lesson.materials && lesson.materials.length > 0" class="mt-6">
+                                    <h5 class="font-semibold text-gray-900 mb-3">
+                                        <i class="fas fa-file-alt mr-2 text-blue-600"></i>
+                                        Материалы к уроку:
+                                    </h5>
+                                    <div class="flex flex-wrap">
+                                        <a v-for="material in lesson.materials"
+                                           :key="material.id"
+                                           :href="material.external_url || material.file_url"
+                                           target="_blank"
+                                           class="material-link">
+                                            <i class="fas" :class="getMaterialIcon(material.file_type)"></i>
+                                            {{ material.title }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <p class="text-center text-gray-500">
+                © 2026 AURVA. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    loading: true,
+                    courses: [],
+                    selectedCourse: null,
+                    expandedLessons: []
+                }
+            },
+            async mounted() {
+                await this.loadCourses();
+            },
+            methods: {
+                async loadCourses() {
+                    try {
+                        const response = await fetch('/api/courses');
+                        const data = await response.json();
+                        if (data.success) {
+                            this.courses = data.data;
+                        }
+                    } catch (error) {
+                        console.error('Error loading courses:', error);
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                async selectCourse(slug) {
+                    this.loading = true;
+                    try {
+                        const response = await fetch(`/api/courses/${slug}`);
+                        const data = await response.json();
+                        if (data.success) {
+                            this.selectedCourse = data.data;
+                        }
+                    } catch (error) {
+                        console.error('Error loading course:', error);
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                toggleLesson(lessonId) {
+                    const index = this.expandedLessons.indexOf(lessonId);
+                    if (index > -1) {
+                        this.expandedLessons.splice(index, 1);
+                    } else {
+                        this.expandedLessons.push(lessonId);
+                    }
+                },
+                getYouTubeEmbedUrl(url) {
+                    if (!url) return '';
+                    const videoId = url.split('v=')[1] || url.split('/').pop();
+                    return `https://www.youtube.com/embed/${videoId.split('&')[0]}`;
+                },
+                getMaterialIcon(fileType) {
+                    const icons = {
+                        'document': 'fa-file-pdf',
+                        'link': 'fa-link',
+                        'software': 'fa-download',
+                        'form': 'fa-file-invoice',
+                        'file': 'fa-file'
+                    };
+                    return icons[fileType] || 'fa-file';
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

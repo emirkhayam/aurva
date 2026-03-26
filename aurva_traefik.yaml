@@ -1,0 +1,14 @@
+http:
+  routers:
+    aurva-http:
+      rule: "Host(`aurva.kg`)"
+      entryPoints:
+        - http
+        - https
+      service: aurva-service
+
+  services:
+    aurva-service:
+      loadBalancer:
+        servers:
+          - url: "http://aurva-admin-panel-1:80"

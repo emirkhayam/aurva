@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: aurva-backend
+    env: node
+    region: frankfurt  # Ближайший регион к Кыргызстану
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: aurva-data
+      mountPath: /opt/render/project/src
+      sizeGB: 1

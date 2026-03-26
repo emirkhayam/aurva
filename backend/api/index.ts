@@ -1,13 +1,10 @@
 // Entry point for Vercel serverless functions
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import createApp from '../src/app';
-import { connectDatabase } from '../src/config/database';
 import { Application } from 'express';
 
 // Cache the app instance
 let app: Application | null = null;
-let isConnecting = false;
-let connectionPromise: Promise<void> | null = null;
 
 async function ensureApp(): Promise<Application> {
   // If app already exists, return it
@@ -15,32 +12,13 @@ async function ensureApp(): Promise<Application> {
     return app;
   }
 
-  // If connection is in progress, wait for it
-  if (isConnecting && connectionPromise) {
-    await connectionPromise;
-    if (app) return app;
-  }
-
-  // Start new connection
-  isConnecting = true;
-  connectionPromise = (async () => {
-    try {
-      await connectDatabase();
-      console.log('✅ Database connected for Vercel');
-      app = createApp();
-      console.log('✅ Express app initialized');
-    } catch (error) {
-      console.error('❌ Initialization error:', error);
-      throw error;
-    } finally {
-      isConnecting = false;
-    }
-  })();
-
-  await connectionPromise;
-
-  if (!app) {
-    throw new Error('Failed to initialize app');
+  // Create app (Supabase connection is handled in createApp)
+  try {
+    app = createApp();
+    console.log('✅ Express app initialized for Vercel');
+  } catch (error) {
+    console.error('❌ Initialization error:', error);
+    throw error;
   }
 
   return app;

@@ -2,24 +2,32 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import { Database } from '../types/database.types';
 
-dotenv.config();
+// Only load .env file in local development (Vercel handles env vars automatically)
+if (!process.env.VERCEL) {
+  dotenv.config();
+}
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY;
 
-if (!supabaseUrl) {
-  throw new Error('SUPABASE_URL environment variable is required');
+// Log environment variable status (for debugging)
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('❌ Missing Supabase environment variables:', {
+    SUPABASE_URL: supabaseUrl ? 'Set' : 'Missing',
+    SUPABASE_ANON_KEY: supabaseAnonKey ? 'Set' : 'Missing',
+    SUPABASE_SERVICE_KEY: supabaseServiceKey ? 'Set' : 'Missing'
+  });
 }
 
-if (!supabaseAnonKey) {
-  throw new Error('SUPABASE_ANON_KEY environment variable is required');
-}
+// Create default/fallback clients that will throw runtime errors if used without proper config
+const defaultUrl = supabaseUrl || 'https://placeholder.supabase.co';
+const defaultKey = supabaseAnonKey || 'placeholder-key';
 
 // Typed Supabase client with anon key (for client-side operations)
 export const supabase: SupabaseClient = createClient(
-  supabaseUrl,
-  supabaseAnonKey,
+  defaultUrl,
+  defaultKey,
   {
     auth: {
       autoRefreshToken: true,
@@ -31,7 +39,7 @@ export const supabase: SupabaseClient = createClient(
 
 // Typed Supabase admin client with service role key (for server-side operations)
 export const supabaseAdmin: SupabaseClient | null = supabaseServiceKey
-  ? createClient(supabaseUrl, supabaseServiceKey, {
+  ? createClient(defaultUrl, supabaseServiceKey, {
       auth: {
         autoRefreshToken: false,
         persistSession: false

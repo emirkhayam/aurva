@@ -1,27 +1,68 @@
 // Entry point for Vercel serverless functions
 import { VercelRequest, VercelResponse } from '@vercel/node';
+import { Application } from 'express';
 
-// Temporary simple handler for debugging
+// Cache the app instance
+let app: Application | null = null;
+let initError: any = null;
+
+async function ensureApp(): Promise<Application> {
+  // If app already exists, return it
+  if (app) {
+    return app;
+  }
+
+  // If initialization failed before, throw the cached error
+  if (initError) {
+    throw initError;
+  }
+
+  // Try to create app and capture detailed error info
+  try {
+    console.log('🔄 Attempting to import createApp...');
+    const createApp = require('../src/app').default;
+
+    console.log('🔄 Attempting to create Express app...');
+    app = createApp();
+
+    console.log('✅ Express app initialized successfully for Vercel');
+    return app;
+  } catch (error: any) {
+    initError = error;
+    console.error('❌ Initialization error:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+      code: error.code
+    });
+    throw error;
+  }
+}
+
+// Export handler for Vercel
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    console.log('Handler called:', req.url);
+    console.log('📥 Request:', req.method, req.url);
 
-    res.status(200).json({
-      status: 'ok',
-      message: 'AURVA Backend API is running',
-      timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV || 'development',
-      vercel: process.env.VERCEL || 'false',
-      url: req.url,
-      method: req.method
-    });
+    const expressApp = await ensureApp();
+
+    // Call Express app as a request handler
+    expressApp(req as any, res as any);
   } catch (error: any) {
-    console.error('❌ Handler error:', error);
-
-    res.status(500).json({
-      error: 'Internal server error',
-      message: error.message || 'Unknown error',
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    console.error('❌ Handler error:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
     });
+
+    if (!res.headersSent) {
+      res.status(500).json({
+        error: 'Internal server error',
+        message: error.message || 'Unknown error',
+        stack: error.stack,
+        type: error.name,
+        details: 'Check Vercel function logs for more details'
+      });
+    }
   }
 }

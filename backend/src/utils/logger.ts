@@ -22,15 +22,18 @@ const consoleFormat = winston.format.combine(
   })
 );
 
-// Create logs directory if it doesn't exist
+// Create logs directory if it doesn't exist (only for local development)
 const logsDir = path.join(__dirname, '../../logs');
 
-// Create the logger
-const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
-  format: logFormat,
-  defaultMeta: { service: 'aurva-backend' },
-  transports: [
+// Detect if running on Vercel (serverless environment)
+const isVercel = process.env.VERCEL === '1' || process.env.VERCEL_ENV !== undefined;
+
+// Create transports based on environment
+const transports: winston.transport[] = [];
+
+// Only use file transports in local development (not in serverless/production)
+if (!isVercel && process.env.NODE_ENV !== 'production') {
+  transports.push(
     // Write all logs with level 'error' and below to error.log
     new winston.transports.File({
       filename: path.join(logsDir, 'error.log'),
@@ -38,22 +41,31 @@ const logger = winston.createLogger({
       maxsize: 5242880, // 5MB
       maxFiles: 5,
     }),
-
     // Write all logs to combined.log
     new winston.transports.File({
       filename: path.join(logsDir, 'combined.log'),
       maxsize: 5242880, // 5MB
       maxFiles: 5,
-    }),
-  ],
-});
-
-// If we're not in production, log to the console as well
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: consoleFormat,
-  }));
+    })
+  );
 }
+
+// Always add console transport for serverless and production environments
+if (isVercel || process.env.NODE_ENV === 'production' || process.env.NODE_ENV !== 'test') {
+  transports.push(
+    new winston.transports.Console({
+      format: consoleFormat,
+    })
+  );
+}
+
+// Create the logger
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: logFormat,
+  defaultMeta: { service: 'aurva-backend' },
+  transports,
+});
 
 // Create a stream object for Morgan HTTP logger
 export const morganStream = {

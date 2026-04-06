@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  # Backend API Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    container_name: aurva-backend
+    ports:
+      - "3000:3000"
+    environment:
+      # Node Environment
+      - NODE_ENV=production
+      - PORT=3000
+
+      # JWT Configuration
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=7d
+
+      # Supabase Configuration
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+
+      # Supabase Postgres
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_SSL=true
+
+      # Supabase Auth
+      - AUTH_JWT_SECRET=${AUTH_JWT_SECRET}
+      - GOTRUE_SITE_URL=https://c.aurva.kg
+
+      # Storage Configuration
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - STORAGE_BUCKET=${STORAGE_BUCKET:-uploads}
+
+      # Email Configuration
+      - EMAIL_HOST=${EMAIL_HOST:-smtp.gmail.com}
+      - EMAIL_PORT=${EMAIL_PORT:-587}
+      - EMAIL_SECURE=${EMAIL_SECURE:-false}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_FROM=${EMAIL_FROM:-AURVA <noreply@aurva.kg>}
+
+      # Admin Credentials
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+
+      # CORS Configuration
+      - CORS_ORIGIN=https://c.aurva.kg,https://www.c.aurva.kg
+
+    volumes:
+      - backend-uploads:/app/uploads
+      - backend-data:/app/data
+      - backend-logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - aurva-network
+
+  # Admin Panel Service (Nginx + React)
+  admin-panel:
+    build:
+      context: ./admin-panel
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=/api
+        - VITE_SUPABASE_URL=${SUPABASE_URL}
+        - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+    restart: unless-stopped
+    container_name: aurva-admin-panel
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - aurva-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  backend-uploads:
+    driver: local
+  backend-data:
+    driver: local
+  backend-logs:
+    driver: local
+
+networks:
+  aurva-network:
+    driver: bridge

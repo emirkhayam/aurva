@@ -1,0 +1,53 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Documentation
+*.md
+docs/
+
+# Development files
+.eslintrc*
+.prettierrc*
+tsconfig.json
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Build files (we'll build inside Docker)
+dist/
+build/
+.cache/
+
+# Temporary files
+tmp/
+temp/

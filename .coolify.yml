@@ -5,11 +5,12 @@
 type: docker-compose
 
 # Docker Compose file location
-compose_file: docker-compose.yml
+compose_file: docker-compose.production.yml
 
 # Domain configuration
 domains:
-  - aurva.kg
+  - c.aurva.kg
+  - www.c.aurva.kg
 
 # Environment variables required for deployment
 # These should be configured in Coolify UI
@@ -27,6 +28,7 @@ env_required:
   - SUPABASE_SERVICE_KEY
   - AUTH_JWT_SECRET
   - GOTRUE_SITE_URL
+  - STORAGE_BUCKET
   - AWS_ACCESS_KEY_ID
   - AWS_SECRET_ACCESS_KEY
   - MINIO_ROOT_USER

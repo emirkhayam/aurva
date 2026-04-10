@@ -5,6 +5,8 @@ import morgan from 'morgan';
 import path from 'path';
 import { morganStream } from './utils/logger';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './swagger';
 
 // Import routes
 import authRoutes from './routes/authRoutes';
@@ -17,6 +19,12 @@ import partnerRoutes from './routes/partnerRoutes';
 import cabinetRoutes from './routes/cabinetRoutes';
 import adminCabinetRoutes from './routes/adminCabinetRoutes';
 import coursesRoutes from './routes/courses';
+import searchRoutes from './routes/searchRoutes';
+import auditRoutes from './routes/auditRoutes';
+import quizRoutes from './routes/quizRoutes';
+import cabinetQuizRoutes from './routes/cabinetQuizRoutes';
+import certificateRoutes from './routes/certificateRoutes';
+import progressRoutes from './routes/progressRoutes';
 
 // Create Express app
 const createApp = (): Application => {
@@ -180,6 +188,12 @@ const createApp = (): Application => {
     });
   });
 
+  // Swagger API Documentation
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'AURVA API Documentation'
+  }));
+
   // API Routes
   app.use('/api/auth', authRoutes);
   app.use('/api/contacts', contactRoutes);
@@ -191,6 +205,12 @@ const createApp = (): Application => {
   app.use('/api/cabinet', cabinetRoutes);
   app.use('/api/admin/cabinet', adminCabinetRoutes);
   app.use('/api/courses', coursesRoutes);
+  app.use('/api/search', searchRoutes);
+  app.use('/api/audit', auditRoutes);
+  app.use('/api/quizzes', quizRoutes);
+  app.use('/api/cabinet/quizzes', cabinetQuizRoutes);
+  app.use('/api/certificates', certificateRoutes);
+  app.use('/api/cabinet/progress', progressRoutes);
 
   // API info endpoint (for debugging)
   app.get('/api', (_req: Request, res: Response) => {
@@ -208,7 +228,13 @@ const createApp = (): Application => {
         partners: '/api/partners',
         cabinet: '/api/cabinet',
         adminCabinet: '/api/admin/cabinet',
-        courses: '/api/courses'
+        courses: '/api/courses',
+        search: '/api/search',
+        audit: '/api/audit',
+        quizzes: '/api/quizzes',
+        cabinetQuizzes: '/api/cabinet/quizzes',
+        certificates: '/api/certificates',
+        progress: '/api/cabinet/progress'
       }
     });
   });

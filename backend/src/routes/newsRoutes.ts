@@ -15,54 +15,242 @@ import { uploadMultipleToSupabase } from '../middleware/supabaseUpload';
 const router = Router();
 
 /**
- * @route   GET /api/news
- * @desc    Get all news with pagination and filters
- * @access  Public
+ * @swagger
+ * /news:
+ *   get:
+ *     summary: Получить список новостей
+ *     tags: [News]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Номер страницы
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Количество записей на страницу
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *           enum: [regulation, events, analytics, other]
+ *         description: Фильтр по категории
+ *       - in: query
+ *         name: published
+ *         schema:
+ *           type: boolean
+ *         description: Фильтр по статусу публикации
+ *     responses:
+ *       200:
+ *         description: Список новостей с пагинацией
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/News'
+ *                 pagination:
+ *                   type: object
+ *                   properties:
+ *                     total:
+ *                       type: integer
+ *                     page:
+ *                       type: integer
+ *                     limit:
+ *                       type: integer
  */
 router.get('/', getNews);
 
 /**
- * @route   GET /api/news/:slug
- * @desc    Get news by slug
- * @access  Public
+ * @swagger
+ * /news/{slug}:
+ *   get:
+ *     summary: Получить новость по slug
+ *     tags: [News]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Slug новости
+ *     responses:
+ *       200:
+ *         description: Данные новости
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/News'
+ *       404:
+ *         description: Новость не найдена
  */
 router.get('/:slug', getNewsBySlug);
 
 /**
- * @route   POST /api/news
- * @desc    Create new news article
- * @access  Private (Admin/Moderator)
+ * @swagger
+ * /news:
+ *   post:
+ *     summary: Создать новость
+ *     tags: [News]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - content
+ *               - category
+ *             properties:
+ *               title:
+ *                 type: string
+ *               excerpt:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *                 enum: [regulation, events, analytics, other]
+ *               published:
+ *                 type: boolean
+ *               images:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *     responses:
+ *       201:
+ *         description: Новость создана
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/News'
+ *       401:
+ *         description: Не авторизован
+ *       403:
+ *         description: Нет прав доступа
  */
 router.post(
   '/',
   authenticateToken,
   requireAdminOrModerator,
-  upload.array('images', 10), // Support up to 10 images
-  optimizeImages, // Optimize uploaded images
-  uploadMultipleToSupabase('news'), // Upload to Supabase Storage
+  upload.array('images', 10),
+  optimizeImages,
+  uploadMultipleToSupabase('news'),
   validateNews,
   createNews
 );
 
 /**
- * @route   PUT /api/news/:id
- * @desc    Update news article
- * @access  Private (Admin/Moderator)
+ * @swagger
+ * /news/{id}:
+ *   put:
+ *     summary: Обновить новость
+ *     tags: [News]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID новости
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               excerpt:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *                 enum: [regulation, events, analytics, other]
+ *               published:
+ *                 type: boolean
+ *               images:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *     responses:
+ *       200:
+ *         description: Новость обновлена
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/News'
+ *       401:
+ *         description: Не авторизован
+ *       404:
+ *         description: Новость не найдена
  */
 router.put(
   '/:id',
   authenticateToken,
   requireAdminOrModerator,
-  upload.array('images', 10), // Support up to 10 images
-  optimizeImages, // Optimize uploaded images
-  uploadMultipleToSupabase('news'), // Upload to Supabase Storage
+  upload.array('images', 10),
+  optimizeImages,
+  uploadMultipleToSupabase('news'),
   updateNews
 );
 
 /**
- * @route   DELETE /api/news/:id
- * @desc    Delete news article
- * @access  Private (Admin/Moderator)
+ * @swagger
+ * /news/{id}:
+ *   delete:
+ *     summary: Удалить новость
+ *     tags: [News]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID новости
+ *     responses:
+ *       200:
+ *         description: Новость удалена
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       401:
+ *         description: Не авторизован
+ *       404:
+ *         description: Новость не найдена
  */
 router.delete('/:id', authenticateToken, requireAdminOrModerator, deleteNews);
 

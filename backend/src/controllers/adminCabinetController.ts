@@ -185,7 +185,7 @@ export const getCourses = async (req: AuthRequest, res: Response): Promise<void>
     const { data: courses, error, count } = await supabase
       .from('courses')
       .select('*', { count: 'exact' })
-      .order('display_order', { ascending: true })
+      .order('order_index', { ascending: true })
       .range(offset, offset + limitNum - 1);
 
     if (error) {
@@ -211,7 +211,7 @@ export const getCourses = async (req: AuthRequest, res: Response): Promise<void>
 
 export const createCourse = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const { title, slug, description, image_url, is_published, display_order } = req.body;
+    const { title, slug, description, image_url, is_published, order_index } = req.body;
     const supabase = getAdminClient();
 
     if (!title) {
@@ -227,7 +227,7 @@ export const createCourse = async (req: AuthRequest, res: Response): Promise<voi
         description: description || null,
         image_url: image_url || null,
         is_published: is_published ?? false,
-        display_order: display_order ?? 0,
+        order_index: order_index ?? 0,
       })
       .select()
       .single();
@@ -271,7 +271,7 @@ export const getCourseById = async (req: AuthRequest, res: Response): Promise<vo
 export const updateCourse = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { title, slug, description, image_url, is_published, display_order } = req.body;
+    const { title, slug, description, image_url, is_published, order_index } = req.body;
     const supabase = getAdminClient();
 
     // Check if course exists
@@ -292,7 +292,7 @@ export const updateCourse = async (req: AuthRequest, res: Response): Promise<voi
     if (description !== undefined) updates.description = description;
     if (image_url !== undefined) updates.image_url = image_url;
     if (is_published !== undefined) updates.is_published = is_published;
-    if (display_order !== undefined) updates.display_order = display_order;
+    if (order_index !== undefined) updates.order_index = order_index;
 
     if (Object.keys(updates).length === 0) {
       res.status(400).json({ error: 'No fields to update' });
@@ -384,7 +384,7 @@ export const getLessons = async (req: AuthRequest, res: Response): Promise<void>
       .from('course_lessons')
       .select('*')
       .eq('course_id', id)
-      .order('display_order', { ascending: true });
+      .order('order_index', { ascending: true });
 
     if (error) {
       console.error('Get lessons error:', error);
@@ -402,7 +402,7 @@ export const getLessons = async (req: AuthRequest, res: Response): Promise<void>
 export const createLesson = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { id } = req.params; // course_id
-    const { title, content, video_url, display_order, is_published } = req.body;
+    const { title, content, video_url, order_index, is_published } = req.body;
     const supabase = getAdminClient();
 
     if (!title) {
@@ -429,7 +429,7 @@ export const createLesson = async (req: AuthRequest, res: Response): Promise<voi
         title,
         content: content || null,
         video_url: video_url || null,
-        display_order: display_order ?? 0,
+        order_index: order_index ?? 0,
         is_published: is_published ?? false,
       })
       .select()
@@ -451,7 +451,7 @@ export const createLesson = async (req: AuthRequest, res: Response): Promise<voi
 export const updateLesson = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { id } = req.params; // lesson_id
-    const { title, content, video_url, display_order, is_published } = req.body;
+    const { title, content, video_url, order_index, is_published } = req.body;
     const supabase = getAdminClient();
 
     // Check if lesson exists
@@ -470,7 +470,7 @@ export const updateLesson = async (req: AuthRequest, res: Response): Promise<voi
     if (title !== undefined) updates.title = title;
     if (content !== undefined) updates.content = content;
     if (video_url !== undefined) updates.video_url = video_url;
-    if (display_order !== undefined) updates.display_order = display_order;
+    if (order_index !== undefined) updates.order_index = order_index;
     if (is_published !== undefined) updates.is_published = is_published;
 
     if (Object.keys(updates).length === 0) {
@@ -588,8 +588,7 @@ export const assignCourseToUser = async (req: AuthRequest, res: Response): Promi
       .insert({
         user_id: userId,
         course_id: courseId,
-        status: 'not_started',
-        progress_percent: 0,
+        progress_percentage: 0,
       })
       .select()
       .single();
@@ -672,13 +671,12 @@ export const getUserCourses = async (req: AuthRequest, res: Response): Promise<v
           title,
           slug,
           description,
-          image_url,
+          thumbnail_url,
           is_published,
-          display_order
+          order_index
         )
       `)
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
+      .eq('user_id', userId);
 
     if (error) {
       console.error('Get user courses error:', error);

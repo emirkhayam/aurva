@@ -40,8 +40,19 @@ export const getPartners = async (req: Request, res: Response): Promise<void> =>
       return;
     }
 
+    const mapped = (partners || []).map((p: any) => ({
+      ...p,
+      logoUrl: p.logo_url,
+      modalTitle: p.modal_title,
+      modalDescription: p.modal_description,
+      displayOrder: p.display_order,
+      isActive: p.is_active,
+      createdAt: p.created_at,
+      updatedAt: p.updated_at,
+    }));
+
     res.json({
-      partners: partners || [],
+      partners: mapped,
       pagination: {
         total: count || 0,
         page: pageNum,

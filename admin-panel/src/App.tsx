@@ -17,6 +17,8 @@ import Partners from './pages/Partners';
 import Team from './pages/Team';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
+import Quizzes from './pages/Quizzes';
+import AuditLogs from './pages/AuditLogs';
 
 // Layout
 import AdminLayout from './components/layout/AdminLayout';
@@ -67,6 +69,8 @@ function App() {
             <Route path="team" element={<Team />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="quizzes" element={<Quizzes />} />
+            <Route path="audit" element={<AuditLogs />} />
           </Route>
 
           {/* Redirect root to admin */}

@@ -33,6 +33,11 @@ export const getNews = async (req: Request, res: Response): Promise<void> => {
       query = query.eq('published', true);
     }
 
+    // Exclude scheduled-but-not-yet-published articles from public view
+    if (published === undefined || published === 'true') {
+      query = query.or('scheduled_at.is.null,scheduled_at.lte.' + new Date().toISOString());
+    }
+
     if (category) {
       query = query.eq('category', category);
     }
@@ -104,7 +109,7 @@ export const createNews = async (req: AuthRequest, res: Response): Promise<void>
       return;
     }
 
-    const { title, slug, excerpt, content, category, published, imageUrls } = req.body;
+    const { title, slug, excerpt, content, category, published, imageUrls, scheduled_at } = req.body;
     const supabase = getSupabaseClient();
 
     // Handle multiple images from Supabase Storage
@@ -135,6 +140,17 @@ export const createNews = async (req: AuthRequest, res: Response): Promise<void>
     // Generate slug from title if not provided
     const generatedSlug = slug && slug.trim() ? slug : generateSlug(title);
 
+    // Handle scheduled publishing
+    let isPublished = published === 'true' || published === true;
+    let scheduledDate: string | null = null;
+    if (scheduled_at) {
+      const schedDate = new Date(scheduled_at);
+      if (schedDate > new Date()) {
+        isPublished = false; // Force unpublished if scheduled for the future
+        scheduledDate = schedDate.toISOString();
+      }
+    }
+
     // Create news record
     const { data: news, error: newsError } = await supabase
       .from('news')
@@ -145,7 +161,8 @@ export const createNews = async (req: AuthRequest, res: Response): Promise<void>
         content,
         category: category || 'other',
         image_url: imageUrl,
-        published: published === 'true' || published === true,
+        published: isPublished,
+        scheduled_at: scheduledDate,
         views: 0
       })
       .select()
@@ -211,7 +228,7 @@ export const createNews = async (req: AuthRequest, res: Response): Promise<void>
 export const updateNews = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { title, excerpt, content, category, published, imageUrls } = req.body;
+    const { title, excerpt, content, category, published, imageUrls, scheduled_at } = req.body;
     const supabase = getSupabaseClient();
 
     // Check if news exists
@@ -233,6 +250,21 @@ export const updateNews = async (req: AuthRequest, res: Response): Promise<void>
     if (content) updateData.content = content;
     if (category) updateData.category = category;
     if (published !== undefined) updateData.published = published === 'true' || published === true;
+
+    // Handle scheduled_at
+    if (scheduled_at !== undefined) {
+      if (scheduled_at === null || scheduled_at === '') {
+        updateData.scheduled_at = null;
+      } else {
+        const schedDate = new Date(scheduled_at);
+        if (schedDate > new Date()) {
+          updateData.scheduled_at = schedDate.toISOString();
+          updateData.published = false; // Force unpublished if scheduled for the future
+        } else {
+          updateData.scheduled_at = schedDate.toISOString();
+        }
+      }
+    }
 
     // Handle multiple image uploads from Supabase
     const supabaseFiles = (req as any).supabaseFiles || [];
@@ -413,5 +445,30 @@ export const deleteNews = async (req: AuthRequest, res: Response): Promise<void>
   } catch (error) {
     console.error('Delete news error:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+export const publishScheduledNews = async (): Promise<number> => {
+  try {
+    const supabase = getSupabaseClient();
+    const now = new Date().toISOString();
+
+    const { data, error } = await supabase
+      .from('news')
+      .update({ published: true })
+      .lte('scheduled_at', now)
+      .eq('published', false)
+      .not('scheduled_at', 'is', null)
+      .select('id, title');
+
+    if (error) {
+      console.error('Publish scheduled news error:', error);
+      return 0;
+    }
+
+    return data?.length || 0;
+  } catch (error) {
+    console.error('Publish scheduled news error:', error);
+    return 0;
   }
 };

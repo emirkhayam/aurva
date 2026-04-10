@@ -3,7 +3,29 @@ import { supabase } from '../config/supabase';
 
 const router = Router();
 
-// Получить все опубликованные курсы (публичный endpoint)
+/**
+ * @swagger
+ * /courses:
+ *   get:
+ *     summary: Получить все опубликованные курсы
+ *     tags: [Courses]
+ *     responses:
+ *       200:
+ *         description: Список опубликованных курсов
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Course'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.get('/', async (req: Request, res: Response) => {
   try {
     const { data: courses, error } = await supabase
@@ -28,7 +50,43 @@ router.get('/', async (req: Request, res: Response) => {
   }
 });
 
-// Получить курс по slug с модулями и уроками
+/**
+ * @swagger
+ * /courses/{slug}:
+ *   get:
+ *     summary: Получить курс по slug с модулями и уроками
+ *     tags: [Courses]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Slug курса
+ *     responses:
+ *       200:
+ *         description: Данные курса с модулями и уроками
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   allOf:
+ *                     - $ref: '#/components/schemas/Course'
+ *                     - type: object
+ *                       properties:
+ *                         modules:
+ *                           type: array
+ *                           items:
+ *                             type: object
+ *       404:
+ *         description: Курс не найден
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.get('/:slug', async (req: Request, res: Response) => {
   try {
     const { slug } = req.params;
@@ -113,7 +171,31 @@ router.get('/:slug', async (req: Request, res: Response) => {
 
 // ===== ADMIN ENDPOINTS =====
 
-// Получить все курсы (включая неопубликованные) - только для админов
+/**
+ * @swagger
+ * /courses/admin/all:
+ *   get:
+ *     summary: Получить все курсы включая неопубликованные (админ)
+ *     tags: [Courses]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Список всех курсов
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Course'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.get('/admin/all', async (req: Request, res: Response) => {
   try {
     const { data: courses, error } = await supabase
@@ -137,7 +219,51 @@ router.get('/admin/all', async (req: Request, res: Response) => {
   }
 });
 
-// Создать новый курс
+/**
+ * @swagger
+ * /courses:
+ *   post:
+ *     summary: Создать новый курс
+ *     tags: [Courses]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - slug
+ *             properties:
+ *               title:
+ *                 type: string
+ *               slug:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               image_url:
+ *                 type: string
+ *               is_published:
+ *                 type: boolean
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Курс создан
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Course'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.post('/', async (req: Request, res: Response) => {
   try {
     const courseData = req.body;
@@ -165,7 +291,55 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-// Обновить курс
+/**
+ * @swagger
+ * /courses/{id}:
+ *   put:
+ *     summary: Обновить курс
+ *     tags: [Courses]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID курса
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               slug:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               image_url:
+ *                 type: string
+ *               is_published:
+ *                 type: boolean
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Курс обновлен
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Course'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.put('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -195,7 +369,31 @@ router.put('/:id', async (req: Request, res: Response) => {
   }
 });
 
-// Удалить курс
+/**
+ * @swagger
+ * /courses/{id}:
+ *   delete:
+ *     summary: Удалить курс
+ *     tags: [Courses]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID курса
+ *     responses:
+ *       200:
+ *         description: Курс удален
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.delete('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -223,7 +421,40 @@ router.delete('/:id', async (req: Request, res: Response) => {
 
 // ===== MODULE ENDPOINTS =====
 
-// Создать модуль курса
+/**
+ * @swagger
+ * /courses/{courseId}/modules:
+ *   post:
+ *     summary: Создать модуль курса
+ *     tags: [Courses - Modules]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: courseId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID курса
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *             properties:
+ *               title:
+ *                 type: string
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Модуль создан
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.post('/:courseId/modules', async (req: Request, res: Response) => {
   try {
     const { courseId } = req.params;
@@ -252,7 +483,38 @@ router.post('/:courseId/modules', async (req: Request, res: Response) => {
   }
 });
 
-// Обновить модуль
+/**
+ * @swagger
+ * /courses/modules/{id}:
+ *   put:
+ *     summary: Обновить модуль
+ *     tags: [Courses - Modules]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID модуля
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Модуль обновлен
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.put('/modules/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -282,7 +544,31 @@ router.put('/modules/:id', async (req: Request, res: Response) => {
   }
 });
 
-// Удалить модуль
+/**
+ * @swagger
+ * /courses/modules/{id}:
+ *   delete:
+ *     summary: Удалить модуль
+ *     tags: [Courses - Modules]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID модуля
+ *     responses:
+ *       200:
+ *         description: Модуль удален
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.delete('/modules/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -310,7 +596,44 @@ router.delete('/modules/:id', async (req: Request, res: Response) => {
 
 // ===== LESSON ENDPOINTS =====
 
-// Создать урок
+/**
+ * @swagger
+ * /courses/modules/{moduleId}/lessons:
+ *   post:
+ *     summary: Создать урок в модуле
+ *     tags: [Courses - Lessons]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: moduleId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID модуля
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *             properties:
+ *               title:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               video_url:
+ *                 type: string
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Урок создан
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.post('/modules/:moduleId/lessons', async (req: Request, res: Response) => {
   try {
     const { moduleId } = req.params;
@@ -339,7 +662,42 @@ router.post('/modules/:moduleId/lessons', async (req: Request, res: Response) =>
   }
 });
 
-// Обновить урок
+/**
+ * @swagger
+ * /courses/lessons/{id}:
+ *   put:
+ *     summary: Обновить урок
+ *     tags: [Courses - Lessons]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID урока
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               video_url:
+ *                 type: string
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Урок обновлен
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.put('/lessons/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -369,7 +727,31 @@ router.put('/lessons/:id', async (req: Request, res: Response) => {
   }
 });
 
-// Удалить урок
+/**
+ * @swagger
+ * /courses/lessons/{id}:
+ *   delete:
+ *     summary: Удалить урок
+ *     tags: [Courses - Lessons]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID урока
+ *     responses:
+ *       200:
+ *         description: Урок удален
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.delete('/lessons/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -397,7 +779,44 @@ router.delete('/lessons/:id', async (req: Request, res: Response) => {
 
 // ===== MATERIAL ENDPOINTS =====
 
-// Создать материал
+/**
+ * @swagger
+ * /courses/lessons/{lessonId}/materials:
+ *   post:
+ *     summary: Создать материал для урока
+ *     tags: [Courses - Materials]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: lessonId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID урока
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *             properties:
+ *               title:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               type:
+ *                 type: string
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Материал создан
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.post('/lessons/:lessonId/materials', async (req: Request, res: Response) => {
   try {
     const { lessonId } = req.params;
@@ -426,7 +845,42 @@ router.post('/lessons/:lessonId/materials', async (req: Request, res: Response) 
   }
 });
 
-// Обновить материал
+/**
+ * @swagger
+ * /courses/materials/{id}:
+ *   put:
+ *     summary: Обновить материал
+ *     tags: [Courses - Materials]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID материала
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               type:
+ *                 type: string
+ *               order_index:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Материал обновлен
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.put('/materials/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -456,7 +910,31 @@ router.put('/materials/:id', async (req: Request, res: Response) => {
   }
 });
 
-// Удалить материал
+/**
+ * @swagger
+ * /courses/materials/{id}:
+ *   delete:
+ *     summary: Удалить материал
+ *     tags: [Courses - Materials]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID материала
+ *     responses:
+ *       200:
+ *         description: Материал удален
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       500:
+ *         description: Ошибка сервера
+ */
 router.delete('/materials/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

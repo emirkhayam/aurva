@@ -95,6 +95,9 @@ z-index: 0;
 ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
 
 /* Swiper Carousel Styles */
+.members-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
 .members-swiper, .partners-swiper, .news-swiper {
     padding-bottom: 60px !important;
     user-select: none;
@@ -158,7 +161,23 @@ z-index: 0;
         display: none;
     }
 }
-</style><!-- aura-ga4-start -->
+</style><style>
+/* SplitText animation */
+.split-text .split-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.split-text .split-char.split-space {
+    width: 0.3em;
+}
+.split-text.animate .split-char {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+<!-- aura-ga4-start -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -233,7 +252,7 @@ gtag('config', 'G-2M6V79H761');
         <div class="absolute -top-20 sm:-top-32 left-1/2 -translate-x-1/2 w-[90vw] sm:w-[600px] h-[200px] sm:h-[300px] blur-[80px] sm:blur-[100px] rounded-full pointer-events-none bg-[color:var(--accent)]/10"></div>
 
         <div class="flex-1 flex flex-col text-center h-full max-w-7xl mr-auto ml-auto relative items-center justify-center">
-            <div class="flex flex-col animate-on-scroll w-full max-w-5xl z-10 relative top--12 items-center">
+            <div class="flex flex-col animate-on-scroll w-full max-w-5xl z-10 relative -top-6 sm:-top-8 items-center">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
                     <span class="text-[10px] sm:text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[color:var(--text-subtle)]">
@@ -250,29 +269,26 @@ gtag('config', 'G-2M6V79H761');
                     </span>
                 </h1>
 
-                <p class="text-[color:var(--text)] text-base sm:text-lg md:text-xl font-normal tracking-tight mb-6 leading-tight bg-[color:var(--bg-card)]/70 backdrop-blur-sm rounded-lg px-4 py-2.5 shadow-[var(--shadow)] border border-[color:var(--border)]">
-                    Объединяем лидеров индустрии в Кыргызстане.
+                <p class="split-text font-display text-lg sm:text-2xl md:text-3xl font-medium uppercase tracking-tight mb-8 leading-tight text-[color:var(--text)]" data-split-text>
+                    ОБЪЕДИНЯЕМ ЛИДЕРОВ ИНДУСТРИИ В КЫРГЫЗСТАНЕ
                 </p>
 
-                <p class="text-sm sm:text-base md:text-lg text-gray-900 max-w-2xl mx-auto mb-8 leading-loose font-medium text-center px-2">
-                    Содействуем развитию безопасного, прозрачного и инновационного криптовалютного рынка. Платформа создана для выстраивания конструктивного диалога между государством, бизнесом и пользователями.
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 mb-8 sm:mb-16">
-                    <a href="#contact" class="cta-button w-full sm:w-auto px-10 py-4 bg-[color:var(--accent)] text-white text-base font-bold rounded-xl tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] shadow-lg focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative z-10">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 mt-6 sm:mt-10 mb-8 sm:mb-16">
+                    <a href="#contact" class="cta-button w-full sm:w-auto px-14 py-5 bg-[color:var(--accent)] text-white text-lg sm:text-xl font-bold rounded-2xl tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] hover:scale-105 hover:shadow-2xl hover:shadow-[color:var(--accent)]/30 shadow-lg focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative z-10">
                         Подать заявку
                     </a>
-                    <a href="#about" class="w-full sm:w-auto px-6 py-3 bg-[color:var(--bg-card)] text-[color:var(--text)] border border-[color:var(--border)] hover:bg-[color:var(--bg-card-hover)] text-sm font-medium rounded transition-all flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative overflow-hidden">
+                    <a href="#about" class="w-full sm:w-auto px-10 py-5 bg-[color:var(--bg-card)] text-[color:var(--text)] border border-[color:var(--border)] hover:bg-[color:var(--bg-card-hover)] hover:scale-105 hover:border-[color:var(--accent)]/40 hover:shadow-lg text-base sm:text-lg font-medium rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative overflow-hidden">
                         <span class="relative z-10">Изучить манифест</span>
+                        <i class="fa-solid fa-arrow-right relative z-10 transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="surface-seam" aria-hidden="true"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[color:var(--bg-main)] pointer-events-none z-[1]"></div>
     </main>
 
     <!-- About Section -->
-    <section id="about" class="section section--surface section-divider py-16 md:py-24 lg:py-32">
+    <section id="about" class="section section--surface py-16 md:py-24 lg:py-32">
         <div class="spotlight"></div>
         <div class="section-content max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -610,14 +626,6 @@ gtag('config', 'G-2M6V79H761');
                     <!-- Members loaded dynamically from API -->
                 </div>
 
-                <!-- Navigation buttons with Font Awesome icons -->
-                <div class="swiper-button-next">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-                <div class="swiper-button-prev">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </div>
-
                 <!-- Pagination dots -->
                 <div class="swiper-pagination"></div>
             </div>
@@ -638,7 +646,7 @@ gtag('config', 'G-2M6V79H761');
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 animate-on-scroll">
                 <div class="max-w-2xl">
                     <div class="mb-6">
-                        <img src="https://vtkyejkhezzktzguojbr.supabase.co/storage/v1/object/public/uploads/logos/aurva-logo.svg" alt="AURVA" class="h-16 w-auto">
+                        <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA" class="h-16 w-auto">
                     </div>
                     <h2 class="text-3xl md:text-5xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
                         Последние
@@ -847,11 +855,11 @@ gtag('config', 'G-2M6V79H761');
                         Связь с нами
                     </span>
                     <div class="flex flex-col gap-2.5 text-center md:text-left">
-                        <a href="mailto:aurva.kg@gmail.com" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                        <a id="footer-email" href="mailto:aurva.kg@gmail.com" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
                             <i class="fa-solid fa-envelope text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
                             <span>Email</span>
                         </a>
-                        <a href="tel:+996550999010" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                        <a id="footer-phone" href="tel:+996550999010" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
                             <i class="fa-solid fa-phone text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
                             <span>Телефон</span>
                         </a>
@@ -1240,9 +1248,9 @@ gtag('config', 'G-2M6V79H761');
                     }
                 },
 
-                // Autoplay
+                // Autoplay — бесконечная прокрутка
                 autoplay: {
-                    delay: 3000,
+                    delay: 0,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true
                 },
@@ -1250,8 +1258,10 @@ gtag('config', 'G-2M6V79H761');
                 // Loop
                 loop: true,
 
-                // Speed
-                speed: 600,
+                // Плавная непрерывная прокрутка
+                speed: 3000,
+                freeMode: true,
+                freeModeMomentum: false,
 
                 // Navigation
                 navigation: {
@@ -1281,14 +1291,61 @@ gtag('config', 'G-2M6V79H761');
             console.log('✨ Members Swiper carousel initialized with autoplay');
         }
 
+        // Load footer contact info from admin-managed settings
+        async function loadSettings() {
+            try {
+                const response = await fetch('/api/settings');
+                const data = await response.json();
+                const s = data.settings || data;
+                const email = s.contact_email;
+                const phone = s.contact_phone;
+                if (email) {
+                    const el = document.getElementById('footer-email');
+                    if (el) { el.href = 'mailto:' + email; el.querySelector('span').textContent = email; }
+                }
+                if (phone) {
+                    const el = document.getElementById('footer-phone');
+                    if (el) { el.href = 'tel:' + phone.replace(/[^+\d]/g, ''); el.querySelector('span').textContent = phone; }
+                }
+            } catch (e) { /* keep defaults */ }
+        }
+
         // Load content when page loads
         document.addEventListener('DOMContentLoaded', () => {
             loadNews();
             loadMembers();
+            loadSettings();
         });
     </script>
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- SplitText Animation -->
+    <script>
+    (function() {
+        document.querySelectorAll('[data-split-text]').forEach(function(el) {
+            var text = el.textContent.trim();
+            el.textContent = '';
+            for (var i = 0; i < text.length; i++) {
+                var span = document.createElement('span');
+                span.className = 'split-char' + (text[i] === ' ' ? ' split-space' : '');
+                span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+                span.style.transitionDelay = (i * 60) + 'ms';
+                el.appendChild(span);
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(el);
+        });
+    })();
+    </script>
 
 </body></html>

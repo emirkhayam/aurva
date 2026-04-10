@@ -235,8 +235,11 @@ body {
         </form>
         <div id="dev-quick-login" class="mt-4 pt-4 border-t border-dashed border-amber-300 bg-amber-50 -mx-8 -mb-8 px-8 pb-6 rounded-b-xl">
           <div class="text-xs font-medium text-amber-600 mb-2"><i class="fas fa-bolt mr-1"></i>Dev: быстрый вход</div>
-          <button id="dev-login-btn" onclick="quickDevLogin(this)" class="w-full py-2 px-4 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg transition-colors">
-            testuser@aurva.kg
+          <button id="dev-login-btn" onclick="quickDevLogin(this)" class="w-full py-2 px-4 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg transition-colors mb-2">
+            testuser@aurva.kg (клиент)
+          </button>
+          <button id="dev-admin-btn" onclick="quickAdminLogin(this)" class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors">
+            <i class="fas fa-shield-halved mr-1"></i> admin@aurva.kg (админка)
           </button>
         </div>
         <div class="mt-6 text-center text-sm text-[color:var(--text-subtle)]">
@@ -721,7 +724,39 @@ async function quickDevLogin(btn) {
   }
 }
 
-// Hide dev button in production
+// Quick admin login (dev only)
+async function quickAdminLogin(btn) {
+  if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Вход...'; }
+  try {
+    const res = await fetch(API + '/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'admin@aurva.kg', password: 'admin123' })
+    });
+    const data = await res.json();
+
+    if (data.error) { showToast(data.error, 'error'); return; }
+    if (!data.token) { showToast('Нет токена в ответе', 'error'); return; }
+
+    // Save in admin-panel format and redirect
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('refreshToken', data.refreshToken);
+    localStorage.setItem('user', JSON.stringify({
+      id: data.user.id,
+      email: data.user.email,
+      name: data.user.full_name || data.user.name || data.user.email,
+      role: data.user.role
+    }));
+    showToast('Перенаправление в админку...');
+    setTimeout(() => { window.location.href = '/admin'; }, 400);
+  } catch (err) {
+    showToast('Ошибка: ' + err.message, 'error');
+  } finally {
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-shield-halved mr-1"></i> admin@aurva.kg (админка)'; }
+  }
+}
+
+// Hide dev buttons in production
 if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   const devBtn = $('dev-quick-login');
   if (devBtn) devBtn.style.display = 'none';
@@ -751,6 +786,23 @@ async function handleLogin(e) {
     state.refreshToken = data.refreshToken;
     state.user = data.user;
     saveSession();
+
+    // If user is admin/moderator/editor — redirect to admin panel
+    const role = (data.user && data.user.role) ? data.user.role.toLowerCase() : 'client';
+    if (role === 'admin' || role === 'moderator' || role === 'editor') {
+      // Save tokens in admin-panel format so React app picks them up
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('user', JSON.stringify({
+        id: data.user.id,
+        email: data.user.email,
+        name: data.user.full_name || data.user.name || data.user.email,
+        role: data.user.role
+      }));
+      showToast('Перенаправление в панель управления...');
+      setTimeout(() => { window.location.href = '/admin'; }, 500);
+      return;
+    }
 
     showToast('Вход выполнен');
     initDashboard();

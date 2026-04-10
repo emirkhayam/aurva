@@ -16,6 +16,43 @@ export interface CabinetAuthRequest extends Request {
  * Middleware to authenticate cabinet (client) users via Supabase Auth JWT.
  * Checks client_profiles table instead of user_profiles.
  */
+/**
+ * Optional auth — sets req.clientUser if valid token present, but does NOT reject.
+ */
+export const optionalAuthClient = async (
+  req: CabinetAuthRequest,
+  _res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) { next(); return; }
+
+    const supabase = getSupabaseClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+    if (authError || !user) { next(); return; }
+
+    const { data: profile } = await supabase
+      .from('client_profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+
+    if (profile && profile.is_active) {
+      req.clientUser = {
+        id: user.id,
+        email: user.email || profile.email,
+        full_name: profile.full_name,
+        phone: profile.phone,
+        company_name: profile.company_name,
+        avatar_url: profile.avatar_url,
+      };
+    }
+  } catch {}
+  next();
+};
+
 export const authenticateClient = async (
   req: CabinetAuthRequest,
   res: Response,

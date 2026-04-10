@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import { checkSupabaseConnection } from './config/supabase';
 import logger from './utils/logger';
 import createApp from './app';
+import { startScheduler } from './utils/scheduler';
 
 // Load environment variables
 dotenv.config();
@@ -45,9 +46,15 @@ const startServer = async () => {
 ║   - Team:          http://localhost:${PORT}/api/team      ║
 ║   - Partners:      http://localhost:${PORT}/api/partners  ║
 ║   - Settings:      http://localhost:${PORT}/api/settings  ║
+║   - Search:        http://localhost:${PORT}/api/search    ║
+║   - Audit:         http://localhost:${PORT}/api/audit     ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
       `);
+
+      // Start content scheduler for scheduled publishing
+      startScheduler();
+      logger.info('📅 Content scheduler started (checking every 60s)');
     });
   } catch (error) {
     logger.error('❌ Failed to start server:', error);

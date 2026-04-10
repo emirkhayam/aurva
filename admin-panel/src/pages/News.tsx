@@ -4,6 +4,7 @@ import type { News as NewsType } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatDateTime } from '@/lib/utils';
@@ -194,11 +195,10 @@ export default function News() {
                 <label className="text-sm font-medium text-[rgb(var(--text))]">
                   Полный текст
                 </label>
-                <Textarea
+                <RichTextEditor
                   value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  rows={6}
-                  required
+                  onChange={setContent}
+                  placeholder="Введите текст новости..."
                 />
               </div>
 

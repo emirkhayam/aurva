@@ -162,9 +162,9 @@ export default function ClientCourses() {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4 flex-1">
-                      {course.image_url && (
+                      {course.thumbnail_url || course.image_url && (
                         <img
-                          src={course.image_url}
+                          src={course.thumbnail_url || course.image_url}
                           alt={course.title}
                           className="w-20 h-14 object-cover bg-[rgb(var(--bg-surface))] rounded"
                         />
@@ -172,10 +172,10 @@ export default function ClientCourses() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <CardTitle className="text-lg">{course.title}</CardTitle>
-                          {getStatusBadge(userCourse.status)}
+                          {getStatusBadge(userCourse.status || (userCourse.completed_at ? 'completed' : userCourse.started_at && (userCourse.progress_percentage ?? userCourse.progress_percent ?? 0) > 0 ? 'in_progress' : 'not_started'))}
                         </div>
                         <p className="text-sm text-[rgb(var(--text-muted))]">
-                          Назначен: {formatDateTime(userCourse.created_at)}
+                          Назначен: {formatDateTime(userCourse.created_at || userCourse.started_at || '')}
                         </p>
                         {userCourse.started_at && (
                           <p className="text-sm text-[rgb(var(--text-muted))]">
@@ -192,7 +192,7 @@ export default function ClientCourses() {
                     <div className="flex items-center gap-2">
                       <div className="text-right mr-4">
                         <div className="text-sm font-medium text-[rgb(var(--text))]">
-                          {userCourse.progress_percent}%
+                          {userCourse.progress_percentage ?? userCourse.progress_percent ?? 0}%
                         </div>
                         <div className="text-xs text-[rgb(var(--text-muted))]">прогресс</div>
                       </div>
@@ -237,9 +237,9 @@ export default function ClientCourses() {
                       className="flex items-center justify-between p-3 border border-[rgb(var(--border))] rounded-lg hover:bg-[rgb(var(--bg-surface))] transition-colors"
                     >
                       <div className="flex items-center gap-3 flex-1">
-                        {course.image_url && (
+                        {course.thumbnail_url || course.image_url && (
                           <img
-                            src={course.image_url}
+                            src={course.thumbnail_url || course.image_url}
                             alt={course.title}
                             className="w-12 h-8 object-cover bg-[rgb(var(--bg-surface))] rounded"
                           />

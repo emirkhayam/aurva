@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatDateTime } from '@/lib/utils';
-import { Trash2, RefreshCw } from 'lucide-react';
+import { Trash2, RefreshCw, Download, FileText } from 'lucide-react';
 import { toast } from 'sonner';
+import { exportToCSV, exportToPDF } from '@/lib/export';
 
 const statusLabels: Record<Contact['status'], string> = {
   new: 'Новая',
@@ -73,6 +74,27 @@ export default function Contacts() {
     ? contacts
     : contacts.filter((c) => c.status === filter);
 
+  const handleExportCSV = () => {
+    exportToCSV(filteredContacts, 'contacts', [
+      { key: 'name', label: 'Имя' },
+      { key: 'phone', label: 'Телефон' },
+      { key: 'status', label: 'Статус' },
+      { key: 'notes', label: 'Заметки' },
+      { key: 'createdAt', label: 'Дата' },
+    ]);
+    toast.success('CSV файл скачан');
+  };
+
+  const handleExportPDF = () => {
+    exportToPDF('Заявки', filteredContacts, [
+      { key: 'name', label: 'Имя' },
+      { key: 'phone', label: 'Телефон' },
+      { key: 'status', label: 'Статус' },
+      { key: 'notes', label: 'Заметки' },
+      { key: 'createdAt', label: 'Дата' },
+    ]);
+  };
+
   return (
     <div>
       <div className="flex justify-between items-start mb-8">
@@ -84,10 +106,20 @@ export default function Contacts() {
             Управление заявками от компаний
           </p>
         </div>
-        <Button onClick={loadContacts} variant="outline" size="sm">
-          <RefreshCw className="h-4 w-4 mr-2" />
-          Обновить
-        </Button>
+        <div className="flex gap-2">
+          <Button onClick={handleExportCSV} variant="outline" size="sm">
+            <Download className="h-4 w-4 mr-2" />
+            CSV
+          </Button>
+          <Button onClick={handleExportPDF} variant="outline" size="sm">
+            <FileText className="h-4 w-4 mr-2" />
+            PDF
+          </Button>
+          <Button onClick={loadContacts} variant="outline" size="sm">
+            <RefreshCw className="h-4 w-4 mr-2" />
+            Обновить
+          </Button>
+        </div>
       </div>
 
       {/* Filters */}

@@ -44,8 +44,17 @@ export const getTeamMembers = async (req: Request, res: Response): Promise<void>
       return;
     }
 
+    const mapped = (teamMembers || []).map((m: any) => ({
+      ...m,
+      photoUrl: m.photo_url,
+      displayOrder: m.display_order,
+      isActive: m.is_active,
+      createdAt: m.created_at,
+      updatedAt: m.updated_at,
+    }));
+
     res.json({
-      teamMembers: teamMembers || [],
+      teamMembers: mapped,
       pagination: {
         total: count || 0,
         page: pageNum,

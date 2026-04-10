@@ -92,6 +92,22 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-2M6V79H761');
 </script>
+<style>
+/* SplitText animation */
+.split-text .split-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.split-text .split-char.split-space {
+    width: 0.3em;
+}
+.split-text.animate .split-char {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
 <!-- aura-ga4-end --></head>
 <body class="antialiased overflow-x-hidden">
     <div class="noise-overlay"></div>
@@ -166,8 +182,8 @@ gtag('config', 'G-2M6V79H761');
                     </span>
                 </h1>
                 
-                <p class="text-[color:var(--text)] text-lg sm:text-xl font-normal tracking-tight mb-8 leading-tight bg-[color:var(--bg-card)]/70 backdrop-blur-sm rounded-lg px-4 py-3 shadow-[var(--shadow)] border border-[color:var(--border)]">
-                    Объединяем лидеров индустрии в Кыргызстане.
+                <p class="split-text text-[color:var(--text)] text-lg sm:text-xl font-normal tracking-tight mb-8 leading-tight bg-[color:var(--bg-card)]/70 backdrop-blur-sm rounded-lg px-4 py-3 shadow-[var(--shadow)] border border-[color:var(--border)]" data-split-text>
+                    ОБЪЕДИНЯЕМ ЛИДЕРОВ ИНДУСТРИИ В КЫРГЫЗСТАНЕ
                 </p>
 
                 <p class="text-sm sm:text-base text-[color:var(--text-muted)] max-w-2xl mx-auto mb-10 leading-relaxed font-light text-center">
@@ -1060,6 +1076,33 @@ gtag('config', 'G-2M6V79H761');
             loadNews();
             loadMembers();
         });
+    </script>
+
+    <!-- SplitText Animation -->
+    <script>
+    (function() {
+        document.querySelectorAll('[data-split-text]').forEach(function(el) {
+            var text = el.textContent.trim();
+            el.textContent = '';
+            for (var i = 0; i < text.length; i++) {
+                var span = document.createElement('span');
+                span.className = 'split-char' + (text[i] === ' ' ? ' split-space' : '');
+                span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+                span.style.transitionDelay = (i * 60) + 'ms';
+                el.appendChild(span);
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(el);
+        });
+    })();
     </script>
 
 </body></html>

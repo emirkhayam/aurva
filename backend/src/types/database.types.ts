@@ -288,6 +288,83 @@ export interface PartnerUpdate {
 }
 
 // =====================================================
+// QUIZZES
+// =====================================================
+
+export interface Quiz {
+  id: number;
+  lesson_id: number | null;
+  course_id: number | null;
+  title: string;
+  description: string | null;
+  passing_score: number;
+  max_attempts: number;
+  time_limit_minutes: number | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface QuizQuestion {
+  id: number;
+  quiz_id: number;
+  question_text: string;
+  question_type: 'single_choice' | 'multiple_choice' | 'true_false';
+  explanation: string | null;
+  order_index: number;
+  points: number;
+  created_at: string;
+}
+
+export interface QuizOption {
+  id: number;
+  question_id: number;
+  option_text: string;
+  is_correct: boolean;
+  order_index: number;
+}
+
+export interface UserQuizAttempt {
+  id: number;
+  user_id: string;
+  quiz_id: number;
+  score: number;
+  max_score: number;
+  passed: boolean;
+  answers: any[];
+  started_at: string;
+  completed_at: string | null;
+}
+
+// =====================================================
+// CERTIFICATES
+// =====================================================
+
+export interface Certificate {
+  id: number;
+  user_id: string;
+  course_id: number;
+  certificate_number: string;
+  issued_at: string;
+  pdf_url: string | null;
+}
+
+// =====================================================
+// USER LESSON PROGRESS
+// =====================================================
+
+export interface UserLessonProgress {
+  id: number;
+  user_id: string;
+  lesson_id: number;
+  is_completed: boolean;
+  completed_at: string | null;
+  last_watched_position: number;
+  created_at: string;
+  updated_at: string;
+}
+
+// =====================================================
 // DATABASE TYPE (for Supabase Client)
 // =====================================================
 
@@ -342,6 +419,42 @@ export interface Database {
         Update: PartnerUpdate;
         Relationships: [];
       };
+      quizzes: {
+        Row: Quiz;
+        Insert: Partial<Quiz> & { title: string };
+        Update: Partial<Quiz>;
+        Relationships: [];
+      };
+      quiz_questions: {
+        Row: QuizQuestion;
+        Insert: Partial<QuizQuestion> & { quiz_id: number; question_text: string };
+        Update: Partial<QuizQuestion>;
+        Relationships: [];
+      };
+      quiz_options: {
+        Row: QuizOption;
+        Insert: Partial<QuizOption> & { question_id: number; option_text: string };
+        Update: Partial<QuizOption>;
+        Relationships: [];
+      };
+      user_quiz_attempts: {
+        Row: UserQuizAttempt;
+        Insert: Partial<UserQuizAttempt> & { user_id: string; quiz_id: number };
+        Update: Partial<UserQuizAttempt>;
+        Relationships: [];
+      };
+      certificates: {
+        Row: Certificate;
+        Insert: Partial<Certificate> & { user_id: string; course_id: number; certificate_number: string };
+        Update: Partial<Certificate>;
+        Relationships: [];
+      };
+      user_lesson_progress: {
+        Row: UserLessonProgress;
+        Insert: Partial<UserLessonProgress> & { user_id: string; lesson_id: number };
+        Update: Partial<UserLessonProgress>;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
@@ -350,6 +463,7 @@ export interface Database {
       news_category: 'regulation' | 'events' | 'analytics' | 'other';
       contact_status: 'new' | 'contacted' | 'processed' | 'rejected';
       team_member_category: 'leadership' | 'council' | 'other';
+      question_type: 'single_choice' | 'multiple_choice' | 'true_false';
     };
   };
 }

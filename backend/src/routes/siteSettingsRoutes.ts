@@ -5,16 +5,53 @@ import { authenticateToken, requireAdminOrModerator } from '../middleware/auth';
 const router = Router();
 
 /**
- * @route   GET /api/settings
- * @desc    Get all site settings
- * @access  Public
+ * @swagger
+ * /settings:
+ *   get:
+ *     summary: Получить настройки сайта
+ *     tags: [Settings]
+ *     responses:
+ *       200:
+ *         description: Настройки сайта
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *       500:
+ *         description: Ошибка сервера
  */
 router.get('/', getSettings);
 
 /**
- * @route   PUT /api/settings
- * @desc    Update site settings
- * @access  Private (Admin/Moderator)
+ * @swagger
+ * /settings:
+ *   put:
+ *     summary: Обновить настройки сайта
+ *     tags: [Settings]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *     responses:
+ *       200:
+ *         description: Настройки обновлены
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       401:
+ *         description: Не авторизован
+ *       403:
+ *         description: Нет прав доступа
  */
 router.put('/', authenticateToken, requireAdminOrModerator, updateSettings);
 

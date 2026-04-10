@@ -11,11 +11,29 @@ interface AuthState {
   initializeAuth: () => void;
 }
 
+// Read localStorage synchronously at module load so the very first render
+// already knows whether the user is authenticated (avoids flash-redirect to /admin/login)
+function getInitialState() {
+  try {
+    const token = localStorage.getItem('token');
+    const refreshToken = localStorage.getItem('refreshToken');
+    const userStr = localStorage.getItem('user');
+    if (token && refreshToken && userStr) {
+      const user = JSON.parse(userStr) as User;
+      return { token, refreshToken, user, isAuthenticated: true };
+    }
+  } catch {
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
+  }
+  return { token: null, refreshToken: null, user: null, isAuthenticated: false };
+}
+
+const initial = getInitialState();
+
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
-  token: null,
-  refreshToken: null,
-  isAuthenticated: false,
+  ...initial,
 
   login: (token: string, refreshToken: string, user: User) => {
     localStorage.setItem('token', token);
@@ -32,6 +50,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   initializeAuth: () => {
+    // kept for backwards compat, but initial state is already set synchronously
     const token = localStorage.getItem('token');
     const refreshToken = localStorage.getItem('refreshToken');
     const userStr = localStorage.getItem('user');
@@ -41,7 +60,6 @@ export const useAuthStore = create<AuthState>((set) => ({
         const user = JSON.parse(userStr);
         set({ token, refreshToken, user, isAuthenticated: true });
       } catch (error) {
-        // Invalid stored data, clear it
         localStorage.removeItem('token');
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('user');

@@ -95,6 +95,7 @@ export interface Course {
   slug: string;
   description: string | null;
   image_url: string | null;
+  thumbnail_url: string | null;
   is_published: boolean;
   display_order: number;
   created_at: string;
@@ -117,15 +118,63 @@ export interface UserCourseProgress {
   id: number;
   user_id: string;
   course_id: number;
-  status: 'not_started' | 'in_progress' | 'completed';
-  progress_percent: number;
+  status?: 'not_started' | 'in_progress' | 'completed';
+  progress_percent?: number;
+  progress_percentage?: number;
   started_at: string | null;
   completed_at: string | null;
-  created_at: string;
-  updated_at: string;
+  last_accessed_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
   courses?: Course;
 }
 
 export interface ClientWithCourses extends ClientProfile {
   coursesCount?: number;
+}
+
+export interface Quiz {
+  id: number;
+  lesson_id: number | null;
+  course_id: number | null;
+  title: string;
+  description: string | null;
+  passing_score: number;
+  max_attempts: number;
+  time_limit_minutes: number | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+  questions?: QuizQuestion[];
+}
+
+export interface QuizQuestion {
+  id: number;
+  quiz_id: number;
+  question_text: string;
+  question_type: 'single_choice' | 'multiple_choice' | 'true_false';
+  explanation: string | null;
+  order_index: number;
+  points: number;
+  options?: QuizOption[];
+}
+
+export interface QuizOption {
+  id: number;
+  question_id: number;
+  option_text: string;
+  is_correct: boolean;
+  order_index: number;
+}
+
+export interface AuditLog {
+  id: number;
+  user_id: string | null;
+  user_email: string | null;
+  action: string;
+  entity_type: string;
+  entity_id: string | null;
+  details: Record<string, any>;
+  ip_address: string | null;
+  created_at: string;
 }

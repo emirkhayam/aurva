@@ -97,7 +97,37 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Load client profile
+    // Check user_profiles first (admin/moderator/editor)
+    const { data: adminProfile } = await supabase
+      .from('user_profiles')
+      .select('*')
+      .eq('id', data.user.id)
+      .single();
+
+    if (adminProfile && ['admin', 'moderator', 'editor'].includes(adminProfile.role)) {
+      await supabase
+        .from('user_profiles')
+        .update({ last_login: new Date().toISOString() })
+        .eq('id', data.user.id);
+
+      res.json({
+        message: 'Login successful',
+        token: data.session?.access_token,
+        refreshToken: data.session?.refresh_token,
+        user: {
+          id: data.user.id,
+          email: data.user.email,
+          full_name: adminProfile.name,
+          phone: null,
+          company_name: null,
+          avatar_url: null,
+          role: adminProfile.role,
+        }
+      });
+      return;
+    }
+
+    // Then check client_profiles
     const { data: profile, error: profileError } = await supabase
       .from('client_profiles')
       .select('*')
@@ -105,7 +135,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       .single();
 
     if (profileError || !profile) {
-      res.status(403).json({ error: 'Client profile not found. Are you registered as a client?' });
+      res.status(403).json({ error: 'Профиль не найден. Вы зарегистрированы?' });
       return;
     }
 
@@ -131,6 +161,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         phone: profile.phone,
         company_name: profile.company_name,
         avatar_url: profile.avatar_url,
+        role: 'client',
       }
     });
   } catch (error) {
@@ -304,10 +335,49 @@ export const changePassword = async (req: CabinetAuthRequest, res: Response): Pr
 
 // ==================== COURSES ====================
 
-export const getCourses = async (_req: Request, res: Response): Promise<void> => {
+export const getCourses = async (req: Request, res: Response): Promise<void> => {
   try {
     const supabase = getSupabaseClient();
+    const clientUser = (req as any).clientUser;
 
+    // If user is authenticated, return only their assigned courses
+    if (clientUser) {
+      const { data: assigned, error: assignError } = await supabase
+        .from('user_course_progress')
+        .select('course_id')
+        .eq('user_id', clientUser.id);
+
+      if (assignError) {
+        console.error('Get assigned courses error:', assignError);
+        res.status(500).json({ error: 'Failed to fetch courses' });
+        return;
+      }
+
+      const assignedIds = (assigned || []).map((a: any) => a.course_id);
+
+      if (assignedIds.length === 0) {
+        res.json({ courses: [] });
+        return;
+      }
+
+      const { data: courses, error } = await supabase
+        .from('courses')
+        .select('*')
+        .eq('is_published', true)
+        .in('id', assignedIds)
+        .order('order_index', { ascending: true });
+
+      if (error) {
+        console.error('Get courses error:', error);
+        res.status(500).json({ error: 'Failed to fetch courses' });
+        return;
+      }
+
+      res.json({ courses: courses || [] });
+      return;
+    }
+
+    // Not authenticated — return all published courses (catalog view)
     const { data: courses, error } = await supabase
       .from('courses')
       .select('*')

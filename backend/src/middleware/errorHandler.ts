@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import path from 'path';
 import logger from '../utils/logger';
 
 // Custom error class
@@ -70,6 +71,24 @@ export const errorHandler = (
 // 404 handler
 export const notFoundHandler = (req: Request, res: Response) => {
   logger.warn(`Route not found: ${req.method} ${req.url}`);
+
+  // Serve a branded HTML page to browsers; keep JSON for API/non-HTML clients.
+  const isApi = req.path.startsWith('/api');
+  const wantsHtml = req.method === 'GET' && !isApi && req.accepts(['html', 'json']) === 'html';
+
+  if (wantsHtml) {
+    return res
+      .status(404)
+      .sendFile(path.join(__dirname, '../../public/404.html'), (err) => {
+        if (err) {
+          res.status(404).json({
+            success: false,
+            error: `Cannot ${req.method} ${req.url}`,
+          });
+        }
+      });
+  }
+
   res.status(404).json({
     success: false,
     error: `Cannot ${req.method} ${req.url}`,

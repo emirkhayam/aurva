@@ -43,7 +43,7 @@ export default function Team() {
   const loadTeamMembers = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/team?limit=100');
+      const response = await api.get('/team?limit=100&isActive=all');
       const data = response.data.teamMembers || response.data.data || response.data;
       setTeamMembers(Array.isArray(data) ? data : []);
     } catch (error) {

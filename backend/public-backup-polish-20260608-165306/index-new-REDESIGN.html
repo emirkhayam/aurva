@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURVA — Ассоциация участников рынка виртуальных активов Кыргызстана</title>
+<link rel="icon" type="image/svg+xml" href="/uploads/aurva-logo.svg">
+<meta name="theme-color" content="#2563EB">
+<meta name="description" content="AURVA — Ассоциация участников рынка виртуальных активов Кыргызстана. Объединяем лидеров индустрии, государство и экспертов.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+      },
+      colors: {
+        brand: {
+          DEFAULT: '#2563EB',
+          dark: '#1D4ED8',
+          soft: '#EFF6FF',
+        },
+        ink: {
+          900: '#0F172A',
+          700: '#334155',
+          500: '#64748B',
+          400: '#94A3B8',
+        },
+        line: '#E2E8F0',
+        canvas: '#F8FAFC',
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(15,23,42,0.04), 0 12px 28px -8px rgba(15,23,42,0.10)',
+        cardHover: '0 8px 16px rgba(37,99,235,0.10), 0 20px 40px -12px rgba(15,23,42,0.18)',
+        soft: '0 1px 3px rgba(15,23,42,0.06)',
+      },
+      borderRadius: { xl2: '1.25rem' },
+    }
+  }
+}
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; color: #334155; background: #ffffff; }
+  h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .eyebrow { letter-spacing: .14em; }
+  ::selection { background: #2563EB; color: #fff; }
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  /* hero grid backdrop */
+  .grid-bg {
+    background-image: linear-gradient(rgba(37,99,235,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 35%, #000 40%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 70% at 70% 35%, #000 40%, transparent 75%);
+  }
+  .node-float { animation: float 6s ease-in-out infinite; }
+  .node-float.d1 { animation-delay: -1.5s; }
+  .node-float.d2 { animation-delay: -3s; }
+  .node-float.d3 { animation-delay: -4.5s; }
+  @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-8px) } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .node-float { animation: none !important; }
+  }
+  /* map placeholder */
+  .map-bg {
+    background:
+      radial-gradient(circle at 30% 40%, rgba(37,99,235,.06), transparent 40%),
+      repeating-linear-gradient(0deg, #eef2f7 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(90deg, #eef2f7 0 1px, transparent 1px 26px),
+      #f1f5f9;
+  }
+  :focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; border-radius: 4px; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAVBAR ============ -->
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-line">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a href="#hero" class="flex items-center gap-2.5 shrink-0" aria-label="AURVA — на главную">
+      <img src="/uploads/aurva-logo.svg" alt="AURVA" class="h-9 w-auto">
+    </a>
+    <ul class="hidden lg:flex items-center gap-7 text-sm font-medium text-ink-700">
+      <li><a href="#about" class="hover:text-brand transition">О нас</a></li>
+      <li><a href="#directions" class="hover:text-brand transition">Направления</a></li>
+      <li><a href="#members" class="hover:text-brand transition">Участники</a></li>
+      <li><a href="#news" class="hover:text-brand transition">Новости</a></li>
+      <li><a href="#roadmap" class="hover:text-brand transition">Мероприятия</a></li>
+      <li><a href="#contact" class="hover:text-brand transition">Контакты</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-soft transition-all hover:-translate-y-0.5">
+        Стать участником
+      </a>
+      <button id="burger" aria-label="Меню" class="lg:hidden w-10 h-10 grid place-items-center rounded-lg border border-line text-ink-700">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-ink-700">
+      <a href="#about" class="py-2.5 px-2 rounded-lg hover:bg-canvas">О нас</a>
+      <a href="#directions" class="py-2.5 px-2 rounded-lg hover:bg-canvas">Направления</a>
+      <a href="#members" class="py-2.5 px-2 rounded-lg hover:bg-canvas">Участники</a>
+      <a href="#news" class="py-2.5 px-2 rounded-lg hover:bg-canvas">Новости</a>
+      <a href="#roadmap" class="py-2.5 px-2 rounded-lg hover:bg-canvas">Мероприятия</a>
+      <a href="#contact" class="py-2.5 px-2 rounded-lg hover:bg-canvas">Контакты</a>
+      <a href="#contact" class="mt-2 text-center bg-brand text-white font-semibold px-5 py-3 rounded-xl">Стать участником</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative overflow-hidden bg-gradient-to-b from-canvas to-white">
+  <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-10 lg:pt-20 lg:pb-16 grid lg:grid-cols-2 gap-12 items-center">
+    <!-- left -->
+    <div class="reveal">
+      <span class="inline-flex items-center gap-2 text-xs font-semibold eyebrow uppercase text-brand bg-brand-soft px-3 py-1.5 rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Основана в 2024 году
+      </span>
+      <h1 class="mt-5 font-display font-extrabold text-ink-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight">
+        Ассоциация участников рынка <span class="text-brand">виртуальных активов</span> Кыргызстана
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-ink-500 max-w-xl leading-relaxed">
+        Объединяем лидеров индустрии, государство и экспертов для формирования прозрачного, устойчивого и инновационного рынка виртуальных активов.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3.5">
+        <a href="#contact" class="inline-flex justify-center items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold px-7 py-3.5 rounded-xl shadow-card transition-all hover:-translate-y-0.5">
+          Стать участником <i class="fa-solid fa-arrow-right text-sm"></i>
+        </a>
+        <a href="#members" class="inline-flex justify-center items-center gap-2 bg-white text-ink-900 font-semibold px-7 py-3.5 rounded-xl border border-line hover:border-brand/40 hover:bg-canvas transition-all">
+          Смотреть участников
+        </a>
+      </div>
+    </div>
+    <!-- right: ecosystem network -->
+    <div class="reveal relative h-[360px] sm:h-[440px] lg:h-[480px]" aria-hidden="true">
+      <!-- connectors -->
+      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 480 480" fill="none" preserveAspectRatio="xMidYMid meet">
+        <g stroke="#BFD3F5" stroke-width="1.5" stroke-dasharray="4 5">
+          <line x1="240" y1="240" x2="110" y2="90"/>
+          <line x1="240" y1="240" x2="380" y2="90"/>
+          <line x1="240" y1="240" x2="60" y2="250"/>
+          <line x1="240" y1="240" x2="420" y2="240"/>
+          <line x1="240" y1="240" x2="120" y2="400"/>
+          <line x1="240" y1="240" x2="370" y2="400"/>
+        </g>
+      </svg>
+      <!-- central hex -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 grid place-items-center">
+        <div class="w-28 h-28 bg-brand rounded-[28px] rotate-45 shadow-cardHover"></div>
+        <div class="absolute flex flex-col items-center text-white">
+          <i class="fa-solid fa-arrow-right-arrow-left text-xl"></i>
+          <span class="mt-1 text-xs font-semibold">Биржи</span>
+        </div>
+      </div>
+      <!-- nodes -->
+      <div class="node-float absolute left-[6%] top-[10%] bg-white rounded-xl shadow-card border border-line px-3.5 py-2.5 flex items-center gap-2.5">
+        <span class="w-8 h-8 grid place-items-center rounded-lg bg-brand-soft text-brand"><i class="fa-solid fa-right-left text-xs"></i></span>
+        <span class="text-xs font-semibold text-ink-900">Обмен</span>
+      </div>
+      <div class="node-float d1 absolute right-[4%] top-[8%] bg-white rounded-xl shadow-card border border-line px-3.5 py-2.5 flex items-center gap-2.5">
+        <span class="w-8 h-8 grid place-items-center rounded-lg bg-brand-soft text-brand"><i class="fa-solid fa-building-columns text-xs"></i></span>
+        <span class="text-xs font-semibold text-ink-900">Банки</span>
+      </div>
+      <div class="node-float d2 absolute left-[0%] top-[48%] bg-white rounded-xl shadow-card border border-line px-3.5 py-2.5 flex items-center gap-2.5">
+        <span class="w-8 h-8 grid place-items-center rounded-lg bg-brand-soft text-brand"><i class="fa-solid fa-wallet text-xs"></i></span>
+        <span class="text-xs font-semibold text-ink-900">Кошельки</span>
+      </div>
+      <div class="node-float d3 absolute right-[0%] top-[46%] bg-white rounded-xl shadow-card border border-line px-3.5 py-2.5 flex items-center gap-2.5">
+        <span class="w-8 h-8 grid place-items-center rounded-lg bg-brand-soft text-brand"><i class="fa-solid fa-graduation-cap text-xs"></i></span>
+        <span class="text-xs font-semibold text-ink-900">Образование</span>
+      </div>
+      <div class="node-float d1 absolute left-[10%] bottom-[6%] bg-white rounded-xl shadow-card border border-line px-3.5 py-2.5 flex items-center gap-2.5">
+        <span class="w-8 h-8 grid place-items-center rounded-lg bg-brand-soft text-brand"><i class="fa-solid fa-microchip text-xs"></i></span>
+        <span class="text-xs font-semibold text-ink-900">Майнинг</span>
+      </div>
+      <div class="node-float d2 absolute right-[8%] bottom-[5%] bg-white rounded-xl shadow-card border border-line px-3.5 py-2.5 flex items-center gap-2.5">
+        <span class="w-8 h-8 grid place-items-center rounded-lg bg-brand-soft text-brand"><i class="fa-solid fa-chart-line text-xs"></i></span>
+        <span class="text-xs font-semibold text-ink-900">Инвестиции</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- stats band -->
+  <div class="relative border-t border-line bg-white/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+      <div class="reveal"><div class="font-display font-extrabold text-3xl sm:text-4xl text-brand" data-count="25" data-suffix="+">0</div><p class="mt-1 text-xs sm:text-sm text-ink-500">компаний-участников</p></div>
+      <div class="reveal"><div class="font-display font-extrabold text-3xl sm:text-4xl text-brand" data-count="10" data-suffix="+">0</div><p class="mt-1 text-xs sm:text-sm text-ink-500">международных партнёров</p></div>
+      <div class="reveal"><div class="font-display font-extrabold text-3xl sm:text-4xl text-brand" data-count="50" data-suffix="+">0</div><p class="mt-1 text-xs sm:text-sm text-ink-500">медийных выходов</p></div>
+      <div class="reveal"><div class="font-display font-extrabold text-3xl sm:text-4xl text-brand" data-count="100" data-suffix="+">0</div><p class="mt-1 text-xs sm:text-sm text-ink-500">экспертов рынка</p></div>
+      <div class="reveal col-span-2 sm:col-span-1"><div class="font-display font-extrabold text-3xl sm:text-4xl text-brand" data-count="2" data-suffix="">0</div><p class="mt-1 text-xs sm:text-sm text-ink-500">года активной работы</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <span class="text-xs font-semibold eyebrow uppercase text-brand">Об ассоциации</span>
+      <h2 class="mt-3 font-display font-extrabold text-ink-900 text-3xl sm:text-4xl leading-tight">
+        Двигатель прогресса <span class="text-brand">цифровой экономики</span>
+      </h2>
+      <p class="mt-5 text-ink-500 leading-relaxed">
+        AURVA — независимое объединение участников рынка виртуальных активов, площадка для развития отрасли, защиты интересов бизнеса и формирования современной правовой среды в Кыргызской Республике.
+      </p>
+      <p class="mt-4 text-ink-500 leading-relaxed">
+        Мы работаем над тем, чтобы создать прозрачные и понятные правила игры для всех участников рынка — от стартапов до институциональных игроков.
+      </p>
+      <a href="#directions" class="mt-6 inline-flex items-center gap-2 text-brand font-semibold hover:gap-3 transition-all">
+        Подробнее об ассоциации <i class="fa-solid fa-arrow-right text-sm"></i>
+      </a>
+    </div>
+    <div class="reveal relative rounded-xl2 overflow-hidden shadow-card border border-line">
+      <img src="/uploads/news/decentral-asia-forum-2025-1772632436668.jpeg" alt="Мероприятие AURVA" class="w-full h-[300px] sm:h-[360px] object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink-900/45 to-transparent"></div>
+      <div class="absolute left-5 bottom-5 right-5 text-white">
+        <img src="/uploads/aurva-logo.svg" alt="" class="h-8 w-auto mb-2 brightness-0 invert">
+        <p class="text-sm font-medium opacity-90">Форумы, конференции и диалог с регулятором</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIRECTIONS ============ -->
+<section id="directions" class="py-16 lg:py-24 bg-canvas border-y border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center max-w-2xl mx-auto">
+      <span class="text-xs font-semibold eyebrow uppercase text-brand">Направления деятельности</span>
+      <h2 class="mt-3 font-display font-extrabold text-ink-900 text-3xl sm:text-4xl">Направления нашей <span class="text-brand">работы</span></h2>
+      <p class="mt-4 text-ink-500">Четыре ключевых вектора, формирующих фундамент цифровой индустрии виртуальных активов.</p>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- card -->
+      <div class="reveal group bg-white rounded-xl2 border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1 p-6">
+        <div class="w-12 h-12 grid place-items-center rounded-xl bg-brand text-white shadow-soft"><i class="fa-solid fa-landmark text-lg"></i></div>
+        <h3 class="mt-5 font-display font-bold text-ink-900 text-lg leading-snug">Регулирование и законотворчество</h3>
+        <p class="mt-2.5 text-sm text-ink-500 leading-relaxed">Содействуем созданию прозрачной и сбалансированной нормативной базы для развития рынка.</p>
+        <span class="mt-5 inline-flex w-9 h-9 items-center justify-center rounded-lg bg-brand-soft text-brand group-hover:bg-brand group-hover:text-white transition-all"><i class="fa-solid fa-arrow-right text-sm"></i></span>
+      </div>
+      <div class="reveal group bg-white rounded-xl2 border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1 p-6">
+        <div class="w-12 h-12 grid place-items-center rounded-xl bg-brand text-white shadow-soft"><i class="fa-solid fa-graduation-cap text-lg"></i></div>
+        <h3 class="mt-5 font-display font-bold text-ink-900 text-lg leading-snug">Образование и развитие кадров</h3>
+        <p class="mt-2.5 text-sm text-ink-500 leading-relaxed">Повышаем уровень знаний о блокчейне и цифровых активах через программы и мероприятия.</p>
+        <span class="mt-5 inline-flex w-9 h-9 items-center justify-center rounded-lg bg-brand-soft text-brand group-hover:bg-brand group-hover:text-white transition-all"><i class="fa-solid fa-arrow-right text-sm"></i></span>
+      </div>
+      <div class="reveal group bg-white rounded-xl2 border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1 p-6">
+        <div class="w-12 h-12 grid place-items-center rounded-xl bg-brand text-white shadow-soft"><i class="fa-solid fa-globe text-lg"></i></div>
+        <h3 class="mt-5 font-display font-bold text-ink-900 text-lg leading-snug">Международное сотрудничество</h3>
+        <p class="mt-2.5 text-sm text-ink-500 leading-relaxed">Укрепляем связи с зарубежными организациями и продвигаем интересы рынка на мировой арене.</p>
+        <span class="mt-5 inline-flex w-9 h-9 items-center justify-center rounded-lg bg-brand-soft text-brand group-hover:bg-brand group-hover:text-white transition-all"><i class="fa-solid fa-arrow-right text-sm"></i></span>
+      </div>
+      <div class="reveal group bg-white rounded-xl2 border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1 p-6">
+        <div class="w-12 h-12 grid place-items-center rounded-xl bg-brand text-white shadow-soft"><i class="fa-solid fa-chart-line text-lg"></i></div>
+        <h3 class="mt-5 font-display font-bold text-ink-900 text-lg leading-snug">Развитие индустрии</h3>
+        <p class="mt-2.5 text-sm text-ink-500 leading-relaxed">Поддерживаем инновации, стартапы и инфраструктурные проекты в сфере виртуальных активов.</p>
+        <span class="mt-5 inline-flex w-9 h-9 items-center justify-center rounded-lg bg-brand-soft text-brand group-hover:bg-brand group-hover:text-white transition-all"><i class="fa-solid fa-arrow-right text-sm"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEMBERS / LOGOS ============ -->
+<section id="members" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center max-w-2xl mx-auto">
+      <span class="text-xs font-semibold eyebrow uppercase text-brand">Участники ассоциации</span>
+      <h2 class="mt-3 font-display font-extrabold text-ink-900 text-3xl sm:text-4xl">Нас уже выбрали <span class="text-brand">лидеры рынка</span></h2>
+    </div>
+    <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4" id="logoGrid">
+      <!-- logos injected -->
+    </div>
+    <div class="mt-10 text-center">
+      <a href="#contact" class="inline-flex items-center gap-2 text-brand font-semibold hover:gap-3 transition-all">Смотреть всех участников <i class="fa-solid fa-arrow-right text-sm"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP / TIMELINE ============ -->
+<section id="roadmap" class="py-16 lg:py-24 bg-canvas border-y border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center max-w-2xl mx-auto">
+      <span class="text-xs font-semibold eyebrow uppercase text-brand">Наш путь</span>
+      <h2 class="mt-3 font-display font-extrabold text-ink-900 text-3xl sm:text-4xl">Развиваем рынок <span class="text-brand">вместе</span></h2>
+    </div>
+    <div class="mt-14 relative">
+      <div class="hidden lg:block absolute left-0 right-0 top-2 h-px bg-line"></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-5">
+        <div class="reveal relative">
+          <div class="w-4 h-4 rounded-full bg-brand ring-4 ring-brand-soft"></div>
+          <div class="mt-5 font-display font-extrabold text-brand text-2xl">2022</div>
+          <h3 class="mt-2 font-bold text-ink-900">Основание АУРВА</h3>
+          <p class="mt-1.5 text-sm text-ink-500 leading-relaxed">Формирование инициативной группы участников рынка.</p>
+        </div>
+        <div class="reveal relative">
+          <div class="w-4 h-4 rounded-full bg-brand ring-4 ring-brand-soft"></div>
+          <div class="mt-5 font-display font-extrabold text-brand text-2xl">2023</div>
+          <h3 class="mt-2 font-bold text-ink-900">Первые инициативы</h3>
+          <p class="mt-1.5 text-sm text-ink-500 leading-relaxed">Диалог с регулятором и запуск образовательных программ.</p>
+        </div>
+        <div class="reveal relative">
+          <div class="w-4 h-4 rounded-full bg-brand ring-4 ring-brand-soft"></div>
+          <div class="mt-5 font-display font-extrabold text-brand text-2xl">2024</div>
+          <h3 class="mt-2 font-bold text-ink-900">Рост и развитие</h3>
+          <p class="mt-1.5 text-sm text-ink-500 leading-relaxed">Увеличение числа участников и партнёрских проектов.</p>
+        </div>
+        <div class="reveal relative">
+          <div class="w-4 h-4 rounded-full bg-brand ring-4 ring-brand-soft"></div>
+          <div class="mt-5 font-display font-extrabold text-brand text-2xl">2025</div>
+          <h3 class="mt-2 font-bold text-ink-900">Международное признание</h3>
+          <p class="mt-1.5 text-sm text-ink-500 leading-relaxed">Участие в международных и глобальных форумах.</p>
+        </div>
+        <div class="reveal relative">
+          <div class="w-4 h-4 rounded-full bg-white border-2 border-brand ring-4 ring-brand-soft"></div>
+          <div class="mt-5 font-display font-extrabold text-brand text-2xl">2026</div>
+          <h3 class="mt-2 font-bold text-ink-900">Новый горизонт</h3>
+          <p class="mt-1.5 text-sm text-ink-500 leading-relaxed">Запуск масштабных инициатив развития рынка.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section id="news" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <span class="text-xs font-semibold eyebrow uppercase text-brand">Новости и события</span>
+        <h2 class="mt-3 font-display font-extrabold text-ink-900 text-3xl sm:text-4xl">Будьте в курсе последних <span class="text-brand">новостей</span></h2>
+      </div>
+      <a href="/news.html" class="inline-flex items-center gap-2 text-brand font-semibold hover:gap-3 transition-all">Все новости <i class="fa-solid fa-arrow-right text-sm"></i></a>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <article class="reveal group bg-white rounded-xl2 overflow-hidden border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1">
+        <div class="aspect-[16/10] overflow-hidden"><img src="/uploads/news/decentral-asia-forum-2025-1772632436668.jpeg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+        <div class="p-6">
+          <div class="text-xs text-ink-400 font-medium">2025</div>
+          <h3 class="mt-2 font-display font-bold text-ink-900 leading-snug">AURVA на Decentral Asia Forum 2025</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed line-clamp-2">Ассоциация приняла участие в крупнейшем блокчейн-форуме региона.</p>
+          <a href="/news.html" class="mt-4 inline-flex items-center gap-2 text-brand text-sm font-semibold hover:gap-3 transition-all">Подробнее <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        </div>
+      </article>
+      <article class="reveal group bg-white rounded-xl2 overflow-hidden border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1">
+        <div class="aspect-[16/10] overflow-hidden"><img src="/uploads/news/аурва-на-digital-kyrgyzstan-2025-1772632594482.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+        <div class="p-6">
+          <div class="text-xs text-ink-400 font-medium">2025</div>
+          <h3 class="mt-2 font-display font-bold text-ink-900 leading-snug">АУРВА на Digital Kyrgyzstan 2025</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed line-clamp-2">Обсуждение ключевых вопросов цифровой трансформации рынка.</p>
+          <a href="/news.html" class="mt-4 inline-flex items-center gap-2 text-brand text-sm font-semibold hover:gap-3 transition-all">Подробнее <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        </div>
+      </article>
+      <article class="reveal group bg-white rounded-xl2 overflow-hidden border border-line shadow-card hover:shadow-cardHover transition-all hover:-translate-y-1">
+        <div class="aspect-[16/10] overflow-hidden"><img src="/uploads/news/встреча-знакомство-с-председателем-ассоциации-виртуальных-активов-1772632644005.jpeg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+        <div class="p-6">
+          <div class="text-xs text-ink-400 font-medium">2025</div>
+          <h3 class="mt-2 font-display font-bold text-ink-900 leading-snug">Встреча с председателем ассоциации</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed line-clamp-2">Знакомство и обсуждение приоритетов развития индустрии.</p>
+          <a href="/news.html" class="mt-4 inline-flex items-center gap-2 text-brand text-sm font-semibold hover:gap-3 transition-all">Подробнее <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="py-16 lg:py-24 bg-canvas border-t border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="reveal max-w-2xl">
+      <span class="text-xs font-semibold eyebrow uppercase text-brand">Свяжитесь с нами</span>
+      <h2 class="mt-3 font-display font-extrabold text-ink-900 text-3xl sm:text-4xl">Давайте работать <span class="text-brand">вместе</span></h2>
+      <p class="mt-4 text-ink-500">Готовы стать участником ассоциации или у вас есть вопросы? Напишите нам — мы на связи.</p>
+    </div>
+    <div class="mt-12 grid lg:grid-cols-12 gap-6">
+      <!-- info -->
+      <div class="lg:col-span-4 reveal space-y-4">
+        <a href="#" class="flex items-start gap-4 bg-white rounded-xl2 border border-line shadow-soft p-5">
+          <span class="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-brand text-white"><i class="fa-solid fa-location-dot"></i></span>
+          <div><div class="text-xs text-ink-400 font-medium">Адрес</div><div class="text-sm font-semibold text-ink-900">Кыргызская Республика,<br>г. Бишкек</div></div>
+        </a>
+        <a href="tel:+996550999010" class="flex items-start gap-4 bg-white rounded-xl2 border border-line shadow-soft p-5 hover:border-brand/40 transition">
+          <span class="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-brand text-white"><i class="fa-solid fa-phone"></i></span>
+          <div><div class="text-xs text-ink-400 font-medium">Телефон</div><div class="text-sm font-semibold text-ink-900">+996 550 99 90 10</div></div>
+        </a>
+        <a href="mailto:aurva.kg@gmail.com" class="flex items-start gap-4 bg-white rounded-xl2 border border-line shadow-soft p-5 hover:border-brand/40 transition">
+          <span class="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-brand text-white"><i class="fa-solid fa-envelope"></i></span>
+          <div><div class="text-xs text-ink-400 font-medium">Email</div><div class="text-sm font-semibold text-ink-900">aurva.kg@gmail.com</div></div>
+        </a>
+      </div>
+      <!-- map -->
+      <div class="lg:col-span-4 reveal rounded-xl2 overflow-hidden border border-line shadow-soft map-bg relative min-h-[260px] grid place-items-center">
+        <div class="text-center">
+          <div class="mx-auto w-12 h-12 grid place-items-center rounded-full bg-brand text-white shadow-cardHover animate-bounce"><i class="fa-solid fa-location-dot text-lg"></i></div>
+          <p class="mt-3 text-sm font-semibold text-ink-700">г. Бишкек</p>
+          <p class="text-xs text-ink-400">Кыргызская Республика</p>
+        </div>
+      </div>
+      <!-- form -->
+      <form class="lg:col-span-4 reveal bg-white rounded-xl2 border border-line shadow-card p-6 space-y-4" id="contactForm">
+        <div>
+          <label for="cName" class="block text-sm font-medium text-ink-700 mb-1.5">Ваше имя</label>
+          <input id="cName" name="name" required class="w-full bg-canvas border border-line rounded-xl px-4 py-3 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand/25 focus:border-brand transition" placeholder="Имя">
+        </div>
+        <div>
+          <label for="cEmail" class="block text-sm font-medium text-ink-700 mb-1.5">Email</label>
+          <input id="cEmail" name="email" type="email" required class="w-full bg-canvas border border-line rounded-xl px-4 py-3 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand/25 focus:border-brand transition" placeholder="you@company.kg">
+        </div>
+        <div>
+          <label for="cMsg" class="block text-sm font-medium text-ink-700 mb-1.5">Сообщение</label>
+          <textarea id="cMsg" name="message" rows="4" required class="w-full bg-canvas border border-line rounded-xl px-4 py-3 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand/25 focus:border-brand transition resize-none" placeholder="Расскажите, чем мы можем помочь"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-semibold py-3.5 rounded-xl shadow-card transition-all hover:-translate-y-0.5">Отправить сообщение</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="/uploads/aurva-logo.svg" alt="AURVA — Ассоциация участников рынка виртуальных активов" class="h-11 w-auto">
+    </div>
+    <p class="text-xs text-ink-400 order-3 md:order-2 text-center">© 2026 АУРВА. Все права защищены.</p>
+    <div class="flex items-center gap-5 order-2 md:order-3">
+      <a href="/privacy.html" class="text-xs text-ink-500 hover:text-brand transition">Политика конфиденциальности</a>
+      <div class="flex items-center gap-2">
+        <a href="#" aria-label="Telegram" class="w-9 h-9 grid place-items-center rounded-lg bg-canvas text-ink-500 hover:bg-brand hover:text-white transition"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" aria-label="LinkedIn" class="w-9 h-9 grid place-items-center rounded-lg bg-canvas text-ink-500 hover:bg-brand hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // animated counters
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1200; const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countIO.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+  // member logos (text-mark cards approximating real members)
+  const members = [
+    {n:'salex', i:'fa-bolt'}, {n:'MERKEE', i:'fa-xmark'}, {n:'Token Finance', i:'fa-coins'},
+    {n:'Pay24', i:'fa-credit-card'}, {n:'FINCA Bank', i:'fa-building-columns'}, {n:'BitCentral', i:'fa-bitcoin-sign'},
+    {n:'currency.com', i:'fa-circle-dollar-to-slot'}, {n:'Coindeal', i:'fa-handshake'}, {n:'O! Wallet', i:'fa-wallet'},
+    {n:'Binance KZ', i:'fa-b'}, {n:'AML Kyrgyzstan', i:'fa-shield-halved'}, {n:'JUSAN', i:'fa-landmark'}
+  ];
+  const grid = document.getElementById('logoGrid');
+  if (grid) grid.innerHTML = members.map(m => `
+    <div class="reveal in flex items-center justify-center gap-2.5 bg-white rounded-xl border border-line shadow-soft px-4 py-5 hover:shadow-card hover:-translate-y-0.5 transition-all">
+      <i class="fa-solid ${m.i} text-brand text-lg"></i>
+      <span class="font-semibold text-ink-700 text-sm whitespace-nowrap">${m.n}</span>
+    </div>`).join('');
+
+  // contact form (demo)
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.textContent = 'Отправлено ✓'; btn.disabled = true; btn.classList.add('opacity-80');
+    setTimeout(() => { e.target.reset(); btn.textContent = 'Отправить сообщение'; btn.disabled = false; btn.classList.remove('opacity-80'); }, 2500);
+  });
+</script>
+</body>
+</html>

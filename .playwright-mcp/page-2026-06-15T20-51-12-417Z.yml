@@ -1,0 +1,8 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - text: logo.svg (full) @120px
+    - img [ref=e3]
+  - generic [ref=e4]:
+    - text: logo-dark.svg @120px
+    - img [ref=e5]
+  - generic [ref=e6]: full viewBox 0 0 783 244

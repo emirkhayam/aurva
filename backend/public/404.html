@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена — AURVA</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <meta name="theme-color" content="#2563EB">
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+// Apply saved/system theme before paint (no flash of wrong theme)
+(function () {
+  try {
+    var saved = localStorage.getItem('aurva-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+  } catch (e) {}
+})();
+</script>
+<style id="aurva-dark-theme">
+html.dark {
+--bg-main: #0B1120;
+--bg-surface: #131C2E;
+--bg-card: #1A2235;
+--bg-card-hover: #222C42;
+--border: #2A3651;
+--shadow: 0 1px 2px rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.55);
+--text: #F1F5F9;
+--text-muted: #CBD5E1;
+--text-subtle: #94A3B8;
+--accent: #3B82F6;
+--accent-hover: #60A5FA;
+--accent-soft: #1C2740;
+}
+html.dark body { background-color: var(--bg-main); }
+.theme-anim, .theme-anim *, .theme-anim *::before, .theme-anim *::after {
+transition: background-color .35s ease, color .35s ease, border-color .35s ease, fill .35s ease, box-shadow .35s ease !important;
+}
+.theme-icon-dark { display: none; }
+html.dark .theme-icon-dark { display: inline-block; }
+html.dark .theme-icon-light { display: none; }
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #F4F6F8;
+            --bg-card: #FFFFFF;
+            --border: #D9DEE3;
+            --text: #0F172A;
+            --text-muted: #475569;
+            --text-subtle: #64748B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+        }
+        .font-display { font-family: 'Oswald', sans-serif; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="w-full bg-[color:var(--bg-card)]/90 backdrop-blur-md border-b border-[color:var(--border)]">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <a href="/" class="inline-flex items-center" aria-label="AURVA — на главную">
+                <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA" class="h-10 w-auto object-contain">
+            </a>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 flex items-center justify-center px-6 py-16">
+        <div class="text-center max-w-xl">
+            <p class="font-display text-7xl md:text-8xl font-semibold text-[color:var(--accent)] mb-6">404</p>
+            <h1 class="text-2xl md:text-3xl font-display font-medium text-[color:var(--text)] uppercase tracking-tight mb-4">
+                Страница не найдена
+            </h1>
+            <p class="text-sm leading-relaxed mb-2">
+                К сожалению, запрошенная страница не существует или была перемещена.
+            </p>
+            <p class="text-sm leading-relaxed mb-10">
+                Проверьте адрес или вернитесь на главную.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="/" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[color:var(--accent)] text-white text-sm font-semibold rounded-xl hover:bg-[color:var(--accent-hover)] transition-colors shadow-lg">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
+                    На главную
+                </a>
+                <a href="/news" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[color:var(--bg-card)] text-[color:var(--text)] border border-[color:var(--border)] text-sm font-medium rounded-xl hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition-colors">
+                    <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
+                    Новости
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[color:var(--text)] py-6">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="text-xs text-slate-400">
+                © 2024 AURVA. Ассоциация Участников Рынка Виртуальных Активов Кыргызстана
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

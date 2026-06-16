@@ -90,8 +90,15 @@ export const getContacts = async (req: any, res: Response): Promise<void> => {
       return;
     }
 
+    // Expose camelCase aliases for the admin panel
+    const mapped = (contacts || []).map((m: any) => ({
+      ...m,
+      createdAt: m.created_at,
+      updatedAt: m.updated_at,
+    }));
+
     res.json({
-      contacts: contacts || [],
+      contacts: mapped,
       pagination: {
         total: count || 0,
         page: pageNum,

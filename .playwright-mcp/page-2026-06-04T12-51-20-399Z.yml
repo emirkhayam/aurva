@@ -1,0 +1,83 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Главная навигация" [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Логотип AURVA" [ref=e6]
+      - generic [ref=e7]:
+        - link "О нас" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e9] [cursor=pointer]:
+          - /url: /#directions
+        - link "Преимущества" [ref=e10] [cursor=pointer]:
+          - /url: /#benefits
+        - link "Новости" [ref=e11] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e12] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e13]:
+        - link "Кабинет" [ref=e14] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e15]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e17] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Новости
+        - heading "Все новости" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
+      - status [ref=e24]:
+        - paragraph [ref=e26]: Загрузка новостей...
+  - contentinfo [ref=e27]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - img "Логотип AURVA" [ref=e31]
+          - paragraph [ref=e32]: Ассоциация Участников Рынка Виртуальных Активов Кыргызской Республики.
+        - generic [ref=e33]:
+          - heading "Связь с нами" [level=2] [ref=e34]
+          - list [ref=e35]:
+            - listitem [ref=e36]:
+              - link "aurva.kg@gmail.com" [ref=e37] [cursor=pointer]:
+                - /url: mailto:aurva.kg@gmail.com
+                - img [ref=e38]
+                - generic [ref=e40]: aurva.kg@gmail.com
+            - listitem [ref=e41]:
+              - link "+996 550 99 90 10" [ref=e42] [cursor=pointer]:
+                - /url: tel:+996550999010
+                - img [ref=e43]
+                - generic [ref=e45]: +996 550 99 90 10
+            - listitem [ref=e46]:
+              - generic [ref=e47]: Ассоциация активна · Основано в 2024
+        - generic [ref=e49]:
+          - heading "Навигация" [level=2] [ref=e50]
+          - list [ref=e51]:
+            - listitem [ref=e52]:
+              - link "О нас" [ref=e53] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e54]:
+              - link "Направления" [ref=e55] [cursor=pointer]:
+                - /url: /#directions
+            - listitem [ref=e56]:
+              - link "Преимущества" [ref=e57] [cursor=pointer]:
+                - /url: /#benefits
+            - listitem [ref=e58]:
+              - link "Участники" [ref=e59] [cursor=pointer]:
+                - /url: /#members
+            - listitem [ref=e60]:
+              - link "Новости" [ref=e61] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e62]:
+              - link "Курсы" [ref=e63] [cursor=pointer]:
+                - /url: /courses
+      - generic [ref=e64]:
+        - paragraph [ref=e65]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e66]:
+          - link "Политика конфиденциальности" [ref=e67] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e68] [cursor=pointer]:
+            - /url: /charter

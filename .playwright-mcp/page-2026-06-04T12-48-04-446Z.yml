@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Главная навигация" [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Логотип AURVA" [ref=e6]
+      - generic [ref=e7]:
+        - link "О нас" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e9] [cursor=pointer]:
+          - /url: /#directions
+        - link "Преимущества" [ref=e10] [cursor=pointer]:
+          - /url: /#benefits
+        - link "Новости" [ref=e11] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e12] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e13]:
+        - link "Кабинет" [ref=e14] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e15]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e17] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Образование
+        - heading "Курсы" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Профильные обучающие программы ассоциации для повышения квалификации специалистов рынка виртуальных активов.
+      - generic [ref=e24]:
+        - 'button "Открыть курс: Информационное взаимодействие с ГСФР (Предоставление информации в ГСФР)" [ref=e25] [cursor=pointer]':
+          - heading "Информационное взаимодействие с ГСФР (Предоставление информации в ГСФР)" [level=2] [ref=e26]
+          - paragraph [ref=e27]: Обзор ЗЭКС и АРМ для взаимодействия с ГСФР
+          - generic [ref=e28]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - text: ~30 минут
+            - generic [ref=e32]:
+              - img [ref=e33]
+              - text: Доступен
+        - 'button "Открыть курс: Установка и настройка защищённого электронного канала связи" [ref=e35] [cursor=pointer]':
+          - heading "Установка и настройка защищённого электронного канала связи" [level=2] [ref=e36]
+          - paragraph [ref=e37]: Установка VPN и Outlook для работы с ЗЭКС
+          - generic [ref=e38]:
+            - generic [ref=e39]:
+              - img [ref=e40]
+              - text: ~25 минут
+            - generic [ref=e42]:
+              - img [ref=e43]
+              - text: Доступен
+        - 'button "Открыть курс: Установка АРМ и его компонентов" [ref=e45] [cursor=pointer]':
+          - heading "Установка АРМ и его компонентов" [level=2] [ref=e46]
+          - paragraph [ref=e47]: Установка АРМ и его компонентов
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - img [ref=e50]
+              - text: ~20 минут
+            - generic [ref=e52]:
+              - img [ref=e53]
+              - text: Доступен
+        - 'button "Открыть курс: Работа с интерфейсом и функционалом АРМ" [ref=e55] [cursor=pointer]':
+          - heading "Работа с интерфейсом и функционалом АРМ" [level=2] [ref=e56]
+          - paragraph [ref=e57]: Работа с интерфейсом и функционалом АРМ
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - img [ref=e60]
+              - text: ~25 минут
+            - generic [ref=e62]:
+              - img [ref=e63]
+              - text: Доступен
+  - contentinfo [ref=e65]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - img "Логотип AURVA" [ref=e69]
+          - paragraph [ref=e70]: Ассоциация Участников Рынка Виртуальных Активов Кыргызской Республики.
+        - generic [ref=e71]:
+          - heading "Связь с нами" [level=2] [ref=e72]
+          - list [ref=e73]:
+            - listitem [ref=e74]:
+              - link "aurva.kg@gmail.com" [ref=e75] [cursor=pointer]:
+                - /url: mailto:aurva.kg@gmail.com
+                - img [ref=e76]
+                - generic [ref=e78]: aurva.kg@gmail.com
+            - listitem [ref=e79]:
+              - link "+996 550 99 90 10" [ref=e80] [cursor=pointer]:
+                - /url: tel:+996550999010
+                - img [ref=e81]
+                - generic [ref=e83]: +996 550 99 90 10
+            - listitem [ref=e84]:
+              - generic [ref=e85]: Ассоциация активна · Основано в 2024
+        - generic [ref=e87]:
+          - heading "Навигация" [level=2] [ref=e88]
+          - list [ref=e89]:
+            - listitem [ref=e90]:
+              - link "О нас" [ref=e91] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e92]:
+              - link "Направления" [ref=e93] [cursor=pointer]:
+                - /url: /#directions
+            - listitem [ref=e94]:
+              - link "Преимущества" [ref=e95] [cursor=pointer]:
+                - /url: /#benefits
+            - listitem [ref=e96]:
+              - link "Участники" [ref=e97] [cursor=pointer]:
+                - /url: /#members
+            - listitem [ref=e98]:
+              - link "Новости" [ref=e99] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e100]:
+              - link "Курсы" [ref=e101] [cursor=pointer]:
+                - /url: /courses
+      - generic [ref=e102]:
+        - paragraph [ref=e103]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e104]:
+          - link "Политика конфиденциальности" [ref=e105] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e106] [cursor=pointer]:
+            - /url: /charter

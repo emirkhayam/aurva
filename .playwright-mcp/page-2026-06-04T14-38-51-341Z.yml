@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "AURVA Logo" [ref=e7]
+      - generic [ref=e8]:
+        - link "Главная" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "О нас" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e11] [cursor=pointer]:
+          - /url: /#directions
+        - link "Преимущества" [ref=e12] [cursor=pointer]:
+          - /url: /#benefits
+        - link "Новости" [ref=e13] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e14] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e15]:
+        - link "Кабинет" [ref=e16] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e17]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e19] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: // Учредительный документ
+      - heading "Устав ассоциации" [level=1] [ref=e23]
+      - article [ref=e24]:
+        - paragraph [ref=e25]: Ассоциация Участников Рынка Виртуальных Активов (AURVA) — независимое некоммерческое объединение, основанное в 2024 году в Кыргызской Республике. Деятельность ассоциации регулируется её Уставом и законодательством Кыргызской Республики.
+        - heading "Основные положения" [level=2] [ref=e26]
+        - list [ref=e27]:
+          - listitem [ref=e28]: "Цели: развитие и поддержка рынка виртуальных активов, участие в совершенствовании законодательства, образование и защита интересов участников."
+          - listitem [ref=e29]: "Членство: открыто для компаний и специалистов индустрии на основании заявки."
+          - listitem [ref=e30]: "Управление: осуществляется Наблюдательным советом и Председателем ассоциации."
+        - heading "Контакты" [level=2] [ref=e31]
+        - paragraph [ref=e32]:
+          - text: "Полный текст Устава предоставляется по запросу. По вопросам членства и ознакомления с документом обращайтесь:"
+          - link "aurva.kg@gmail.com" [ref=e33] [cursor=pointer]:
+            - /url: mailto:aurva.kg@gmail.com
+          - text: .
+  - contentinfo [ref=e34]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - img "AURVA Logo" [ref=e39]
+          - generic [ref=e40]: Связь с нами
+          - generic [ref=e41]:
+            - link "Email" [ref=e42] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+              - generic [ref=e43]: 
+              - generic [ref=e44]: Email
+            - link "Телефон" [ref=e45] [cursor=pointer]:
+              - /url: tel:+996550999010
+              - generic [ref=e46]: 
+              - generic [ref=e47]: Телефон
+        - generic [ref=e48]:
+          - generic [ref=e53]: Ассоциация активна
+          - generic [ref=e54]:
+            - generic [ref=e55]: AURVA::КР
+            - generic [ref=e56]: "|"
+            - generic [ref=e57]: Основано в 2024
+        - generic [ref=e58]:
+          - generic [ref=e59]: Навигация
+          - generic [ref=e60]:
+            - link "О нас" [ref=e61] [cursor=pointer]:
+              - /url: /about
+            - link "Направления" [ref=e62] [cursor=pointer]:
+              - /url: /#directions
+            - link "Преимущества" [ref=e63] [cursor=pointer]:
+              - /url: /#benefits
+            - link "Новости" [ref=e64] [cursor=pointer]:
+              - /url: /news
+            - link "Курсы" [ref=e65] [cursor=pointer]:
+              - /url: /courses
+      - generic [ref=e66]:
+        - generic [ref=e67]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e68]:
+          - link "Политика конфиденциальности" [ref=e69] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e70] [cursor=pointer]:
+            - /url: /charter

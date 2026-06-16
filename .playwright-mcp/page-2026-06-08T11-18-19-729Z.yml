@@ -1,0 +1,265 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "AURVA — на главную" [ref=e4] [cursor=pointer]:
+        - /url: "#hero"
+        - img "AURVA" [ref=e5]
+      - button "Меню" [ref=e7] [cursor=pointer]:
+        - generic [ref=e8]: 
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: Основана в 2024 году
+        - heading "Ассоциация участников рынка виртуальных активов Кыргызстана" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Объединяем лидеров индустрии, государство и экспертов для формирования прозрачного, устойчивого и инновационного рынка виртуальных активов.
+        - generic [ref=e16]:
+          - link "Стать участником " [ref=e17] [cursor=pointer]:
+            - /url: "#contact"
+            - text: Стать участником
+            - generic [ref=e18]: 
+          - link "Смотреть участников" [ref=e19] [cursor=pointer]:
+            - /url: "#members"
+      - generic [ref=e20]:
+        - img [ref=e21]
+        - generic [ref=e30]:
+          - generic [ref=e31]: 
+          - generic [ref=e32]: Биржи
+        - generic [ref=e33]:
+          - generic [ref=e35]: 
+          - generic [ref=e36]: Обмен
+        - generic [ref=e37]:
+          - generic [ref=e39]: 
+          - generic [ref=e40]: Банки
+        - generic [ref=e41]:
+          - generic [ref=e43]: 
+          - generic [ref=e44]: Кошельки
+        - generic [ref=e45]:
+          - generic [ref=e47]: 
+          - generic [ref=e48]: Образование
+        - generic [ref=e49]:
+          - generic [ref=e51]: 
+          - generic [ref=e52]: Майнинг
+        - generic [ref=e53]:
+          - generic [ref=e55]: 
+          - generic [ref=e56]: Инвестиции
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]: "0"
+        - paragraph [ref=e61]: компаний-участников
+      - generic [ref=e62]:
+        - generic [ref=e63]: "0"
+        - paragraph [ref=e64]: международных партнёров
+      - generic [ref=e65]:
+        - generic [ref=e66]: "0"
+        - paragraph [ref=e67]: медийных выходов
+      - generic [ref=e68]:
+        - generic [ref=e69]: "0"
+        - paragraph [ref=e70]: экспертов рынка
+      - generic [ref=e71]:
+        - generic [ref=e72]: "0"
+        - paragraph [ref=e73]: года активной работы
+  - generic [ref=e75]:
+    - generic [ref=e76]:
+      - text: Об ассоциации
+      - heading "Двигатель прогресса цифровой экономики" [level=2] [ref=e77]
+      - paragraph [ref=e78]: AURVA — независимое объединение участников рынка виртуальных активов, площадка для развития отрасли, защиты интересов бизнеса и формирования современной правовой среды в Кыргызской Республике.
+      - paragraph [ref=e79]: Мы работаем над тем, чтобы создать прозрачные и понятные правила игры для всех участников рынка — от стартапов до институциональных игроков.
+      - link "Подробнее об ассоциации " [ref=e80] [cursor=pointer]:
+        - /url: "#directions"
+        - text: Подробнее об ассоциации
+        - generic [ref=e81]: 
+    - generic [ref=e82]:
+      - img "Мероприятие AURVA" [ref=e83]
+      - paragraph [ref=e86]: Форумы, конференции и диалог с регулятором
+  - generic [ref=e88]:
+    - generic [ref=e89]:
+      - text: Направления деятельности
+      - heading "Направления нашей работы" [level=2] [ref=e90]
+      - paragraph [ref=e91]: Четыре ключевых вектора, формирующих фундамент цифровой индустрии виртуальных активов.
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e95]: 
+        - heading "Регулирование и законотворчество" [level=3] [ref=e96]
+        - paragraph [ref=e97]: Содействуем созданию прозрачной и сбалансированной нормативной базы для развития рынка.
+        - generic [ref=e99]: 
+      - generic [ref=e100]:
+        - generic [ref=e102]: 
+        - heading "Образование и развитие кадров" [level=3] [ref=e103]
+        - paragraph [ref=e104]: Повышаем уровень знаний о блокчейне и цифровых активах через программы и мероприятия.
+        - generic [ref=e106]: 
+      - generic [ref=e107]:
+        - generic [ref=e109]: 
+        - heading "Международное сотрудничество" [level=3] [ref=e110]
+        - paragraph [ref=e111]: Укрепляем связи с зарубежными организациями и продвигаем интересы рынка на мировой арене.
+        - generic [ref=e113]: 
+      - generic [ref=e114]:
+        - generic [ref=e116]: 
+        - heading "Развитие индустрии" [level=3] [ref=e117]
+        - paragraph [ref=e118]: Поддерживаем инновации, стартапы и инфраструктурные проекты в сфере виртуальных активов.
+        - generic [ref=e120]: 
+  - generic [ref=e122]:
+    - generic [ref=e123]:
+      - text: Участники ассоциации
+      - heading "Нас уже выбрали лидеры рынка" [level=2] [ref=e124]
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - generic [ref=e127]: 
+        - generic [ref=e128]: salex
+      - generic [ref=e129]:
+        - generic [ref=e130]: 
+        - generic [ref=e131]: MERKEE
+      - generic [ref=e132]:
+        - generic [ref=e133]: 
+        - generic [ref=e134]: Token Finance
+      - generic [ref=e135]:
+        - generic [ref=e136]: 
+        - generic [ref=e137]: Pay24
+      - generic [ref=e138]:
+        - generic [ref=e139]: 
+        - generic [ref=e140]: FINCA Bank
+      - generic [ref=e141]:
+        - generic [ref=e142]: 
+        - generic [ref=e143]: BitCentral
+      - generic [ref=e144]:
+        - generic [ref=e145]: 
+        - generic [ref=e146]: currency.com
+      - generic [ref=e147]:
+        - generic [ref=e148]: 
+        - generic [ref=e149]: Coindeal
+      - generic [ref=e150]:
+        - generic [ref=e151]: 
+        - generic [ref=e152]: O! Wallet
+      - generic [ref=e153]:
+        - generic [ref=e154]: B
+        - generic [ref=e155]: Binance KZ
+      - generic [ref=e156]:
+        - generic [ref=e157]: 
+        - generic [ref=e158]: AML Kyrgyzstan
+      - generic [ref=e159]:
+        - generic [ref=e160]: 
+        - generic [ref=e161]: JUSAN
+    - link "Смотреть всех участников " [ref=e163] [cursor=pointer]:
+      - /url: "#contact"
+      - text: Смотреть всех участников
+      - generic [ref=e164]: 
+  - generic [ref=e166]:
+    - generic [ref=e167]:
+      - text: Наш путь
+      - heading "Развиваем рынок вместе" [level=2] [ref=e168]
+    - generic [ref=e170]:
+      - generic [ref=e171]:
+        - generic [ref=e173]: "2022"
+        - heading "Основание АУРВА" [level=3] [ref=e174]
+        - paragraph [ref=e175]: Формирование инициативной группы участников рынка.
+      - generic [ref=e176]:
+        - generic [ref=e178]: "2023"
+        - heading "Первые инициативы" [level=3] [ref=e179]
+        - paragraph [ref=e180]: Диалог с регулятором и запуск образовательных программ.
+      - generic [ref=e181]:
+        - generic [ref=e183]: "2024"
+        - heading "Рост и развитие" [level=3] [ref=e184]
+        - paragraph [ref=e185]: Увеличение числа участников и партнёрских проектов.
+      - generic [ref=e186]:
+        - generic [ref=e188]: "2025"
+        - heading "Международное признание" [level=3] [ref=e189]
+        - paragraph [ref=e190]: Участие в международных и глобальных форумах.
+      - generic [ref=e191]:
+        - generic [ref=e193]: "2026"
+        - heading "Новый горизонт" [level=3] [ref=e194]
+        - paragraph [ref=e195]: Запуск масштабных инициатив развития рынка.
+  - generic [ref=e197]:
+    - generic [ref=e198]:
+      - generic [ref=e199]:
+        - text: Новости и события
+        - heading "Будьте в курсе последних новостей" [level=2] [ref=e200]
+      - link "Все новости " [ref=e201] [cursor=pointer]:
+        - /url: /news.html
+        - text: Все новости
+        - generic [ref=e202]: 
+    - generic [ref=e203]:
+      - article [ref=e204]:
+        - generic [ref=e206]:
+          - generic [ref=e207]: "2025"
+          - heading "AURVA на Decentral Asia Forum 2025" [level=3] [ref=e208]
+          - paragraph [ref=e209]: Ассоциация приняла участие в крупнейшем блокчейн-форуме региона.
+          - link "Подробнее " [ref=e210] [cursor=pointer]:
+            - /url: /news.html
+            - text: Подробнее
+            - generic [ref=e211]: 
+      - article [ref=e212]:
+        - generic [ref=e214]:
+          - generic [ref=e215]: "2025"
+          - heading "АУРВА на Digital Kyrgyzstan 2025" [level=3] [ref=e216]
+          - paragraph [ref=e217]: Обсуждение ключевых вопросов цифровой трансформации рынка.
+          - link "Подробнее " [ref=e218] [cursor=pointer]:
+            - /url: /news.html
+            - text: Подробнее
+            - generic [ref=e219]: 
+      - article [ref=e220]:
+        - generic [ref=e222]:
+          - generic [ref=e223]: "2025"
+          - heading "Встреча с председателем ассоциации" [level=3] [ref=e224]
+          - paragraph [ref=e225]: Знакомство и обсуждение приоритетов развития индустрии.
+          - link "Подробнее " [ref=e226] [cursor=pointer]:
+            - /url: /news.html
+            - text: Подробнее
+            - generic [ref=e227]: 
+  - generic [ref=e229]:
+    - generic [ref=e230]:
+      - text: Свяжитесь с нами
+      - heading "Давайте работать вместе" [level=2] [ref=e231]
+      - paragraph [ref=e232]: Готовы стать участником ассоциации или у вас есть вопросы? Напишите нам — мы на связи.
+    - generic [ref=e233]:
+      - generic [ref=e234]:
+        - link " Адрес Кыргызская Республика, г. Бишкек" [ref=e235] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e237]: 
+          - generic [ref=e238]:
+            - generic [ref=e239]: Адрес
+            - generic [ref=e240]:
+              - text: Кыргызская Республика,
+              - text: г. Бишкек
+        - link " Телефон +996 550 99 90 10" [ref=e241] [cursor=pointer]:
+          - /url: tel:+996550999010
+          - generic [ref=e243]: 
+          - generic [ref=e244]:
+            - generic [ref=e245]: Телефон
+            - generic [ref=e246]: +996 550 99 90 10
+        - link " Email aurva.kg@gmail.com" [ref=e247] [cursor=pointer]:
+          - /url: mailto:aurva.kg@gmail.com
+          - generic [ref=e249]: 
+          - generic [ref=e250]:
+            - generic [ref=e251]: Email
+            - generic [ref=e252]: aurva.kg@gmail.com
+      - generic [ref=e254]:
+        - generic [ref=e256]: 
+        - paragraph [ref=e257]: г. Бишкек
+        - paragraph [ref=e258]: Кыргызская Республика
+      - generic [ref=e259]:
+        - generic [ref=e260]:
+          - generic [ref=e261]: Ваше имя
+          - textbox "Ваше имя" [ref=e262]:
+            - /placeholder: Имя
+        - generic [ref=e263]:
+          - generic [ref=e264]: Email
+          - textbox "Email" [ref=e265]:
+            - /placeholder: you@company.kg
+        - generic [ref=e266]:
+          - generic [ref=e267]: Сообщение
+          - textbox "Сообщение" [ref=e268]:
+            - /placeholder: Расскажите, чем мы можем помочь
+        - button "Отправить сообщение" [ref=e269] [cursor=pointer]
+  - contentinfo [ref=e270]:
+    - generic [ref=e271]:
+      - img "AURVA — Ассоциация участников рынка виртуальных активов" [ref=e273]
+      - paragraph [ref=e274]: © 2026 АУРВА. Все права защищены.
+      - generic [ref=e275]:
+        - link "Политика конфиденциальности" [ref=e276] [cursor=pointer]:
+          - /url: /privacy.html
+        - generic [ref=e277]:
+          - link "Telegram" [ref=e278] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e279]: 
+          - link "LinkedIn" [ref=e280] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e281]: 

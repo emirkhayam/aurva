@@ -35,7 +35,7 @@ export default function Partners() {
     try {
       setLoading(true);
       // Get all partners (both active and inactive) with high limit
-      const response = await api.get('/partners?limit=100');
+      const response = await api.get('/partners?limit=100&isActive=all');
       const data = response.data.partners || response.data.data || response.data;
       setPartners(Array.isArray(data) ? data : []);
     } catch (error) {

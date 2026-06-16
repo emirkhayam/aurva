@@ -1,0 +1,305 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA Logo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "AURVA Logo" [ref=e7]
+      - generic [ref=e8]:
+        - button "Переключить тему" [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+        - button "Открыть меню" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - link "Кабинет" [ref=e15] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e16]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e18] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e23]: Информация об ассоциации
+      - heading "Формируем будущее Цифровой Экономики." [level=1] [ref=e25]: Формируем будущее Цифровой Экономики.
+      - paragraph [ref=e26]: АУРВА — это объединение ведущих профессионалов и компаний, создающее прозрачную, безопасную и инновационную среду для развития рынка виртуальных активов в Кыргызской Республике.
+  - generic [ref=e29]:
+    - generic [ref=e30]:
+      - generic [ref=e31]: // Суть и предназначение
+      - heading "Наша миссия И видение" [level=2] [ref=e32]:
+        - text: Наша миссия
+        - text: И видение
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - heading "Миссия" [level=3] [ref=e35]
+          - paragraph [ref=e36]: Содействовать устойчивому развитию и легализации рынка виртуальных активов в Кыргызстане. Мы стремимся создать экосистему, в которой инновации служат на благо общества, а права каждого участника надежно защищены.
+        - generic [ref=e37]:
+          - heading "Видение" [level=3] [ref=e38]
+          - paragraph [ref=e39]: Стать главным центром экспертизы и конструктивного диалога между государственными регуляторами, бизнесом и обществом. Мы видим Кыргызстан как региональный хаб для передовых финансовых технологий и блокчейн-инноваций.
+    - generic [ref=e40]:
+      - generic [ref=e46]: "AURVA :: STATS_PANEL"
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e51]: 
+          - generic [ref=e52]: "2024"
+          - generic [ref=e53]: Год основания
+        - generic [ref=e54]:
+          - generic [ref=e56]: 
+          - generic [ref=e57]: 10+
+          - generic [ref=e58]: Компаний-лидеров
+        - generic [ref=e59]:
+          - generic [ref=e61]: 
+          - generic [ref=e62]: 5+
+          - generic [ref=e63]: Законопроектов
+        - generic [ref=e64]:
+          - generic [ref=e66]: 
+          - generic [ref=e67]: 100%
+          - generic [ref=e68]: Прозрачность
+  - generic [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]: Вектор развития
+        - generic [ref=e75]: Задачи
+      - heading "Цели и Приоритеты" [level=2] [ref=e76]
+      - paragraph [ref=e77]: Деятельность ассоциации сфокусирована на решении конкретных задач, направленных на качественный рост и безопасность индустрии.
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e81]: 
+        - generic [ref=e82]:
+          - heading "Совершенствование законодательства" [level=3] [ref=e83]
+          - paragraph [ref=e84]: Участие в разработке и экспертной оценке нормативно-правовых актов. Мы помогаем создавать законы, которые защищают пользователей и не препятствуют развитию бизнеса.
+      - generic [ref=e85]:
+        - generic [ref=e87]: 
+        - generic [ref=e88]:
+          - heading "Защита интересов участников" [level=3] [ref=e89]
+          - paragraph [ref=e90]: Представление консолидированной позиции рынка в государственных органах. Защита законных прав и интересов членов ассоциации на всех уровнях.
+      - generic [ref=e91]:
+        - generic [ref=e93]: 
+        - generic [ref=e94]:
+          - heading "Финансовая грамотность" [level=3] [ref=e95]
+          - paragraph [ref=e96]: Популяризация знаний о блокчейн-технологиях и виртуальных активах среди населения. Предупреждение рисков мошенничества и повышение доверия к индустрии.
+      - generic [ref=e97]:
+        - generic [ref=e99]: 
+        - generic [ref=e100]:
+          - heading "Международная интеграция" [level=3] [ref=e101]
+          - paragraph [ref=e102]: Установление партнерских отношений с зарубежными профильными ассоциациями и интеграция локального рынка в глобальную цифровую экономику.
+  - generic [ref=e104]:
+    - generic [ref=e106]:
+      - generic [ref=e107]: // Принципы
+      - heading "Наши → ЦЕННОСТИ" [level=2] [ref=e108]:
+        - text: Наши
+        - text: → ЦЕННОСТИ
+      - paragraph [ref=e109]: Фундаментальные принципы, на которых строится вся деятельность ассоциации и взаимодействие с партнерами.
+    - generic [ref=e110]:
+      - generic [ref=e112]:
+        - generic [ref=e113]: 
+        - heading "Прозрачность" [level=3] [ref=e114]
+        - paragraph [ref=e115]: Открытость процессов, понятные правила игры для всех участников рынка и подотчетность действий ассоциации.
+      - generic [ref=e117]:
+        - generic [ref=e118]: 
+        - heading "Безопасность" [level=3] [ref=e119]
+        - paragraph [ref=e120]: Приоритет на защиту данных, средств пользователей и соблюдение высоких стандартов AML/KYC политик.
+      - generic [ref=e122]:
+        - generic [ref=e123]: 
+        - heading "Инновационность" [level=3] [ref=e124]
+        - paragraph [ref=e125]: Постоянный поиск, тестирование и внедрение передовых технологических решений в бизнес-процессы.
+      - generic [ref=e127]:
+        - generic [ref=e128]: 
+        - heading "Сотрудничество" [level=3] [ref=e129]
+        - paragraph [ref=e130]: Объединение усилий конкурентов ради общих целей развития здоровой и легальной экосистемы.
+  - generic [ref=e132]:
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - generic [ref=e135]: Команда
+        - generic [ref=e137]: Управление
+      - heading "Структура Управления" [level=2] [ref=e138]
+      - paragraph [ref=e139]: Ассоциация Участников Рынка Виртуальных Активов Кыргызской Республики имеет четкую и прозрачную структуру управления, обеспечивающую эффективное принятие решений и реализацию стратегических целей.
+    - generic [ref=e140]:
+      - heading "Структура Ассоциации" [level=3] [ref=e142]
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - img "Темир Казыбай" [ref=e147]
+          - generic [ref=e148]:
+            - heading "Темир Казыбай" [level=4] [ref=e149]
+            - paragraph [ref=e150]: Председатель Ассоциации
+        - generic [ref=e151]:
+          - img "Акмарал Тулегенова" [ref=e153]
+          - generic [ref=e154]:
+            - heading "Акмарал Тулегенова" [level=4] [ref=e155]
+            - paragraph [ref=e156]: Член Наблюдательного Совета
+        - generic [ref=e157]:
+          - img "Максим Уваров" [ref=e159]
+          - generic [ref=e160]:
+            - heading "Максим Уваров" [level=4] [ref=e161]
+            - paragraph [ref=e162]: Председатель Наблюдательного Совета
+        - generic [ref=e163]:
+          - img "Анастасия Дубовикова" [ref=e165]
+          - generic [ref=e166]:
+            - heading "Анастасия Дубовикова" [level=4] [ref=e167]
+            - paragraph [ref=e168]: Бухгалтер
+    - generic [ref=e169]:
+      - heading "Экспертный Совет" [level=3] [ref=e171]
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - img "Асылбек Айтматов" [ref=e176]
+          - generic [ref=e177]:
+            - heading "Асылбек Айтматов" [level=4] [ref=e178]
+            - paragraph [ref=e179]: Председатель Экспертного совета
+        - generic [ref=e180]:
+          - img "Арстанбек Абдикапаров" [ref=e182]
+          - generic [ref=e183]:
+            - heading "Арстанбек Абдикапаров" [level=4] [ref=e184]
+            - paragraph [ref=e185]: Член Экспертного совета
+        - generic [ref=e186]:
+          - img "Абдыбекова Рита" [ref=e188]
+          - generic [ref=e189]:
+            - heading "Абдыбекова Рита" [level=4] [ref=e190]
+            - paragraph [ref=e191]: Член Экспертного совета
+        - generic [ref=e192]:
+          - img "Азимбек Сагынбаев" [ref=e194]
+          - generic [ref=e195]:
+            - heading "Азимбек Сагынбаев" [level=4] [ref=e196]
+            - paragraph [ref=e197]: Член Экспертного совета
+        - generic [ref=e198]:
+          - img "Дмитрий Коваленко" [ref=e200]
+          - generic [ref=e201]:
+            - heading "Дмитрий Коваленко" [level=4] [ref=e202]
+            - paragraph [ref=e203]: Член Экспертного совета
+        - generic [ref=e204]:
+          - img "Александр Хван" [ref=e206]
+          - generic [ref=e207]:
+            - heading "Александр Хван" [level=4] [ref=e208]
+            - paragraph [ref=e209]: Член Экспертного совета
+        - generic [ref=e210]:
+          - img "Кулеш Василий Васильевич" [ref=e212]
+          - generic [ref=e213]:
+            - heading "Кулеш Василий Васильевич" [level=4] [ref=e214]
+            - paragraph [ref=e215]: Член Экспертного совета
+        - generic [ref=e216]:
+          - img "Батырбаев Бехруз Рассулжанович" [ref=e218]
+          - generic [ref=e219]:
+            - heading "Батырбаев Бехруз Рассулжанович" [level=4] [ref=e220]
+            - paragraph [ref=e221]: Член Экспертного совета
+        - generic [ref=e222]:
+          - img "Эдилбек улуу Арсен" [ref=e224]
+          - generic [ref=e225]:
+            - heading "Эдилбек улуу Арсен" [level=4] [ref=e226]
+            - paragraph [ref=e227]: Член Экспертного совета
+        - generic [ref=e228]:
+          - img "Луйк Лембит Лембитович" [ref=e230]
+          - generic [ref=e231]:
+            - heading "Луйк Лембит Лембитович" [level=4] [ref=e232]
+            - paragraph [ref=e233]: Член Экспертного совета
+        - generic [ref=e234]:
+          - img "Сергеев Андрей" [ref=e236]
+          - generic [ref=e237]:
+            - heading "Сергеев Андрей" [level=4] [ref=e238]
+            - paragraph [ref=e239]: Член Экспертного совета
+  - generic [ref=e241]:
+    - generic [ref=e242]:
+      - generic [ref=e243]:
+        - generic [ref=e244]: Сотрудничество
+        - generic [ref=e246]: Партнеры
+      - heading "Наши Партнеры" [level=2] [ref=e247]
+      - paragraph [ref=e248]: Ассоциация Участников Рынка Виртуальных Активов Кыргызской Республики активно сотрудничает с рядом ведущих компаний, образовательных учреждений и государственных организаций, что позволяет нам достигать наших целей и расширять влияние на рынке виртуальных активов.
+    - generic [ref=e249]:
+      - generic [ref=e250] [cursor=pointer]:
+        - img "ОсОО Рост ФМ" [ref=e252]
+        - generic [ref=e253]:
+          - heading "ОсОО Рост ФМ" [level=4] [ref=e254]
+          - button "Подробнее" [ref=e256]
+      - generic [ref=e257] [cursor=pointer]:
+        - img "Match Systems" [ref=e259]
+        - generic [ref=e260]:
+          - heading "Match Systems" [level=4] [ref=e261]
+          - generic [ref=e262]:
+            - link "Сайт" [ref=e263]:
+              - /url: https://matchsystems.com/
+            - button "Подробнее" [ref=e264]
+      - generic [ref=e265] [cursor=pointer]:
+        - img "Швейцарская Некоммерческая Ассоциация «Centre International d’investissement»" [ref=e267]
+        - generic [ref=e268]:
+          - heading "Швейцарская Некоммерческая Ассоциация «Centre International d’investissement»" [level=4] [ref=e269]
+          - generic [ref=e270]:
+            - link "Сайт" [ref=e271]:
+              - /url: https://cii-suisse.org/
+            - button "Подробнее" [ref=e272]
+      - generic [ref=e273] [cursor=pointer]:
+        - img "MyDataCoin" [ref=e275]
+        - generic [ref=e276]:
+          - heading "MyDataCoin" [level=4] [ref=e277]
+          - generic [ref=e278]:
+            - link "Сайт" [ref=e279]:
+              - /url: https://mydatacoin.io/
+            - button "Подробнее" [ref=e280]
+  - generic [ref=e285]:
+    - generic [ref=e286]:
+      - heading "Стать частью сообщества." [level=2] [ref=e287]:
+        - text: Стать частью
+        - text: сообщества.
+      - paragraph [ref=e288]: Разделяете наши ценности и хотите внести вклад в развитие рынка? Оставьте заявку на вступление.
+      - generic [ref=e289]:
+        - generic [ref=e294]:
+          - paragraph [ref=e295]: Офис
+          - paragraph [ref=e296]:
+            - text: Кыргызская Республика,
+            - text: г. Бишкек
+        - generic [ref=e301]:
+          - paragraph [ref=e302]: Телефон
+          - link "+996 550 99 90 10" [ref=e303] [cursor=pointer]:
+            - /url: tel:+996550999010
+        - generic [ref=e307]:
+          - paragraph [ref=e308]: Email
+          - link "aurva.kg@gmail.com" [ref=e309] [cursor=pointer]:
+            - /url: mailto:aurva.kg@gmail.com
+    - generic [ref=e311]:
+      - generic [ref=e312]:
+        - generic [ref=e313]: Название компании / Имя
+        - textbox "Название компании / Имя" [ref=e314]
+      - generic [ref=e315]:
+        - generic [ref=e316]: Контактный телефон
+        - textbox "Контактный телефон" [ref=e317]
+      - button "Оставить заявку" [ref=e318] [cursor=pointer]
+      - paragraph [ref=e319]: Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.
+  - contentinfo [ref=e320]:
+    - generic [ref=e321]:
+      - generic [ref=e322]:
+        - generic [ref=e323]:
+          - link "AURVA Logo" [ref=e325] [cursor=pointer]:
+            - /url: /
+            - img "AURVA Logo" [ref=e326]
+          - generic [ref=e327]: Связь с нами
+          - generic [ref=e328]:
+            - link "Email" [ref=e329] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+              - generic [ref=e330]: 
+              - generic [ref=e331]: Email
+            - link "Телефон" [ref=e332] [cursor=pointer]:
+              - /url: tel:+996550999010
+              - generic [ref=e333]: 
+              - generic [ref=e334]: Телефон
+        - generic [ref=e335]:
+          - generic [ref=e340]: Ассоциация активна
+          - generic [ref=e341]:
+            - generic [ref=e342]: AURVA::КР
+            - generic [ref=e343]: "|"
+            - generic [ref=e344]: Основано в 2024
+        - generic [ref=e345]:
+          - generic [ref=e346]: Навигация
+          - generic [ref=e347]:
+            - link "Главная" [ref=e348] [cursor=pointer]:
+              - /url: /
+            - link "О нас" [ref=e349] [cursor=pointer]:
+              - /url: /about
+            - link "Направления" [ref=e350] [cursor=pointer]:
+              - /url: /#directions
+            - link "Участники" [ref=e351] [cursor=pointer]:
+              - /url: /#members
+            - link "Новости" [ref=e352] [cursor=pointer]:
+              - /url: /#news
+      - generic [ref=e353]:
+        - generic [ref=e354]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e355]:
+          - link "Политика конфиденциальности" [ref=e356] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e357] [cursor=pointer]:
+            - /url: /charter

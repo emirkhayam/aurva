@@ -1,0 +1,23 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "AURVA" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e7]:
+        - link "Главная" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "О нас" [ref=e9] [cursor=pointer]:
+          - /url: /about
+        - link "Новости" [ref=e10] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e11] [cursor=pointer]:
+          - /url: /courses
+        - link "Кабинет" [ref=e12] [cursor=pointer]:
+          - /url: /cabinet
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: 
+      - paragraph [ref=e16]: Загрузка курсов...
+    - text:  
+  - contentinfo [ref=e17]:
+    - paragraph [ref=e19]: © 2026 AURVA. Все права защищены.

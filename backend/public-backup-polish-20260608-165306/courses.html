@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы — AURVA</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #F4F6F8;
+            --bg-surface: #EDEFF2;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F9FAFB;
+            --border: #D9DEE3;
+            --shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+            --text: #0F172A;
+            --text-muted: #475569;
+            --text-subtle: #64748B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --accent-soft: #EFF6FF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+        }
+
+        .font-display { font-family: 'Oswald', sans-serif; }
+
+        .course-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(15,23,42,0.08), 0 12px 32px rgba(15,23,42,0.12);
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-surface);
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lesson-item:hover {
+            background: var(--bg-card-hover);
+            transform: translateX(4px);
+        }
+
+        .lesson-item i {
+            color: var(--accent);
+            margin-right: 1rem;
+        }
+
+        .material-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .material-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .material-link i {
+            margin-right: 0.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #DEF7EC;
+            color: #03543F;
+        }
+
+        .badge-info {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Skip link: visually hidden until focused */
+        .skip-link { position: absolute; left: -9999px; top: 0; z-index: 60; }
+        .skip-link:focus {
+            left: 1rem; top: 1rem; width: auto; height: auto;
+            padding: 0.625rem 1rem; background: var(--bg-card); color: var(--accent);
+            border: 1px solid var(--accent); border-radius: 0.5rem;
+            box-shadow: var(--shadow); font-size: 0.875rem; font-weight: 600;
+        }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    </style>
+</head>
+<body class="antialiased">
+    <a href="#main" class="skip-link">Перейти к содержанию</a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-40 bg-[color:var(--bg-card)]/90 backdrop-blur-md border-b border-[color:var(--border)] transition-all duration-300">
+        <div class="sm:px-6 flex h-20 max-w-7xl mr-auto ml-auto pr-4 pl-4 items-center justify-between transition-all duration-300">
+            <!-- Logo -->
+            <div class="flex items-center flex-shrink-0 md:mr-4 gap-3">
+                <a href="/" aria-label="AURVA — на главную">
+                    <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="md:h-12 w-auto h-10 object-contain transition-all duration-300">
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">
+                <a href="/" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Главная</a>
+                <a href="/about" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">О нас</a>
+                <a href="/#directions" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Направления</a>
+                <a href="/#benefits" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Преимущества</a>
+                <a href="/news" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Новости</a>
+                <a href="/courses" aria-current="page" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--accent)] transition-colors tracking-tight">Курсы</a>
+            </div>
+
+            <!-- CTA & Mobile toggle -->
+            <div class="flex items-center gap-2">
+                <button id="mobile-menu-btn" type="button" class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none" aria-label="Открыть меню" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <a href="/cabinet" class="hidden sm:inline-flex items-center gap-1.5 text-xs px-3.5 py-2.5 min-h-[44px] text-[color:var(--text-muted)] font-medium rounded-full tracking-tight transition-all duration-300 hover:text-[color:var(--accent)] hover:bg-[color:var(--accent)]/5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                    Кабинет
+                </a>
+                <a href="/#contact" class="hidden sm:inline-flex items-center text-xs px-4 py-2.5 min-h-[44px] bg-[color:var(--accent)] text-white font-semibold rounded-full tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] shadow-sm hover:shadow-md">
+                    Подать заявку
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-[color:var(--bg-card)] border-b border-[color:var(--border)]">
+            <div class="px-4 pt-2 pb-6 flex flex-col gap-2 text-center">
+                <a href="/" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Главная</a>
+                <a href="/about" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">О нас</a>
+                <a href="/#directions" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Направления</a>
+                <a href="/#benefits" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Преимущества</a>
+                <a href="/news" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Новости</a>
+                <a href="/courses" aria-current="page" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--accent)] bg-[color:var(--bg-surface)]">Курсы</a>
+                <a href="/cabinet" class="flex items-center justify-center gap-2 mt-4 px-3 py-2.5 min-h-[44px] text-center rounded-full text-sm font-medium text-[color:var(--text-muted)] border border-[color:var(--border)] hover:text-[color:var(--accent)] hover:border-[color:var(--accent)]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                    Личный кабинет
+                </a>
+                <a href="/#contact" class="block mt-2 px-3 py-2.5 min-h-[44px] text-center rounded-full text-sm font-semibold text-white bg-[color:var(--accent)]">Подать заявку</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main" class="max-w-7xl mx-auto px-6 pt-32 pb-24">
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[color:var(--border)] border-t-[color:var(--accent)]"></div>
+            <p class="mt-4 text-sm text-[color:var(--text-muted)]">Загрузка курсов...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-12">
+            <i class="fa-solid fa-graduation-cap text-6xl text-[color:var(--border)] mb-4"></i>
+            <p class="text-lg text-[color:var(--text)] font-medium">Курсы скоро появятся</p>
+            <p class="text-sm text-[color:var(--text-muted)] mt-2">Образовательные программы ассоциации готовятся к публикации.</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="hidden text-center py-12">
+            <i class="fa-solid fa-triangle-exclamation text-6xl text-[color:var(--border)] mb-4"></i>
+            <p class="text-lg text-[color:var(--text)] font-medium">Не удалось загрузить курсы</p>
+            <button type="button" id="retryBtn" class="mt-6 px-6 py-3 bg-[color:var(--accent)] text-white text-sm font-semibold rounded-lg hover:bg-[color:var(--accent-hover)] transition-colors cursor-pointer">
+                Повторить
+            </button>
+        </div>
+
+        <!-- Courses List -->
+        <div id="coursesView" class="hidden">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
+                    Наши
+                    <br>
+                    <span class="text-[color:var(--accent)] font-semibold">→ КУРСЫ</span>
+                </h1>
+                <p class="text-sm text-[color:var(--text-muted)] leading-relaxed font-light max-w-2xl mx-auto">
+                    Профильные обучающие программы ассоциации для повышения квалификации специалистов рынка виртуальных активов
+                </p>
+            </div>
+            <div id="coursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- Course Detail -->
+        <div id="courseDetail" class="hidden"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[color:var(--bg-card)] border-t border-[color:var(--border)] pt-8 pb-6 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-start gap-10 w-full mb-10 gap-x-10 gap-y-10 items-center justify-between">
+                <!-- Branding & Connect -->
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="h-8 w-auto object-contain">
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)] opacity-70">
+                        Связь с нами
+                    </span>
+                    <div class="flex flex-col gap-2.5 text-center md:text-left">
+                        <a href="mailto:aurva.kg@gmail.com" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                            <i class="fa-solid fa-envelope text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors" aria-hidden="true"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="tel:+996550999010" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] hover:text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                            <i class="fa-solid fa-phone text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors" aria-hidden="true"></i>
+                            <span>Телефон</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="flex flex-col items-center justify-center gap-2.5 mt-2 md:mt-0">
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-1.5 w-1.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--accent)] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[color:var(--accent)]"></span>
+                        </span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text)]">
+                            Ассоциация активна
+                        </span>
+                    </div>
+                    <div class="flex gap-3 text-[9px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest opacity-80">
+                        <span>AURVA::КР</span>
+                        <span class="text-[color:var(--border)]">|</span>
+                        <span>Основано в 2024</span>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex flex-col items-center md:items-end gap-4">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)] opacity-70">
+                        Навигация
+                    </span>
+                    <div class="flex flex-col gap-2.5 text-center md:text-right">
+                        <a href="/about" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">О нас</a>
+                        <a href="/#directions" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Направления</a>
+                        <a href="/#benefits" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Преимущества</a>
+                        <a href="/#members" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Участники</a>
+                        <a href="/news" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Новости</a>
+                        <a href="/courses" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Курсы</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-[color:var(--border)] flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-[10px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest text-center sm:text-left">
+                    © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+                </span>
+                <div class="flex gap-6">
+                    <a href="/privacy" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                        Политика конфиденциальности
+                    </a>
+                    <a href="/charter" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                        Устав
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla JS (CSP-safe: no eval / no template compiler — do NOT reintroduce Vue here) -->
+    <script>
+        const API_URL = '/api';
+
+        const el = (id) => document.getElementById(id);
+        const views = ['loadingState', 'emptyState', 'errorState', 'coursesView', 'courseDetail'];
+        function show(id) {
+            views.forEach((v) => el(v).classList.toggle('hidden', v !== id));
+        }
+
+        // Escape user/DB-provided text before inserting into HTML.
+        function esc(value) {
+            if (value === null || value === undefined) return '';
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function getYouTubeEmbedUrl(url) {
+            if (!url) return '';
+            const videoId = url.split('v=')[1] || url.split('/').pop();
+            return `https://www.youtube.com/embed/${(videoId || '').split('&')[0]}`;
+        }
+
+        function getMaterialIcon(fileType) {
+            const icons = {
+                document: 'fa-file-pdf',
+                link: 'fa-link',
+                software: 'fa-download',
+                form: 'fa-file-invoice',
+                file: 'fa-file'
+            };
+            return icons[fileType] || icons.file;
+        }
+
+        // ---- Courses list ----
+        async function loadCourses() {
+            show('loadingState');
+            try {
+                const response = await fetch(`${API_URL}/courses`);
+                const data = await response.json();
+                const courses = (data && data.success && Array.isArray(data.data)) ? data.data : [];
+
+                if (courses.length === 0) {
+                    show('emptyState');
+                    return;
+                }
+
+                el('coursesGrid').innerHTML = courses.map((course) => `
+                    <div class="course-card p-6 flex flex-col" role="button" tabindex="0"
+                         data-slug="${esc(course.slug)}"
+                         aria-label="Открыть курс: ${esc(course.title)}">
+                        <h2 class="text-xl font-semibold text-[color:var(--text)] mb-3 tracking-tight">${esc(course.title)}</h2>
+                        <p class="text-sm text-[color:var(--text-muted)] leading-relaxed mb-6 flex-1">${esc(course.short_description || course.description || '')}</p>
+                        <div class="flex items-center justify-between gap-3 pt-4 border-t border-[color:var(--border)]">
+                            <span class="badge badge-info"><i class="fa-regular fa-clock" aria-hidden="true"></i>${esc(course.duration || '')}</span>
+                            ${course.is_published ? '<span class="badge badge-success"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Доступен</span>' : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+                show('coursesView');
+            } catch (error) {
+                console.error('Error loading courses:', error);
+                show('errorState');
+            }
+        }
+
+        // ---- Course detail ----
+        async function loadCourse(slug) {
+            show('loadingState');
+            try {
+                const response = await fetch(`${API_URL}/courses/${encodeURIComponent(slug)}`);
+                const data = await response.json();
+                if (!data || !data.success || !data.data) {
+                    throw new Error('Course not found');
+                }
+                renderCourse(data.data);
+                show('courseDetail');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (error) {
+                console.error('Error loading course:', error);
+                show('errorState');
+            }
+        }
+
+        function renderCourse(course) {
+            const modules = Array.isArray(course.modules) ? course.modules : [];
+
+            const modulesHtml = modules.map((module) => {
+                const lessons = Array.isArray(module.lessons) ? module.lessons : [];
+                const lessonsHtml = lessons.map((lesson) => {
+                    const materials = Array.isArray(lesson.materials) ? lesson.materials : [];
+                    const materialsHtml = materials.length ? `
+                        <div class="mt-6">
+                            <h4 class="flex items-center gap-2 text-base font-semibold text-[color:var(--text)] mb-3">
+                                <i class="fa-solid fa-paperclip text-[color:var(--accent)]" aria-hidden="true"></i>
+                                Материалы к уроку:
+                            </h4>
+                            <div class="flex flex-wrap">
+                                ${materials.map((m) => `
+                                    <a href="${esc(m.external_url || m.file_url || '#')}" target="_blank" rel="noopener" class="material-link">
+                                        <i class="fa-solid ${getMaterialIcon(m.file_type)}" aria-hidden="true"></i>${esc(m.title)}
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>` : '';
+
+                    const videoHtml = lesson.video_url ? `
+                        <div class="video-container">
+                            <iframe src="${esc(getYouTubeEmbedUrl(lesson.video_url))}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>` : '';
+
+                    const contentHtml = lesson.content ? `<div class="text-sm text-[color:var(--text-muted)] leading-relaxed mb-6"><p>${esc(lesson.content)}</p></div>` : '';
+
+                    return `
+                        <div data-lesson="${esc(lesson.id)}">
+                            <div class="lesson-item" data-lesson-toggle="${esc(lesson.id)}" role="button" tabindex="0">
+                                <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-[color:var(--text)] text-sm">${esc(lesson.title)}</h3>
+                                    <p class="text-xs text-[color:var(--text-subtle)]">${esc(lesson.duration || '')}</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-[color:var(--text-subtle)]" data-lesson-chevron="${esc(lesson.id)}" aria-hidden="true"></i>
+                            </div>
+                            <div class="hidden mt-4 ml-4 p-6 bg-[color:var(--bg-card)] rounded-xl border border-[color:var(--border)]" data-lesson-content="${esc(lesson.id)}">
+                                ${videoHtml}${contentHtml}${materialsHtml}
+                            </div>
+                        </div>`;
+                }).join('');
+
+                return `
+                    <div class="module-card">
+                        <h2 class="text-2xl font-display font-medium text-[color:var(--text)] uppercase tracking-tight mb-4">${esc(module.title)}</h2>
+                        ${module.description ? `<p class="text-sm text-[color:var(--text-muted)] leading-relaxed mb-6">${esc(module.description)}</p>` : ''}
+                        <div>${lessonsHtml}</div>
+                    </div>`;
+            }).join('');
+
+            el('courseDetail').innerHTML = `
+                <button type="button" id="backToCourses" class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--accent)] hover:text-[color:var(--accent-hover)] transition-colors cursor-pointer">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    Назад к курсам
+                </button>
+                <div class="bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl shadow-[var(--shadow)] p-8 mb-8">
+                    <h1 class="text-3xl md:text-4xl font-display font-medium text-[color:var(--text)] uppercase tracking-tight mb-4">${esc(course.title)}</h1>
+                    <p class="text-base text-[color:var(--text-muted)] leading-relaxed mb-6">${esc(course.description || '')}</p>
+                    <div class="flex flex-wrap gap-3">
+                        ${course.duration ? `<span class="badge badge-info"><i class="fa-regular fa-clock" aria-hidden="true"></i>${esc(course.duration)}</span>` : ''}
+                        ${course.level ? `<span class="badge badge-info"><i class="fa-solid fa-signal" aria-hidden="true"></i>${esc(course.level)}</span>` : ''}
+                        <span class="badge badge-success"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Бесплатно</span>
+                    </div>
+                </div>
+                ${modulesHtml}`;
+        }
+
+        // ---- Event delegation (CSP-safe; no inline handlers) ----
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('[data-slug]');
+            if (card) { loadCourse(card.getAttribute('data-slug')); return; }
+
+            if (e.target.closest('#backToCourses')) { loadCourses(); return; }
+
+            const toggle = e.target.closest('[data-lesson-toggle]');
+            if (toggle) {
+                const id = toggle.getAttribute('data-lesson-toggle');
+                const content = document.querySelector(`[data-lesson-content="${CSS.escape(id)}"]`);
+                const chevron = document.querySelector(`[data-lesson-chevron="${CSS.escape(id)}"]`);
+                if (content) {
+                    const nowHidden = content.classList.toggle('hidden');
+                    if (chevron) {
+                        chevron.classList.toggle('fa-chevron-down', nowHidden);
+                        chevron.classList.toggle('fa-chevron-up', !nowHidden);
+                    }
+                }
+                return;
+            }
+
+            if (e.target.closest('#retryBtn')) { loadCourses(); }
+        });
+
+        // Keyboard activation for course cards and lesson toggles (accessibility)
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const card = e.target.closest('[data-slug]');
+            if (card) { e.preventDefault(); loadCourse(card.getAttribute('data-slug')); return; }
+            const toggle = e.target.closest('[data-lesson-toggle]');
+            if (toggle) {
+                e.preventDefault();
+                const id = toggle.getAttribute('data-lesson-toggle');
+                const content = document.querySelector(`[data-lesson-content="${CSS.escape(id)}"]`);
+                const chevron = document.querySelector(`[data-lesson-chevron="${CSS.escape(id)}"]`);
+                if (content) {
+                    const nowHidden = content.classList.toggle('hidden');
+                    if (chevron) {
+                        chevron.classList.toggle('fa-chevron-down', nowHidden);
+                        chevron.classList.toggle('fa-chevron-up', !nowHidden);
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', loadCourses);
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    const hidden = menu.classList.toggle('hidden');
+                    btn.setAttribute('aria-expanded', String(!hidden));
+                });
+                menu.querySelectorAll('a').forEach((link) => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

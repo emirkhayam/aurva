@@ -27,7 +27,10 @@ export const getTeamMembers = async (req: Request, res: Response): Promise<void>
       query = query.eq('category', category);
     }
 
-    if (isActive !== undefined) {
+    // Admin passes isActive=all to include inactive members too.
+    if (isActive === 'all') {
+      // no filter — return active + inactive
+    } else if (isActive !== undefined) {
       query = query.eq('is_active', isActive === 'true');
     } else {
       query = query.eq('is_active', true);

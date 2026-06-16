@@ -1,0 +1,170 @@
+[
+  {
+    "id": "J001",
+    "category": "A_anonymous",
+    "title": "Landing page loads",
+    "actor": "anonymous",
+    "starting_url": "/",
+    "intent": "As a first-time visitor I open the app and should see a working landing page that explains what the product does.",
+    "expected_observations": [
+      "Page title is non-empty and names the product",
+      "A primary headline / value proposition is visible",
+      "A primary call-to-action button is visible (e.g. Sign up / Get started)",
+      "A way to log in is visible in the header"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J002",
+    "category": "A_anonymous",
+    "title": "Login form is reachable and renders fields",
+    "actor": "anonymous",
+    "starting_url": "/",
+    "intent": "I want to log in, so I look for and open the login screen.",
+    "expected_observations": [
+      "A login entry point is discoverable from the landing page",
+      "After clicking it, an email/username field and a password field are visible",
+      "A submit button is visible"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J003",
+    "category": "A_anonymous",
+    "title": "Mobile viewport — landing is responsive",
+    "actor": "anonymous",
+    "starting_url": "/",
+    "intent": "I open the app on a phone (iPhone 13).",
+    "expected_observations": [
+      "No horizontal scroll (content fits the viewport width)",
+      "A navigation affordance is available (hamburger / menu)",
+      "The primary call-to-action is still visible and tappable"
+    ],
+    "negative": false,
+    "viewport": { "width": 390, "height": 844 }
+  },
+  {
+    "id": "J004",
+    "category": "B_user",
+    "title": "User can log in and reach their home/dashboard",
+    "actor": "verified_user",
+    "starting_url": "/",
+    "intent": "I log in with my account and expect to land on my dashboard / home.",
+    "expected_observations": [
+      "Login succeeds (URL is no longer the login screen)",
+      "The header shows a logged-in state (avatar / account menu / my email)",
+      "A personalised area (dashboard / home) with my content is visible"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J005",
+    "category": "B_user",
+    "title": "User can open their profile / account settings",
+    "actor": "verified_user",
+    "starting_url": "/",
+    "intent": "I want to view and edit my profile/account settings.",
+    "expected_observations": [
+      "A profile / account / settings entry is discoverable from the logged-in UI",
+      "The profile page shows my account details",
+      "At least one editable field or a Save/Edit control is present"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J006",
+    "category": "B_user",
+    "title": "User completes the product's core action",
+    "actor": "verified_user",
+    "starting_url": "/",
+    "intent": "I perform the main thing this product is for (create/submit/buy/book/etc. — discover it from the UI).",
+    "expected_observations": [
+      "The primary action is discoverable from the main UI",
+      "Starting it opens a form/flow with the expected inputs",
+      "On completion a clear success state / confirmation is shown"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J007",
+    "category": "B_user",
+    "title": "User can log out",
+    "actor": "verified_user",
+    "starting_url": "/",
+    "intent": "I log out of my account.",
+    "expected_observations": [
+      "A logout control is discoverable from the account menu",
+      "After logout the UI returns to a logged-out state (login/sign-up CTA visible again)"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J008",
+    "category": "C_admin",
+    "title": "Admin reaches the admin dashboard",
+    "actor": "admin",
+    "starting_url": "/",
+    "intent": "As an administrator I open the admin area and expect an overview.",
+    "expected_observations": [
+      "An admin entry point is visible for this role",
+      "The admin dashboard renders with navigation to management sections",
+      "Some summary metrics or a list of manageable entities is visible"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J009",
+    "category": "C_admin",
+    "title": "Admin opens a management list and a detail view",
+    "actor": "admin",
+    "starting_url": "/",
+    "intent": "I open a primary management section (users / items / orders), then open one record's detail.",
+    "expected_observations": [
+      "A management list is reachable from the admin navigation",
+      "The list shows rows with identifying columns",
+      "Clicking a row / its action opens a detail or edit view for that record"
+    ],
+    "negative": false
+  },
+  {
+    "id": "J010",
+    "category": "D_edge",
+    "title": "Wrong password shows a clear error",
+    "actor": "anonymous",
+    "starting_url": "/",
+    "intent": "I enter a valid-looking email and a wrong password.",
+    "expected_observations": [
+      "After submit, an error message is shown",
+      "The message is human-readable and in the app's UI language (not a raw backend code)",
+      "I am NOT logged in (still on the login screen)"
+    ],
+    "negative": true
+  },
+  {
+    "id": "J011",
+    "category": "D_edge",
+    "title": "Anonymous visitor cannot reach an admin-only area",
+    "actor": "anonymous",
+    "starting_url": "/",
+    "intent": "Without logging in, I try to reach an admin/privileged area by discovering any link to it.",
+    "expected_observations": [
+      "There is no usable path into the admin area while logged out",
+      "If a privileged URL is hit, the app blocks it (redirect to login / not-authorized state) rather than exposing data"
+    ],
+    "negative": true
+  },
+  {
+    "id": "J012",
+    "category": "D_edge",
+    "title": "Restricted user is correctly gated from a privileged action",
+    "actor": "restricted_user",
+    "starting_url": "/",
+    "intent": "As a limited/pending/blocked user I try to perform an action my state should not allow.",
+    "expected_observations": [
+      "The blocked action is either hidden or visibly disabled for this user",
+      "If attempted, a clear explanation of why it's unavailable is shown",
+      "The action does not actually go through"
+    ],
+    "negative": true
+  }
+]

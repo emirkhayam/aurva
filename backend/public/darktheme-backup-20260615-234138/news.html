@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости — AURVA</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg">
+    <link rel="mask-icon" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" color="#2563EB">
+    <meta name="theme-color" content="#2563EB">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #F4F6F8;
+            --bg-surface: #EDEFF2;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F9FAFB;
+            --border: #D9DEE3;
+            --shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+            --text: #0F172A;
+            --text-muted: #475569;
+            --text-subtle: #64748B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --accent-soft: #EFF6FF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+        }
+        .font-display { font-family: 'Oswald', sans-serif; }
+        ::selection { background: var(--accent); color: #ffffff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+
+        .filter-button {
+            transition: all 0.2s ease;
+        }
+        .filter-button.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .filter-button:hover {
+            background-color: var(--accent-soft);
+            border-color: var(--accent);
+        }
+        .filter-button.active:hover {
+            background-color: var(--accent-hover);
+        }
+        /* Skip link: visually hidden until focused */
+        .skip-link { position: absolute; left: -9999px; top: 0; z-index: 60; }
+        .skip-link:focus {
+            left: 1rem; top: 1rem; width: auto; height: auto;
+            padding: 0.625rem 1rem; background: var(--bg-card); color: var(--accent);
+            border: 1px solid var(--accent); border-radius: 0.5rem;
+            box-shadow: var(--shadow); font-size: 0.875rem; font-weight: 600;
+        }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <a href="#main" class="skip-link">Перейти к содержанию</a>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-[color:var(--bg-card)]/90 backdrop-blur-md border-b border-[color:var(--border)]" aria-label="Главная навигация">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex h-20 items-center justify-between">
+            <a href="/" class="flex items-center gap-3" aria-label="AURVA — на главную">
+                <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="Логотип AURVA" class="h-10 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">
+                <a href="/about" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">О нас</a>
+                <a href="/#directions" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Направления</a>
+                <a href="/#benefits" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Преимущества</a>
+                <a href="/news" aria-current="page" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--accent)] tracking-tight">Новости</a>
+                <a href="/courses" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Курсы</a>
+            </div>
+
+            <!-- CTA & Mobile toggle -->
+            <div class="flex items-center gap-2">
+                <button id="mobile-menu-btn" class="lg:hidden inline-flex items-center justify-center p-2.5 min-w-[44px] min-h-[44px] rounded-md hover:bg-gray-100 transition-colors" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <a href="/cabinet" class="hidden sm:inline-flex items-center gap-1.5 text-xs px-3.5 py-2 text-[color:var(--text-muted)] font-medium rounded-full tracking-tight transition-all duration-300 hover:text-[color:var(--accent)] hover:bg-[color:var(--accent)]/5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                    Кабинет
+                </a>
+                <a href="/#contact" class="hidden sm:inline-flex items-center text-xs px-4 py-2 bg-[color:var(--accent)] text-white font-semibold rounded-full tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] shadow-sm hover:shadow-md">
+                    Подать заявку
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-[color:var(--bg-card)] border-b border-[color:var(--border)]">
+            <div class="px-4 pt-2 pb-6 flex flex-col gap-2 text-center">
+                <a href="/" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Главная</a>
+                <a href="/about" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">О нас</a>
+                <a href="/#directions" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Направления</a>
+                <a href="/#benefits" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Преимущества</a>
+                <a href="/news" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--accent)] bg-[color:var(--bg-surface)]" aria-current="page">Новости</a>
+                <a href="/courses" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Курсы</a>
+                <a href="/cabinet" class="flex items-center justify-center gap-2 mt-4 px-3 py-2.5 text-center rounded-full text-sm font-medium text-[color:var(--text-muted)] border border-[color:var(--border)] hover:text-[color:var(--accent)] hover:border-[color:var(--accent)]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                    Личный кабинет
+                </a>
+                <a href="/#contact" class="block mt-2 px-3 py-2.5 text-center rounded-full text-sm font-semibold text-white bg-[color:var(--accent)]">Подать заявку</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section id="main" class="pt-32 pb-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="mb-6 flex justify-center">
+                    <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA" class="h-16 w-auto">
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
+                    Все
+                    <br>
+                    <span class="text-[color:var(--accent)] font-semibold">→ НОВОСТИ</span>
+                </h1>
+                <p class="text-sm text-[color:var(--text-muted)] leading-relaxed font-light max-w-2xl mx-auto">
+                    Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации
+                </p>
+            </div>
+
+            <!-- Category Filters -->
+            <div id="categoryFilters" class="flex flex-wrap items-center justify-center gap-3" role="group" aria-label="Фильтр новостей по категориям">
+                <button type="button" data-category="all" class="filter-button active px-5 py-2.5 min-h-[44px] text-xs font-semibold uppercase tracking-wide rounded-full border border-[color:var(--border)] bg-[color:var(--bg-card)] text-[color:var(--text-muted)] cursor-pointer">Все</button>
+                <button type="button" data-category="regulation" class="filter-button px-5 py-2.5 min-h-[44px] text-xs font-semibold uppercase tracking-wide rounded-full border border-[color:var(--border)] bg-[color:var(--bg-card)] text-[color:var(--text-muted)] cursor-pointer">Регулирование</button>
+                <button type="button" data-category="events" class="filter-button px-5 py-2.5 min-h-[44px] text-xs font-semibold uppercase tracking-wide rounded-full border border-[color:var(--border)] bg-[color:var(--bg-card)] text-[color:var(--text-muted)] cursor-pointer">События</button>
+                <button type="button" data-category="analytics" class="filter-button px-5 py-2.5 min-h-[44px] text-xs font-semibold uppercase tracking-wide rounded-full border border-[color:var(--border)] bg-[color:var(--bg-card)] text-[color:var(--text-muted)] cursor-pointer">Аналитика</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <section class="pb-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[color:var(--border)] border-t-[color:var(--accent)]"></div>
+                <p class="mt-4 text-sm text-[color:var(--text-muted)]">Загрузка новостей...</p>
+            </div>
+
+            <!-- News Grid Container -->
+            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                <!-- News cards will be inserted here -->
+            </div>
+
+            <!-- No Results -->
+            <div id="noResults" class="hidden text-center py-12">
+                <i class="fa-solid fa-inbox text-6xl text-[color:var(--border)] mb-4"></i>
+                <p class="text-lg text-[color:var(--text-muted)]">Новостей не найдено</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[color:var(--bg-card)] border-t border-[color:var(--border)] pt-8 pb-6">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-start gap-10 w-full mb-10 items-center justify-between">
+                <!-- Branding & Connect -->
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="Логотип AURVA" class="h-8 w-auto object-contain">
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)] opacity-70">
+                        Связь с нами
+                    </span>
+                    <div class="flex flex-col gap-2.5 text-center md:text-left">
+                        <a href="mailto:aurva.kg@gmail.com" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                            <i class="fa-solid fa-envelope text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors" aria-hidden="true"></i>
+                            <span>aurva.kg@gmail.com</span>
+                        </a>
+                        <a href="tel:+996550999010" class="group flex items-center gap-2.5 text-xs text-[color:var(--text)] transition-colors justify-center md:justify-start">
+                            <i class="fa-solid fa-phone text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors" aria-hidden="true"></i>
+                            <span>+996 550 99 90 10</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="flex flex-col items-center justify-center gap-2.5 mt-2 md:mt-0">
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-1.5 w-1.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--accent)] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[color:var(--accent)]"></span>
+                        </span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text)]">
+                            Ассоциация активна
+                        </span>
+                    </div>
+                    <div class="flex gap-3 text-[9px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest opacity-80">
+                        <span>AURVA::КР</span>
+                        <span class="text-[color:var(--border)]">|</span>
+                        <span>Основано в 2024</span>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex flex-col items-center md:items-end gap-4">
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)] opacity-70">
+                        Навигация
+                    </span>
+                    <div class="flex flex-col gap-2.5 text-center md:text-right">
+                        <a href="/about" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">О нас</a>
+                        <a href="/#directions" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Направления</a>
+                        <a href="/#benefits" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Преимущества</a>
+                        <a href="/#members" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Участники</a>
+                        <a href="/news" class="text-xs text-[color:var(--accent)] transition-colors" aria-current="page">Новости</a>
+                        <a href="/courses" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Курсы</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-[color:var(--border)] flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-[10px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest text-center sm:text-left">
+                    © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+                </span>
+                <div class="flex gap-6">
+                    <a href="/privacy" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                        Политика конфиденциальности
+                    </a>
+                    <a href="/charter" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                        Устав
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const API_URL = '/api';
+        let allNews = [];
+        let currentFilter = 'all';
+
+        // Load All News
+        async function loadAllNews() {
+            try {
+                console.log('Loading news from API...');
+                const response = await fetch(`${API_URL}/news?published=true&limit=100`);
+                const data = await response.json();
+                console.log('API Response:', data);
+
+                if (data.news && data.news.length > 0) {
+                    allNews = data.news;
+                    console.log('Loaded news:', allNews.length);
+                    console.log('Categories in news:', allNews.map(n => n.category));
+                    renderNews(allNews);
+                    document.getElementById('loadingState').classList.add('hidden');
+                    document.getElementById('newsGrid').classList.remove('hidden');
+                } else {
+                    console.log('No news found');
+                    document.getElementById('loadingState').classList.add('hidden');
+                    document.getElementById('noResults').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading news:', error);
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('noResults').classList.remove('hidden');
+            }
+        }
+
+        function renderNews(newsItems) {
+            const newsGrid = document.getElementById('newsGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (!newsGrid) return;
+
+            if (newsItems.length === 0) {
+                newsGrid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            newsGrid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+
+            newsGrid.innerHTML = newsItems.map(item => `
+                <a href="/news-detail.html?slug=${encodeURIComponent(item.slug)}" aria-label="Читать новость: ${item.title}" class="group bg-[color:var(--bg-card)] border border-[color:var(--border)] rounded-2xl flex flex-col h-full relative overflow-hidden hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 shadow-[var(--shadow)] transform hover:scale-[1.02]">
+                    <div class="h-48 bg-[color:var(--bg-surface)] relative overflow-hidden border-b border-[color:var(--border)] pointer-events-none">
+                        <div class="group-hover:scale-105 transition-transform duration-500 bg-cover bg-center absolute inset-0 pointer-events-none" style="background-image: url('${item.image_url || 'https://via.placeholder.com/400x300'}');"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 relative z-10 bg-[color:var(--bg-card)]">
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="text-[9px] font-mono text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-1.5 py-0.5 rounded border border-[color:var(--border)] uppercase tracking-wide">
+                                ${getCategoryLabel(item.category)}
+                            </span>
+                            <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">
+                                ${formatDate(item.published_at)}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight line-clamp-2">
+                            ${item.title}
+                        </h3>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">
+                            ${item.excerpt}
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
+                            <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
+                                Читать
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'regulation': 'Регулирование',
+                'events': 'События',
+                'analytics': 'Аналитика',
+                'other': 'Новости'
+            };
+            return labels[category] || 'Новости';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+        }
+
+        function filterNews(category) {
+            console.log('Filtering by category:', category);
+            console.log('All news count:', allNews.length);
+
+            currentFilter = category;
+
+            // Update active button
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter news
+            const filteredNews = category === 'all'
+                ? allNews
+                : allNews.filter(news => news.category === category);
+
+            console.log('Filtered news count:', filteredNews.length);
+            renderNews(filteredNews);
+
+            // Scroll to top of news grid
+            const newsGrid = document.getElementById('newsGrid');
+            if (newsGrid) {
+                newsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Load news when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllNews();
+
+            // Mobile menu
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    const isOpen = !menu.classList.toggle('hidden');
+                    btn.setAttribute('aria-expanded', String(isOpen));
+                });
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // Category filter buttons
+            document.querySelectorAll('#categoryFilters .filter-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    filterNews(button.getAttribute('data-category'));
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

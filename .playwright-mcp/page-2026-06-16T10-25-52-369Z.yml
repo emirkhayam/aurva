@@ -1,0 +1,356 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Команда" [level=1] [ref=e79]
+            - paragraph [ref=e80]: Управление членами команды и экспертного совета
+          - button "Добавить члена команды" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - text: Добавить члена команды
+        - generic [ref=e83]:
+          - generic [ref=e494]:
+            - generic [ref=e496]:
+              - generic [ref=e498]:
+                - generic [ref=e499]:
+                  - heading "[QA-TEST] Удаление" [level=3] [ref=e500]
+                  - img [ref=e501]
+                - paragraph [ref=e504]: "будет удалён через UI • Порядок: 0"
+                - generic [ref=e505]: Другое
+              - generic [ref=e506]: Активный
+            - generic [ref=e508]:
+              - button "Редактировать" [ref=e509] [cursor=pointer]:
+                - img [ref=e510]
+                - text: Редактировать
+              - button [ref=e513] [cursor=pointer]:
+                - img [ref=e514]
+          - generic [ref=e517]:
+            - generic [ref=e519]:
+              - generic [ref=e520]:
+                - img "Темир Казыбай" [ref=e521]
+                - generic [ref=e522]:
+                  - generic [ref=e523]:
+                    - heading "Темир Казыбай" [level=3] [ref=e524]
+                    - img [ref=e525]
+                  - paragraph [ref=e528]: "Председатель Ассоциации • Порядок: 0"
+                  - generic [ref=e529]: Руководство
+              - generic [ref=e530]: Активный
+            - generic [ref=e532]:
+              - button "Редактировать" [ref=e533] [cursor=pointer]:
+                - img [ref=e534]
+                - text: Редактировать
+              - button [ref=e537] [cursor=pointer]:
+                - img [ref=e538]
+          - generic [ref=e541]:
+            - generic [ref=e543]:
+              - generic [ref=e544]:
+                - img "Акмарал Тулегенова" [ref=e545]
+                - generic [ref=e546]:
+                  - generic [ref=e547]:
+                    - heading "Акмарал Тулегенова" [level=3] [ref=e548]
+                    - img [ref=e549]
+                  - paragraph [ref=e552]: "Член Наблюдательного Совета • Порядок: 1"
+                  - generic [ref=e553]: Руководство
+              - generic [ref=e554]: Активный
+            - generic [ref=e556]:
+              - button "Редактировать" [ref=e557] [cursor=pointer]:
+                - img [ref=e558]
+                - text: Редактировать
+              - button [ref=e561] [cursor=pointer]:
+                - img [ref=e562]
+          - generic [ref=e565]:
+            - generic [ref=e567]:
+              - generic [ref=e568]:
+                - img "Максим Уваров" [ref=e569]
+                - generic [ref=e570]:
+                  - generic [ref=e571]:
+                    - heading "Максим Уваров" [level=3] [ref=e572]
+                    - img [ref=e573]
+                  - paragraph [ref=e576]: "Председатель Наблюдательного Совета • Порядок: 2"
+                  - generic [ref=e577]: Руководство
+              - generic [ref=e578]: Активный
+            - generic [ref=e580]:
+              - button "Редактировать" [ref=e581] [cursor=pointer]:
+                - img [ref=e582]
+                - text: Редактировать
+              - button [ref=e585] [cursor=pointer]:
+                - img [ref=e586]
+          - generic [ref=e589]:
+            - generic [ref=e591]:
+              - generic [ref=e592]:
+                - img "Анастасия Дубовикова" [ref=e593]
+                - generic [ref=e594]:
+                  - generic [ref=e595]:
+                    - heading "Анастасия Дубовикова" [level=3] [ref=e596]
+                    - img [ref=e597]
+                  - paragraph [ref=e600]: "Бухгалтер • Порядок: 3"
+                  - generic [ref=e601]: Руководство
+              - generic [ref=e602]: Активный
+            - generic [ref=e604]:
+              - button "Редактировать" [ref=e605] [cursor=pointer]:
+                - img [ref=e606]
+                - text: Редактировать
+              - button [ref=e609] [cursor=pointer]:
+                - img [ref=e610]
+          - generic [ref=e613]:
+            - generic [ref=e615]:
+              - generic [ref=e616]:
+                - img "Асылбек Айтматов" [ref=e617]
+                - generic [ref=e618]:
+                  - generic [ref=e619]:
+                    - heading "Асылбек Айтматов" [level=3] [ref=e620]
+                    - img [ref=e621]
+                  - paragraph [ref=e624]: "Председатель Экспертного совета • Порядок: 4"
+                  - generic [ref=e625]: Экспертный совет
+              - generic [ref=e626]: Активный
+            - generic [ref=e628]:
+              - button "Редактировать" [ref=e629] [cursor=pointer]:
+                - img [ref=e630]
+                - text: Редактировать
+              - button [ref=e633] [cursor=pointer]:
+                - img [ref=e634]
+          - generic [ref=e637]:
+            - generic [ref=e639]:
+              - generic [ref=e640]:
+                - img "Урмат Мырзабеков" [ref=e641]
+                - generic [ref=e642]:
+                  - generic [ref=e643]:
+                    - heading "Урмат Мырзабеков" [level=3] [ref=e644]
+                    - img [ref=e645]
+                  - paragraph [ref=e648]: "Член Ассоциации • Порядок: 4"
+                  - generic [ref=e649]: Руководство
+              - generic [ref=e650]: Активный
+            - generic [ref=e652]:
+              - button "Редактировать" [ref=e653] [cursor=pointer]:
+                - img [ref=e654]
+                - text: Редактировать
+              - button [ref=e657] [cursor=pointer]:
+                - img [ref=e658]
+          - generic [ref=e661]:
+            - generic [ref=e663]:
+              - generic [ref=e664]:
+                - img "Арстанбек Абдикапаров" [ref=e665]
+                - generic [ref=e666]:
+                  - generic [ref=e667]:
+                    - heading "Арстанбек Абдикапаров" [level=3] [ref=e668]
+                    - img [ref=e669]
+                  - paragraph [ref=e672]: "Член Экспертного совета • Порядок: 5"
+                  - generic [ref=e673]: Экспертный совет
+              - generic [ref=e674]: Активный
+            - generic [ref=e676]:
+              - button "Редактировать" [ref=e677] [cursor=pointer]:
+                - img [ref=e678]
+                - text: Редактировать
+              - button [ref=e681] [cursor=pointer]:
+                - img [ref=e682]
+          - generic [ref=e685]:
+            - generic [ref=e687]:
+              - generic [ref=e688]:
+                - img "Абдыбекова Рита" [ref=e689]
+                - generic [ref=e690]:
+                  - generic [ref=e691]:
+                    - heading "Абдыбекова Рита" [level=3] [ref=e692]
+                    - img [ref=e693]
+                  - paragraph [ref=e696]: "Член Экспертного совета • Порядок: 6"
+                  - generic [ref=e697]: Экспертный совет
+              - generic [ref=e698]: Активный
+            - generic [ref=e700]:
+              - button "Редактировать" [ref=e701] [cursor=pointer]:
+                - img [ref=e702]
+                - text: Редактировать
+              - button [ref=e705] [cursor=pointer]:
+                - img [ref=e706]
+          - generic [ref=e709]:
+            - generic [ref=e711]:
+              - generic [ref=e712]:
+                - img "Азимбек Сагынбаев" [ref=e713]
+                - generic [ref=e714]:
+                  - generic [ref=e715]:
+                    - heading "Азимбек Сагынбаев" [level=3] [ref=e716]
+                    - img [ref=e717]
+                  - paragraph [ref=e720]: "Член Экспертного совета • Порядок: 7"
+                  - generic [ref=e721]: Экспертный совет
+              - generic [ref=e722]: Активный
+            - generic [ref=e724]:
+              - button "Редактировать" [ref=e725] [cursor=pointer]:
+                - img [ref=e726]
+                - text: Редактировать
+              - button [ref=e729] [cursor=pointer]:
+                - img [ref=e730]
+          - generic [ref=e733]:
+            - generic [ref=e735]:
+              - generic [ref=e736]:
+                - img "Дмитрий Коваленко" [ref=e737]
+                - generic [ref=e738]:
+                  - generic [ref=e739]:
+                    - heading "Дмитрий Коваленко" [level=3] [ref=e740]
+                    - img [ref=e741]
+                  - paragraph [ref=e744]: "Член Экспертного совета • Порядок: 8"
+                  - generic [ref=e745]: Экспертный совет
+              - generic [ref=e746]: Активный
+            - generic [ref=e748]:
+              - button "Редактировать" [ref=e749] [cursor=pointer]:
+                - img [ref=e750]
+                - text: Редактировать
+              - button [ref=e753] [cursor=pointer]:
+                - img [ref=e754]
+          - generic [ref=e757]:
+            - generic [ref=e759]:
+              - generic [ref=e760]:
+                - img "Александр Хван" [ref=e761]
+                - generic [ref=e762]:
+                  - generic [ref=e763]:
+                    - heading "Александр Хван" [level=3] [ref=e764]
+                    - img [ref=e765]
+                  - paragraph [ref=e768]: "Член Экспертного совета • Порядок: 9"
+                  - generic [ref=e769]: Экспертный совет
+              - generic [ref=e770]: Активный
+            - generic [ref=e772]:
+              - button "Редактировать" [ref=e773] [cursor=pointer]:
+                - img [ref=e774]
+                - text: Редактировать
+              - button [ref=e777] [cursor=pointer]:
+                - img [ref=e778]
+          - generic [ref=e781]:
+            - generic [ref=e783]:
+              - generic [ref=e784]:
+                - img "Кулеш Василий Васильевич" [ref=e785]
+                - generic [ref=e786]:
+                  - generic [ref=e787]:
+                    - heading "Кулеш Василий Васильевич" [level=3] [ref=e788]
+                    - img [ref=e789]
+                  - paragraph [ref=e792]: "Член Экспертного совета • Порядок: 10"
+                  - generic [ref=e793]: Экспертный совет
+              - generic [ref=e794]: Активный
+            - generic [ref=e796]:
+              - button "Редактировать" [ref=e797] [cursor=pointer]:
+                - img [ref=e798]
+                - text: Редактировать
+              - button [ref=e801] [cursor=pointer]:
+                - img [ref=e802]
+          - generic [ref=e805]:
+            - generic [ref=e807]:
+              - generic [ref=e808]:
+                - img "Батырбаев Бехруз Рассулжанович" [ref=e809]
+                - generic [ref=e810]:
+                  - generic [ref=e811]:
+                    - heading "Батырбаев Бехруз Рассулжанович" [level=3] [ref=e812]
+                    - img [ref=e813]
+                  - paragraph [ref=e816]: "Член Экспертного совета • Порядок: 11"
+                  - generic [ref=e817]: Экспертный совет
+              - generic [ref=e818]: Активный
+            - generic [ref=e820]:
+              - button "Редактировать" [ref=e821] [cursor=pointer]:
+                - img [ref=e822]
+                - text: Редактировать
+              - button [ref=e825] [cursor=pointer]:
+                - img [ref=e826]
+          - generic [ref=e829]:
+            - generic [ref=e831]:
+              - generic [ref=e832]:
+                - img "Эдилбек улуу Арсен" [ref=e833]
+                - generic [ref=e834]:
+                  - generic [ref=e835]:
+                    - heading "Эдилбек улуу Арсен" [level=3] [ref=e836]
+                    - img [ref=e837]
+                  - paragraph [ref=e840]: "Член Экспертного совета • Порядок: 12"
+                  - generic [ref=e841]: Экспертный совет
+              - generic [ref=e842]: Активный
+            - generic [ref=e844]:
+              - button "Редактировать" [ref=e845] [cursor=pointer]:
+                - img [ref=e846]
+                - text: Редактировать
+              - button [ref=e849] [cursor=pointer]:
+                - img [ref=e850]
+          - generic [ref=e853]:
+            - generic [ref=e855]:
+              - generic [ref=e856]:
+                - img "Луйк Лембит Лембитович" [ref=e857]
+                - generic [ref=e858]:
+                  - generic [ref=e859]:
+                    - heading "Луйк Лембит Лембитович" [level=3] [ref=e860]
+                    - img [ref=e861]
+                  - paragraph [ref=e864]: "Член Экспертного совета • Порядок: 13"
+                  - generic [ref=e865]: Экспертный совет
+              - generic [ref=e866]: Активный
+            - generic [ref=e868]:
+              - button "Редактировать" [ref=e869] [cursor=pointer]:
+                - img [ref=e870]
+                - text: Редактировать
+              - button [ref=e873] [cursor=pointer]:
+                - img [ref=e874]
+          - generic [ref=e877]:
+            - generic [ref=e879]:
+              - generic [ref=e880]:
+                - img "Сергеев Андрей" [ref=e881]
+                - generic [ref=e882]:
+                  - generic [ref=e883]:
+                    - heading "Сергеев Андрей" [level=3] [ref=e884]
+                    - img [ref=e885]
+                  - paragraph [ref=e888]: "Член Экспертного совета • Порядок: 14"
+                  - generic [ref=e889]: Экспертный совет
+              - generic [ref=e890]: Активный
+            - generic [ref=e892]:
+              - button "Редактировать" [ref=e893] [cursor=pointer]:
+                - img [ref=e894]
+                - text: Редактировать
+              - button [ref=e897] [cursor=pointer]:
+                - img [ref=e898]
+  - region "Notifications alt+T"

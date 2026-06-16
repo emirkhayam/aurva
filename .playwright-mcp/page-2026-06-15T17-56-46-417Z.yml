@@ -1,0 +1,14 @@
+- generic [ref=e2]:
+  - img "Tilda" [ref=e3]
+  - 'heading "Request with error: 410 - Gone" [level=1] [ref=e4]'
+  - paragraph [ref=e5]:
+    - text: Your request has been automatically blocked by our system.
+    - text: If you believe this is an error, you can request an unblock.
+  - link "Request an unblock" [ref=e6] [cursor=pointer]:
+    - /url: https://unblock.tilda.link/?utm_referer=https%3A%2F%2Faurva.kg%2Ftpost%2Fheeyr220l1-aurva-prodolzhaet-obuchenie-sotrudnikov
+  - separator [ref=e7]
+  - paragraph [ref=e8]:
+    - text: If the issue persists, please contact our Customer Support at
+    - link "team@tilda.cc" [ref=e9] [cursor=pointer]:
+      - /url: mailto:team@tilda.cc
+    - text: for assistance.

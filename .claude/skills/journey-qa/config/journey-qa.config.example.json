@@ -1,0 +1,39 @@
+{
+  "$comment": "Copy to journey-qa.config.json and edit. NEVER commit real passwords — keep them in .env (TEST_PASSWORD) and reference env where possible. This file is safe to commit only with placeholder/non-secret values.",
+
+  "base_url": "https://your-app.example.com",
+  "admin_base_url": "https://your-app.example.com",
+  "$comment_urls": "base_url = public/app host. admin_base_url = where the admin panel lives (often the same host, sometimes a separate subdomain). Override at runtime with JOURNEY_BASE / JOURNEY_ADMIN_BASE env vars.",
+
+  "lang": "en",
+  "$comment_lang": "UI language of the target app. Used to pick the right button-label dictionary below.",
+
+  "labels": {
+    "$comment": "Visible button/link text the runner looks for, by intent. Add your app's wording (any language). Regex, case-insensitive. The blind MCP tester reads these too but still navigates by what it actually sees.",
+    "login_entry": "log\\s*in|sign in|войти|вход",
+    "continue": "continue|next|продолжить|далее",
+    "submit_login": "log\\s*in|sign in|войти|вход|continue|продолжить",
+    "logout": "log\\s*out|sign out|выйти|выход"
+  },
+
+  "auth": {
+    "login_path": "/login",
+    "$comment_login_path": "Relative path of the login form.",
+    "two_step": false,
+    "$comment_two_step": "true if the form asks for email first, then password on a second screen.",
+    "success_path_is_not": "/login",
+    "$comment_success": "After a successful login the URL pathname should no longer match this (used to detect login success/failure)."
+  },
+
+  "fixtures": {
+    "$comment": "Abstract user archetypes → the credentials the runner/agent will use. Emails are placeholders; the PASSWORD comes from env TEST_PASSWORD (do not hardcode secrets). 'anonymous' needs no entry. Map only the archetypes your journeys actually use.",
+    "basic_user":     { "email": "qa.basic@example.test",     "note": "registered, minimal/no privileges" },
+    "verified_user":  { "email": "qa.verified@example.test",  "note": "fully onboarded user who can perform core actions" },
+    "restricted_user":{ "email": "qa.restricted@example.test", "note": "user in a limited/blocked/pending state" },
+    "staff_limited":  { "email": "qa.staff@example.test",      "note": "internal staff with a narrow permission set" },
+    "admin":          { "email": "qa.admin@example.test",      "note": "full app/tenant administration" },
+    "superadmin":     { "email": "qa.superadmin@example.test", "note": "platform-level administration (optional)" }
+  },
+
+  "viewport": { "width": 1280, "height": 800 }
+}

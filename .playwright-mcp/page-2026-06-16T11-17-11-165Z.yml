@@ -1,0 +1,8 @@
+- generic [active] [ref=e1]:
+  - link [ref=e2] [cursor=pointer]:
+    - /url: //2gis.com
+  - generic [ref=e3]:
+    - heading "Something went wrong" [level=1] [ref=e4]
+    - paragraph [ref=e5]:
+      - text: We are already looking into what happened and will fix it shortly.
+      - text: Please try again in a few minutes.

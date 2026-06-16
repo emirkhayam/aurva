@@ -10,34 +10,75 @@
 <link rel="mask-icon" href="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" color="#2563EB">
 <meta name="theme-color" content="#2563EB">
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+// Apply saved/system theme before paint (no flash of wrong theme)
+(function () {
+  try {
+    var saved = localStorage.getItem('aurva-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+  } catch (e) {}
+})();
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>
 :root {
---bg-main: #F4F6F8;
---bg-surface: #EDEFF2;
+--bg-main: #F8FAFC;
+--bg-surface: #F1F5F9;
 --bg-card: #FFFFFF;
---bg-card-hover: #F9FAFB;
---border: #D9DEE3;
---shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06);
+--bg-card-hover: #F8FAFC;
+--border: #E2E8F0;
+--shadow: 0 1px 2px rgba(15,23,42,0.04), 0 10px 30px rgba(15,23,42,0.07);
 --text: #0F172A;
---text-muted: #475569;
+--text-muted: #334155;
 --text-subtle: #64748B;
 --accent: #2563EB;
 --accent-hover: #1D4ED8;
 --accent-soft: #EFF6FF;
 }
+/* ===== Dark theme (desaturated slate, brighter accent for contrast) ===== */
+html.dark {
+--bg-main: #0B1120;
+--bg-surface: #131C2E;
+--bg-card: #1A2235;
+--bg-card-hover: #222C42;
+--border: #2A3651;
+--shadow: 0 1px 2px rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.55);
+--text: #F1F5F9;
+--text-muted: #CBD5E1;
+--text-subtle: #94A3B8;
+--accent: #3B82F6;
+--accent-hover: #60A5FA;
+--accent-soft: #1C2740;
+}
+html.dark body { background-color: var(--bg-main); }
+/* Smooth crossfade only while toggling (added/removed by JS) */
+.theme-anim, .theme-anim *, .theme-anim *::before, .theme-anim *::after {
+transition: background-color .35s ease, color .35s ease, border-color .35s ease, fill .35s ease, box-shadow .35s ease !important;
+}
+/* Base transition for large flat surfaces that lack one */
+body, .section, #navbar, footer { transition: background-color .35s ease, color .35s ease, border-color .35s ease; }
+/* Theme toggle icon swap */
+.theme-icon-dark { display: none; }
+html.dark .theme-icon-dark { display: inline-block; }
+html.dark .theme-icon-light { display: none; }
 body {
-font-family: 'Inter', sans-serif;
+font-family: 'IBM Plex Sans', system-ui, sans-serif;
 background-color: var(--bg-main);
 color: var(--text-muted);
 overflow-x: hidden;
 }
-.font-display { font-family: 'Oswald', sans-serif; }
+/* Financial Trust typography — IBM Plex family across the board */
+.font-display { font-family: 'IBM Plex Sans', system-ui, sans-serif; letter-spacing: -0.03em; }
+.font-mono, [class*="font-mono"] { font-family: 'IBM Plex Mono', ui-monospace, monospace !important; }
+/* Oversized, high-weight headings (Trust & Authority + Exaggerated Minimalism) */
+h1.font-display, h2.font-display, h3.font-display, h4.font-display { font-weight: 700; }
+h1.font-display span, h2.font-display span { font-weight: 700; }
 .noise-overlay {
 position: fixed;
 inset: 0;
@@ -47,6 +88,15 @@ opacity: .02;
 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 ::selection { background: var(--accent); color: #ffffff; }
+/* Skip link: visually hidden until focused */
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 60; }
+.skip-link:focus {
+left: 1rem; top: 1rem; width: auto; height: auto;
+padding: 0.625rem 1rem; background: var(--bg-card); color: var(--accent);
+border: 1px solid var(--accent); border-radius: 0.5rem;
+box-shadow: var(--shadow); font-size: 0.875rem; font-weight: 600;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .section { position: relative; overflow: hidden; }
 .section--main { background-color: transparent; }
 .section--surface { background-color: rgba(15, 23, 42, 0.02); }
@@ -172,9 +222,22 @@ z-index: 0;
 .split-text .split-char.split-space {
     width: 0.3em;
 }
+/* Keep each word on one line; allow breaks only between words */
+.split-text .split-word {
+    display: inline-block;
+    white-space: nowrap;
+}
 .split-text.animate .split-char {
     opacity: 1;
     transform: translateY(0);
+}
+/* Respect reduced-motion: show text instantly, no per-character animation */
+@media (prefers-reduced-motion: reduce) {
+    .split-text .split-char {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 </style>
 <!-- aura-ga4-start -->
@@ -187,6 +250,7 @@ gtag('config', 'G-2M6V79H761');
 </script>
 <!-- aura-ga4-end --></head>
 <body class="antialiased overflow-x-hidden">
+    <a href="#main" class="skip-link">Перейти к содержанию</a>
     <div class="noise-overlay"></div>
 
     <!-- Navigation -->
@@ -195,22 +259,34 @@ gtag('config', 'G-2M6V79H761');
             <!-- Logo -->
             <div class="flex items-center flex-shrink-0 md:mr-4 gap-3">
                 <a href="/">
-                    <img id="navbar-logo" src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="md:h-12 w-auto h-10 object-contain transition-all duration-300">
+                    <img id="navbar-logo" src="https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg" alt="AURVA Logo" class="md:h-14 w-auto h-12 object-contain transition-all duration-300">
                 </a>
             </div>
 
             <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">
+            <div class="hidden lg:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">
                 <a href="/about" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">О нас</a>
                 <a href="#directions" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Направления</a>
                 <a href="#benefits" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Преимущества</a>
                 <a href="#news" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Новости</a>
+                <a href="/courses" class="px-1 py-2 text-[15px] font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors tracking-tight">Курсы</a>
             </div>
 
             <!-- CTA & Mobile toggle -->
             <div class="flex items-center gap-2">
-                <button id="mobile-menu-btn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none" aria-label="Открыть меню">
-                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Theme toggle -->
+                <button id="theme-toggle" type="button" class="inline-flex items-center justify-center w-9 h-9 min-w-[36px] rounded-full text-[color:var(--text-muted)] hover:text-[color:var(--accent)] hover:bg-[color:var(--accent)]/5 transition-all duration-300" aria-label="Переключить тему" title="Переключить тему">
+                    <!-- Moon (shown in light mode → switch to dark) -->
+                    <svg class="theme-icon-light w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+                    </svg>
+                    <!-- Sun (shown in dark mode → switch to light) -->
+                    <svg class="theme-icon-dark w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    </svg>
+                </button>
+                <button id="mobile-menu-btn" class="lg:hidden inline-flex items-center justify-center p-2.5 min-w-[44px] min-h-[44px] rounded-md hover:bg-[color:var(--bg-surface)] transition-colors" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6 text-[color:var(--text)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
@@ -225,12 +301,13 @@ gtag('config', 'G-2M6V79H761');
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-[color:var(--bg-card)] border-b border-[color:var(--border)]">
+        <div id="mobile-menu" class="lg:hidden hidden bg-[color:var(--bg-card)] border-b border-[color:var(--border)]">
             <div class="px-4 pt-2 pb-6 flex flex-col gap-2 text-center">
                 <a href="/about" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">О нас</a>
                 <a href="#directions" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Направления</a>
                 <a href="#benefits" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Преимущества</a>
                 <a href="#news" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Новости</a>
+                <a href="/courses" class="block px-3 py-3 rounded-lg text-sm font-semibold text-[color:var(--text)] hover:text-[color:var(--accent)] hover:bg-[color:var(--bg-surface)]">Курсы</a>
                 <a href="/cabinet" class="flex items-center justify-center gap-2 mt-4 px-3 py-2.5 text-center rounded-full text-sm font-medium text-[color:var(--text-muted)] border border-[color:var(--border)] hover:text-[color:var(--accent)] hover:border-[color:var(--accent)]">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
                     Личный кабинет
@@ -240,52 +317,106 @@ gtag('config', 'G-2M6V79H761');
         </div>
     </nav>
 
+    <style>
+        .hero-grid {
+            background-image:
+                linear-gradient(to right, var(--border) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+            background-size: 46px 46px;
+            -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 38%, #000 25%, transparent 78%);
+            mask-image: radial-gradient(ellipse 75% 60% at 50% 38%, #000 25%, transparent 78%);
+            opacity: 0.45;
+        }
+    </style>
+
     <!-- Hero Section -->
-    <main class="section section--main overflow-hidden min-h-[85vh] sm:min-h-screen flex flex-col sm:px-6 sm:pb-24 sm:pt-12 z-10 pt-28 pr-4 pb-16 pl-4 relative">
-        <div class="absolute inset-0 pointer-events-none" data-container-bg="true">
-            <div class="spline-container absolute top-0 left-0 w-full h-full -z-10 transform scale-[1.8] translate-y-[45%]">
-                <iframe src="https://my.spline.design/crystalball-de222de54d6fc4752fa850b54fb654de/" frameborder="0" width="100%" height="100%"></iframe>
-            </div>
-        </div>
-
+    <main id="main" class="section section--main overflow-hidden min-h-[85vh] sm:min-h-screen flex flex-col justify-center sm:px-6 sm:pb-24 sm:pt-24 z-10 pt-28 pr-4 pb-16 pl-4 relative">
+        <div class="hero-grid absolute inset-0 pointer-events-none z-0" aria-hidden="true"></div>
         <div class="spotlight"></div>
-        <div class="absolute -top-20 sm:-top-32 left-1/2 -translate-x-1/2 w-[90vw] sm:w-[600px] h-[200px] sm:h-[300px] blur-[80px] sm:blur-[100px] rounded-full pointer-events-none bg-[color:var(--accent)]/10"></div>
+        <div class="absolute top-1/2 right-0 lg:right-[6%] -translate-y-1/2 w-[80vw] sm:w-[620px] h-[420px] sm:h-[620px] blur-[90px] sm:blur-[120px] rounded-full pointer-events-none bg-[color:var(--accent)]/10"></div>
 
-        <div class="flex-1 flex flex-col text-center h-full max-w-7xl mr-auto ml-auto relative items-center justify-center">
-            <div class="flex flex-col animate-on-scroll w-full max-w-5xl z-10 relative -top-6 sm:-top-8 items-center">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
-                    <span class="text-[10px] sm:text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[color:var(--text-subtle)]">
-                        Основана в 2024 году
-                    </span>
-                    <div class="w-1 h-1 rounded-full bg-[color:var(--accent)]"></div>
+        <div class="w-full max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+
+                <!-- LEFT: headings -->
+                <div class="flex flex-col items-center text-center lg:items-start lg:text-left animate-on-scroll order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2.5 mb-6 pl-1.5 pr-3.5 py-1.5 rounded-full border border-[color:var(--border)] bg-[color:var(--bg-card)]/70 backdrop-blur-sm shadow-sm">
+                        <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[color:var(--accent)] text-white text-[9px]">
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        </span>
+                        <span class="text-[10px] sm:text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-[color:var(--text-muted)]">
+                            Ассоциация · с 2024 года
+                        </span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl uppercase leading-[1.08] sm:leading-[0.95] font-medium text-[color:var(--text)] tracking-tight sm:tracking-tighter font-display mb-5">
+                        Ассоциация Участников Рынка
+                        <br>
+                        <span class="text-[color:var(--accent)] font-semibold">
+                            Виртуальных Активов.
+                        </span>
+                    </h1>
+
+                    <p class="split-text font-display text-base sm:text-xl md:text-2xl font-medium uppercase tracking-tight mb-5 leading-tight text-[color:var(--text-muted)]" data-split-text>
+                        ОБЪЕДИНЯЕМ ЛИДЕРОВ ИНДУСТРИИ В КЫРГЫЗСТАНЕ
+                    </p>
+
+                    <p class="text-sm sm:text-base text-[color:var(--text-muted)] font-normal leading-relaxed max-w-md mb-8">
+                        Независимая площадка для диалога бизнеса, государства и пользователей — формируем прозрачные стандарты рынка цифровых активов.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 w-full sm:w-auto">
+                        <a href="#contact" class="cta-button w-full sm:w-auto px-10 py-4 bg-[color:var(--accent)] text-white text-base sm:text-lg font-bold rounded-2xl tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] hover:scale-105 hover:shadow-2xl hover:shadow-[color:var(--accent)]/30 shadow-lg focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative z-10">
+                            Подать заявку
+                        </a>
+                        <a href="#about" class="w-full sm:w-auto px-8 py-4 bg-[color:var(--bg-card)] text-[color:var(--text)] border border-[color:var(--border)] hover:bg-[color:var(--bg-card-hover)] hover:scale-105 hover:border-[color:var(--accent)]/40 hover:shadow-lg text-base sm:text-lg font-medium rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative overflow-hidden">
+                            <span class="relative z-10">Изучить манифест</span>
+                            <i class="fa-solid fa-arrow-right relative z-10 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <ul class="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 mt-8 text-xs text-[color:var(--text-subtle)]">
+                        <li class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-[color:var(--accent)]" aria-hidden="true"></i>Официальная ассоциация</li>
+                        <li class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-[color:var(--accent)]" aria-hidden="true"></i>10+ участников рынка</li>
+                        <li class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-[color:var(--accent)]" aria-hidden="true"></i>Диалог с регулятором</li>
+                    </ul>
                 </div>
 
-                <h1 class="text-3xl sm:text-5xl md:text-7xl uppercase leading-[0.95] font-medium text-[color:var(--text)] tracking-tighter font-display mb-4 drop-shadow-[0_1px_0_rgba(255,255,255,0.4)]">
-                    Ассоциация Участников Рынка
-                    <br>
-                    <span class="text-[color:var(--accent)] font-semibold">
-                        Виртуальных Активов.
-                    </span>
-                </h1>
-
-                <p class="split-text font-display text-lg sm:text-2xl md:text-3xl font-medium uppercase tracking-tight mb-8 leading-tight text-[color:var(--text)]" data-split-text>
-                    ОБЪЕДИНЯЕМ ЛИДЕРОВ ИНДУСТРИИ В КЫРГЫЗСТАНЕ
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 mt-6 sm:mt-10 mb-8 sm:mb-16">
-                    <a href="#contact" class="cta-button w-full sm:w-auto px-14 py-5 bg-[color:var(--accent)] text-white text-lg sm:text-xl font-bold rounded-2xl tracking-tight transition-all duration-300 hover:bg-[color:var(--accent-hover)] hover:scale-105 hover:shadow-2xl hover:shadow-[color:var(--accent)]/30 shadow-lg focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative z-10">
-                        Подать заявку
-                    </a>
-                    <a href="#about" class="w-full sm:w-auto px-10 py-5 bg-[color:var(--bg-card)] text-[color:var(--text)] border border-[color:var(--border)] hover:bg-[color:var(--bg-card-hover)] hover:scale-105 hover:border-[color:var(--accent)]/40 hover:shadow-lg text-base sm:text-lg font-medium rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-main)] relative overflow-hidden">
-                        <span class="relative z-10">Изучить манифест</span>
-                        <i class="fa-solid fa-arrow-right relative z-10 transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
+                <!-- RIGHT: wireframe dotted globe (d3) -->
+                <div class="relative flex items-center justify-center animate-on-scroll order-1 lg:order-2">
+                    <div class="relative w-full max-w-[340px] sm:max-w-[480px] lg:max-w-[600px] aspect-square">
+                        <canvas id="hero-globe" class="w-full h-full select-none cursor-grab active:cursor-grabbing" role="img" aria-label="Вращающийся глобус — глобальный рынок виртуальных активов"></canvas>
+                    </div>
                 </div>
+
             </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[color:var(--bg-main)] pointer-events-none z-[1]"></div>
     </main>
+
+    <!-- Proof / Stats Bar (Trust & Authority) -->
+    <section class="section section--main relative z-20 -mt-6 sm:-mt-10">
+        <div class="section-content max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[color:var(--border)] rounded-2xl border border-[color:var(--border)] shadow-[var(--shadow)] overflow-hidden animate-on-scroll">
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-6 md:p-8 text-center">
+                    <div class="text-4xl md:text-5xl font-display font-bold text-[color:var(--text)] tracking-tighter mb-1.5">2024</div>
+                    <div class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)]">Год основания</div>
+                </div>
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-6 md:p-8 text-center">
+                    <div class="text-4xl md:text-5xl font-display font-bold text-[color:var(--accent)] tracking-tighter mb-1.5">10+</div>
+                    <div class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)]">Компаний-участников</div>
+                </div>
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-6 md:p-8 text-center">
+                    <div class="text-4xl md:text-5xl font-display font-bold text-[color:var(--text)] tracking-tighter mb-1.5">4</div>
+                    <div class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)]">Направления работы</div>
+                </div>
+                <div class="group bg-[color:var(--bg-card)] hover:bg-[color:var(--bg-card-hover)] transition-colors p-6 md:p-8 text-center">
+                    <div class="text-4xl md:text-5xl font-display font-bold text-[color:var(--accent)] tracking-tighter mb-1.5">1</div>
+                    <div class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)]">Общая цель</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="section section--surface py-16 md:py-24 lg:py-32">
@@ -294,9 +425,6 @@ gtag('config', 'G-2M6V79H761');
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                 
                 <div class="relative z-10 animate-on-scroll">
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-3 block">
-                        // О нас
-                    </span>
                     <h2 class="text-3xl md:text-5xl font-display text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4 font-medium">
                         Двигатель прогресса
                         <br>
@@ -304,10 +432,10 @@ gtag('config', 'G-2M6V79H761');
                             ЦИФРОВОЙ ЭКОНОМИКИ
                         </span>
                     </h2>
-                    <p class="text-[color:var(--text)] text-sm font-light leading-relaxed mb-6 max-w-md">
+                    <p class="text-[color:var(--text)] text-sm font-normal leading-relaxed mb-6 max-w-md">
                         AURVA — это независимая платформа, созданная для выстраивания конструктивного диалога между государством, бизнесом и пользователями. Мы формируем стандарты качества и прозрачности в сфере цифровых активов.
                     </p>
-                    <p class="text-[color:var(--text)] text-sm font-light leading-relaxed mb-12 max-w-md">
+                    <p class="text-[color:var(--text)] text-sm font-normal leading-relaxed mb-12 max-w-md">
                         Наша миссия — создать благоприятную экосистему для интеграции виртуальных активов в традиционную экономику Кыргызской Республики, обеспечивая защиту интересов всех участников.
                     </p>
                     <a href="#directions" class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-[color:var(--accent)] hover:underline transition-colors">
@@ -317,20 +445,6 @@ gtag('config', 'G-2M6V79H761');
                 </div>
 
                 <div class="relative w-full border border-[color:var(--border)] rounded-2xl bg-[color:var(--bg-card)] shadow-[var(--shadow)] flex flex-col group animate-on-scroll overflow-hidden">
-                    <div class="flex items-center justify-between px-4 py-3 border-b border-[color:var(--border)] bg-[color:var(--bg-card)]/70 backdrop-blur-md z-20">
-                        <div class="flex gap-1.5">
-                            <div class="w-2.5 h-2.5 rounded-full bg-[color:var(--bg-surface)] border border-[color:var(--border)]"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-[color:var(--bg-surface)] border border-[color:var(--border)]"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-[color:var(--bg-surface)] border border-[color:var(--border)]"></div>
-                        </div>
-                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest">
-                            AURVA :: INFO_PANEL
-                        </span>
-                        <div class="text-[9px] font-mono font-semibold text-[color:var(--accent)] bg-[color:var(--accent-soft)] px-2 py-1 rounded border border-[color:var(--border)]">
-                            STATUS::ACTIVE
-                        </div>
-                    </div>
-
                     <div class="relative flex-1 w-full bg-[color:var(--bg-card)] p-8">
                         <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(17,24,39,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(17,24,39,0.02)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-60 pointer-events-none"></div>
                         
@@ -359,7 +473,7 @@ gtag('config', 'G-2M6V79H761');
                                 <div>
                                     <span class="text-[9px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1 font-mono block">Фокус</span>
                                     <h3 class="text-lg font-semibold text-[color:var(--text)] tracking-tight">1 общая цель</h3>
-                                    <p class="text-xs text-[color:var(--text)] mt-1 font-light">Безопасный и регулируемый рынок</p>
+                                    <p class="text-xs text-[color:var(--text)] mt-1 font-normal">Безопасный и регулируемый рынок</p>
                                 </div>
                                 <div class="w-8 h-8 rounded bg-[color:var(--bg-surface)] flex items-center justify-center border border-[color:var(--border)]">
                                     <i class="fa-solid fa-bullseye text-sm text-[color:var(--text)]"></i>
@@ -392,7 +506,7 @@ gtag('config', 'G-2M6V79H761');
                         → Работы
                     </span>
                 </h2>
-                <p class="text-base text-[color:var(--text)] leading-relaxed font-light mb-8 max-w-2xl mx-auto">
+                <p class="text-base text-[color:var(--text)] leading-relaxed font-normal mb-8 max-w-2xl mx-auto">
                     Мы сфокусированы на четырех ключевых векторах развития, которые формируют фундамент здоровой индустрии виртуальных активов.
                 </p>
             </div>
@@ -402,80 +516,80 @@ gtag('config', 'G-2M6V79H761');
                 <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
                     <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
-                            Экосистема
-                        </span>
-                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">01</span>
+                        <div class="w-12 h-12 rounded-xl bg-[color:var(--accent-soft)] border border-[color:var(--accent)]/15 flex items-center justify-center text-[color:var(--accent)] group-hover:bg-[color:var(--accent)] group-hover:text-white transition-all duration-300">
+                            <i class="fa-solid fa-users text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-[color:var(--text-subtle)]">01</span>
                     </div>
+                    <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors mb-2 block">
+                        Экосистема
+                    </span>
                     <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
                         Развитие и поддержка
                     </h3>
-                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                    <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed flex-1">
                         Платформа для эффективного обмена знаниями, экспертизой и практическим опытом между всеми участниками рынка.
                     </p>
-                    <div class="mt-auto">
-                        <i class="fa-solid fa-users text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
-                    </div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
                     <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
-                            Правовая база
-                        </span>
-                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">02</span>
+                        <div class="w-12 h-12 rounded-xl bg-[color:var(--accent-soft)] border border-[color:var(--accent)]/15 flex items-center justify-center text-[color:var(--accent)] group-hover:bg-[color:var(--accent)] group-hover:text-white transition-all duration-300">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-[color:var(--text-subtle)]">02</span>
                     </div>
+                    <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors mb-2 block">
+                        Правовая база
+                    </span>
                     <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
                         Регулирование
                     </h3>
-                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                    <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed flex-1">
                         Активное содействие государственным органам в разработке сбалансированных нормативных актов для безопасности и роста рынка.
                     </p>
-                    <div class="mt-auto">
-                        <i class="fa-solid fa-shield-halved text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
-                    </div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
                     <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
-                            Квалификация
-                        </span>
-                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">03</span>
+                        <div class="w-12 h-12 rounded-xl bg-[color:var(--accent-soft)] border border-[color:var(--accent)]/15 flex items-center justify-center text-[color:var(--accent)] group-hover:bg-[color:var(--accent)] group-hover:text-white transition-all duration-300">
+                            <i class="fa-solid fa-graduation-cap text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-[color:var(--text-subtle)]">03</span>
                     </div>
+                    <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors mb-2 block">
+                        Квалификация
+                    </span>
                     <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
                         Образование
                     </h3>
-                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                    <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed flex-1">
                         Проведение профильных обучающих программ, семинаров и конференций для повышения квалификации специалистов.
                     </p>
-                    <div class="mt-auto">
-                        <i class="fa-solid fa-graduation-cap text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
-                    </div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="group relative flex flex-col p-8 rounded-2xl bg-[color:var(--bg-card)] border border-[color:var(--border)] shadow-[var(--shadow)] hover:bg-[color:var(--bg-card-hover)] transition-all duration-300 h-full overflow-hidden animate-on-scroll transform hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
                     <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/40 to-transparent opacity-60"></div>
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--text)] transition-colors border-b border-transparent group-hover:border-[color:var(--accent)]/30 pb-0.5">
-                            Технологии
-                        </span>
-                        <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">04</span>
+                        <div class="w-12 h-12 rounded-xl bg-[color:var(--accent-soft)] border border-[color:var(--accent)]/15 flex items-center justify-center text-[color:var(--accent)] group-hover:bg-[color:var(--accent)] group-hover:text-white transition-all duration-300">
+                            <i class="fa-solid fa-lightbulb text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-[color:var(--text-subtle)]">04</span>
                     </div>
+                    <span class="text-[10px] font-mono font-semibold uppercase tracking-widest text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors mb-2 block">
+                        Технологии
+                    </span>
                     <h3 class="text-xl text-[color:var(--text)] font-display uppercase tracking-tight mb-3">
                         Инновации
                     </h3>
-                    <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8 flex-1">
+                    <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed flex-1">
                         Поиск, тестирование и внедрение передовых технологических решений, определяющих будущее цифровой экономики.
                     </p>
-                    <div class="mt-auto">
-                        <i class="fa-solid fa-lightbulb text-2xl text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] transition-colors"></i>
-                    </div>
                 </div>
             </div>
         </div>
@@ -488,9 +602,6 @@ gtag('config', 'G-2M6V79H761');
         <div class="section-content max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 animate-on-scroll">
                 <div class="max-w-2xl">
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-3 block">
-                        // Членство
-                    </span>
                     <h2 class="text-3xl md:text-5xl font-display font-medium text-[color:var(--text)] uppercase tracking-tighter leading-none mb-4">
                         Почему стоит
                         <br>
@@ -498,7 +609,7 @@ gtag('config', 'G-2M6V79H761');
                             → ВСТУПИТЬ
                         </span>
                     </h2>
-                    <p class="text-sm text-[color:var(--text)] leading-relaxed font-light">
+                    <p class="text-sm text-[color:var(--text)] leading-relaxed font-normal">
                         Присоединяйтесь к сообществу лидеров индустрии и получите инструменты для масштабирования вашего бизнеса.
                     </p>
                 </div>
@@ -510,13 +621,10 @@ gtag('config', 'G-2M6V79H761');
                     <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
                     <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
                     <div class="relative z-10">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
-                            // ПАРТНЕРСТВА
-                        </span>
                         <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
                             Нетворкинг с лидерами
                         </h3>
-                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                        <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed mb-8">
                             Прямой доступ к ключевым игрокам рынка и партнерам.
                         </p>
                     </div>
@@ -529,13 +637,10 @@ gtag('config', 'G-2M6V79H761');
                     <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
                     <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
                     <div class="relative z-10">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
-                            // ЗАЩИТА
-                        </span>
                         <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
                             Влияние на законы
                         </h3>
-                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                        <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed mb-8">
                             Возможность участвовать в формировании правовой базы.
                         </p>
                     </div>
@@ -548,13 +653,10 @@ gtag('config', 'G-2M6V79H761');
                     <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
                     <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
                     <div class="relative z-10">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
-                            // РАЗВИТИЕ
-                        </span>
                         <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
                             Образование
                         </h3>
-                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                        <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed mb-8">
                             Эксклюзивные материалы, аналитика и профильные тренинги.
                         </p>
                     </div>
@@ -567,13 +669,10 @@ gtag('config', 'G-2M6V79H761');
                     <div class="absolute inset-0 border border-transparent group-hover:border-[color:var(--accent)]/15 transition-colors pointer-events-none"></div>
                     <div class="absolute inset-0 bg-gradient-to-b from-[color:var(--accent-soft)] to-transparent opacity-70 pointer-events-none"></div>
                     <div class="relative z-10">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent)] mb-4 block">
-                            // МАРКЕТИНГ
-                        </span>
                         <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight">
                             Продвижение
                         </h3>
-                        <p class="text-sm text-[color:var(--text)] font-light leading-relaxed mb-8">
+                        <p class="text-sm text-[color:var(--text)] font-normal leading-relaxed mb-8">
                             Поддержка ваших инициатив и узнаваемость бренда на рынке.
                         </p>
                     </div>
@@ -598,10 +697,6 @@ gtag('config', 'G-2M6V79H761');
         <div class="section-content max-w-7xl mr-auto ml-auto pr-6 pl-6">
             <div class="mb-16 max-w-4xl mx-auto text-center animate-on-scroll">
                 <div class="flex items-center gap-3 mb-6 justify-center">
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-[color:var(--text-subtle)]">
-                        AURVA :: Партнеры
-                    </span>
-                    <div class="h-px w-8 bg-[color:var(--border)]"></div>
                     <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">
                         Экосистема
                     </span>
@@ -615,7 +710,7 @@ gtag('config', 'G-2M6V79H761');
                     </span>
                 </h2>
 
-                <p class="text-base text-[color:var(--text)] font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+                <p class="text-base text-[color:var(--text)] font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
                     Ведущие компании рынка, определяющие будущее цифровой экономики и формирующие надежную инфраструктуру для всех.
                 </p>
             </div>
@@ -655,7 +750,7 @@ gtag('config', 'G-2M6V79H761');
                             → СОБЫТИЯ
                         </span>
                     </h2>
-                    <p class="text-sm text-[color:var(--text)] leading-relaxed font-light">
+                    <p class="text-sm text-[color:var(--text)] leading-relaxed font-normal">
                         Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
                     </p>
                 </div>
@@ -695,7 +790,7 @@ gtag('config', 'G-2M6V79H761');
                             <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">24 Окт 2024</span>
                         </div>
                         <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight line-clamp-2">Обсуждение нового законопроекта о виртуальных активах</h3>
-                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">Представители АУРВА приняли участие в рабочем совещании по вопросам налогообложения майнинга и криптовалютных операций.</p>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-normal leading-relaxed">Представители АУРВА приняли участие в рабочем совещании по вопросам налогообложения майнинга и криптовалютных операций.</p>
                         <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
                             <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
                                 Читать
@@ -716,7 +811,7 @@ gtag('config', 'G-2M6V79H761');
                             <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">15 Окт 2024</span>
                         </div>
                         <h3 class="text-[color:var(--text)] line-clamp-2 text-lg font-semibold tracking-tight mb-2">Подписан Меморандум о сотрудничестве между Службой регулирования</h3>
-                        <p class="text-[color:var(--text)] line-clamp-3 leading-relaxed text-xs font-light mb-8">В городе Бишкек состоялось официальное подписание Меморандума о сотрудничестве между Службой регулирования и надзора за финансовым рынком...</p>
+                        <p class="text-[color:var(--text)] line-clamp-3 leading-relaxed text-xs font-normal mb-8">В городе Бишкек состоялось официальное подписание Меморандума о сотрудничестве между Службой регулирования и надзора за финансовым рынком...</p>
                         <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
                             <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
                                 Читать
@@ -737,7 +832,7 @@ gtag('config', 'G-2M6V79H761');
                             <span class="text-[10px] font-mono text-[color:var(--text-subtle)]">10 Окт 2024</span>
                         </div>
                         <h3 class="text-[color:var(--text)] line-clamp-2 text-lg font-semibold tracking-tight mb-2">Анализ рынка виртуальных активов ЦА 2026</h3>
-                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">Опубликован новый отчет с обзором трендов, перспектив и ключевых показателей развития криптоиндустрии в регионе.</p>
+                        <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-normal leading-relaxed">Опубликован новый отчет с обзором трендов, перспектив и ключевых показателей развития криптоиндустрии в регионе.</p>
                         <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
                             <span class="text-[9px] font-mono text-[color:var(--text-subtle)] group-hover:text-[color:var(--accent)] uppercase tracking-widest transition-colors">
                                 Читать
@@ -761,80 +856,67 @@ gtag('config', 'G-2M6V79H761');
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent),_transparent_90%)] opacity-[0.04] pointer-events-none z-0"></div>
         <div class="spotlight absolute top-[-20%] left-0 right-0 h-[600px] bg-[radial-gradient(800px_circle_at_top,_rgba(37,99,235,0.12),_transparent_70%)] pointer-events-none z-0"></div>
         
-        <div class="section-content max-w-4xl mx-auto px-6 relative z-10 animate-on-scroll">
-            <div class="relative rounded-3xl border border-[color:var(--accent)]/10 bg-[color:var(--bg-card)]/90 backdrop-blur-xl p-8 md:p-14 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1),_inset_0_1px_0_rgba(255,255,255,0.7)] ring-1 ring-[color:var(--border)] group">
-                <div class="absolute top-0 left-0 w-80 h-80 bg-[radial-gradient(circle_at_top_left,_var(--accent),_transparent_70%)] opacity-[0.04] pointer-events-none"></div>
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/60 to-transparent shadow-[0_1px_6px_rgba(37,99,235,0.4)]"></div>
+        <div class="section-content max-w-6xl mx-auto px-6 relative z-10 animate-on-scroll">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
-                    <!-- Info -->
-                    <div class="">
-                        <h2 class="text-4xl font-display text-[color:var(--text)] mb-6 uppercase tracking-tighter leading-[0.95] font-medium relative z-10">
-                            Свяжитесь
-                            <br>
-                            <span class="text-[color:var(--accent)] font-semibold">
-                                с нами.
-                            </span>
-                        </h2>
-                        <p class="text-sm text-[color:var(--text)]/80 mb-10 max-w-sm leading-relaxed font-normal relative z-10">
-                            Готовы стать частью ассоциации или есть вопросы? Оставьте заявку, и мы свяжемся с вами.
-                        </p>
-
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-2 h-2 rounded-full bg-[color:var(--accent)] shadow-[0_0_8px_rgba(37,99,235,0.4)] mt-1.5"></div>
-                                    <div class="w-px h-8 bg-[color:var(--border)] my-1"></div>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Офис</p>
-                                    <p class="text-sm font-medium text-[color:var(--text)]">Кыргызская Республика,<br>г. Бишкек</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-2 h-2 rounded-full bg-[color:var(--text-subtle)] mt-1.5"></div>
-                                    <div class="w-px h-8 bg-[color:var(--border)] my-1"></div>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Телефон</p>
-                                    <a href="tel:+996550999010" class="text-sm font-medium text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">+996 550 99 90 10</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-2 h-2 rounded-full bg-[color:var(--text-subtle)] mt-1.5"></div>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Email</p>
-                                    <a href="mailto:aurva.kg@gmail.com" class="text-sm font-medium text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">aurva.kg@gmail.com</a>
-                                </div>
-                            </div>
+                <!-- LEFT: Карта (отдельная карточка) -->
+                <div class="relative rounded-3xl border border-[color:var(--accent)]/10 bg-[color:var(--bg-card)]/90 backdrop-blur-xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1),_inset_0_1px_0_rgba(255,255,255,0.7)] ring-1 ring-[color:var(--border)] flex flex-col transition duration-300 hover:ring-[color:var(--accent)]/25">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/60 to-transparent shadow-[0_1px_6px_rgba(37,99,235,0.4)] z-10"></div>
+                    <div class="flex items-center justify-between gap-3 p-6 border-b border-[color:var(--border)]">
+                        <div>
+                            <p class="text-[10px] text-[color:var(--text-subtle)] font-mono uppercase tracking-widest mb-1">Как нас найти</p>
+                            <p class="text-sm font-medium text-[color:var(--text)]">г. Бишкек, ул. Токтогула, 132</p>
                         </div>
+                        <a href="https://2gis.kg/bishkek/search/%D1%83%D0%BB.%20%D0%A2%D0%BE%D0%BA%D1%82%D0%BE%D0%B3%D1%83%D0%BB%D0%B0%2C%20132" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-[11px] font-semibold text-[color:var(--accent)] hover:text-white border border-[color:var(--accent)]/30 hover:bg-[color:var(--accent)] hover:border-[color:var(--accent)] rounded-full px-3 py-1.5 transition-all whitespace-nowrap">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            Открыть в 2ГИС
+                        </a>
                     </div>
+                    <iframe
+                        title="Карта: г. Бишкек, ул. Токтогула, 132"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=74.5919%2C42.8690%2C74.6079%2C42.8750&amp;layer=mapnik&amp;marker=42.8720%2C74.5999"
+                        class="w-full flex-1 min-h-[340px] lg:min-h-[440px] block"
+                        style="border:0; filter: saturate(0.95);"
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
 
-                    <!-- Form -->
-                    <div class="flex flex-col justify-center">
-                        <form id="contactForm" class="space-y-4">
+                <!-- RIGHT: Контакты + форма (отдельная карточка) -->
+                <div class="relative rounded-3xl border border-[color:var(--accent)]/10 bg-[color:var(--bg-card)]/90 backdrop-blur-xl p-8 md:p-10 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1),_inset_0_1px_0_rgba(255,255,255,0.7)] ring-1 ring-[color:var(--border)] transition duration-300 hover:ring-[color:var(--accent)]/25">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[color:var(--accent)]/60 to-transparent shadow-[0_1px_6px_rgba(37,99,235,0.4)]"></div>
+                    <h2 class="text-3xl md:text-4xl font-display text-[color:var(--text)] mb-3 uppercase tracking-tighter leading-[0.95] font-medium relative z-10">
+                        Свяжитесь
+                        <span class="text-[color:var(--accent)] font-semibold">с нами.</span>
+                    </h2>
+                    <p class="text-sm text-[color:var(--text)]/80 mb-6 leading-relaxed font-normal relative z-10">
+                        Готовы стать частью ассоциации или есть вопросы? Оставьте заявку, и мы свяжемся с вами.
+                    </p>
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 mb-7 text-sm relative z-10">
+                        <a href="tel:+996550999010" class="inline-flex items-center gap-2 font-medium text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors"><i class="fa-solid fa-phone text-[color:var(--text-subtle)] text-xs" aria-hidden="true"></i>+996 550 99 90 10</a>
+                        <a href="mailto:aurva.kg@gmail.com" class="inline-flex items-center gap-2 font-medium text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors"><i class="fa-solid fa-envelope text-[color:var(--text-subtle)] text-xs" aria-hidden="true"></i>aurva.kg@gmail.com</a>
+                    </div>
+                    <div class="relative z-10">
+                        <form id="contactForm" class="space-y-4" novalidate>
                             <div class="">
-                                <input type="text" id="contactName" name="name" required class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="Название компании / Имя">
+                                <label for="contactName" class="block font-mono text-[10px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1.5">Название компании / Имя <span class="text-[color:var(--accent)]" aria-hidden="true">*</span></label>
+                                <input type="text" id="contactName" name="name" required autocomplete="organization" class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="ОсОО «Компания»">
                             </div>
 
                             <div class="">
-                                <input type="tel" id="contactPhone" name="phone" required class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="Контактный телефон">
+                                <label for="contactPhone" class="block font-mono text-[10px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1.5">Контактный телефон <span class="text-[color:var(--accent)]" aria-hidden="true">*</span></label>
+                                <input type="tel" id="contactPhone" name="phone" required autocomplete="tel" class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="+996 ___ ___ ___">
                             </div>
 
                             <div class="">
-                                <input type="email" id="contactEmail" name="email" class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="Email (опционально)">
+                                <label for="contactEmail" class="block font-mono text-[10px] uppercase tracking-widest text-[color:var(--text-subtle)] mb-1.5">Email <span class="opacity-70">(опционально)</span></label>
+                                <input type="email" id="contactEmail" name="email" autocomplete="email" class="w-full bg-[color:var(--bg-surface)] border border-[color:var(--border)] rounded-lg px-4 py-3.5 text-sm text-[color:var(--text)] placeholder-[color:var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 focus:border-[color:var(--accent)] transition-all shadow-inner" placeholder="you@company.kg">
                             </div>
 
                             <button type="submit" id="submitBtn" class="w-full py-3.5 bg-[color:var(--accent)] text-white text-sm font-semibold rounded-lg tracking-tight shadow-[0_4px_14px_rgba(37,99,235,0.3)] hover:bg-[color:var(--accent-hover)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/25 focus:ring-offset-2 focus:ring-offset-[color:var(--bg-card)] mt-2">
                                 Оставить заявку
                             </button>
-                            <p id="formMessage" class="text-xs text-center mt-4 hidden"></p>
-                            <p class="text-[10px] text-center text-[color:var(--text-subtle)] mt-4">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                            <p id="formMessage" class="text-xs text-center mt-4 hidden" role="alert" aria-live="polite"></p>
+                            <p class="text-[10px] text-center text-[color:var(--text-subtle)] mt-4">Нажимая кнопку, вы соглашаетесь с <a href="/privacy" class="underline hover:text-[color:var(--accent)] transition-colors">политикой конфиденциальности</a>.</p>
                         </form>
                     </div>
                 </div>
@@ -878,8 +960,6 @@ gtag('config', 'G-2M6V79H761');
                         </span>
                     </div>
                     <div class="flex gap-3 text-[9px] font-mono text-[color:var(--text-subtle)] uppercase tracking-widest opacity-80">
-                        <span>AURVA::КР</span>
-                        <span class="text-[color:var(--border)]">|</span>
                         <span>Основано в 2024</span>
                     </div>
                 </div>
@@ -895,6 +975,7 @@ gtag('config', 'G-2M6V79H761');
                         <a href="#benefits" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Преимущества</a>
                         <a href="#members" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Участники</a>
                         <a href="#news" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Новости</a>
+                        <a href="/courses" class="text-xs text-[color:var(--text)] hover:text-[color:var(--accent)] transition-colors">Курсы</a>
                     </div>
                 </div>
             </div>
@@ -904,10 +985,10 @@ gtag('config', 'G-2M6V79H761');
                     © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
                 </span>
                 <div class="flex gap-6">
-                    <a href="#" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                    <a href="/privacy" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
                         Политика конфиденциальности
                     </a>
-                    <a href="#" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
+                    <a href="/charter" class="text-[10px] font-mono text-[color:var(--text-subtle)] hover:text-[color:var(--text)] uppercase tracking-widest transition-colors">
                         Устав
                     </a>
                 </div>
@@ -926,14 +1007,29 @@ gtag('config', 'G-2M6V79H761');
             const menu = document.getElementById('mobile-menu');
             
             btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
+                const isOpen = !menu.classList.toggle('hidden');
+                btn.setAttribute('aria-expanded', String(isOpen));
             });
             const mobileLinks = menu.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     menu.classList.add('hidden');
+                    btn.setAttribute('aria-expanded', 'false');
                 });
             });
+
+            // Theme toggle (light ⇄ dark, persisted)
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const root = document.documentElement;
+                    // smooth crossfade for one transition
+                    root.classList.add('theme-anim');
+                    const isDark = root.classList.toggle('dark');
+                    try { localStorage.setItem('aurva-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+                    window.setTimeout(() => root.classList.remove('theme-anim'), 400);
+                });
+            }
 
             // GSAP Animations
             gsap.registerPlugin(ScrollTrigger);
@@ -1115,7 +1211,7 @@ gtag('config', 'G-2M6V79H761');
                             <h3 class="text-lg font-semibold text-[color:var(--text)] mb-2 tracking-tight line-clamp-2">
                                 ${item.title}
                             </h3>
-                            <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-light leading-relaxed">
+                            <p class="text-xs text-[color:var(--text)] mb-8 line-clamp-3 font-normal leading-relaxed">
                                 ${item.excerpt}
                             </p>
                             <div class="mt-auto pt-4 border-t border-[color:var(--border)] flex items-center justify-between">
@@ -1189,12 +1285,19 @@ gtag('config', 'G-2M6V79H761');
             const membersContainer = document.getElementById('membersContainer');
             if (!membersContainer) return;
 
+            // The carousel is a continuous marquee with up to 5 slides per view and loop:true.
+            // Swiper needs noticeably more slides than slidesPerView to loop without warnings,
+            // so duplicate the set until there are enough for a smooth infinite scroll.
+            let slides = members;
+            if (members.length > 0 && members.length < 10) {
+                const times = Math.ceil(12 / members.length);
+                slides = Array.from({ length: times }, () => members).flat();
+            }
+
             // Render members as Swiper slides
-            membersContainer.innerHTML = members.map(member => {
-                // Special styling for Envoys (white logo needs dark background)
-                const bgClass = member.slug === 'envoys'
-                    ? 'bg-gradient-to-br from-blue-900 to-indigo-900'
-                    : 'bg-white';
+            membersContainer.innerHTML = slides.map(member => {
+                // All member logos sit on a white tile (clean, transparent-background logos)
+                const bgClass = 'bg-white';
 
                 return `
                 <div class="swiper-slide">
@@ -1292,6 +1395,17 @@ gtag('config', 'G-2M6V79H761');
         }
 
         // Load footer contact info from admin-managed settings
+        // Ignore unset/placeholder settings so the correct hardcoded contacts are kept.
+        function isRealContact(v) {
+            if (!v || typeof v !== 'string') return false;
+            const t = v.trim();
+            if (!t) return false;
+            if (/x{2,}/i.test(t)) return false;           // "+996 XXX XXX XXX"
+            if (/example|your-|noreply@|change-me/i.test(t)) return false;
+            if (/^info@aurva\.kg$/i.test(t)) return false; // known placeholder default
+            return true;
+        }
+
         async function loadSettings() {
             try {
                 const response = await fetch('/api/settings');
@@ -1299,11 +1413,11 @@ gtag('config', 'G-2M6V79H761');
                 const s = data.settings || data;
                 const email = s.contact_email;
                 const phone = s.contact_phone;
-                if (email) {
+                if (isRealContact(email)) {
                     const el = document.getElementById('footer-email');
                     if (el) { el.href = 'mailto:' + email; el.querySelector('span').textContent = email; }
                 }
-                if (phone) {
+                if (isRealContact(phone)) {
                     const el = document.getElementById('footer-phone');
                     if (el) { el.href = 'tel:' + phone.replace(/[^+\d]/g, ''); el.querySelector('span').textContent = phone; }
                 }
@@ -1327,13 +1441,29 @@ gtag('config', 'G-2M6V79H761');
         document.querySelectorAll('[data-split-text]').forEach(function(el) {
             var text = el.textContent.trim();
             el.textContent = '';
-            for (var i = 0; i < text.length; i++) {
-                var span = document.createElement('span');
-                span.className = 'split-char' + (text[i] === ' ' ? ' split-space' : '');
-                span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
-                span.style.transitionDelay = (i * 60) + 'ms';
-                el.appendChild(span);
-            }
+            var words = text.split(' ');
+            var charIndex = 0;
+            words.forEach(function(word, w) {
+                var wordSpan = document.createElement('span');
+                wordSpan.className = 'split-word';
+                for (var i = 0; i < word.length; i++) {
+                    var span = document.createElement('span');
+                    span.className = 'split-char';
+                    span.textContent = word[i];
+                    span.style.transitionDelay = (charIndex * 60) + 'ms';
+                    wordSpan.appendChild(span);
+                    charIndex++;
+                }
+                el.appendChild(wordSpan);
+                if (w < words.length - 1) {
+                    var space = document.createElement('span');
+                    space.className = 'split-char split-space';
+                    space.textContent = '\u00A0';
+                    space.style.transitionDelay = (charIndex * 60) + 'ms';
+                    el.appendChild(space);
+                    charIndex++;
+                }
+            });
 
             var observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
@@ -1348,4 +1478,255 @@ gtag('config', 'G-2M6V79H761');
     })();
     </script>
 
+    <!-- Wireframe Dotted Globe (d3) — ported from 21st.dev: moazamtrade/wireframe-dotted-globe -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script>
+    (function () {
+        var canvas = document.getElementById('hero-globe');
+        if (!canvas || typeof d3 === 'undefined') return;
+        var context = canvas.getContext('2d');
+        var wrap = canvas.parentElement;
+
+        var W = 0, H = 0, radius = 0, dpr = 1;
+        var projection = d3.geoOrthographic().clipAngle(90);
+        var path = d3.geoPath().projection(projection).context(context);
+        var graticule = d3.geoGraticule();
+
+        var landFeatures = null;
+        var kgFeature = null;
+        var allDots = [];
+        var rotation = [0, -12];
+        var autoRotate = true;
+        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        projection.rotate(rotation);
+
+        // Highlighted home (Kyrgyzstan / Bishkek) + connection threads to other countries
+        var phase = 0;
+        var home = [74.6, 42.87]; // Бишкек
+        var targets = [
+            [55.27, 25.20],   // ОАЭ — Дубай
+            [103.82, 1.35],   // Сингапур
+            [8.54, 47.37],    // Швейцария — Цюрих
+            [71.43, 51.13],   // Казахстан — Астана
+            [37.62, 55.75],   // Россия — Москва
+            [-0.12, 51.51],   // Великобритания — Лондон
+            [116.40, 39.90],  // Китай — Пекин
+            [-74.0, 40.71]    // США — Нью-Йорк
+        ];
+        var arcs = targets.map(function (t) {
+            var interp = d3.geoInterpolate(home, t);
+            var pts = [];
+            for (var i = 0; i <= 48; i++) pts.push(interp(i / 48));
+            return { interp: interp, line: { type: 'LineString', coordinates: pts } };
+        });
+        var HALF_PI = Math.PI / 2;
+
+        function themeColors() {
+            var dark = document.documentElement.classList.contains('dark');
+            return dark
+                ? { ocean: 'rgba(59,130,246,0.06)', sphere: 'rgba(96,165,250,0.55)', grat: 'rgba(96,165,250,0.16)', land: 'rgba(96,165,250,0.45)', dots: 'rgba(96,165,250,0.70)', arc: 'rgba(125,211,252,0.50)', target: 'rgba(125,211,252,0.85)', kgFill: 'rgba(56,189,248,0.50)', kgStroke: '#7dd3fc', homeGlow: 'rgba(56,189,248,0.45)', plane: '#e0f2fe' }
+                : { ocean: 'rgba(37,99,235,0.05)', sphere: 'rgba(37,99,235,0.45)', grat: 'rgba(37,99,235,0.12)', land: 'rgba(37,99,235,0.35)', dots: 'rgba(37,99,235,0.60)', arc: 'rgba(37,99,235,0.40)', target: 'rgba(37,99,235,0.75)', kgFill: 'rgba(37,99,235,0.42)', kgStroke: '#1d4ed8', homeGlow: 'rgba(37,99,235,0.32)', plane: '#1d4ed8' };
+        }
+
+        function resize() {
+            var size = Math.max(160, Math.floor(wrap.clientWidth));
+            W = H = size;
+            radius = size / 2.08; // full sphere fits inside the canvas (no square crop)
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            context.setTransform(dpr, 0, 0, dpr, 0, 0);
+            projection.scale(radius).translate([W / 2, H / 2]);
+            render();
+        }
+
+        function render() {
+            if (!W) return;
+            var c = themeColors();
+            context.clearRect(0, 0, W, H);
+
+            // ocean sphere
+            context.beginPath();
+            context.arc(W / 2, H / 2, radius, 0, 2 * Math.PI);
+            context.fillStyle = c.ocean;
+            context.fill();
+            context.strokeStyle = c.sphere;
+            context.lineWidth = 1.5;
+            context.stroke();
+
+            // graticule
+            context.beginPath();
+            path(graticule());
+            context.strokeStyle = c.grat;
+            context.lineWidth = 0.8;
+            context.stroke();
+
+            if (landFeatures) {
+                context.beginPath();
+                landFeatures.features.forEach(function (f) { path(f); });
+                context.strokeStyle = c.land;
+                context.lineWidth = 0.9;
+                context.stroke();
+
+                // halftone dots (cull back hemisphere)
+                var center = [-rotation[0], -rotation[1]];
+                context.fillStyle = c.dots;
+                for (var i = 0; i < allDots.length; i++) {
+                    if (d3.geoDistance(allDots[i], center) > 1.5708) continue;
+                    var p = projection(allDots[i]);
+                    if (!p) continue;
+                    context.beginPath();
+                    context.arc(p[0], p[1], 1.1, 0, 2 * Math.PI);
+                    context.fill();
+                }
+            }
+
+            // ---- Highlighted Kyrgyzstan + flight routes ----
+            var hc = [-rotation[0], -rotation[1]];
+            var pulse = 0.5 + 0.5 * Math.sin(phase * 0.004);
+
+            // soft pulsing glow behind the country
+            if (d3.geoDistance(home, hc) <= HALF_PI) {
+                var hp = projection(home);
+                if (hp) {
+                    var gr = 16 + 7 * pulse;
+                    var grad = context.createRadialGradient(hp[0], hp[1], 0, hp[0], hp[1], gr);
+                    grad.addColorStop(0, c.homeGlow);
+                    grad.addColorStop(1, 'rgba(0,0,0,0)');
+                    context.fillStyle = grad;
+                    context.beginPath();
+                    context.arc(hp[0], hp[1], gr, 0, 2 * Math.PI);
+                    context.fill();
+                }
+            }
+
+            // Kyrgyzstan map — filled + outlined (auto-clipped to the front hemisphere)
+            if (kgFeature) {
+                context.beginPath();
+                path(kgFeature);
+                context.fillStyle = c.kgFill;
+                context.fill();
+                context.lineJoin = 'round';
+                context.lineWidth = 1.6;
+                context.strokeStyle = c.kgStroke;
+                context.stroke();
+            }
+
+            // flight routes (fine dotted) + destination dots + moving planes
+            context.save();
+            context.lineCap = 'round';
+            context.strokeStyle = c.arc;
+            context.lineWidth = 1;
+            context.setLineDash([1.5, 5]);
+            for (var ai = 0; ai < arcs.length; ai++) {
+                context.beginPath();
+                path(arcs[ai].line);
+                context.stroke();
+            }
+            context.setLineDash([]);
+            for (var ti = 0; ti < targets.length; ti++) {
+                if (d3.geoDistance(targets[ti], hc) > HALF_PI) continue;
+                var tp = projection(targets[ti]);
+                if (!tp) continue;
+                context.beginPath();
+                context.arc(tp[0], tp[1], 2.2, 0, 2 * Math.PI);
+                context.fillStyle = c.target;
+                context.fill();
+            }
+            for (var pi = 0; pi < arcs.length; pi++) {
+                var tt = ((phase * 0.00014) + pi * 0.137) % 1;
+                var gp = arcs[pi].interp(tt);
+                if (d3.geoDistance(gp, hc) > HALF_PI) continue;
+                var pp = projection(gp);
+                if (!pp) continue;
+                var pp2 = projection(arcs[pi].interp(Math.min(1, tt + 0.012)));
+                var ang = pp2 ? Math.atan2(pp2[1] - pp[1], pp2[0] - pp[0]) : 0;
+                drawPlane(pp[0], pp[1], ang, c.plane);
+            }
+            context.restore();
+        }
+
+        // small aircraft glyph pointing along its heading
+        function drawPlane(x, y, ang, color) {
+            context.save();
+            context.translate(x, y);
+            context.rotate(ang);
+            context.shadowColor = color;
+            context.shadowBlur = 6;
+            context.fillStyle = color;
+            context.beginPath();
+            context.moveTo(5.5, 0);
+            context.lineTo(-3.5, 3.2);
+            context.lineTo(-1.2, 0);
+            context.lineTo(-3.5, -3.2);
+            context.closePath();
+            context.fill();
+            context.restore();
+        }
+
+        // dot generation inside land polygons (same algorithm as source)
+        function pip(pt, poly) { var x = pt[0], y = pt[1], inside = false; for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) { var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1]; if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside; } return inside; }
+        function pif(pt, f) { var g = f.geometry; if (g.type === 'Polygon') { if (!pip(pt, g.coordinates[0])) return false; for (var i = 1; i < g.coordinates.length; i++) { if (pip(pt, g.coordinates[i])) return false; } return true; } if (g.type === 'MultiPolygon') { for (var k = 0; k < g.coordinates.length; k++) { var poly = g.coordinates[k]; if (pip(pt, poly[0])) { var hole = false; for (var m = 1; m < poly.length; m++) { if (pip(pt, poly[m])) { hole = true; break; } } if (!hole) return true; } } return false; } return false; }
+        function genDots(f, spacing) { var step = spacing * 0.08; var b = d3.geoBounds(f); for (var lng = b[0][0]; lng <= b[1][0]; lng += step) { for (var lat = b[0][1]; lat <= b[1][1]; lat += step) { if (pif([lng, lat], f)) allDots.push([lng, lat]); } } }
+
+        // auto-rotation
+        d3.timer(function (t) {
+            if (reduceMotion) return;
+            phase = t;
+            if (autoRotate) {
+                rotation[0] += 0.22;
+                projection.rotate(rotation);
+            }
+            render();
+        });
+
+        // drag to rotate (mouse only — keep touch scroll working)
+        var dragging = false, sx = 0, sy = 0, sr = [0, 0];
+        canvas.addEventListener('pointerdown', function (e) {
+            if (e.pointerType && e.pointerType !== 'mouse') return;
+            dragging = true; autoRotate = false; sx = e.clientX; sy = e.clientY; sr = rotation.slice();
+            try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
+        });
+        canvas.addEventListener('pointermove', function (e) {
+            if (!dragging) return;
+            var k = 0.4;
+            rotation[0] = sr[0] + (e.clientX - sx) * k;
+            rotation[1] = Math.max(-90, Math.min(90, sr[1] - (e.clientY - sy) * k));
+            projection.rotate(rotation);
+            render();
+        });
+        function endDrag() { if (dragging) { dragging = false; setTimeout(function () { autoRotate = true; }, 800); } }
+        canvas.addEventListener('pointerup', endDrag);
+        canvas.addEventListener('pointercancel', endDrag);
+
+        // re-render on theme switch + resize
+        new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        window.addEventListener('resize', resize);
+
+        resize();
+        fetch('/data/ne_110m_land.json')
+            .then(function (r) { if (!r.ok) throw new Error('land'); return r.json(); })
+            .then(function (data) { landFeatures = data; data.features.forEach(function (f) { genDots(f, 16); }); render(); })
+            .catch(function () { /* keep sphere + graticule; ambient glow remains */ });
+        fetch('/data/kg.json')
+            .then(function (r) { if (!r.ok) throw new Error('kg'); return r.json(); })
+            .then(function (data) { kgFeature = (data.features && data.features[0]) || data; render(); })
+            .catch(function () { /* highlight optional */ });
+    })();
+    </script>
+
+<script id="aurva-logo-swap">
+(function(){
+  var L='https://static.tildacdn.one/tild3830-6166-4531-b362-646165626563/_SITE.svg', D='/img/logo-dark.svg';
+  function apply(){
+    var d=document.documentElement.classList.contains('dark');
+    document.querySelectorAll('img[alt="AURVA Logo"],img[alt="AURVA"]').forEach(function(i){
+      var t=d?D:L; if(i.getAttribute('src')!==t) i.setAttribute('src',t);
+    });
+  }
+  apply();
+  try{ new MutationObserver(apply).observe(document.documentElement,{attributes:true,attributeFilter:['class']}); }catch(e){}
+  document.addEventListener('DOMContentLoaded',apply);
+})();
+</script>
 </body></html>

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/MeShele/max-ai-analyze-fix-skill/schema/journey.schema.json",
+  "title": "Customer Journey",
+  "description": "One blind-testable user journey. The tester receives ONE of these and must fulfil `intent` and verify every `expected_observations` entry — without knowing internal routes, navigating only by visible UI.",
+  "type": "object",
+  "required": ["id", "category", "title", "actor", "starting_url", "intent", "expected_observations"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^J[0-9]{3}$",
+      "description": "Unique id, e.g. J001. Stable across runs so results can be diffed."
+    },
+    "category": {
+      "type": "string",
+      "description": "Capability layer. Recommended generic set: A_anonymous, B_user, C_admin, D_edge. You may add your own (e.g. C_staff, E_superadmin) — keep them domain-neutral.",
+      "examples": ["A_anonymous", "B_user", "C_admin", "D_edge"]
+    },
+    "title": {
+      "type": "string",
+      "description": "Short human title of what is being tested."
+    },
+    "actor": {
+      "type": "string",
+      "description": "Fixture archetype key (see config.fixtures) OR the literal \"anonymous\" for logged-out tests. NOT a raw email — the runner/agent resolves the archetype to credentials from config/env.",
+      "examples": ["anonymous", "basic_user", "verified_user", "admin"]
+    },
+    "starting_url": {
+      "type": "string",
+      "description": "Relative path to begin at (e.g. \"/\", \"/login\"). The blind tester may ONLY navigate() to this URL; everything else is reached by clicking visible UI.",
+      "examples": ["/", "/login"]
+    },
+    "intent": {
+      "type": "string",
+      "description": "What the user wants to accomplish, in plain narrative."
+    },
+    "expected_observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Observable conditions that must ALL hold for PASS. Phrase them by what a user sees (visible text/role/state), not by internal selectors."
+    },
+    "negative": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, the journey expects a failure/blocked state (e.g. wrong password shows an error). PASS = the negative behaviour occurred."
+    },
+    "viewport": {
+      "type": "object",
+      "description": "Optional viewport override; default desktop 1280x800.",
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 200 },
+        "height": { "type": "integer", "minimum": 200 }
+      }
+    },
+    "probe_path": {
+      "type": "string",
+      "description": "OPTIONAL, headless-runner only. A deep route to jump to for read-only feature capture (the MCP-free runner is allowed to know routes; the blind MCP tester is NOT and ignores this)."
+    },
+    "skip_if": {
+      "type": "string",
+      "description": "Optional human-readable precondition to skip this journey when unmet (e.g. \"feature X disabled\")."
+    },
+    "requires": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional precondition tags (e.g. \"completed_transaction\", \"random_email\"). Domain-neutral; the runner notes unmet ones in the report."
+    }
+  }
+}

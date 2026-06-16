@@ -1,0 +1,27 @@
+{
+  "$comment": "AURVA local QA config. base_url = public site (backend on :5000). admin_base_url = admin panel (vite dev on :5173). Read-only anonymous journeys only — DB is the real cloud Supabase.",
+
+  "base_url": "http://localhost:5000",
+  "admin_base_url": "http://localhost:5173",
+
+  "lang": "ru",
+
+  "labels": {
+    "login_entry": "войти|вход|log\\s*in|sign in|личный кабинет",
+    "continue": "продолжить|далее|continue|next",
+    "submit_login": "войти|вход|log\\s*in|sign in|продолжить",
+    "logout": "выйти|выход|log\\s*out|sign out"
+  },
+
+  "auth": {
+    "login_path": "/cabinet/login",
+    "two_step": false,
+    "success_path_is_not": "/cabinet/login"
+  },
+
+  "fixtures": {
+    "$comment": "No test accounts provisioned. Only anonymous (logged-out) journeys are run to avoid touching the real Supabase data."
+  },
+
+  "viewport": { "width": 1280, "height": 800 }
+}

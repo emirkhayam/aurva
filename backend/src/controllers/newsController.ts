@@ -26,8 +26,11 @@ export const getNews = async (req: Request, res: Response): Promise<void> => {
         news_images(id, image_url, display_order)
       `, { count: 'exact' });
 
-    // By default, show only published news for public endpoint
-    if (published !== undefined) {
+    // By default, show only published news for public endpoint.
+    // Admin passes published=all to include drafts too.
+    if (published === 'all') {
+      // no filter — return published + drafts
+    } else if (published !== undefined) {
       query = query.eq('published', published === 'true');
     } else {
       query = query.eq('published', true);
@@ -53,8 +56,18 @@ export const getNews = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
+    // Expose camelCase aliases for the admin panel (keeps snake_case for the public site)
+    const mapped = (news || []).map((m: any) => ({
+      ...m,
+      imageUrl: m.image_url,
+      publishedAt: m.published_at,
+      scheduledAt: m.scheduled_at,
+      createdAt: m.created_at,
+      updatedAt: m.updated_at,
+    }));
+
     res.json({
-      news: news || [],
+      news: mapped,
       pagination: {
         total: count || 0,
         page: pageNum,

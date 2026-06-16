@@ -1,0 +1,406 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Главная навигация" [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Логотип AURVA" [ref=e6]
+      - generic [ref=e7]:
+        - link "О нас" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e9] [cursor=pointer]:
+          - /url: /#directions
+        - link "Преимущества" [ref=e10] [cursor=pointer]:
+          - /url: /#benefits
+        - link "Новости" [ref=e11] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e12] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e13]:
+        - link "Кабинет" [ref=e14] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e15]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e17] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Новости
+        - heading "Все новости" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
+      - generic [ref=e24]:
+        - 'link "Читать новость: Избран новый состав Наблюдательного Совета АУРВА" [ref=e25] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B8%D0%B7%D0%B1%D1%80%D0%B0%D0%BD-%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2-%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D0%B0-%D0%B0%D1%83%D1%80%D0%B2%D0%B0
+          - generic [ref=e26]:
+            - paragraph [ref=e27]: 24 февр. 2026 г.
+            - heading "Избран новый состав Наблюдательного Совета АУРВА" [level=2] [ref=e28]
+            - paragraph [ref=e29]: Решением Ассоциации утвержден обновленный состав Наблюдательного совета АУРВА. В него вошли представители финансового, инвестиционного и цифрового рынков, обладающие значительным управленческим и регу
+            - generic [ref=e30]:
+              - generic [ref=e31]: Читать
+              - img [ref=e32]
+        - 'link "Читать новость: Бизнес Форум B5+1" [ref=e34] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%84%D0%BE%D1%80%D1%83%D0%BC-b51
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: 9 февр. 2026 г.
+            - heading "Бизнес Форум B5+1" [level=2] [ref=e37]
+            - paragraph [ref=e38]: Ассоциация участников рынка виртуальных активов (АУРВА) приняла участие в B5+1 Forum Bishkek 2026, который прошёл 4–5 февраля 2026 года в Бишкеке.
+            - generic [ref=e39]:
+              - generic [ref=e40]: Читать
+              - img [ref=e41]
+        - 'link "Читать новость: Первое собрание Экспертного совета АУРВА в 2026 году" [ref=e43] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B5-%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D0%BD%D0%B8%D0%B5-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D1%82%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D0%B0-%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%B2-2026-%D0%B3%D0%BE%D0%B4%D1%83
+          - generic [ref=e44]:
+            - paragraph [ref=e45]: 21 янв. 2026 г.
+            - heading "Первое собрание Экспертного совета АУРВА в 2026 году" [level=2] [ref=e46]
+            - paragraph [ref=e47]: 19 января прошла первая запланированная встреча Экспертного совета АУРВА в 2026 году.
+            - generic [ref=e48]:
+              - generic [ref=e49]: Читать
+              - img [ref=e50]
+        - 'link "Читать новость: Второй поток обучения бухгалтеров" [ref=e52] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA-%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80%D0%BE%D0%B2
+          - generic [ref=e53]:
+            - paragraph [ref=e54]: 22 дек. 2025 г.
+            - heading "Второй поток обучения бухгалтеров" [level=2] [ref=e55]
+            - paragraph [ref=e56]: Ассоциация провела второй поток обучающего курса для бухгалтеров, посвящённого вопросам учета и правового регулирования операций с виртуальными активами.
+            - generic [ref=e57]:
+              - generic [ref=e58]: Читать
+              - img [ref=e59]
+        - 'link "Читать новость: Второй поток обучения для комплаенс офицеров" [ref=e61] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA-%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B4%D0%BB%D1%8F-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B0%D0%B5%D0%BD%D1%81-%D0%BE%D1%84%D0%B8%D1%86%D0%B5%D1%80%D0%BE%D0%B2
+          - generic [ref=e62]:
+            - paragraph [ref=e63]: 14 дек. 2025 г.
+            - heading "Второй поток обучения для комплаенс офицеров" [level=2] [ref=e64]
+            - paragraph [ref=e65]: Мы успешно завершили второй поток обучения для комплаенс-офицеров, организованный Ассоциацией.
+            - generic [ref=e66]:
+              - generic [ref=e67]: Читать
+              - img [ref=e68]
+        - 'link "Читать новость: Отчетный вечер АУРВА: итоги года" [ref=e70] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%BD%D1%8B%D0%B9-%D0%B2%D0%B5%D1%87%D0%B5%D1%80-%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%B8%D1%82%D0%BE%D0%B3%D0%B8-%D0%B3%D0%BE%D0%B4%D0%B0
+          - generic [ref=e71]:
+            - paragraph [ref=e72]: 12 дек. 2025 г.
+            - 'heading "Отчетный вечер АУРВА: итоги года" [level=2] [ref=e73]'
+            - paragraph [ref=e74]: Итоги года в кругу профессионального сообщества
+            - generic [ref=e75]:
+              - generic [ref=e76]: Читать
+              - img [ref=e77]
+        - 'link "Читать новость: Decentral Asia Forum 2025" [ref=e79] [cursor=pointer]':
+          - /url: /news-detail.html?slug=decentral-asia-forum-2025
+          - generic [ref=e80]:
+            - paragraph [ref=e81]: 20 нояб. 2025 г.
+            - heading "Decentral Asia Forum 2025" [level=2] [ref=e82]
+            - paragraph [ref=e83]: АУРВА приняла участие в Decentral Asia Crypto Forum 2025 - ключевом событии крипто-отрасли Кыргызстана, где Ассоциация выступила соорганизатором мероприятия.
+            - generic [ref=e84]:
+              - generic [ref=e85]: Читать
+              - img [ref=e86]
+        - 'link "Читать новость: Обучение бухгалтеров" [ref=e88] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80%D0%BE%D0%B2
+          - generic [ref=e89]:
+            - paragraph [ref=e90]: 15 нояб. 2025 г.
+            - heading "Обучение бухгалтеров" [level=2] [ref=e91]
+            - paragraph [ref=e92]: АУРВА провела обучение для бухгалтеров по работе с виртуальными активами
+            - generic [ref=e93]:
+              - generic [ref=e94]: Читать
+              - img [ref=e95]
+        - 'link "Читать новость: Первый день рождения Ассоциации" [ref=e97] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9-%D0%B4%D0%B5%D0%BD%D1%8C-%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8
+          - generic [ref=e98]:
+            - paragraph [ref=e99]: 14 окт. 2025 г.
+            - heading "Первый день рождения Ассоциации" [level=2] [ref=e100]
+            - paragraph [ref=e101]: Нашей Ассоциации участников рынка виртуальных активов \- 1 год!
+            - generic [ref=e102]:
+              - generic [ref=e103]: Читать
+              - img [ref=e104]
+        - 'link "Читать новость: Обучение новых комплаенс-офицеров" [ref=e106] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BD%D0%BE%D0%B2%D1%8B%D1%85-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B0%D0%B5%D0%BD%D1%81-%D0%BE%D1%84%D0%B8%D1%86%D0%B5%D1%80%D0%BE%D0%B2
+          - generic [ref=e107]:
+            - paragraph [ref=e108]: 8 окт. 2025 г.
+            - heading "Обучение новых комплаенс-офицеров" [level=2] [ref=e109]
+            - paragraph [ref=e110]: АУРВА провела интенсивный практический курс для новых комплаенс-офицеров с упором на практику.
+            - generic [ref=e111]:
+              - generic [ref=e112]: Читать
+              - img [ref=e113]
+        - 'link "Читать новость: Меморандум о сотрудничестве с Госфиннадзором КР" [ref=e115] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B0%D0%BD%D0%B4%D1%83%D0%BC-%D0%BE-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5-%D1%81-%D0%B3%D0%BE%D1%81%D1%84%D0%B8%D0%BD%D0%BD%D0%B0%D0%B4%D0%B7%D0%BE%D1%80%D0%BE%D0%BC-%D0%BA%D1%80
+          - generic [ref=e116]:
+            - paragraph [ref=e117]: 16 сент. 2025 г.
+            - heading "Меморандум о сотрудничестве с Госфиннадзором КР" [level=2] [ref=e118]
+            - paragraph [ref=e119]: 16 сентября 2025 года – Ассоциация участников рынка виртуальных активов заключила важное соглашение о сотрудничестве со Службой регулирования и надзора за финансовым рынком при Министерстве экономики
+            - generic [ref=e120]:
+              - generic [ref=e121]: Читать
+              - img [ref=e122]
+        - 'link "Читать новость: Научно-практическая конференция «Совершенствование и развитие системы противодействия отмыванию денег и финансированию терроризма Евразийского региона»." [ref=e124] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BD%D0%B0%D1%83%D1%87%D0%BD%D0%BE-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BA%D0%BE%D0%BD%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D1%8F-%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B8-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BE%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F-%D0%BE%D1%82%D0%BC%D1%8B%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E-%D0%B4%D0%B5%D0%BD%D0%B5%D0%B3
+          - generic [ref=e125]:
+            - paragraph [ref=e126]: 8 сент. 2025 г.
+            - heading "Научно-практическая конференция «Совершенствование и развитие системы противодействия отмыванию денег и финансированию терроризма Евразийского региона»." [level=2] [ref=e127]
+            - paragraph [ref=e128]: 8 сентября 2025 года в Государственной резиденции Президента КР «Ала-Арча» (г. Бишкек) состоялась Региональная научно-практическая конференция
+            - generic [ref=e129]:
+              - generic [ref=e130]: Читать
+              - img [ref=e131]
+        - 'link "Читать новость: Подписание меморандума с ПВТ КР" [ref=e133] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B0%D0%BD%D0%B4%D1%83%D0%BC%D0%B0-%D1%81-%D0%BF%D0%B2%D1%82-%D0%BA%D1%80
+          - generic [ref=e134]:
+            - paragraph [ref=e135]: 4 сент. 2025 г.
+            - heading "Подписание меморандума с ПВТ КР" [level=2] [ref=e136]
+            - paragraph [ref=e137]: Парк высоких технологий подписал меморандум с Ассоциацией участников рынка виртуальных активов!
+            - generic [ref=e138]:
+              - generic [ref=e139]: Читать
+              - img [ref=e140]
+        - 'link "Читать новость: Встреча членов Ассоциации" [ref=e142] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD%D0%BE%D0%B2-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8
+          - generic [ref=e143]:
+            - paragraph [ref=e144]: 3 сент. 2025 г.
+            - heading "Встреча членов Ассоциации" [level=2] [ref=e145]
+            - paragraph [ref=e146]: 3 сентября состоялась встреча членов Ассоциации и представителей других ПУВА
+            - generic [ref=e147]:
+              - generic [ref=e148]: Читать
+              - img [ref=e149]
+        - 'link "Читать новость: XXI Евразийсий Облигационный конгресс 2025" [ref=e151] [cursor=pointer]':
+          - /url: /news-detail.html?slug=xxi-%D0%B5%D0%B2%D1%80%D0%B0%D0%B7%D0%B8%D0%B9%D1%81%D0%B8%D0%B9-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%BD%D0%B3%D1%80%D0%B5%D1%81%D1%81-2025
+          - generic [ref=e152]:
+            - paragraph [ref=e153]: 27 июн. 2025 г.
+            - heading "XXI Евразийсий Облигационный конгресс 2025" [level=2] [ref=e154]
+            - paragraph [ref=e155]: АУРВА на XXI Евразийском Облигационном конгрессе 2025 \| 26–27 июня, Иссык-Куль
+            - generic [ref=e156]:
+              - generic [ref=e157]: Читать
+              - img [ref=e158]
+        - 'link "Читать новость: АУРВА подписала меморандум с Ассоциацией цифровой устойчивости" [ref=e160] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B0%D0%BB%D0%B0-%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B0%D0%BD%D0%B4%D1%83%D0%BC-%D1%81-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B5%D0%B9-%D1%86%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%BE%D0%B9-%D1%83%D1%81%D1%82%D0%BE%D0%B9%D1%87%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%B8
+          - generic [ref=e161]:
+            - paragraph [ref=e162]: 26 июн. 2025 г.
+            - heading "АУРВА подписала меморандум с Ассоциацией цифровой устойчивости" [level=2] [ref=e163]
+            - paragraph [ref=e164]: АУРВА подписала меморандум с Ассоциацией цифровой устойчивости
+            - generic [ref=e165]:
+              - generic [ref=e166]: Читать
+              - img [ref=e167]
+        - 'link "Читать новость: Союз банков Кыргызстана и АУРВА" [ref=e169] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D1%81%D0%BE%D1%8E%D0%B7-%D0%B1%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2-%D0%BA%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D1%82%D0%B0%D0%BD%D0%B0-%D0%B8-%D0%B0%D1%83%D1%80%D0%B2%D0%B0
+          - generic [ref=e170]:
+            - paragraph [ref=e171]: 18 июн. 2025 г.
+            - heading "Союз банков Кыргызстана и АУРВА" [level=2] [ref=e172]
+            - paragraph [ref=e173]: 18 июня 2025 года Ассоциация участников рынка виртуальных активов (АУРВА) и Союз банков Кыргызстана подписали меморандум о взаимопонимании и сотрудничестве.
+            - generic [ref=e174]:
+              - generic [ref=e175]: Читать
+              - img [ref=e176]
+        - 'link "Читать новость: АУРВА на Втором Форуме аналитических центров Центральной Азии и Республики Корея" [ref=e178] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%BC-%D1%84%D0%BE%D1%80%D1%83%D0%BC%D0%B5-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%BE%D0%B2-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%B0%D0%B7%D0%B8%D0%B8-%D0%B8-%D1%80%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B8-%D0%BA%D0%BE%D1%80%D0%B5%D1%8F
+          - generic [ref=e179]:
+            - paragraph [ref=e180]: 13 июн. 2025 г.
+            - heading "АУРВА на Втором Форуме аналитических центров Центральной Азии и Республики Корея" [level=2] [ref=e181]
+            - paragraph [ref=e182]: АУРВА на Втором Форуме аналитических центров Центральной Азии и Республики Корея
+            - generic [ref=e183]:
+              - generic [ref=e184]: Читать
+              - img [ref=e185]
+        - 'link "Читать новость: Ассоциация на BIFF 2025" [ref=e187] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D1%8F-%D0%BD%D0%B0-biff-2025
+          - generic [ref=e188]:
+            - paragraph [ref=e189]: 12 июн. 2025 г.
+            - heading "Ассоциация на BIFF 2025" [level=2] [ref=e190]
+            - paragraph [ref=e191]: Ассоциация участников рынка виртуальных активов приняла участие в форуме BIFF 2025
+            - generic [ref=e192]:
+              - generic [ref=e193]: Читать
+              - img [ref=e194]
+        - 'link "Читать новость: Панельная сессия: «Цифровые активы \\- перспективы развития финансовых систем»" [ref=e196] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8F-%D1%86%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D1%8B%D0%B5-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D1%8B-%D0%BF%D0%B5%D1%80%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D1%85-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC
+          - generic [ref=e197]:
+            - paragraph [ref=e198]: 5 июн. 2025 г.
+            - 'heading "Панельная сессия: «Цифровые активы \\- перспективы развития финансовых систем»" [level=2] [ref=e199]'
+            - paragraph [ref=e200]: Ассоциация участников рынка виртуальных активов (АУРВА) выступила соорганизатором и участником панельной сессии в рамках КИТ Форума 2025, посвященной ключевым вопросам развития цифровых активов и их р
+            - generic [ref=e201]:
+              - generic [ref=e202]: Читать
+              - img [ref=e203]
+        - 'link "Читать новость: КИТ форум: Круглый стол" [ref=e205] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BA%D0%B8%D1%82-%D1%84%D0%BE%D1%80%D1%83%D0%BC-%D0%BA%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9-%D1%81%D1%82%D0%BE%D0%BB
+          - generic [ref=e206]:
+            - paragraph [ref=e207]: 29 мая 2025 г.
+            - 'heading "КИТ форум: Круглый стол" [level=2] [ref=e208]'
+            - paragraph [ref=e209]: "Круглый стол: «Виртуальные активы и банковская система: препятствия и точки роста»"
+            - generic [ref=e210]:
+              - generic [ref=e211]: Читать
+              - img [ref=e212]
+        - 'link "Читать новость: АУРВА провела встречу с рабочей группой бухгалтеров" [ref=e214] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%BB%D0%B0-%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D1%83-%D1%81-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B5%D0%B9-%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%BE%D0%B9-%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80%D0%BE%D0%B2
+          - generic [ref=e215]:
+            - paragraph [ref=e216]: 22 мая 2025 г.
+            - heading "АУРВА провела встречу с рабочей группой бухгалтеров" [level=2] [ref=e217]
+            - paragraph [ref=e218]: 22 мая 2025 года Ассоциация участников рынка виртуальных активов провела встречу с рабочей группой профессиональных бухгалтеров, обслуживающих участников рынка виртуальных активов.
+            - generic [ref=e219]:
+              - generic [ref=e220]: Читать
+              - img [ref=e221]
+        - 'link "Читать новость: Ассоциация на Республиканской Олимпиаде по финансовой безопасности" [ref=e223] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%80%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B9-%D0%BE%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B0%D0%B4%D0%B5-%D0%BF%D0%BE-%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8
+          - generic [ref=e224]:
+            - paragraph [ref=e225]: 23 апр. 2025 г.
+            - heading "Ассоциация на Республиканской Олимпиаде по финансовой безопасности" [level=2] [ref=e226]
+            - paragraph [ref=e227]: Ассоциация участников рынка виртуальных активов приняла участие в Республиканской Олимпиаде по финансовой безопасности
+            - generic [ref=e228]:
+              - generic [ref=e229]: Читать
+              - img [ref=e230]
+        - 'link "Читать новость: Встреча участников рынка виртуальных активов" [ref=e232] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2-%D1%80%D1%8B%D0%BD%D0%BA%D0%B0-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BE%D0%B2
+          - generic [ref=e233]:
+            - paragraph [ref=e234]: 21 апр. 2025 г.
+            - heading "Встреча участников рынка виртуальных активов" [level=2] [ref=e235]
+            - paragraph [ref=e236]: Прошла встреча участников рынка виртуальных активов
+            - generic [ref=e237]:
+              - generic [ref=e238]: Читать
+              - img [ref=e239]
+        - 'link "Читать новость: Собрание бухгалтеров" [ref=e241] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80%D0%BE%D0%B2
+          - generic [ref=e242]:
+            - paragraph [ref=e243]: 7 апр. 2025 г.
+            - heading "Собрание бухгалтеров" [level=2] [ref=e244]
+            - paragraph [ref=e245]: Ассоциация продолжает работу по вопросам учета виртуальных активов.
+            - generic [ref=e246]:
+              - generic [ref=e247]: Читать
+              - img [ref=e248]
+        - 'link "Читать новость: Подписание меморандума о сотрудничестве между АУРВА и Учебным центром ГСФР при Министерстве финансов КР" [ref=e250] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B0%D0%BD%D0%B4%D1%83%D0%BC%D0%B0-%D0%BE-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%B8-%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%BC-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%BE%D0%BC-%D0%B3%D1%81%D1%84%D1%80-%D0%BF%D1%80%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B5-%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2
+          - generic [ref=e251]:
+            - paragraph [ref=e252]: 1 апр. 2025 г.
+            - heading "Подписание меморандума о сотрудничестве между АУРВА и Учебным центром ГСФР при Министерстве финансов КР" [level=2] [ref=e253]
+            - paragraph [ref=e254]: Подписан меморандум о сотрудничестве между АУРВА и Учебным центром ГСФР при Министерстве финансов КР!
+            - generic [ref=e255]:
+              - generic [ref=e256]: Читать
+              - img [ref=e257]
+        - 'link "Читать новость: Новый Председатель АУРВА" [ref=e259] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D0%B5%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D0%B0%D1%83%D1%80%D0%B2%D0%B0
+          - generic [ref=e260]:
+            - paragraph [ref=e261]: 26 мар. 2025 г.
+            - heading "Новый Председатель АУРВА" [level=2] [ref=e262]
+            - paragraph [ref=e263]: Новый председатель АУРВА – Темир Казыбай
+            - generic [ref=e264]:
+              - generic [ref=e265]: Читать
+              - img [ref=e266]
+        - 'link "Читать новость: Встреча с ГНС" [ref=e268] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%81-%D0%B3%D0%BD%D1%81
+          - generic [ref=e269]:
+            - paragraph [ref=e270]: 26 мар. 2025 г.
+            - heading "Встреча с ГНС" [level=2] [ref=e271]
+            - paragraph [ref=e272]: 26 марта состоялась рабочая встреча Ассоциации участников рынка виртуальных активов с сотрудниками Государственной налоговой службы.
+            - generic [ref=e273]:
+              - generic [ref=e274]: Читать
+              - img [ref=e275]
+        - 'link "Читать новость: АУРВА на Digital Kyrgyzstan 2025!" [ref=e277] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%BD%D0%B0-digital-kyrgyzstan-2025
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: 27 февр. 2025 г.
+            - heading "АУРВА на Digital Kyrgyzstan 2025!" [level=2] [ref=e280]
+            - paragraph [ref=e281]: 27 февраля в Бишкеке прошел 3-й международный ПЛАС-Форум «Digital Kyrgyzstan», который объединил представителей государства, бизнеса, финтеха и криптоиндустрии.
+            - generic [ref=e282]:
+              - generic [ref=e283]: Читать
+              - img [ref=e284]
+        - 'link "Читать новость: Встреча с ФКБ" [ref=e286] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%81-%D1%84%D0%BA%D0%B1
+          - generic [ref=e287]:
+            - paragraph [ref=e288]: 7 февр. 2025 г.
+            - heading "Встреча с ФКБ" [level=2] [ref=e289]
+            - paragraph [ref=e290]: Состоялась встреча с представителями ФКБ
+            - generic [ref=e291]:
+              - generic [ref=e292]: Читать
+              - img [ref=e293]
+        - 'link "Читать новость: Первая отчетная встреча членов Ассоциации" [ref=e295] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%B5%D1%80%D0%B2%D0%B0%D1%8F-%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%BD%D0%B0%D1%8F-%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD%D0%BE%D0%B2-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8
+          - generic [ref=e296]:
+            - paragraph [ref=e297]: 5 февр. 2025 г.
+            - heading "Первая отчетная встреча членов Ассоциации" [level=2] [ref=e298]
+            - paragraph [ref=e299]: Сегодня состоялась первая отчетная встреча перед членами Ассоциации, где подвели итоги работы за квартал и наметили новые цели!
+            - generic [ref=e300]:
+              - generic [ref=e301]: Читать
+              - img [ref=e302]
+        - 'link "Читать новость: Встреча бухгалтеров резидентов Ассоциации" [ref=e304] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80%D0%BE%D0%B2-%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8
+          - generic [ref=e305]:
+            - paragraph [ref=e306]: 4 февр. 2025 г.
+            - heading "Встреча бухгалтеров резидентов Ассоциации" [level=2] [ref=e307]
+            - paragraph [ref=e308]: Встреча бухгалтеров резидентов АУРВА
+            - generic [ref=e309]:
+              - generic [ref=e310]: Читать
+              - img [ref=e311]
+        - 'link "Читать новость: Встреча с экспертом по анализу блокчейна и крипторасследованиям" [ref=e313] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%81-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D1%82%D0%BE%D0%BC-%D0%BF%D0%BE-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D1%83-%D0%B1%D0%BB%D0%BE%D0%BA%D1%87%D0%B5%D0%B9%D0%BD%D0%B0-%D0%B8-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D1%80%D0%B0%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%D0%BC
+          - generic [ref=e314]:
+            - paragraph [ref=e315]: 7 дек. 2024 г.
+            - heading "Встреча с экспертом по анализу блокчейна и крипторасследованиям" [level=2] [ref=e316]
+            - paragraph [ref=e317]: Встреча с экспертом по анализу блокчейна и крипторасследованиям!
+            - generic [ref=e318]:
+              - generic [ref=e319]: Читать
+              - img [ref=e320]
+        - 'link "Читать новость: Бизнес-завтрак с представителями государственных структур" [ref=e322] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%B7%D0%B0%D0%B2%D1%82%D1%80%D0%B0%D0%BA-%D1%81-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8F%D0%BC%D0%B8-%D0%B3%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80
+          - generic [ref=e323]:
+            - paragraph [ref=e324]: 29 нояб. 2024 г.
+            - heading "Бизнес-завтрак с представителями государственных структур" [level=2] [ref=e325]
+            - paragraph [ref=e326]: В Бишкеке прошел первый бизнес-завтрак, посвященный актуальным вопросам развития индустрии виртуальных активов. Мероприятие собрало ключевых представителей отрасли для обсуждения текущего состояния ры
+            - generic [ref=e327]:
+              - generic [ref=e328]: Читать
+              - img [ref=e329]
+        - 'link "Читать новость: Первая официальная встреча членов Ассоциации" [ref=e331] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%BF%D0%B5%D1%80%D0%B2%D0%B0%D1%8F-%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD%D0%BE%D0%B2-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8
+          - generic [ref=e332]:
+            - paragraph [ref=e333]: 30 окт. 2024 г.
+            - heading "Первая официальная встреча членов Ассоциации" [level=2] [ref=e334]
+            - paragraph [ref=e335]: Первая официальная встреча членов Ассоциации виртуальных активов Кыргызстана 🚀
+            - generic [ref=e336]:
+              - generic [ref=e337]: Читать
+              - img [ref=e338]
+        - 'link "Читать новость: Встреча-знакомство с председателем Ассоциации виртуальных активов" [ref=e340] [cursor=pointer]':
+          - /url: /news-detail.html?slug=%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0-%D0%B7%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D1%81%D1%82%D0%B2%D0%BE-%D1%81-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D0%B5%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC-%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BE%D0%B2
+          - generic [ref=e341]:
+            - paragraph [ref=e342]: 30 окт. 2024 г.
+            - heading "Встреча-знакомство с председателем Ассоциации виртуальных активов" [level=2] [ref=e343]
+            - paragraph [ref=e344]: 30 октября состоялась важная встреча, где участники имели возможность познакомиться с председателем нашей Ассоциации. Это мероприятие стало значимым шагом в укреплении сотрудничества и формировании ед
+            - generic [ref=e345]:
+              - generic [ref=e346]: Читать
+              - img [ref=e347]
+  - contentinfo [ref=e349]:
+    - generic [ref=e350]:
+      - generic [ref=e351]:
+        - generic [ref=e352]:
+          - img "Логотип AURVA" [ref=e353]
+          - paragraph [ref=e354]: Ассоциация Участников Рынка Виртуальных Активов Кыргызской Республики.
+        - generic [ref=e355]:
+          - heading "Связь с нами" [level=2] [ref=e356]
+          - list [ref=e357]:
+            - listitem [ref=e358]:
+              - link "aurva.kg@gmail.com" [ref=e359] [cursor=pointer]:
+                - /url: mailto:aurva.kg@gmail.com
+                - img [ref=e360]
+                - generic [ref=e362]: aurva.kg@gmail.com
+            - listitem [ref=e363]:
+              - link "+996 550 99 90 10" [ref=e364] [cursor=pointer]:
+                - /url: tel:+996550999010
+                - img [ref=e365]
+                - generic [ref=e367]: +996 550 99 90 10
+            - listitem [ref=e368]:
+              - generic [ref=e369]: Ассоциация активна · Основано в 2024
+        - generic [ref=e371]:
+          - heading "Навигация" [level=2] [ref=e372]
+          - list [ref=e373]:
+            - listitem [ref=e374]:
+              - link "О нас" [ref=e375] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e376]:
+              - link "Направления" [ref=e377] [cursor=pointer]:
+                - /url: /#directions
+            - listitem [ref=e378]:
+              - link "Преимущества" [ref=e379] [cursor=pointer]:
+                - /url: /#benefits
+            - listitem [ref=e380]:
+              - link "Участники" [ref=e381] [cursor=pointer]:
+                - /url: /#members
+            - listitem [ref=e382]:
+              - link "Новости" [ref=e383] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e384]:
+              - link "Курсы" [ref=e385] [cursor=pointer]:
+                - /url: /courses
+      - generic [ref=e386]:
+        - paragraph [ref=e387]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e388]:
+          - link "Политика конфиденциальности" [ref=e389] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e390] [cursor=pointer]:
+            - /url: /charter

@@ -22,8 +22,11 @@ export const getPartners = async (req: Request, res: Response): Promise<void> =>
       .from('partners')
       .select('*', { count: 'exact' });
 
-    // By default, show only active partners for public endpoint
-    if (isActive !== undefined) {
+    // By default, show only active partners for public endpoint.
+    // Admin passes isActive=all to include inactive partners too.
+    if (isActive === 'all') {
+      // no filter — return active + inactive
+    } else if (isActive !== undefined) {
       query = query.eq('is_active', isActive === 'true');
     } else {
       query = query.eq('is_active', true);

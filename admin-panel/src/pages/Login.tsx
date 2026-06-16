@@ -124,16 +124,18 @@ export default function Login() {
                 {loading ? 'Вход...' : 'Войти'}
               </Button>
 
-              {/* DEV: Quick Login Button */}
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full mt-2"
-                onClick={quickLogin}
-                disabled={loading}
-              >
-                🚀 DEV: Быстрый вход
-              </Button>
+              {/* DEV: Quick Login Button — only rendered in local dev builds, never in production */}
+              {import.meta.env.DEV && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full mt-2"
+                  onClick={quickLogin}
+                  disabled={loading}
+                >
+                  🚀 DEV: Быстрый вход
+                </Button>
+              )}
             </form>
           </CardContent>
         </Card>

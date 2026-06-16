@@ -1,0 +1,287 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Участники" [level=1] [ref=e79]
+            - paragraph [ref=e80]: Управление участниками ассоциации
+          - button "Добавить участника" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - text: Добавить участника
+        - generic [ref=e83]:
+          - generic [ref=e85]:
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - img "BitHub" [ref=e89]
+                - generic [ref=e90]:
+                  - generic [ref=e91]:
+                    - heading "BitHub" [level=3] [ref=e92]
+                    - img [ref=e93]
+                  - paragraph [ref=e96]: "Порядок: 1"
+              - generic [ref=e97]: Активный
+            - generic [ref=e98]:
+              - paragraph [ref=e99]: ���������� �������������� ����� �����������, ��������������� ���������� � ������� ������ �� ������ �������� �������
+              - link "https://bithub.kg" [ref=e100] [cursor=pointer]:
+                - /url: https://bithub.kg
+                - text: https://bithub.kg
+                - img [ref=e101]
+              - generic [ref=e105]:
+                - button "Редактировать" [ref=e106] [cursor=pointer]:
+                  - img [ref=e107]
+                  - text: Редактировать
+                - button [ref=e110] [cursor=pointer]:
+                  - img [ref=e111]
+          - generic [ref=e114]:
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - img "Envoys" [ref=e118]
+                - generic [ref=e119]:
+                  - generic [ref=e120]:
+                    - heading "Envoys" [level=3] [ref=e121]
+                    - img [ref=e122]
+                  - paragraph [ref=e125]: "Порядок: 2"
+              - generic [ref=e126]: Активный
+            - generic [ref=e127]:
+              - paragraph [ref=e128]: ������������� ��������� ��� �������� Web3 � ��������-������� � ������� ����������� ����
+              - link "https://envoys.vision" [ref=e129] [cursor=pointer]:
+                - /url: https://envoys.vision
+                - text: https://envoys.vision
+                - img [ref=e130]
+              - generic [ref=e134]:
+                - button "Редактировать" [ref=e135] [cursor=pointer]:
+                  - img [ref=e136]
+                  - text: Редактировать
+                - button [ref=e139] [cursor=pointer]:
+                  - img [ref=e140]
+          - generic [ref=e143]:
+            - generic [ref=e145]:
+              - generic [ref=e146]:
+                - img "Royal Inc." [ref=e147]
+                - generic [ref=e148]:
+                  - generic [ref=e149]:
+                    - heading "Royal Inc." [level=3] [ref=e150]
+                    - img [ref=e151]
+                  - paragraph [ref=e154]: "Порядок: 3"
+              - generic [ref=e155]: Активный
+            - generic [ref=e156]:
+              - paragraph [ref=e157]: ��������������� ��������, ������������������ �� �������� �������� � ������������� ���������� ��������
+              - link "https://www.royal.inc" [ref=e158] [cursor=pointer]:
+                - /url: https://www.royal.inc
+                - text: https://www.royal.inc
+                - img [ref=e159]
+              - generic [ref=e163]:
+                - button "Редактировать" [ref=e164] [cursor=pointer]:
+                  - img [ref=e165]
+                  - text: Редактировать
+                - button [ref=e168] [cursor=pointer]:
+                  - img [ref=e169]
+          - generic [ref=e172]:
+            - generic [ref=e174]:
+              - generic [ref=e175]:
+                - img "KLN" [ref=e176]
+                - generic [ref=e177]:
+                  - generic [ref=e178]:
+                    - heading "KLN" [level=3] [ref=e179]
+                    - img [ref=e180]
+                  - paragraph [ref=e183]: "Порядок: 4"
+              - generic [ref=e184]: Активный
+            - generic [ref=e185]:
+              - paragraph [ref=e186]: ������� ��������� ������� ��� ��������������� �����, �������������� �������� �������������� � �������
+              - link "https://kln.kg" [ref=e187] [cursor=pointer]:
+                - /url: https://kln.kg
+                - text: https://kln.kg
+                - img [ref=e188]
+              - generic [ref=e192]:
+                - button "Редактировать" [ref=e193] [cursor=pointer]:
+                  - img [ref=e194]
+                  - text: Редактировать
+                - button [ref=e197] [cursor=pointer]:
+                  - img [ref=e198]
+          - generic [ref=e201]:
+            - generic [ref=e203]:
+              - generic [ref=e204]:
+                - img "WeChange" [ref=e205]
+                - generic [ref=e206]:
+                  - generic [ref=e207]:
+                    - heading "WeChange" [level=3] [ref=e208]
+                    - img [ref=e209]
+                  - paragraph [ref=e212]: "Порядок: 5"
+              - generic [ref=e213]: Активный
+            - generic [ref=e214]:
+              - paragraph [ref=e215]: Криптовалютная биржа и платформа для обмена цифровых активов в Кыргызстане
+              - link "https://www.wechange.kg" [ref=e216] [cursor=pointer]:
+                - /url: https://www.wechange.kg
+                - text: https://www.wechange.kg
+                - img [ref=e217]
+              - generic [ref=e221]:
+                - button "Редактировать" [ref=e222] [cursor=pointer]:
+                  - img [ref=e223]
+                  - text: Редактировать
+                - button [ref=e226] [cursor=pointer]:
+                  - img [ref=e227]
+          - generic [ref=e230]:
+            - generic [ref=e232]:
+              - generic [ref=e233]:
+                - img "prime finance" [ref=e234]
+                - generic [ref=e235]:
+                  - generic [ref=e236]:
+                    - heading "prime finance" [level=3] [ref=e237]
+                    - img [ref=e238]
+                  - paragraph [ref=e241]: "Порядок: 6"
+              - generic [ref=e242]: Активный
+            - generic [ref=e243]:
+              - paragraph
+              - generic [ref=e244]:
+                - button "Редактировать" [ref=e245] [cursor=pointer]:
+                  - img [ref=e246]
+                  - text: Редактировать
+                - button [ref=e249] [cursor=pointer]:
+                  - img [ref=e250]
+          - generic [ref=e253]:
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - img "Relopay" [ref=e257]
+                - generic [ref=e258]:
+                  - generic [ref=e259]:
+                    - heading "Relopay" [level=3] [ref=e260]
+                    - img [ref=e261]
+                  - paragraph [ref=e264]: "Порядок: 7"
+              - generic [ref=e265]: Активный
+            - generic [ref=e266]:
+              - paragraph
+              - generic [ref=e267]:
+                - button "Редактировать" [ref=e268] [cursor=pointer]:
+                  - img [ref=e269]
+                  - text: Редактировать
+                - button [ref=e272] [cursor=pointer]:
+                  - img [ref=e273]
+          - generic [ref=e276]:
+            - generic [ref=e278]:
+              - generic [ref=e279]:
+                - img "Azimut Capital" [ref=e280]
+                - generic [ref=e281]:
+                  - generic [ref=e282]:
+                    - heading "Azimut Capital" [level=3] [ref=e283]
+                    - img [ref=e284]
+                  - paragraph [ref=e287]: "Порядок: 8"
+              - generic [ref=e288]: Активный
+            - generic [ref=e289]:
+              - paragraph
+              - generic [ref=e290]:
+                - button "Редактировать" [ref=e291] [cursor=pointer]:
+                  - img [ref=e292]
+                  - text: Редактировать
+                - button [ref=e295] [cursor=pointer]:
+                  - img [ref=e296]
+          - generic [ref=e299]:
+            - generic [ref=e301]:
+              - generic [ref=e302]:
+                - img "Standard Development" [ref=e303]
+                - generic [ref=e304]:
+                  - generic [ref=e305]:
+                    - heading "Standard Development" [level=3] [ref=e306]
+                    - img [ref=e307]
+                  - paragraph [ref=e310]: "Порядок: 9"
+              - generic [ref=e311]: Активный
+            - generic [ref=e312]:
+              - paragraph
+              - generic [ref=e313]:
+                - button "Редактировать" [ref=e314] [cursor=pointer]:
+                  - img [ref=e315]
+                  - text: Редактировать
+                - button [ref=e318] [cursor=pointer]:
+                  - img [ref=e319]
+          - generic [ref=e322]:
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - img "TradeWave" [ref=e326]
+                - generic [ref=e327]:
+                  - generic [ref=e328]:
+                    - heading "TradeWave" [level=3] [ref=e329]
+                    - img [ref=e330]
+                  - paragraph [ref=e333]: "Порядок: 10"
+              - generic [ref=e334]: Активный
+            - generic [ref=e335]:
+              - paragraph
+              - generic [ref=e336]:
+                - button "Редактировать" [ref=e337] [cursor=pointer]:
+                  - img [ref=e338]
+                  - text: Редактировать
+                - button [ref=e341] [cursor=pointer]:
+                  - img [ref=e342]
+          - generic [ref=e345]:
+            - generic [ref=e347]:
+              - generic [ref=e348]:
+                - img "OSON X" [ref=e349]
+                - generic [ref=e350]:
+                  - generic [ref=e351]:
+                    - heading "OSON X" [level=3] [ref=e352]
+                    - img [ref=e353]
+                  - paragraph [ref=e356]: "Порядок: 11"
+              - generic [ref=e357]: Активный
+            - generic [ref=e358]:
+              - paragraph
+              - generic [ref=e359]:
+                - button "Редактировать" [ref=e360] [cursor=pointer]:
+                  - img [ref=e361]
+                  - text: Редактировать
+                - button [ref=e364] [cursor=pointer]:
+                  - img [ref=e365]
+  - region "Notifications alt+T"

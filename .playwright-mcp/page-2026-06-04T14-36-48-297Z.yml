@@ -1,0 +1,82 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Главная навигация" [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Логотип AURVA" [ref=e6]
+      - generic [ref=e7]:
+        - link "О нас" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e9] [cursor=pointer]:
+          - /url: /#directions
+        - link "Преимущества" [ref=e10] [cursor=pointer]:
+          - /url: /#benefits
+        - link "Новости" [ref=e11] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e12] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e13]:
+        - link "Кабинет" [ref=e14] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e15]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e17] [cursor=pointer]:
+          - /url: /#contact
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - img "AURVA" [ref=e22]
+      - heading "Все → НОВОСТИ" [level=1] [ref=e23]:
+        - text: Все
+        - text: → НОВОСТИ
+      - paragraph [ref=e24]: Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации
+    - group "Фильтр новостей по категориям" [ref=e25]:
+      - button "Все" [ref=e26] [cursor=pointer]
+      - button "Регулирование" [ref=e27] [cursor=pointer]
+      - button "События" [ref=e28] [cursor=pointer]
+      - button "Аналитика" [ref=e29] [cursor=pointer]
+  - generic [ref=e31]:
+    - paragraph [ref=e34]: Загрузка новостей...
+    - text: 
+  - contentinfo [ref=e35]:
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - img "Логотип AURVA" [ref=e40]
+          - generic [ref=e41]: Связь с нами
+          - generic [ref=e42]:
+            - link "aurva.kg@gmail.com" [ref=e43] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+              - generic [ref=e44]: 
+              - generic [ref=e45]: aurva.kg@gmail.com
+            - link "+996 550 99 90 10" [ref=e46] [cursor=pointer]:
+              - /url: tel:+996550999010
+              - generic [ref=e47]: 
+              - generic [ref=e48]: +996 550 99 90 10
+        - generic [ref=e49]:
+          - generic [ref=e54]: Ассоциация активна
+          - generic [ref=e55]:
+            - generic [ref=e56]: AURVA::КР
+            - generic [ref=e57]: "|"
+            - generic [ref=e58]: Основано в 2024
+        - generic [ref=e59]:
+          - generic [ref=e60]: Навигация
+          - generic [ref=e61]:
+            - link "О нас" [ref=e62] [cursor=pointer]:
+              - /url: /about
+            - link "Направления" [ref=e63] [cursor=pointer]:
+              - /url: /#directions
+            - link "Преимущества" [ref=e64] [cursor=pointer]:
+              - /url: /#benefits
+            - link "Новости" [ref=e65] [cursor=pointer]:
+              - /url: /news
+            - link "Курсы" [ref=e66] [cursor=pointer]:
+              - /url: /courses
+      - generic [ref=e67]:
+        - generic [ref=e68]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e69]:
+          - link "Политика конфиденциальности" [ref=e70] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e71] [cursor=pointer]:
+            - /url: /charter

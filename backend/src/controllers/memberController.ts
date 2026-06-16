@@ -22,8 +22,11 @@ export const getMembers = async (req: Request, res: Response): Promise<void> => 
       .from('members')
       .select('*', { count: 'exact' });
 
-    // By default, show only active members for public endpoint
-    if (isActive !== undefined) {
+    // By default, show only active members for public endpoint.
+    // Admin passes isActive=all to include inactive members too.
+    if (isActive === 'all') {
+      // no filter — return active + inactive
+    } else if (isActive !== undefined) {
       query = query.eq('is_active', isActive === 'true');
     } else {
       query = query.eq('is_active', true);
@@ -40,8 +43,19 @@ export const getMembers = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
+    // Expose camelCase aliases for the admin panel (keeps snake_case for the public site)
+    const mapped = (members || []).map((m: any) => ({
+      ...m,
+      logoUrl: m.logo_url,
+      isActive: m.is_active,
+      displayOrder: m.display_order,
+      joinedDate: m.joined_date,
+      createdAt: m.created_at,
+      updatedAt: m.updated_at,
+    }));
+
     res.json({
-      members: members || [],
+      members: mapped,
       pagination: {
         total: count || 0,
         page: pageNum,

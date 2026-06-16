@@ -1,0 +1,757 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Новости" [level=1] [ref=e79]
+            - paragraph [ref=e80]: Управление новостями индустрии
+          - button "Добавить новость" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - text: Добавить новость
+        - generic [ref=e83]:
+          - generic [ref=e85]:
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - heading "АУРВА на KIT форуме 2026" [level=3] [ref=e90]
+                  - img [ref=e91]
+                - paragraph [ref=e94]: 16 июня 2026 г. в 00:08
+              - generic [ref=e95]: Опубликовано
+            - generic [ref=e96]:
+              - paragraph [ref=e97]: Команда АУРВА посетила КИТ Форум - крупнейший ежегодный ИТ-форум Кыргызстана Были рады увидеть коллег, друзей и партнеров, познакомиться с новыми стартапами и увидеть, как стремительно меняется…
+              - generic [ref=e98]:
+                - button "Редактировать" [ref=e99] [cursor=pointer]:
+                  - img [ref=e100]
+                  - text: Редактировать
+                - button [ref=e103] [cursor=pointer]:
+                  - img [ref=e104]
+          - generic [ref=e107]:
+            - generic [ref=e109]:
+              - generic [ref=e110]:
+                - generic [ref=e111]:
+                  - heading "АУРВА продолжает обучение сотрудников комплаенс-отделов банков" [level=3] [ref=e112]
+                  - img [ref=e113]
+                - paragraph [ref=e116]: 16 июня 2026 г. в 00:08
+              - generic [ref=e117]: Опубликовано
+            - generic [ref=e118]:
+              - paragraph [ref=e119]: АУРВА провела очередное специализированное обучение для сотрудников комплаенс-подразделений банков в рамках взаимодействия с Союзом банков Кыргызстана. В обучении приняли участие представители…
+              - generic [ref=e120]:
+                - button "Редактировать" [ref=e121] [cursor=pointer]:
+                  - img [ref=e122]
+                  - text: Редактировать
+                - button [ref=e125] [cursor=pointer]:
+                  - img [ref=e126]
+          - generic [ref=e129]:
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - generic [ref=e133]:
+                  - heading "АУРВА провела обучение для банков" [level=3] [ref=e134]
+                  - img [ref=e135]
+                - paragraph [ref=e138]: 16 июня 2026 г. в 00:08
+              - generic [ref=e139]: Опубликовано
+            - generic [ref=e140]:
+              - paragraph [ref=e141]: АУРВА провела обучение для сотрудников комплаенс-отделов банков в рамках Союза банков КР УРВА провела специализированное обучение для сотрудников комплаенс-подразделений банков в рамках…
+              - generic [ref=e142]:
+                - button "Редактировать" [ref=e143] [cursor=pointer]:
+                  - img [ref=e144]
+                  - text: Редактировать
+                - button [ref=e147] [cursor=pointer]:
+                  - img [ref=e148]
+          - generic [ref=e151]:
+            - generic [ref=e153]:
+              - generic [ref=e154]:
+                - generic [ref=e155]:
+                  - heading "В Посольстве США состоялось вручение сертификатов участникам программы Open World" [level=3] [ref=e156]
+                  - img [ref=e157]
+                - paragraph [ref=e160]: 16 июня 2026 г. в 00:08
+              - generic [ref=e161]: Опубликовано
+            - generic [ref=e162]:
+              - paragraph [ref=e163]: В Посольстве Соединённых Штатов Америки состоялась церемония вручения сертификатов участникам международной программы Open World Program, в числе которых - представители АУРВА. В рамках встречи…
+              - generic [ref=e164]:
+                - button "Редактировать" [ref=e165] [cursor=pointer]:
+                  - img [ref=e166]
+                  - text: Редактировать
+                - button [ref=e169] [cursor=pointer]:
+                  - img [ref=e170]
+          - generic [ref=e173]:
+            - generic [ref=e175]:
+              - generic [ref=e176]:
+                - generic [ref=e177]:
+                  - heading "Представители АУРВА в США" [level=3] [ref=e178]
+                  - img [ref=e179]
+                - paragraph [ref=e182]: 16 июня 2026 г. в 00:07
+              - generic [ref=e183]: Опубликовано
+            - generic [ref=e184]:
+              - paragraph [ref=e185]: Представители АУРВА приняли участие в международной программе Open World (США) Двое представителей Ассоциации - Председатель Темир Казыбай и Заместитель председателя Акмарал Тулегенова, были…
+              - generic [ref=e186]:
+                - button "Редактировать" [ref=e187] [cursor=pointer]:
+                  - img [ref=e188]
+                  - text: Редактировать
+                - button [ref=e191] [cursor=pointer]:
+                  - img [ref=e192]
+          - generic [ref=e195]:
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - heading "АУРВА стала членом Международного Делового Совета" [level=3] [ref=e200]
+                  - img [ref=e201]
+                - paragraph [ref=e204]: 16 июня 2026 г. в 00:07
+              - generic [ref=e205]: Опубликовано
+            - generic [ref=e206]:
+              - paragraph [ref=e207]: АУРВА стала членом Международного делового совета (МДС) и уже приняла участие в первом мероприятии в статусе члена организации 🤝 2 апреля 2026 года представители АУРВА посетили встречу в формате…
+              - generic [ref=e208]:
+                - button "Редактировать" [ref=e209] [cursor=pointer]:
+                  - img [ref=e210]
+                  - text: Редактировать
+                - button [ref=e213] [cursor=pointer]:
+                  - img [ref=e214]
+          - generic [ref=e217]:
+            - generic [ref=e219]:
+              - generic [ref=e220]:
+                - generic [ref=e221]:
+                  - heading "Участие АУРВА на Crypto Jaz" [level=3] [ref=e222]
+                  - img [ref=e223]
+                - paragraph [ref=e226]: 16 июня 2026 г. в 00:07
+              - generic [ref=e227]: Опубликовано
+            - generic [ref=e228]:
+              - paragraph [ref=e229]: Член Экспертного совета АУРВА Александр Хван принял участие в мероприятии Crypto Jaz, организованном Binance, которое прошло 29 марта 2026 года в Бишкеке. В рамках события состоялись…
+              - generic [ref=e230]:
+                - button "Редактировать" [ref=e231] [cursor=pointer]:
+                  - img [ref=e232]
+                  - text: Редактировать
+                - button [ref=e235] [cursor=pointer]:
+                  - img [ref=e236]
+          - generic [ref=e239]:
+            - generic [ref=e241]:
+              - generic [ref=e242]:
+                - generic [ref=e243]:
+                  - heading "Избран новый состав Наблюдательного Совета АУРВА" [level=3] [ref=e244]
+                  - img [ref=e245]
+                - paragraph [ref=e248]: 16 июня 2026 г. в 00:07
+              - generic [ref=e249]: Опубликовано
+            - generic [ref=e250]:
+              - paragraph [ref=e251]: Решением Ассоциации утвержден обновленный состав Наблюдательного совета АУРВА. В него вошли представители финансового, инвестиционного и цифрового рынков, обладающие значительным управленческим и…
+              - generic [ref=e252]:
+                - button "Редактировать" [ref=e253] [cursor=pointer]:
+                  - img [ref=e254]
+                  - text: Редактировать
+                - button [ref=e257] [cursor=pointer]:
+                  - img [ref=e258]
+          - generic [ref=e261]:
+            - generic [ref=e263]:
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - heading "Бизнес Форум B5+1" [level=3] [ref=e266]
+                  - img [ref=e267]
+                - paragraph [ref=e270]: 16 июня 2026 г. в 00:07
+              - generic [ref=e271]: Опубликовано
+            - generic [ref=e272]:
+              - paragraph [ref=e273]: Ассоциация участников рынка виртуальных активов (АУРВА) приняла участие в B5+1 Forum Bishkek 2026, который прошёл 4–5 февраля 2026 года в Бишкеке. АУРВА была представлена Председателем Ассоциации…
+              - generic [ref=e274]:
+                - button "Редактировать" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Редактировать
+                - button [ref=e279] [cursor=pointer]:
+                  - img [ref=e280]
+          - generic [ref=e283]:
+            - generic [ref=e285]:
+              - generic [ref=e286]:
+                - generic [ref=e287]:
+                  - heading "Первое собрание Экспертного совета АУРВА в 2026 году" [level=3] [ref=e288]
+                  - img [ref=e289]
+                - paragraph [ref=e292]: 16 июня 2026 г. в 00:07
+              - generic [ref=e293]: Опубликовано
+            - generic [ref=e294]:
+              - paragraph [ref=e295]: 19 января прошла первая запланированная встреча Экспертного совета АУРВА в 2026 году. Основной целью встречи стало определение ключевого вектора работы и приоритетных направлений деятельности на…
+              - generic [ref=e296]:
+                - button "Редактировать" [ref=e297] [cursor=pointer]:
+                  - img [ref=e298]
+                  - text: Редактировать
+                - button [ref=e301] [cursor=pointer]:
+                  - img [ref=e302]
+          - generic [ref=e305]:
+            - generic [ref=e307]:
+              - generic [ref=e308]:
+                - generic [ref=e309]:
+                  - heading "Второй поток обучения бухгалтеров" [level=3] [ref=e310]
+                  - img [ref=e311]
+                - paragraph [ref=e314]: 16 июня 2026 г. в 00:07
+              - generic [ref=e315]: Опубликовано
+            - generic [ref=e316]:
+              - paragraph [ref=e317]: Ассоциация провела второй поток обучающего курса для бухгалтеров, посвящённого вопросам учета и правового регулирования операций с виртуальными активами. В рамках обучения были рассмотрены основы…
+              - generic [ref=e318]:
+                - button "Редактировать" [ref=e319] [cursor=pointer]:
+                  - img [ref=e320]
+                  - text: Редактировать
+                - button [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+          - generic [ref=e327]:
+            - generic [ref=e329]:
+              - generic [ref=e330]:
+                - generic [ref=e331]:
+                  - heading "Второй поток обучения для комплаенс офицеров" [level=3] [ref=e332]
+                  - img [ref=e333]
+                - paragraph [ref=e336]: 16 июня 2026 г. в 00:07
+              - generic [ref=e337]: Опубликовано
+            - generic [ref=e338]:
+              - paragraph [ref=e339]: Мы успешно завершили второй поток обучения для комплаенс-офицеров, организованный Ассоциацией. В рамках программы участники получили не только теоретические знания, но и углублённую практическую…
+              - generic [ref=e340]:
+                - button "Редактировать" [ref=e341] [cursor=pointer]:
+                  - img [ref=e342]
+                  - text: Редактировать
+                - button [ref=e345] [cursor=pointer]:
+                  - img [ref=e346]
+          - generic [ref=e349]:
+            - generic [ref=e351]:
+              - generic [ref=e352]:
+                - generic [ref=e353]:
+                  - 'heading "Отчетный вечер АУРВА: итоги года" [level=3] [ref=e354]'
+                  - img [ref=e355]
+                - paragraph [ref=e358]: 16 июня 2026 г. в 00:07
+              - generic [ref=e359]: Опубликовано
+            - generic [ref=e360]:
+              - paragraph [ref=e361]: Итоги года в кругу профессионального сообщества АУРВА провела отчетный вечер в теплой и профессиональной атмосфере — в кругу коллег и единомышленников. В мероприятии приняли участие члены…
+              - generic [ref=e362]:
+                - button "Редактировать" [ref=e363] [cursor=pointer]:
+                  - img [ref=e364]
+                  - text: Редактировать
+                - button [ref=e367] [cursor=pointer]:
+                  - img [ref=e368]
+          - generic [ref=e371]:
+            - generic [ref=e373]:
+              - generic [ref=e374]:
+                - generic [ref=e375]:
+                  - heading "Decentral Asia Forum 2025" [level=3] [ref=e376]
+                  - img [ref=e377]
+                - paragraph [ref=e380]: 16 июня 2026 г. в 00:07
+              - generic [ref=e381]: Опубликовано
+            - generic [ref=e382]:
+              - paragraph [ref=e383]: АУРВА приняла участие в Decentral Asia Crypto Forum 2025 - ключевом событии крипто-отрасли Кыргызстана, где Ассоциация выступила соорганизатором мероприятия. Форум стал важной площадкой для…
+              - generic [ref=e384]:
+                - button "Редактировать" [ref=e385] [cursor=pointer]:
+                  - img [ref=e386]
+                  - text: Редактировать
+                - button [ref=e389] [cursor=pointer]:
+                  - img [ref=e390]
+          - generic [ref=e393]:
+            - generic [ref=e395]:
+              - generic [ref=e396]:
+                - generic [ref=e397]:
+                  - heading "Обучение бухгалтеров" [level=3] [ref=e398]
+                  - img [ref=e399]
+                - paragraph [ref=e402]: 16 июня 2026 г. в 00:07
+              - generic [ref=e403]: Опубликовано
+            - generic [ref=e404]:
+              - paragraph [ref=e405]: АУРВА провела обучение для бухгалтеров по работе с виртуальными активами Ассоциация участников рынка виртуальных активов успешно провела обучающий семинар для бухгалтеров, посвящённый особенностям…
+              - generic [ref=e406]:
+                - button "Редактировать" [ref=e407] [cursor=pointer]:
+                  - img [ref=e408]
+                  - text: Редактировать
+                - button [ref=e411] [cursor=pointer]:
+                  - img [ref=e412]
+          - generic [ref=e415]:
+            - generic [ref=e417]:
+              - generic [ref=e418]:
+                - generic [ref=e419]:
+                  - heading "Первый день рождения Ассоциации" [level=3] [ref=e420]
+                  - img [ref=e421]
+                - paragraph [ref=e424]: 16 июня 2026 г. в 00:07
+              - generic [ref=e425]: Опубликовано
+            - generic [ref=e426]:
+              - paragraph [ref=e427]: Нашей Ассоциации участников рынка виртуальных активов - 1 год! 14 октября 2024 года была основана Ассоциация, ставшая платформой для объединения профессионалов криптоиндустрии Кыргызстана. За…
+              - generic [ref=e428]:
+                - button "Редактировать" [ref=e429] [cursor=pointer]:
+                  - img [ref=e430]
+                  - text: Редактировать
+                - button [ref=e433] [cursor=pointer]:
+                  - img [ref=e434]
+          - generic [ref=e437]:
+            - generic [ref=e439]:
+              - generic [ref=e440]:
+                - generic [ref=e441]:
+                  - heading "Обучение новых комплаенс-офицеров" [level=3] [ref=e442]
+                  - img [ref=e443]
+                - paragraph [ref=e446]: 16 июня 2026 г. в 00:07
+              - generic [ref=e447]: Опубликовано
+            - generic [ref=e448]:
+              - paragraph [ref=e449]: АУРВА провела интенсивный практический курс для новых комплаенс-офицеров с упором на практику. Ассоциация участников рынка виртуальных активов провела двухдневный практический курс, направленный…
+              - generic [ref=e450]:
+                - button "Редактировать" [ref=e451] [cursor=pointer]:
+                  - img [ref=e452]
+                  - text: Редактировать
+                - button [ref=e455] [cursor=pointer]:
+                  - img [ref=e456]
+          - generic [ref=e459]:
+            - generic [ref=e461]:
+              - generic [ref=e462]:
+                - generic [ref=e463]:
+                  - heading "Меморандум о сотрудничестве с Госфиннадзором КР" [level=3] [ref=e464]
+                  - img [ref=e465]
+                - paragraph [ref=e468]: 16 июня 2026 г. в 00:06
+              - generic [ref=e469]: Опубликовано
+            - generic [ref=e470]:
+              - paragraph [ref=e471]: 16 сентября 2025 года – Ассоциация участников рынка виртуальных активов заключила важное соглашение о сотрудничестве со Службой регулирования и надзора за финансовым рынком при Министерстве…
+              - generic [ref=e472]:
+                - button "Редактировать" [ref=e473] [cursor=pointer]:
+                  - img [ref=e474]
+                  - text: Редактировать
+                - button [ref=e477] [cursor=pointer]:
+                  - img [ref=e478]
+          - generic [ref=e481]:
+            - generic [ref=e483]:
+              - generic [ref=e484]:
+                - generic [ref=e485]:
+                  - heading "Научно-практическая конференция «Совершенствование и развитие системы противодействия отмыванию денег и финансированию терроризма Евразийского региона»." [level=3] [ref=e486]
+                  - img [ref=e487]
+                - paragraph [ref=e490]: 16 июня 2026 г. в 00:06
+              - generic [ref=e491]: Опубликовано
+            - generic [ref=e492]:
+              - paragraph [ref=e493]: 8 сентября 2025 года в Государственной резиденции Президента КР «Ала-Арча» (г. Бишкек) состоялась Региональная научно-практическая конференция «Совершенствование и развитие системы противодействия…
+              - generic [ref=e494]:
+                - button "Редактировать" [ref=e495] [cursor=pointer]:
+                  - img [ref=e496]
+                  - text: Редактировать
+                - button [ref=e499] [cursor=pointer]:
+                  - img [ref=e500]
+          - generic [ref=e503]:
+            - generic [ref=e505]:
+              - generic [ref=e506]:
+                - generic [ref=e507]:
+                  - heading "Подписание меморандума с ПВТ КР" [level=3] [ref=e508]
+                  - img [ref=e509]
+                - paragraph [ref=e512]: 16 июня 2026 г. в 00:06
+              - generic [ref=e513]: Опубликовано
+            - generic [ref=e514]:
+              - paragraph [ref=e515]: Парк высоких технологий подписал меморандум с Ассоциацией участников рынка виртуальных активов! Цель - развитие экосистемы для финтех-проектов, Web3-технологий и виртуальных активов Стороны…
+              - generic [ref=e516]:
+                - button "Редактировать" [ref=e517] [cursor=pointer]:
+                  - img [ref=e518]
+                  - text: Редактировать
+                - button [ref=e521] [cursor=pointer]:
+                  - img [ref=e522]
+          - generic [ref=e525]:
+            - generic [ref=e527]:
+              - generic [ref=e528]:
+                - generic [ref=e529]:
+                  - heading "Встреча членов Ассоциации" [level=3] [ref=e530]
+                  - img [ref=e531]
+                - paragraph [ref=e534]: 16 июня 2026 г. в 00:06
+              - generic [ref=e535]: Опубликовано
+            - generic [ref=e536]:
+              - paragraph [ref=e537]: 3 сентября состоялась встреча членов Ассоциации и представителей других ПУВА Мы обсудили дальнейшее развитие Ассоциации, планы на ближайшее время, а также пути укрепления сотрудничества между…
+              - generic [ref=e538]:
+                - button "Редактировать" [ref=e539] [cursor=pointer]:
+                  - img [ref=e540]
+                  - text: Редактировать
+                - button [ref=e543] [cursor=pointer]:
+                  - img [ref=e544]
+          - generic [ref=e547]:
+            - generic [ref=e549]:
+              - generic [ref=e550]:
+                - generic [ref=e551]:
+                  - heading "XXI Евразийсий Облигационный конгресс 2025" [level=3] [ref=e552]
+                  - img [ref=e553]
+                - paragraph [ref=e556]: 16 июня 2026 г. в 00:06
+              - generic [ref=e557]: Опубликовано
+            - generic [ref=e558]:
+              - paragraph [ref=e559]: АУРВА на XXI Евразийском Облигационном конгрессе 2025 | 26–27 июня, Иссык-Куль 26–27 июня 2025 года на берегу озера Иссык-Куль состоялся Cbonds Congress 2025 - форум, посвящtнный актуальным…
+              - generic [ref=e560]:
+                - button "Редактировать" [ref=e561] [cursor=pointer]:
+                  - img [ref=e562]
+                  - text: Редактировать
+                - button [ref=e565] [cursor=pointer]:
+                  - img [ref=e566]
+          - generic [ref=e569]:
+            - generic [ref=e571]:
+              - generic [ref=e572]:
+                - generic [ref=e573]:
+                  - heading "АУРВА подписала меморандум с Ассоциацией цифровой устойчивости" [level=3] [ref=e574]
+                  - img [ref=e575]
+                - paragraph [ref=e578]: 16 июня 2026 г. в 00:06
+              - generic [ref=e579]: Опубликовано
+            - generic [ref=e580]:
+              - paragraph [ref=e581]: Ассоциация участников рынка виртуальных активов Кыргызской Республики заключила меморандум о взаимопонимании и сотрудничестве с Ассоциацией цифровой устойчивости. Документ направлен на развитие…
+              - generic [ref=e582]:
+                - button "Редактировать" [ref=e583] [cursor=pointer]:
+                  - img [ref=e584]
+                  - text: Редактировать
+                - button [ref=e587] [cursor=pointer]:
+                  - img [ref=e588]
+          - generic [ref=e591]:
+            - generic [ref=e593]:
+              - generic [ref=e594]:
+                - generic [ref=e595]:
+                  - heading "Союз банков Кыргызстана и АУРВА" [level=3] [ref=e596]
+                  - img [ref=e597]
+                - paragraph [ref=e600]: 16 июня 2026 г. в 00:06
+              - generic [ref=e601]: Опубликовано
+            - generic [ref=e602]:
+              - paragraph [ref=e603]: 18 июня 2025 года Ассоциация участников рынка виртуальных активов (АУРВА) и Союз банков Кыргызстана подписали меморандум о взаимопонимании и сотрудничестве. Цель соглашения - объединение усилий…
+              - generic [ref=e604]:
+                - button "Редактировать" [ref=e605] [cursor=pointer]:
+                  - img [ref=e606]
+                  - text: Редактировать
+                - button [ref=e609] [cursor=pointer]:
+                  - img [ref=e610]
+          - generic [ref=e613]:
+            - generic [ref=e615]:
+              - generic [ref=e616]:
+                - generic [ref=e617]:
+                  - heading "АУРВА на Втором Форуме аналитических центров Центральной Азии и Республики Корея" [level=3] [ref=e618]
+                  - img [ref=e619]
+                - paragraph [ref=e622]: 16 июня 2026 г. в 00:06
+              - generic [ref=e623]: Опубликовано
+            - generic [ref=e624]:
+              - paragraph [ref=e625]: 13 июня 2025 года Ассоциация участников рынка виртуальных активов приняла участие во Втором Форуме аналитических центров Центральной Азии и Республики Корея. Мероприятие было организовано…
+              - generic [ref=e626]:
+                - button "Редактировать" [ref=e627] [cursor=pointer]:
+                  - img [ref=e628]
+                  - text: Редактировать
+                - button [ref=e631] [cursor=pointer]:
+                  - img [ref=e632]
+          - generic [ref=e635]:
+            - generic [ref=e637]:
+              - generic [ref=e638]:
+                - generic [ref=e639]:
+                  - heading "Ассоциация на BIFF 2025" [level=3] [ref=e640]
+                  - img [ref=e641]
+                - paragraph [ref=e644]: 16 июня 2026 г. в 00:06
+              - generic [ref=e645]: Опубликовано
+            - generic [ref=e646]:
+              - paragraph [ref=e647]: Ассоциация участников рынка виртуальных активов приняла участие в форуме BIFF 2025 10 июня 2025 года наша Ассоциация приняла участие в Bishkek International Finance Forum (BIFF 2025) — одной из…
+              - generic [ref=e648]:
+                - button "Редактировать" [ref=e649] [cursor=pointer]:
+                  - img [ref=e650]
+                  - text: Редактировать
+                - button [ref=e653] [cursor=pointer]:
+                  - img [ref=e654]
+          - generic [ref=e657]:
+            - generic [ref=e659]:
+              - generic [ref=e660]:
+                - generic [ref=e661]:
+                  - 'heading "Панельная сессия: «Цифровые активы - перспективы развития финансовых систем»" [level=3] [ref=e662]'
+                  - img [ref=e663]
+                - paragraph [ref=e666]: 16 июня 2026 г. в 00:06
+              - generic [ref=e667]: Опубликовано
+            - generic [ref=e668]:
+              - paragraph [ref=e669]: Ассоциация участников рынка виртуальных активов (АУРВА) выступила соорганизатором и участником панельной сессии в рамках КИТ Форума 2025, посвященной ключевым вопросам развития цифровых активов и…
+              - generic [ref=e670]:
+                - button "Редактировать" [ref=e671] [cursor=pointer]:
+                  - img [ref=e672]
+                  - text: Редактировать
+                - button [ref=e675] [cursor=pointer]:
+                  - img [ref=e676]
+          - generic [ref=e679]:
+            - generic [ref=e681]:
+              - generic [ref=e682]:
+                - generic [ref=e683]:
+                  - 'heading "КИТ форум: Круглый стол" [level=3] [ref=e684]'
+                  - img [ref=e685]
+                - paragraph [ref=e688]: 16 июня 2026 г. в 00:06
+              - generic [ref=e689]: Опубликовано
+            - generic [ref=e690]:
+              - paragraph [ref=e691]: "Круглый стол: «Виртуальные активы и банковская система: препятствия и точки роста» 29 мая Ассоциация участников рынка виртуальных активов (АУРВА) провела круглый стол в рамках КИТ Форума 2025,…"
+              - generic [ref=e692]:
+                - button "Редактировать" [ref=e693] [cursor=pointer]:
+                  - img [ref=e694]
+                  - text: Редактировать
+                - button [ref=e697] [cursor=pointer]:
+                  - img [ref=e698]
+          - generic [ref=e701]:
+            - generic [ref=e703]:
+              - generic [ref=e704]:
+                - generic [ref=e705]:
+                  - heading "АУРВА провела встречу с рабочей группой бухгалтеров" [level=3] [ref=e706]
+                  - img [ref=e707]
+                - paragraph [ref=e710]: 16 июня 2026 г. в 00:06
+              - generic [ref=e711]: Опубликовано
+            - generic [ref=e712]:
+              - paragraph [ref=e713]: 22 мая 2025 года Ассоциация участников рынка виртуальных активов провела встречу с рабочей группой профессиональных бухгалтеров, обслуживающих участников рынка виртуальных активов. В центре…
+              - generic [ref=e714]:
+                - button "Редактировать" [ref=e715] [cursor=pointer]:
+                  - img [ref=e716]
+                  - text: Редактировать
+                - button [ref=e719] [cursor=pointer]:
+                  - img [ref=e720]
+          - generic [ref=e723]:
+            - generic [ref=e725]:
+              - generic [ref=e726]:
+                - generic [ref=e727]:
+                  - heading "Ассоциация на Республиканской Олимпиаде по финансовой безопасности" [level=3] [ref=e728]
+                  - img [ref=e729]
+                - paragraph [ref=e732]: 16 июня 2026 г. в 00:06
+              - generic [ref=e733]: Опубликовано
+            - generic [ref=e734]:
+              - paragraph [ref=e735]: Ассоциация участников рынка виртуальных активов приняла участие в Республиканской Олимпиаде по финансовой безопасности 23 апреля 2025 года представители Ассоциации приняли участие в панельной…
+              - generic [ref=e736]:
+                - button "Редактировать" [ref=e737] [cursor=pointer]:
+                  - img [ref=e738]
+                  - text: Редактировать
+                - button [ref=e741] [cursor=pointer]:
+                  - img [ref=e742]
+          - generic [ref=e745]:
+            - generic [ref=e747]:
+              - generic [ref=e748]:
+                - generic [ref=e749]:
+                  - heading "Встреча участников рынка виртуальных активов" [level=3] [ref=e750]
+                  - img [ref=e751]
+                - paragraph [ref=e754]: 16 июня 2026 г. в 00:06
+              - generic [ref=e755]: Опубликовано
+            - generic [ref=e756]:
+              - paragraph [ref=e757]: Прошла встреча участников рынка виртуальных активов 18 апреля Ассоциация провела встречу с представителями криптоиндустрии. С основным обращением выступил Председатель, рассказав о текущей…
+              - generic [ref=e758]:
+                - button "Редактировать" [ref=e759] [cursor=pointer]:
+                  - img [ref=e760]
+                  - text: Редактировать
+                - button [ref=e763] [cursor=pointer]:
+                  - img [ref=e764]
+          - generic [ref=e767]:
+            - generic [ref=e769]:
+              - generic [ref=e770]:
+                - generic [ref=e771]:
+                  - heading "Собрание бухгалтеров" [level=3] [ref=e772]
+                  - img [ref=e773]
+                - paragraph [ref=e776]: 16 июня 2026 г. в 00:05
+              - generic [ref=e777]: Опубликовано
+            - generic [ref=e778]:
+              - paragraph [ref=e779]: Ассоциация продолжает работу по вопросам учета виртуальных активов. Недавно состоялась встреча рабочей группы бухгалтеров, представляющих членов АУРВА. Участники обсудили ключевые аспекты…
+              - generic [ref=e780]:
+                - button "Редактировать" [ref=e781] [cursor=pointer]:
+                  - img [ref=e782]
+                  - text: Редактировать
+                - button [ref=e785] [cursor=pointer]:
+                  - img [ref=e786]
+          - generic [ref=e789]:
+            - generic [ref=e791]:
+              - generic [ref=e792]:
+                - generic [ref=e793]:
+                  - heading "Подписание меморандума о сотрудничестве между АУРВА и Учебным центром ГСФР при Министерстве финансов КР" [level=3] [ref=e794]
+                  - img [ref=e795]
+                - paragraph [ref=e798]: 16 июня 2026 г. в 00:05
+              - generic [ref=e799]: Опубликовано
+            - generic [ref=e800]:
+              - paragraph [ref=e801]: Подписан меморандум о сотрудничестве между АУРВА и Учебным центром ГСФР при Министерстве финансов КР! 1 апреля 2025 года Ассоциация участников рынка виртуальных активов (АУРВА) и Учебный центр…
+              - generic [ref=e802]:
+                - button "Редактировать" [ref=e803] [cursor=pointer]:
+                  - img [ref=e804]
+                  - text: Редактировать
+                - button [ref=e807] [cursor=pointer]:
+                  - img [ref=e808]
+          - generic [ref=e811]:
+            - generic [ref=e813]:
+              - generic [ref=e814]:
+                - generic [ref=e815]:
+                  - heading "Встреча с ГНС" [level=3] [ref=e816]
+                  - img [ref=e817]
+                - paragraph [ref=e820]: 16 июня 2026 г. в 00:05
+              - generic [ref=e821]: Опубликовано
+            - generic [ref=e822]:
+              - paragraph [ref=e823]: 26 марта состоялась рабочая встреча Ассоциации участников рынка виртуальных активов с сотрудниками Государственной налоговой службы. На встрече обсудили вопросы, связанные с учетом и…
+              - generic [ref=e824]:
+                - button "Редактировать" [ref=e825] [cursor=pointer]:
+                  - img [ref=e826]
+                  - text: Редактировать
+                - button [ref=e829] [cursor=pointer]:
+                  - img [ref=e830]
+          - generic [ref=e833]:
+            - generic [ref=e835]:
+              - generic [ref=e836]:
+                - generic [ref=e837]:
+                  - heading "Новый Председатель АУРВА" [level=3] [ref=e838]
+                  - img [ref=e839]
+                - paragraph [ref=e842]: 16 июня 2026 г. в 00:05
+              - generic [ref=e843]: Опубликовано
+            - generic [ref=e844]:
+              - paragraph [ref=e845]: Новый председатель АУРВА – Темир Казыбай С 4 марта 2025 года Ассоциация участников рынка виртуальных активов работает под руководством нового председателя – Темира Казыбая. Его кандидатура была…
+              - generic [ref=e846]:
+                - button "Редактировать" [ref=e847] [cursor=pointer]:
+                  - img [ref=e848]
+                  - text: Редактировать
+                - button [ref=e851] [cursor=pointer]:
+                  - img [ref=e852]
+          - generic [ref=e855]:
+            - generic [ref=e857]:
+              - generic [ref=e858]:
+                - generic [ref=e859]:
+                  - heading "АУРВА на Digital Kyrgyzstan 2025!" [level=3] [ref=e860]
+                  - img [ref=e861]
+                - paragraph [ref=e864]: 16 июня 2026 г. в 00:05
+              - generic [ref=e865]: Опубликовано
+            - generic [ref=e866]:
+              - paragraph [ref=e867]: 27 февраля в Бишкеке прошел 3-й международный ПЛАС-Форум «Digital Kyrgyzstan», который объединил представителей государства, бизнеса, финтеха и криптоиндустрии. 🌍 АУРВА приняла активное участие в…
+              - generic [ref=e868]:
+                - button "Редактировать" [ref=e869] [cursor=pointer]:
+                  - img [ref=e870]
+                  - text: Редактировать
+                - button [ref=e873] [cursor=pointer]:
+                  - img [ref=e874]
+          - generic [ref=e877]:
+            - generic [ref=e879]:
+              - generic [ref=e880]:
+                - generic [ref=e881]:
+                  - heading "Встреча с ФКБ" [level=3] [ref=e882]
+                  - img [ref=e883]
+                - paragraph [ref=e886]: 16 июня 2026 г. в 00:05
+              - generic [ref=e887]: Опубликовано
+            - generic [ref=e888]:
+              - paragraph [ref=e889]: Состоялась встреча с представителями ФКБ В пятницу прошла встреча с представителями ФКБ, где были обсуждены ключевые вопросы взаимодействия банков и участников рынка виртуальных активов. Удалось…
+              - generic [ref=e890]:
+                - button "Редактировать" [ref=e891] [cursor=pointer]:
+                  - img [ref=e892]
+                  - text: Редактировать
+                - button [ref=e895] [cursor=pointer]:
+                  - img [ref=e896]
+          - generic [ref=e899]:
+            - generic [ref=e901]:
+              - generic [ref=e902]:
+                - generic [ref=e903]:
+                  - heading "Первая отчетная встреча членов Ассоциации" [level=3] [ref=e904]
+                  - img [ref=e905]
+                - paragraph [ref=e908]: 16 июня 2026 г. в 00:05
+              - generic [ref=e909]: Опубликовано
+            - generic [ref=e910]:
+              - paragraph [ref=e911]: "Сегодня состоялась первая отчетная встреча перед членами Ассоциации, где подвели итоги работы за квартал и наметили новые цели! Что сделано и что в процессе: ✅ Обсудили и проголосовали за…"
+              - generic [ref=e912]:
+                - button "Редактировать" [ref=e913] [cursor=pointer]:
+                  - img [ref=e914]
+                  - text: Редактировать
+                - button [ref=e917] [cursor=pointer]:
+                  - img [ref=e918]
+          - generic [ref=e921]:
+            - generic [ref=e923]:
+              - generic [ref=e924]:
+                - generic [ref=e925]:
+                  - heading "Встреча бухгалтеров резидентов Ассоциации" [level=3] [ref=e926]
+                  - img [ref=e927]
+                - paragraph [ref=e930]: 16 июня 2026 г. в 00:05
+              - generic [ref=e931]: Опубликовано
+            - generic [ref=e932]:
+              - paragraph [ref=e933]: "Встреча бухгалтеров резидентов АУРВА На прошлой неделе мы провели важную встречу бухгалтеров компаний — членов Ассоциации. Главный вопрос: как правильно вести учет для криптообменных компаний?…"
+              - generic [ref=e934]:
+                - button "Редактировать" [ref=e935] [cursor=pointer]:
+                  - img [ref=e936]
+                  - text: Редактировать
+                - button [ref=e939] [cursor=pointer]:
+                  - img [ref=e940]
+          - generic [ref=e943]:
+            - generic [ref=e945]:
+              - generic [ref=e946]:
+                - generic [ref=e947]:
+                  - heading "Встреча с экспертом по анализу блокчейна и крипторасследованиям" [level=3] [ref=e948]
+                  - img [ref=e949]
+                - paragraph [ref=e952]: 16 июня 2026 г. в 00:05
+              - generic [ref=e953]: Опубликовано
+            - generic [ref=e954]:
+              - paragraph [ref=e955]: Встреча с экспертом по анализу блокчейна и крипторасследованиям! Сегодня в рамках Ассоциации мы провели продуктивную встречу с представителем компании MatchSystems, специализирующейся на анализе…
+              - generic [ref=e956]:
+                - button "Редактировать" [ref=e957] [cursor=pointer]:
+                  - img [ref=e958]
+                  - text: Редактировать
+                - button [ref=e961] [cursor=pointer]:
+                  - img [ref=e962]
+          - generic [ref=e965]:
+            - generic [ref=e967]:
+              - generic [ref=e968]:
+                - generic [ref=e969]:
+                  - heading "Бизнес-завтрак с представителями государственных структур" [level=3] [ref=e970]
+                  - img [ref=e971]
+                - paragraph [ref=e974]: 16 июня 2026 г. в 00:05
+              - generic [ref=e975]: Опубликовано
+            - generic [ref=e976]:
+              - paragraph [ref=e977]: В Бишкеке прошел первый бизнес-завтрак, посвященный актуальным вопросам развития индустрии виртуальных активов. Мероприятие собрало ключевых представителей отрасли для обсуждения текущего…
+              - generic [ref=e978]:
+                - button "Редактировать" [ref=e979] [cursor=pointer]:
+                  - img [ref=e980]
+                  - text: Редактировать
+                - button [ref=e983] [cursor=pointer]:
+                  - img [ref=e984]
+          - generic [ref=e987]:
+            - generic [ref=e989]:
+              - generic [ref=e990]:
+                - generic [ref=e991]:
+                  - heading "Первая официальная встреча членов Ассоциации" [level=3] [ref=e992]
+                  - img [ref=e993]
+                - paragraph [ref=e996]: 16 июня 2026 г. в 00:05
+              - generic [ref=e997]: Опубликовано
+            - generic [ref=e998]:
+              - paragraph [ref=e999]: Первая официальная встреча членов Ассоциации виртуальных активов Кыргызстана 🚀 С радостью сообщаем, что в пятницу состоялось знаковое событие для нашей Ассоциации — первая официальная встреча…
+              - generic [ref=e1000]:
+                - button "Редактировать" [ref=e1001] [cursor=pointer]:
+                  - img [ref=e1002]
+                  - text: Редактировать
+                - button [ref=e1005] [cursor=pointer]:
+                  - img [ref=e1006]
+          - generic [ref=e1009]:
+            - generic [ref=e1011]:
+              - generic [ref=e1012]:
+                - generic [ref=e1013]:
+                  - heading "Встреча-знакомство с председателем Ассоциации виртуальных активов" [level=3] [ref=e1014]
+                  - img [ref=e1015]
+                - paragraph [ref=e1018]: 16 июня 2026 г. в 00:05
+              - generic [ref=e1019]: Опубликовано
+            - generic [ref=e1020]:
+              - paragraph [ref=e1021]: 30 октября состоялась важная встреча, где участники имели возможность познакомиться с председателем нашей Ассоциации. Это мероприятие стало значимым шагом в укреплении сотрудничества и…
+              - generic [ref=e1022]:
+                - button "Редактировать" [ref=e1023] [cursor=pointer]:
+                  - img [ref=e1024]
+                  - text: Редактировать
+                - button [ref=e1027] [cursor=pointer]:
+                  - img [ref=e1028]
+  - region "Notifications alt+T"

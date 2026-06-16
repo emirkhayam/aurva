@@ -35,7 +35,7 @@ export default function News() {
     try {
       setLoading(true);
       // Get all news (both published and unpublished) with high limit
-      const response = await api.get('/news?limit=100');
+      const response = await api.get('/news?limit=100&published=all');
       const data = response.data.news || response.data.data || response.data;
       setNewsList(Array.isArray(data) ? data : []);
     } catch (error) {

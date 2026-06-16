@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "AURVA Logo" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "AURVA Logo" [ref=e6]
+      - link " На главную" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]: 
+        - text: На главную
+  - generic [ref=e11]:
+    - img "AURVA" [ref=e13]
+    - heading "Все → НОВОСТИ" [level=1] [ref=e14]:
+      - text: Все
+      - text: → НОВОСТИ
+    - paragraph [ref=e15]: Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации
+  - generic [ref=e17]:
+    - paragraph [ref=e20]: Загрузка новостей...
+    - text: 
+  - contentinfo [ref=e21]:
+    - paragraph [ref=e23]: © 2024 AURVA. Ассоциация Участников Рынка Виртуальных Активов Кыргызстана

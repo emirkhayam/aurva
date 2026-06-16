@@ -1,0 +1,119 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e78]:
+          - heading "Пользователи кабинета" [level=1] [ref=e79]
+          - paragraph [ref=e80]: Управление пользователями личного кабинета
+        - generic [ref=e82]:
+          - img [ref=e83]
+          - textbox "Поиск по имени или email..." [ref=e86]
+        - table [ref=e92]:
+          - rowgroup [ref=e93]:
+            - row "Имя Email Телефон Компания Статус Последний вход Регистрация Действия" [ref=e94]:
+              - columnheader "Имя" [ref=e95]
+              - columnheader "Email" [ref=e96]
+              - columnheader "Телефон" [ref=e97]
+              - columnheader "Компания" [ref=e98]
+              - columnheader "Статус" [ref=e99]
+              - columnheader "Последний вход" [ref=e100]
+              - columnheader "Регистрация" [ref=e101]
+              - columnheader "Действия" [ref=e102]
+          - rowgroup [ref=e103]:
+            - row "T Test User testuser@gmail.com — — Неактивен — 19 марта 2026 г. в 04:13" [ref=e104]:
+              - cell "T Test User" [ref=e105]:
+                - generic [ref=e106]:
+                  - generic [ref=e107]: T
+                  - generic [ref=e108]: Test User
+              - cell "testuser@gmail.com" [ref=e109]
+              - cell "—" [ref=e110]
+              - cell "—" [ref=e111]
+              - cell "Неактивен" [ref=e112]:
+                - generic [ref=e113]: Неактивен
+              - cell "—" [ref=e114]
+              - cell "19 марта 2026 г. в 04:13" [ref=e115]
+              - cell [ref=e116]:
+                - generic [ref=e117]:
+                  - button "Управление курсами" [ref=e118] [cursor=pointer]:
+                    - img [ref=e119]
+                  - button "Активировать" [ref=e121] [cursor=pointer]:
+                    - img [ref=e122]
+                  - button [ref=e125] [cursor=pointer]:
+                    - img [ref=e126]
+            - row "Т Тест Пользователь testuser@aurva.kg +996550000000 Test Company Активен 4 июня 2026 г. в 18:26 18 марта 2026 г. в 19:14" [ref=e129]:
+              - cell "Т Тест Пользователь" [ref=e130]:
+                - generic [ref=e131]:
+                  - generic [ref=e132]: Т
+                  - generic [ref=e133]: Тест Пользователь
+              - cell "testuser@aurva.kg" [ref=e134]
+              - cell "+996550000000" [ref=e135]
+              - cell "Test Company" [ref=e136]
+              - cell "Активен" [ref=e137]:
+                - generic [ref=e138]: Активен
+              - cell "4 июня 2026 г. в 18:26" [ref=e139]
+              - cell "18 марта 2026 г. в 19:14" [ref=e140]
+              - cell [ref=e141]:
+                - generic [ref=e142]:
+                  - button "Управление курсами" [ref=e143] [cursor=pointer]:
+                    - img [ref=e144]
+                  - button "Деактивировать" [ref=e146] [cursor=pointer]:
+                    - img [ref=e147]
+                  - button [ref=e150] [cursor=pointer]:
+                    - img [ref=e151]
+  - region "Notifications alt+T"

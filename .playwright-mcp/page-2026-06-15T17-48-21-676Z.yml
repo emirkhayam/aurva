@@ -1,0 +1,379 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - link "Company" [ref=e7] [cursor=pointer]:
+      - /url: /
+      - img "Company" [ref=e8]
+    - navigation [ref=e10]:
+      - list [ref=e11]:
+        - listitem [ref=e12]:
+          - link "Главная" [ref=e13] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e14]:
+          - link "Об Ассоциации" [ref=e15] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e16]:
+          - link "Новости" [ref=e17] [cursor=pointer]:
+            - /url: /news
+        - listitem [ref=e18]:
+          - link "Контакты" [ref=e19] [cursor=pointer]:
+            - /url: /contacts
+    - link "Связаться с нами" [ref=e25] [cursor=pointer]:
+      - /url: https://wa.me/%E2%80%AA+996559233018%E2%80%AC
+      - generic [ref=e26]: Связаться с нами
+  - generic [ref=e31]: Новости Ассоциации
+  - list [ref=e35]:
+    - listitem [ref=e36] [cursor=pointer]:
+      - generic [ref=e40]:
+        - generic [ref=e42]: 10.06.2026
+        - link "АУРВА на KIT форуме 2026" [ref=e45]:
+          - /url: https://aurva.kg/tpost/tm0hh80ro1-aurva-na-kit-forume-2026
+        - button "Читать далее" [ref=e47]:
+          - generic [ref=e48]: Читать далее
+    - listitem [ref=e49] [cursor=pointer]:
+      - generic [ref=e53]:
+        - generic [ref=e55]: 20.05.2026
+        - link "АУРВА продолжает обучение сотрудников комплаенс-отделов банков" [ref=e58]:
+          - /url: https://aurva.kg/tpost/heeyr220l1-aurva-prodolzhaet-obuchenie-sotrudnikov
+        - button "Читать далее" [ref=e60]:
+          - generic [ref=e61]: Читать далее
+    - listitem [ref=e62] [cursor=pointer]:
+      - generic [ref=e66]:
+        - generic [ref=e68]: 12.05.2026
+        - link "АУРВА провела обучение для банков" [ref=e71]:
+          - /url: https://aurva.kg/tpost/gylbupmda1-aurva-provela-obuchenie-dlya-bankov
+        - button "Читать далее" [ref=e73]:
+          - generic [ref=e74]: Читать далее
+    - listitem [ref=e75] [cursor=pointer]:
+      - generic [ref=e79]:
+        - generic [ref=e81]: 30.04.2026
+        - link "В Посольстве США состоялось вручение сертификатов участникам программы Open World" [ref=e84]:
+          - /url: https://aurva.kg/tpost/tfbc88jya1-v-posolstve-ssha-sostoyalos-vruchenie-se
+        - button "Читать далее" [ref=e86]:
+          - generic [ref=e87]: Читать далее
+    - listitem [ref=e88] [cursor=pointer]:
+      - generic [ref=e92]:
+        - generic [ref=e94]: 30.04.2026
+        - link "Представители АУРВА в США" [ref=e97]:
+          - /url: https://aurva.kg/tpost/x0bx9yb2x1-predstaviteli-aurva-v-ssha
+        - button "Читать далее" [ref=e99]:
+          - generic [ref=e100]: Читать далее
+    - listitem [ref=e101] [cursor=pointer]:
+      - generic [ref=e105]:
+        - generic [ref=e107]: 06.04.2026
+        - link "АУРВА стала членом Международного Делового Совета" [ref=e110]:
+          - /url: https://aurva.kg/tpost/air8p7gju1-aurva-stala-chlenom-mezhdunarodnogo-delo
+        - button "Читать далее" [ref=e112]:
+          - generic [ref=e113]: Читать далее
+    - listitem [ref=e114] [cursor=pointer]:
+      - generic [ref=e118]:
+        - generic [ref=e120]: 29.03.2026
+        - link "Участие АУРВА на Crypto Jaz" [ref=e123]:
+          - /url: https://aurva.kg/tpost/il342m5571-uchastie-aurva-na-crypto-jaz
+        - button "Читать далее" [ref=e125]:
+          - generic [ref=e126]: Читать далее
+    - listitem [ref=e127] [cursor=pointer]:
+      - generic [ref=e131]:
+        - generic [ref=e133]: 24.02.2026
+        - link "Избран новый состав Наблюдательного Совета АУРВА" [ref=e136]:
+          - /url: https://aurva.kg/tpost/0rnm7bdgl1-izbran-novii-sostav-nablyudatelnogo-sove
+        - button "Читать далее" [ref=e138]:
+          - generic [ref=e139]: Читать далее
+    - listitem [ref=e140] [cursor=pointer]:
+      - generic [ref=e144]:
+        - generic [ref=e146]: 09.02.2026
+        - link "Бизнес Форум B5+1" [ref=e149]:
+          - /url: https://aurva.kg/tpost/gyom8ami71-biznes-forum-b51
+        - button "Читать далее" [ref=e151]:
+          - generic [ref=e152]: Читать далее
+    - listitem [ref=e153] [cursor=pointer]:
+      - generic [ref=e157]:
+        - generic [ref=e159]: 21.01.2026
+        - link "Первое собрание Экспертного совета АУРВА в 2026 году" [ref=e162]:
+          - /url: https://aurva.kg/tpost/szsrdmdb31-pervoe-sobranie-ekspertnogo-soveta-aurva
+        - button "Читать далее" [ref=e164]:
+          - generic [ref=e165]: Читать далее
+    - listitem [ref=e166] [cursor=pointer]:
+      - generic [ref=e170]:
+        - generic [ref=e172]: 22.12.2025
+        - link "Второй поток обучения бухгалтеров" [ref=e175]:
+          - /url: https://aurva.kg/tpost/zz95blxj01-vtoroi-potok-obucheniya-buhgalterov
+        - button "Читать далее" [ref=e177]:
+          - generic [ref=e178]: Читать далее
+    - listitem [ref=e179] [cursor=pointer]:
+      - generic [ref=e183]:
+        - generic [ref=e185]: 14.12.2025
+        - link "Второй поток обучения для комплаенс офицеров" [ref=e188]:
+          - /url: https://aurva.kg/tpost/u824uaxe91-vtoroi-potok-obucheniya-dlya-komplaens-o
+        - button "Читать далее" [ref=e190]:
+          - generic [ref=e191]: Читать далее
+    - listitem [ref=e192] [cursor=pointer]:
+      - generic [ref=e196]:
+        - generic [ref=e198]: 12.12.2025
+        - 'link "Отчетный вечер АУРВА: итоги года" [ref=e201]':
+          - /url: https://aurva.kg/tpost/9x0zjdlo91-otchetnii-vecher-aurva-itogi-goda
+        - button "Читать далее" [ref=e203]:
+          - generic [ref=e204]: Читать далее
+    - listitem [ref=e205] [cursor=pointer]:
+      - generic [ref=e209]:
+        - generic [ref=e211]: 20.11.2025
+        - link "Decentral Asia Forum 2025" [ref=e214]:
+          - /url: https://aurva.kg/tpost/6gpmgmgnu1-decentral-asia-forum-2025
+        - button "Читать далее" [ref=e216]:
+          - generic [ref=e217]: Читать далее
+    - listitem [ref=e218] [cursor=pointer]:
+      - generic [ref=e222]:
+        - generic [ref=e224]: 15.11.2025
+        - link "Обучение бухгалтеров" [ref=e227]:
+          - /url: https://aurva.kg/tpost/fnxaoctii1-obuchenie-buhgalterov
+        - button "Читать далее" [ref=e229]:
+          - generic [ref=e230]: Читать далее
+    - listitem [ref=e231] [cursor=pointer]:
+      - generic [ref=e235]:
+        - generic [ref=e237]: 14.10.2025
+        - link "Первый день рождения Ассоциации" [ref=e240]:
+          - /url: https://aurva.kg/tpost/nm855emln1-pervii-den-rozhdeniya-assotsiatsii
+        - button "Читать далее" [ref=e242]:
+          - generic [ref=e243]: Читать далее
+    - listitem [ref=e244] [cursor=pointer]:
+      - generic [ref=e248]:
+        - generic [ref=e250]: 08.10.2025
+        - link "Обучение новых комплаенс-офицеров" [ref=e253]:
+          - /url: https://aurva.kg/tpost/50gh9byav1-obuchenie-novih-komplaens-ofitserov
+        - button "Читать далее" [ref=e255]:
+          - generic [ref=e256]: Читать далее
+    - listitem [ref=e257] [cursor=pointer]:
+      - generic [ref=e261]:
+        - generic [ref=e263]: 16.09.2025
+        - link "Меморандум о сотрудничестве с Госфиннадзором КР" [ref=e266]:
+          - /url: https://aurva.kg/tpost/tau04uvld1-memorandum-o-sotrudnichestve-s-gosfinnad
+        - button "Читать далее" [ref=e268]:
+          - generic [ref=e269]: Читать далее
+    - listitem [ref=e270] [cursor=pointer]:
+      - generic [ref=e274]:
+        - generic [ref=e276]: 08.09.2025
+        - link "Научно-практическая конференция «Совершенствование и развитие системы противодействия отмыванию денег и финансированию терроризма Евразийского региона»." [ref=e279]:
+          - /url: https://aurva.kg/tpost/doseo6u001-nauchno-prakticheskaya-konferentsiya-sov
+        - button "Читать далее" [ref=e281]:
+          - generic [ref=e282]: Читать далее
+    - listitem [ref=e283] [cursor=pointer]:
+      - generic [ref=e287]:
+        - generic [ref=e289]: 04.09.2025
+        - link "Подписание меморандума с ПВТ КР" [ref=e292]:
+          - /url: https://aurva.kg/tpost/d08chug591-podpisanie-memoranduma-s-pvt-kr
+        - button "Читать далее" [ref=e294]:
+          - generic [ref=e295]: Читать далее
+    - listitem [ref=e296] [cursor=pointer]:
+      - generic [ref=e300]:
+        - generic [ref=e302]: 03.09.2025
+        - link "Встреча членов Ассоциации" [ref=e305]:
+          - /url: https://aurva.kg/tpost/8yte1yuo11-vstrecha-chlenov-assotsiatsii
+        - button "Читать далее" [ref=e307]:
+          - generic [ref=e308]: Читать далее
+    - listitem [ref=e309] [cursor=pointer]:
+      - generic [ref=e313]:
+        - generic [ref=e315]: 27.06.2025
+        - link "XXI Евразийсий Облигационный конгресс 2025" [ref=e318]:
+          - /url: https://aurva.kg/tpost/1hsij06bv1-xxi-evraziisii-obligatsionnii-kongress-2
+        - button "Читать далее" [ref=e320]:
+          - generic [ref=e321]: Читать далее
+    - listitem [ref=e322] [cursor=pointer]:
+      - generic [ref=e326]:
+        - generic [ref=e328]: 26.06.2025
+        - link "АУРВА подписала меморандум с Ассоциацией цифровой устойчивости" [ref=e331]:
+          - /url: https://aurva.kg/tpost/m9miy359x1-aurva-podpisala-memorandum-s-assotsiatsi
+        - button "Читать далее" [ref=e333]:
+          - generic [ref=e334]: Читать далее
+    - listitem [ref=e335] [cursor=pointer]:
+      - generic [ref=e339]:
+        - generic [ref=e341]: 18.06.2025
+        - link "Союз банков Кыргызстана и АУРВА" [ref=e344]:
+          - /url: https://aurva.kg/tpost/m6b8djfdu1-soyuz-bankov-kirgizstana-i-aurva
+        - button "Читать далее" [ref=e346]:
+          - generic [ref=e347]: Читать далее
+    - listitem [ref=e348] [cursor=pointer]:
+      - generic [ref=e352]:
+        - generic [ref=e354]: 13.06.2025
+        - link "АУРВА на Втором Форуме аналитических центров Центральной Азии и Республики Корея" [ref=e357]:
+          - /url: https://aurva.kg/tpost/t1op8gu3a1-aurva-na-vtorom-forume-analiticheskih-ts
+        - button "Читать далее" [ref=e359]:
+          - generic [ref=e360]: Читать далее
+    - listitem [ref=e361] [cursor=pointer]:
+      - generic [ref=e365]:
+        - generic [ref=e367]: 12.06.2025
+        - link "Ассоциация на BIFF 2025" [ref=e370]:
+          - /url: https://aurva.kg/tpost/ueojncofg1-assotsiatsiya-na-biff-2025
+        - button "Читать далее" [ref=e372]:
+          - generic [ref=e373]: Читать далее
+    - listitem [ref=e374] [cursor=pointer]:
+      - generic [ref=e378]:
+        - generic [ref=e380]: 05.06.2025
+        - 'link "Панельная сессия: «Цифровые активы - перспективы развития финансовых систем»" [ref=e383]':
+          - /url: https://aurva.kg/tpost/3h8v2arbj1-panelnaya-sessiya-tsifrovie-aktivi-persp
+        - button "Читать далее" [ref=e385]:
+          - generic [ref=e386]: Читать далее
+    - listitem [ref=e387] [cursor=pointer]:
+      - generic [ref=e391]:
+        - generic [ref=e393]: 29.05.2025
+        - generic [ref=e394]:
+          - 'link "КИТ форум: Круглый стол" [ref=e396]':
+            - /url: https://aurva.kg/tpost/9lc70crmn1-kit-forum-kruglii-stol
+          - generic [ref=e397]: "Круглый стол: Рынок виртуальных активов и банковская система: препятствия и точки роста в Кыргызстане"
+        - button "Читать далее" [ref=e399]:
+          - generic [ref=e400]: Читать далее
+    - listitem [ref=e401] [cursor=pointer]:
+      - generic [ref=e405]:
+        - generic [ref=e407]: 22.05.2025
+        - link "АУРВА провела встречу с рабочей группой бухгалтеров" [ref=e410]:
+          - /url: https://aurva.kg/tpost/yfj1z28uy1-aurva-provela-vstrechu-s-rabochei-gruppo
+        - button "Читать далее" [ref=e412]:
+          - generic [ref=e413]: Читать далее
+    - listitem [ref=e414] [cursor=pointer]:
+      - generic [ref=e418]:
+        - generic [ref=e420]: 23.04.2025
+        - link "Ассоциация на Республиканской Олимпиаде по финансовой безопасности" [ref=e423]:
+          - /url: https://aurva.kg/tpost/iiagynec91-assotsiatsiya-na-respublikanskoi-olimpia
+        - button "Читать далее" [ref=e425]:
+          - generic [ref=e426]: Читать далее
+    - listitem [ref=e427] [cursor=pointer]:
+      - generic [ref=e431]:
+        - generic [ref=e433]: 21.04.2025
+        - link "Встреча участников рынка виртуальных активов" [ref=e436]:
+          - /url: https://aurva.kg/tpost/o8dzom8k41-vstrecha-uchastnikov-rinka-virtualnih-ak
+        - button "Читать далее" [ref=e438]:
+          - generic [ref=e439]: Читать далее
+    - listitem [ref=e440] [cursor=pointer]:
+      - generic [ref=e444]:
+        - generic [ref=e446]: 07.04.2025
+        - link "Собрание бухгалтеров" [ref=e449]:
+          - /url: https://aurva.kg/tpost/o4lmme9361-sobranie-buhgalterov
+        - button "Читать далее" [ref=e451]:
+          - generic [ref=e452]: Читать далее
+    - listitem [ref=e453] [cursor=pointer]:
+      - generic [ref=e457]:
+        - generic [ref=e459]: 01.04.2025
+        - link "Подписание меморандума о сотрудничестве между АУРВА и Учебным центром ГСФР при Министерстве финансов КР" [ref=e462]:
+          - /url: https://aurva.kg/tpost/o06grsg9f1-podpisanie-memoranduma-o-sotrudnichestve
+        - button "Читать далее" [ref=e464]:
+          - generic [ref=e465]: Читать далее
+    - listitem [ref=e466] [cursor=pointer]:
+      - generic [ref=e470]:
+        - generic [ref=e472]: 26.03.2025
+        - link "Встреча с ГНС" [ref=e475]:
+          - /url: https://aurva.kg/tpost/s3i1vnoed1-vstrecha-s-gns
+        - button "Читать далее" [ref=e477]:
+          - generic [ref=e478]: Читать далее
+    - listitem [ref=e479] [cursor=pointer]:
+      - generic [ref=e483]:
+        - generic [ref=e485]: 26.03.2025
+        - link "Новый Председатель АУРВА" [ref=e488]:
+          - /url: https://aurva.kg/tpost/fifo8ndv31-novii-predsedatel-aurva
+        - button "Читать далее" [ref=e490]:
+          - generic [ref=e491]: Читать далее
+    - listitem [ref=e492] [cursor=pointer]:
+      - generic [ref=e496]:
+        - generic [ref=e498]: 27.02.2025
+        - link "АУРВА на Digital Kyrgyzstan 2025!" [ref=e501]:
+          - /url: https://aurva.kg/tpost/bbzvo01u51-aurva-na-digital-kyrgyzstan-2025
+        - button "Читать далее" [ref=e503]:
+          - generic [ref=e504]: Читать далее
+    - listitem [ref=e505] [cursor=pointer]:
+      - generic [ref=e509]:
+        - generic [ref=e511]: 07.02.2025
+        - link "Встреча с ФКБ" [ref=e514]:
+          - /url: https://aurva.kg/tpost/ru5vez0yd1-vstrecha-s-fkb
+        - button "Читать далее" [ref=e516]:
+          - generic [ref=e517]: Читать далее
+    - listitem [ref=e518] [cursor=pointer]:
+      - generic [ref=e522]:
+        - generic [ref=e524]: 05.02.2025
+        - link "Первая отчетная встреча членов Ассоциации" [ref=e527]:
+          - /url: https://aurva.kg/tpost/ayyucdomo1-pervaya-otchetnaya-vstrecha-chlenov-asso
+        - button "Читать далее" [ref=e529]:
+          - generic [ref=e530]: Читать далее
+    - listitem [ref=e531] [cursor=pointer]:
+      - generic [ref=e535]:
+        - generic [ref=e537]: 04.02.2025
+        - link "Встреча бухгалтеров резидентов Ассоциации" [ref=e540]:
+          - /url: https://aurva.kg/tpost/33vpyja7d1-vstrecha-buhgalterov-rezidentov-assotsia
+        - button "Читать далее" [ref=e542]:
+          - generic [ref=e543]: Читать далее
+    - listitem [ref=e544] [cursor=pointer]:
+      - generic [ref=e548]:
+        - generic [ref=e550]: 07.12.2024
+        - link "Встреча с экспертом по анализу блокчейна и крипторасследованиям" [ref=e553]:
+          - /url: https://aurva.kg/tpost/nzjgd5bjt1-vstrecha-s-ekspertom-po-analizu-blokchei
+        - button "Читать далее" [ref=e555]:
+          - generic [ref=e556]: Читать далее
+    - listitem [ref=e557] [cursor=pointer]:
+      - generic [ref=e561]:
+        - generic [ref=e563]: 29.11.2024
+        - generic [ref=e564]:
+          - link "Бизнес-завтрак с представителями государственных структур" [ref=e566]:
+            - /url: https://aurva.kg/tpost/gm0hc8drr1-biznes-zavtrak-s-predstavitelyami-gosuda
+          - generic [ref=e567]: В Бишкеке состоялся бизнес-завтрак участников рынка виртуальных активов с представителями государственных органов (Финнадзор, ГСФР и НБКР)
+        - button "Читать далее" [ref=e569]:
+          - generic [ref=e570]: Читать далее
+    - listitem [ref=e571] [cursor=pointer]:
+      - generic [ref=e575]:
+        - generic [ref=e577]: 30.10.2024
+        - generic [ref=e578]:
+          - link "Первая официальная встреча членов Ассоциации" [ref=e580]:
+            - /url: https://aurva.kg/tpost/y4rberxcc1-pervaya-ofitsialnaya-vstrecha-chlenov-as
+          - generic [ref=e581]: На повестке дня было обсуждение дальнейших путей развития и совместных инициатив.
+        - button "Читать далее" [ref=e583]:
+          - generic [ref=e584]: Читать далее
+    - listitem [ref=e585] [cursor=pointer]:
+      - generic [ref=e589]:
+        - generic [ref=e591]: 30.10.2024
+        - generic [ref=e592]:
+          - link "Встреча-знакомство с председателем Ассоциации виртуальных активов" [ref=e594]:
+            - /url: https://aurva.kg/tpost/6kzrhm9gl1-vstrecha-znakomstvo-s-predsedatelem-asso
+          - generic [ref=e595]: "Во время встречи были обсуждены ключевые цели и миссия Ассоциации: развитие прозрачного и безопасного криптовалютного рынка в Кыргызстане"
+        - button "Читать далее" [ref=e597]:
+          - generic [ref=e598]: Читать далее
+  - generic [ref=e601]:
+    - generic [ref=e602]:
+      - link "Карта сайта" [ref=e603] [cursor=pointer]:
+        - /url: /
+        - img "Карта сайта" [ref=e604]
+      - list "Social media links" [ref=e606]:
+        - listitem [ref=e607]:
+          - link "instagram" [ref=e608] [cursor=pointer]:
+            - /url: https://www.instagram.com/aurva.kg
+        - listitem [ref=e610]:
+          - link "linkedin" [ref=e611] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/%D0%B0%D1%83%D1%80%D0%B2%D0%B0/
+        - listitem [ref=e613]:
+          - link "whatsapp" [ref=e614] [cursor=pointer]:
+            - /url: https://api.whatsapp.com/send?phone=996550999010
+    - generic [ref=e616]:
+      - strong [ref=e618]: Карта сайта
+      - list [ref=e620]:
+        - listitem [ref=e621]:
+          - link "Главная" [ref=e622] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e623]:
+          - link "Об Ассоциации" [ref=e624] [cursor=pointer]:
+            - /url: /about
+    - generic:
+      - list [ref=e627]:
+        - listitem [ref=e628]:
+          - link "Новости" [ref=e629] [cursor=pointer]:
+            - /url: /news
+        - listitem [ref=e630]:
+          - link "Контакты" [ref=e631] [cursor=pointer]:
+            - /url: /contacts
+      - generic [ref=e632]:
+        - strong [ref=e634]: Контакты
+        - generic [ref=e635]:
+          - list [ref=e636]:
+            - listitem [ref=e637]:
+              - text: "Адрес:"
+              - link "г. Бишкек, ул. Токтогула, 132" [ref=e638] [cursor=pointer]:
+                - /url: https://go.2gis.com/cg4tm
+          - text: "Телефон:"
+          - link "+996 550 99 90 10" [ref=e639] [cursor=pointer]:
+            - /url: tel:+996550999010
+          - text: "Email:"
+          - link "aurva.kg@gmail.com" [ref=e640] [cursor=pointer]:
+            - /url: mailto:aurva.kg@gmail.com

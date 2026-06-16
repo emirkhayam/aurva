@@ -1,0 +1,412 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA Logo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "AURVA Logo" [ref=e7]
+      - generic [ref=e8]:
+        - link "О нас" [ref=e9] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e10] [cursor=pointer]:
+          - /url: "#directions"
+        - link "Преимущества" [ref=e11] [cursor=pointer]:
+          - /url: "#benefits"
+        - link "Новости" [ref=e12] [cursor=pointer]:
+          - /url: "#news"
+        - link "Курсы" [ref=e13] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e14]:
+        - button "Переключить тему" [ref=e15] [cursor=pointer]:
+          - img [ref=e16]
+        - link "Кабинет" [ref=e18] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e19]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e21] [cursor=pointer]:
+          - /url: "#contact"
+  - main [ref=e22]:
+    - iframe [ref=e23]:
+      
+    - generic [ref=e25]:
+      - generic [ref=e28]: Основана в 2024 году
+      - heading "Ассоциация Участников Рынка Виртуальных Активов." [level=1] [ref=e30]:
+        - text: Ассоциация Участников Рынка
+        - text: Виртуальных Активов.
+      - paragraph [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]: О
+          - generic [ref=e34]: Б
+          - generic [ref=e35]: Ъ
+          - generic [ref=e36]: Е
+          - generic [ref=e37]: Д
+          - generic [ref=e38]: И
+          - generic [ref=e39]: Н
+          - generic [ref=e40]: Я
+          - generic [ref=e41]: Е
+          - generic [ref=e42]: М
+        - generic [ref=e44]:
+          - generic [ref=e45]: Л
+          - generic [ref=e46]: И
+          - generic [ref=e47]: Д
+          - generic [ref=e48]: Е
+          - generic [ref=e49]: Р
+          - generic [ref=e50]: О
+          - generic [ref=e51]: В
+        - generic [ref=e53]:
+          - generic [ref=e54]: И
+          - generic [ref=e55]: Н
+          - generic [ref=e56]: Д
+          - generic [ref=e57]: У
+          - generic [ref=e58]: С
+          - generic [ref=e59]: Т
+          - generic [ref=e60]: Р
+          - generic [ref=e61]: И
+          - generic [ref=e62]: И
+        - generic [ref=e65]: В
+        - generic [ref=e67]:
+          - generic [ref=e68]: К
+          - generic [ref=e69]: Ы
+          - generic [ref=e70]: Р
+          - generic [ref=e71]: Г
+          - generic [ref=e72]: Ы
+          - generic [ref=e73]: З
+          - generic [ref=e74]: С
+          - generic [ref=e75]: Т
+          - generic [ref=e76]: А
+          - generic [ref=e77]: Н
+          - generic [ref=e78]: Е
+      - generic [ref=e79]:
+        - link "Подать заявку" [ref=e80] [cursor=pointer]:
+          - /url: "#contact"
+        - link "Изучить манифест " [ref=e81] [cursor=pointer]:
+          - /url: "#about"
+          - generic [ref=e82]: Изучить манифест
+          - generic [ref=e83]: 
+  - generic [ref=e86]:
+    - generic [ref=e87]:
+      - generic [ref=e88]: "2024"
+      - generic [ref=e89]: Год основания
+    - generic [ref=e90]:
+      - generic [ref=e91]: 10+
+      - generic [ref=e92]: Компаний-участников
+    - generic [ref=e93]:
+      - generic [ref=e94]: "4"
+      - generic [ref=e95]: Направления работы
+    - generic [ref=e96]:
+      - generic [ref=e97]: "1"
+      - generic [ref=e98]: Общая цель
+  - generic [ref=e101]:
+    - generic [ref=e102]:
+      - generic [ref=e103]: // О нас
+      - heading "Двигатель прогресса ЦИФРОВОЙ ЭКОНОМИКИ" [level=2] [ref=e104]:
+        - text: Двигатель прогресса
+        - text: ЦИФРОВОЙ ЭКОНОМИКИ
+      - paragraph [ref=e105]: AURVA — это независимая платформа, созданная для выстраивания конструктивного диалога между государством, бизнесом и пользователями. Мы формируем стандарты качества и прозрачности в сфере цифровых активов.
+      - paragraph [ref=e106]: Наша миссия — создать благоприятную экосистему для интеграции виртуальных активов в традиционную экономику Кыргызской Республики, обеспечивая защиту интересов всех участников.
+      - link "Изучить направления работы " [ref=e107] [cursor=pointer]:
+        - /url: "#directions"
+        - text: Изучить направления работы
+        - generic [ref=e108]: 
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - generic [ref=e115]: "AURVA :: INFO_PANEL"
+        - generic [ref=e116]: STATUS::ACTIVE
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - generic [ref=e121]: Основание
+            - heading "14 октября 2024" [level=3] [ref=e122]
+          - generic [ref=e124]: 
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]: Масштаб
+            - heading "10+ компаний-лидеров" [level=3] [ref=e128]
+          - generic [ref=e130]: 
+        - generic [ref=e131]:
+          - generic [ref=e132]:
+            - generic [ref=e133]: Фокус
+            - heading "1 общая цель" [level=3] [ref=e134]
+            - paragraph [ref=e135]: Безопасный и регулируемый рынок
+          - generic [ref=e137]: 
+  - generic [ref=e139]:
+    - generic [ref=e140]:
+      - generic [ref=e143]: Векторы развития
+      - heading "Направления → Работы" [level=2] [ref=e145]
+      - paragraph [ref=e146]: Мы сфокусированы на четырех ключевых векторах развития, которые формируют фундамент здоровой индустрии виртуальных активов.
+    - generic [ref=e147]:
+      - generic [ref=e148]:
+        - generic [ref=e150]:
+          - generic [ref=e152]: 
+          - generic [ref=e153]: "01"
+        - generic [ref=e154]: Экосистема
+        - heading "Развитие и поддержка" [level=3] [ref=e155]
+        - paragraph [ref=e156]: Платформа для эффективного обмена знаниями, экспертизой и практическим опытом между всеми участниками рынка.
+      - generic [ref=e157]:
+        - generic [ref=e159]:
+          - generic [ref=e161]: 
+          - generic [ref=e162]: "02"
+        - generic [ref=e163]: Правовая база
+        - heading "Регулирование" [level=3] [ref=e164]
+        - paragraph [ref=e165]: Активное содействие государственным органам в разработке сбалансированных нормативных актов для безопасности и роста рынка.
+      - generic [ref=e166]:
+        - generic [ref=e168]:
+          - generic [ref=e170]: 
+          - generic [ref=e171]: "03"
+        - generic [ref=e172]: Квалификация
+        - heading "Образование" [level=3] [ref=e173]
+        - paragraph [ref=e174]: Проведение профильных обучающих программ, семинаров и конференций для повышения квалификации специалистов.
+      - generic [ref=e175]:
+        - generic [ref=e177]:
+          - generic [ref=e179]: 
+          - generic [ref=e180]: "04"
+        - generic [ref=e181]: Технологии
+        - heading "Инновации" [level=3] [ref=e182]
+        - paragraph [ref=e183]: Поиск, тестирование и внедрение передовых технологических решений, определяющих будущее цифровой экономики.
+  - generic [ref=e185]:
+    - generic [ref=e187]:
+      - generic [ref=e188]: // Членство
+      - heading "Почему стоит → ВСТУПИТЬ" [level=2] [ref=e189]:
+        - text: Почему стоит
+        - text: → ВСТУПИТЬ
+      - paragraph [ref=e190]: Присоединяйтесь к сообществу лидеров индустрии и получите инструменты для масштабирования вашего бизнеса.
+    - generic [ref=e191]:
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - generic [ref=e194]: // ПАРТНЕРСТВА
+          - heading "Нетворкинг с лидерами" [level=3] [ref=e195]
+          - paragraph [ref=e196]: Прямой доступ к ключевым игрокам рынка и партнерам.
+        - generic [ref=e197]: Связи → Контракты
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - generic [ref=e200]: // ЗАЩИТА
+          - heading "Влияние на законы" [level=3] [ref=e201]
+          - paragraph [ref=e202]: Возможность участвовать в формировании правовой базы.
+        - generic [ref=e203]: Голос → Регулирование
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - generic [ref=e206]: // РАЗВИТИЕ
+          - heading "Образование" [level=3] [ref=e207]
+          - paragraph [ref=e208]: Эксклюзивные материалы, аналитика и профильные тренинги.
+        - generic [ref=e209]: Знания → Рост
+      - generic [ref=e210]:
+        - generic [ref=e211]:
+          - generic [ref=e212]: // МАРКЕТИНГ
+          - heading "Продвижение" [level=3] [ref=e213]
+          - paragraph [ref=e214]: Поддержка ваших инициатив и узнаваемость бренда на рынке.
+        - generic [ref=e215]: Инициатива → Узнаваемость
+    - link "Подать заявку" [ref=e217] [cursor=pointer]:
+      - /url: "#contact"
+  - generic [ref=e219]:
+    - generic [ref=e220]:
+      - generic [ref=e221]:
+        - generic [ref=e222]: "AURVA :: Партнеры"
+        - generic [ref=e224]: Экосистема
+      - heading "Участники Ассоциации." [level=2] [ref=e225]:
+        - text: Участники
+        - text: Ассоциации.
+      - paragraph [ref=e226]: Ведущие компании рынка, определяющие будущее цифровой экономики и формирующие надежную инфраструктуру для всех.
+    - generic [ref=e227]:
+      - generic [ref=e228]:
+        - group "1 / 15" [ref=e229]:
+          - link "BitHub" [ref=e230] [cursor=pointer]:
+            - /url: https://bithub.kg
+            - img "BitHub" [ref=e231]
+        - group "2 / 15" [ref=e232]:
+          - link "Envoys" [ref=e233] [cursor=pointer]:
+            - /url: https://envoys.vision
+            - img "Envoys" [ref=e234]
+        - group "3 / 15" [ref=e235]:
+          - link "KLN" [ref=e236] [cursor=pointer]:
+            - /url: https://kln.kg
+            - img "KLN" [ref=e237]
+        - group "4 / 15" [ref=e238]:
+          - link "Royal Inc." [ref=e239] [cursor=pointer]:
+            - /url: https://www.royal.inc
+            - img "Royal Inc." [ref=e240]
+        - group "5 / 15" [ref=e241]:
+          - link "WeChange" [ref=e242] [cursor=pointer]:
+            - /url: https://www.wechange.kg
+            - img "WeChange" [ref=e243]
+        - group "6 / 15" [ref=e244]:
+          - link "BitHub" [ref=e245] [cursor=pointer]:
+            - /url: https://bithub.kg
+            - img "BitHub" [ref=e246]
+        - group "7 / 15" [ref=e247]:
+          - link "Envoys" [ref=e248] [cursor=pointer]:
+            - /url: https://envoys.vision
+            - img "Envoys" [ref=e249]
+        - group "8 / 15" [ref=e250]:
+          - link "KLN" [ref=e251] [cursor=pointer]:
+            - /url: https://kln.kg
+            - img "KLN" [ref=e252]
+        - group "9 / 15" [ref=e253]:
+          - link "Royal Inc." [ref=e254] [cursor=pointer]:
+            - /url: https://www.royal.inc
+            - img "Royal Inc." [ref=e255]
+        - group "10 / 15" [ref=e256]:
+          - link "WeChange" [ref=e257] [cursor=pointer]:
+            - /url: https://www.wechange.kg
+            - img "WeChange" [ref=e258]
+        - group "11 / 15" [ref=e259]:
+          - link "BitHub" [ref=e260] [cursor=pointer]:
+            - /url: https://bithub.kg
+            - img "BitHub" [ref=e261]
+        - group "12 / 15" [ref=e262]:
+          - link "Envoys" [ref=e263] [cursor=pointer]:
+            - /url: https://envoys.vision
+            - img "Envoys" [ref=e264]
+        - group "13 / 15" [ref=e265]:
+          - link "KLN" [ref=e266] [cursor=pointer]:
+            - /url: https://kln.kg
+            - img "KLN" [ref=e267]
+        - group "14 / 15" [ref=e268]:
+          - link "Royal Inc." [ref=e269] [cursor=pointer]:
+            - /url: https://www.royal.inc
+            - img "Royal Inc." [ref=e270]
+        - group "15 / 15" [ref=e271]:
+          - link "WeChange" [ref=e272] [cursor=pointer]:
+            - /url: https://www.wechange.kg
+            - img "WeChange" [ref=e273]
+      - generic [ref=e274]:
+        - button "Go to slide 1" [ref=e275] [cursor=pointer]
+        - button "Go to slide 2" [ref=e276] [cursor=pointer]
+        - button "Go to slide 3" [ref=e277] [cursor=pointer]
+        - button "Go to slide 4" [ref=e278] [cursor=pointer]
+        - button "Go to slide 5" [ref=e279] [cursor=pointer]
+        - button "Go to slide 6" [ref=e280] [cursor=pointer]
+        - button "Go to slide 7" [ref=e281] [cursor=pointer]
+        - button "Go to slide 8" [ref=e282] [cursor=pointer]
+        - button "Go to slide 9" [ref=e283] [cursor=pointer]
+        - button "Go to slide 10" [ref=e284] [cursor=pointer]
+        - button "Go to slide 11" [ref=e285] [cursor=pointer]
+        - button "Go to slide 12" [ref=e286] [cursor=pointer]
+        - button "Go to slide 13" [ref=e287] [cursor=pointer]
+        - button "Go to slide 14" [ref=e288] [cursor=pointer]
+        - button "Go to slide 15" [ref=e289] [cursor=pointer]
+    - paragraph [ref=e291]: Официальный реестр участников.
+  - generic [ref=e293]:
+    - generic [ref=e294]:
+      - generic [ref=e295]:
+        - img "AURVA" [ref=e297]
+        - heading "Последние → СОБЫТИЯ" [level=2] [ref=e298]:
+          - text: Последние
+          - text: → СОБЫТИЯ
+        - paragraph [ref=e299]: Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
+      - link "Все новости " [ref=e300] [cursor=pointer]:
+        - /url: /news
+        - text: Все новости
+        - generic [ref=e301]: 
+    - text:    
+    - generic [ref=e302]:
+      - link "24 февр. 2026 г. Избран новый состав Наблюдательного Совета АУРВА Решением Ассоциации утвержден обновленный состав Наблюдательного совета АУРВА. В него вошли представители финансового, инвестиционного и цифрового рынков, обладающие значительным управленческим и регу Читать " [ref=e304] [cursor=pointer]:
+        - /url: /news-detail.html?slug=%D0%B8%D0%B7%D0%B1%D1%80%D0%B0%D0%BD-%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9-%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2-%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D0%B0-%D0%B0%D1%83%D1%80%D0%B2%D0%B0
+        - generic [ref=e307]:
+          - generic [ref=e309]: 24 февр. 2026 г.
+          - heading "Избран новый состав Наблюдательного Совета АУРВА" [level=3] [ref=e310]
+          - paragraph [ref=e311]: Решением Ассоциации утвержден обновленный состав Наблюдательного совета АУРВА. В него вошли представители финансового, инвестиционного и цифрового рынков, обладающие значительным управленческим и регу
+          - generic [ref=e312]:
+            - generic [ref=e313]: Читать
+            - generic [ref=e314]: 
+      - link "9 февр. 2026 г. Бизнес Форум B5+1 Ассоциация участников рынка виртуальных активов (АУРВА) приняла участие в B5+1 Forum Bishkek 2026, который прошёл 4–5 февраля 2026 года в Бишкеке. Читать " [ref=e316] [cursor=pointer]:
+        - /url: /news-detail.html?slug=%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%84%D0%BE%D1%80%D1%83%D0%BC-b51
+        - generic [ref=e319]:
+          - generic [ref=e321]: 9 февр. 2026 г.
+          - heading "Бизнес Форум B5+1" [level=3] [ref=e322]
+          - paragraph [ref=e323]: Ассоциация участников рынка виртуальных активов (АУРВА) приняла участие в B5+1 Forum Bishkek 2026, который прошёл 4–5 февраля 2026 года в Бишкеке.
+          - generic [ref=e324]:
+            - generic [ref=e325]: Читать
+            - generic [ref=e326]: 
+      - link "21 янв. 2026 г. Первое собрание Экспертного совета АУРВА в 2026 году 19 января прошла первая запланированная встреча Экспертного совета АУРВА в 2026 году. Читать " [ref=e328] [cursor=pointer]:
+        - /url: /news-detail.html?slug=%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B5-%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D0%BD%D0%B8%D0%B5-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D1%82%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D0%B0-%D0%B0%D1%83%D1%80%D0%B2%D0%B0-%D0%B2-2026-%D0%B3%D0%BE%D0%B4%D1%83
+        - generic [ref=e331]:
+          - generic [ref=e333]: 21 янв. 2026 г.
+          - heading "Первое собрание Экспертного совета АУРВА в 2026 году" [level=3] [ref=e334]
+          - paragraph [ref=e335]: 19 января прошла первая запланированная встреча Экспертного совета АУРВА в 2026 году.
+          - generic [ref=e336]:
+            - generic [ref=e337]: Читать
+            - generic [ref=e338]: 
+    - text: 
+  - generic [ref=e343]:
+    - generic [ref=e344]:
+      - heading "Свяжитесь с нами." [level=2] [ref=e345]:
+        - text: Свяжитесь
+        - text: с нами.
+      - paragraph [ref=e346]: Готовы стать частью ассоциации или есть вопросы? Оставьте заявку, и мы свяжемся с вами.
+      - generic [ref=e347]:
+        - generic [ref=e352]:
+          - paragraph [ref=e353]: Офис
+          - paragraph [ref=e354]:
+            - text: Кыргызская Республика,
+            - text: г. Бишкек
+        - generic [ref=e359]:
+          - paragraph [ref=e360]: Телефон
+          - link "+996 550 99 90 10" [ref=e361] [cursor=pointer]:
+            - /url: tel:+996550999010
+        - generic [ref=e365]:
+          - paragraph [ref=e366]: Email
+          - link "aurva.kg@gmail.com" [ref=e367] [cursor=pointer]:
+            - /url: mailto:aurva.kg@gmail.com
+    - generic [ref=e369]:
+      - generic [ref=e370]:
+        - generic [ref=e371]: Название компании / Имя *
+        - textbox "Название компании / Имя" [ref=e372]:
+          - /placeholder: ОсОО «Компания»
+      - generic [ref=e373]:
+        - generic [ref=e374]: Контактный телефон *
+        - textbox "Контактный телефон" [ref=e375]:
+          - /placeholder: +996 ___ ___ ___
+      - generic [ref=e376]:
+        - generic [ref=e377]: Email (опционально)
+        - textbox "Email (опционально)" [ref=e378]:
+          - /placeholder: you@company.kg
+      - button "Оставить заявку" [ref=e379] [cursor=pointer]
+      - paragraph [ref=e380]:
+        - text: Нажимая кнопку, вы соглашаетесь с
+        - link "политикой конфиденциальности" [ref=e381] [cursor=pointer]:
+          - /url: /privacy
+        - text: .
+  - contentinfo [ref=e382]:
+    - generic [ref=e383]:
+      - generic [ref=e384]:
+        - generic [ref=e385]:
+          - img "AURVA Logo" [ref=e387]
+          - generic [ref=e388]: Связь с нами
+          - generic [ref=e389]:
+            - link " Email" [ref=e390] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+              - generic [ref=e391]: 
+              - generic [ref=e392]: Email
+            - link " Телефон" [ref=e393] [cursor=pointer]:
+              - /url: tel:+996550999010
+              - generic [ref=e394]: 
+              - generic [ref=e395]: Телефон
+        - generic [ref=e396]:
+          - generic [ref=e401]: Ассоциация активна
+          - generic [ref=e402]:
+            - generic [ref=e403]: AURVA::КР
+            - generic [ref=e404]: "|"
+            - generic [ref=e405]: Основано в 2024
+        - generic [ref=e406]:
+          - generic [ref=e407]: Навигация
+          - generic [ref=e408]:
+            - link "О нас" [ref=e409] [cursor=pointer]:
+              - /url: /about
+            - link "Направления" [ref=e410] [cursor=pointer]:
+              - /url: "#directions"
+            - link "Преимущества" [ref=e411] [cursor=pointer]:
+              - /url: "#benefits"
+            - link "Участники" [ref=e412] [cursor=pointer]:
+              - /url: "#members"
+            - link "Новости" [ref=e413] [cursor=pointer]:
+              - /url: "#news"
+            - link "Курсы" [ref=e414] [cursor=pointer]:
+              - /url: /courses
+      - generic [ref=e415]:
+        - generic [ref=e416]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e417]:
+          - link "Политика конфиденциальности" [ref=e418] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e419] [cursor=pointer]:
+            - /url: /charter

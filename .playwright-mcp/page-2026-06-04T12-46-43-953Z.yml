@@ -1,0 +1,237 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Главная навигация" [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Логотип AURVA" [ref=e6]
+      - generic [ref=e7]:
+        - link "О нас" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e9] [cursor=pointer]:
+          - /url: "#directions"
+        - link "Преимущества" [ref=e10] [cursor=pointer]:
+          - /url: "#benefits"
+        - link "Новости" [ref=e11] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e12] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e13]:
+        - link "Кабинет" [ref=e14] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e15]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e17] [cursor=pointer]:
+          - /url: "#contact"
+  - main [ref=e18]:
+    - generic [ref=e20]:
+      - paragraph [ref=e21]:
+        - img [ref=e22]
+        - text: Основана в 2024 году · Кыргызская Республика
+      - heading "Ассоциация Участников Рынка Виртуальных Активов" [level=1] [ref=e24]
+      - paragraph [ref=e25]: Объединяем лидеров индустрии Кыргызстана. Выстраиваем диалог между государством, бизнесом и пользователями цифровых активов.
+      - generic [ref=e26]:
+        - link "Подать заявку" [ref=e27] [cursor=pointer]:
+          - /url: "#contact"
+          - text: Подать заявку
+          - img [ref=e28]
+        - link "Узнать больше" [ref=e30] [cursor=pointer]:
+          - /url: "#about"
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - term [ref=e33]: Основание
+          - definition [ref=e34]: 14.10.2024
+        - generic [ref=e35]:
+          - term [ref=e36]: Масштаб
+          - definition [ref=e37]: 10+ компаний
+        - generic [ref=e38]:
+          - term [ref=e39]: Фокус
+          - definition [ref=e40]: Прозрачный рынок
+  - generic [ref=e43]:
+    - generic [ref=e44]:
+      - paragraph [ref=e45]: О нас
+      - heading "Двигатель прогресса цифровой экономики" [level=2] [ref=e46]
+      - paragraph [ref=e47]: AURVA — это независимая платформа, созданная для выстраивания конструктивного диалога между государством, бизнесом и пользователями. Мы формируем стандарты качества и прозрачности в сфере цифровых активов.
+      - paragraph [ref=e48]: Наша миссия — создать благоприятную экосистему для интеграции виртуальных активов в традиционную экономику Кыргызской Республики, обеспечивая защиту интересов всех участников.
+      - link "Изучить направления работы" [ref=e49] [cursor=pointer]:
+        - /url: "#directions"
+        - text: Изучить направления работы
+        - img [ref=e50]
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - paragraph [ref=e56]: Основание
+          - paragraph [ref=e57]: 14 октября 2024
+        - img [ref=e59]
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Масштаб
+          - paragraph [ref=e64]: 10+ компаний-лидеров
+        - img [ref=e66]
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: Фокус
+          - paragraph [ref=e71]: Безопасный и регулируемый рынок
+        - img [ref=e73]
+  - generic [ref=e78]:
+    - generic [ref=e79]:
+      - paragraph [ref=e80]: Векторы развития
+      - heading "Направления работы" [level=2] [ref=e81]
+      - paragraph [ref=e82]: Мы сфокусированы на четырёх ключевых векторах развития, которые формируют фундамент здоровой индустрии виртуальных активов.
+    - generic [ref=e83]:
+      - article [ref=e84]:
+        - img [ref=e86]
+        - paragraph [ref=e88]: Экосистема
+        - heading "Развитие и поддержка" [level=3] [ref=e89]
+        - paragraph [ref=e90]: Платформа для эффективного обмена знаниями, экспертизой и практическим опытом между всеми участниками рынка.
+      - article [ref=e91]:
+        - img [ref=e93]
+        - paragraph [ref=e95]: Правовая база
+        - heading "Регулирование" [level=3] [ref=e96]
+        - paragraph [ref=e97]: Активное содействие государственным органам в разработке сбалансированных нормативных актов для безопасности и роста рынка.
+      - article [ref=e98]:
+        - img [ref=e100]
+        - paragraph [ref=e102]: Квалификация
+        - heading "Образование" [level=3] [ref=e103]
+        - paragraph [ref=e104]: Проведение профильных обучающих программ, семинаров и конференций для повышения квалификации специалистов.
+      - article [ref=e105]:
+        - img [ref=e107]
+        - paragraph [ref=e109]: Технологии
+        - heading "Инновации" [level=3] [ref=e110]
+        - paragraph [ref=e111]: Поиск, тестирование и внедрение передовых технологических решений, определяющих будущее цифровой экономики.
+  - generic [ref=e113]:
+    - generic [ref=e114]:
+      - paragraph [ref=e115]: Членство
+      - heading "Почему стоит вступить" [level=2] [ref=e116]
+      - paragraph [ref=e117]: Присоединяйтесь к сообществу лидеров индустрии и получите инструменты для масштабирования вашего бизнеса.
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - paragraph [ref=e120]: Партнёрства
+        - heading "Нетворкинг с лидерами" [level=3] [ref=e121]
+        - paragraph [ref=e122]: Прямой доступ к ключевым игрокам рынка и партнёрам.
+        - paragraph [ref=e123]: Связи → Контракты
+      - generic [ref=e124]:
+        - paragraph [ref=e125]: Защита
+        - heading "Влияние на законы" [level=3] [ref=e126]
+        - paragraph [ref=e127]: Возможность участвовать в формировании правовой базы.
+        - paragraph [ref=e128]: Голос → Регулирование
+      - generic [ref=e129]:
+        - paragraph [ref=e130]: Развитие
+        - heading "Образование" [level=3] [ref=e131]
+        - paragraph [ref=e132]: Эксклюзивные материалы, аналитика и профильные тренинги.
+        - paragraph [ref=e133]: Знания → Рост
+      - generic [ref=e134]:
+        - paragraph [ref=e135]: Маркетинг
+        - heading "Продвижение" [level=3] [ref=e136]
+        - paragraph [ref=e137]: Поддержка ваших инициатив и узнаваемость бренда на рынке.
+        - paragraph [ref=e138]: Инициатива → Узнаваемость
+    - link "Подать заявку" [ref=e140] [cursor=pointer]:
+      - /url: "#contact"
+      - text: Подать заявку
+      - img [ref=e141]
+  - generic [ref=e144]:
+    - generic [ref=e145]:
+      - paragraph [ref=e146]: Экосистема
+      - heading "Участники ассоциации" [level=2] [ref=e147]
+      - paragraph [ref=e148]: Ведущие компании рынка, определяющие будущее цифровой экономики и формирующие надёжную инфраструктуру для всех.
+    - paragraph [ref=e150]: Официальный реестр участников
+  - generic [ref=e153]:
+    - generic [ref=e154]:
+      - paragraph [ref=e155]: Новости
+      - heading "Последние события" [level=2] [ref=e156]
+      - paragraph [ref=e157]: Актуальные новости индустрии виртуальных активов в Кыргызстане и деятельность ассоциации.
+    - link "Все новости" [ref=e158] [cursor=pointer]:
+      - /url: /news
+      - text: Все новости
+      - img [ref=e159]
+  - generic [ref=e164]:
+    - generic [ref=e165]:
+      - heading "Свяжитесь с нами" [level=2] [ref=e166]
+      - paragraph [ref=e167]: Готовы стать частью ассоциации или есть вопросы? Оставьте заявку, и мы свяжемся с вами.
+      - list [ref=e168]:
+        - listitem [ref=e169]:
+          - img [ref=e171]
+          - generic [ref=e174]:
+            - paragraph [ref=e175]: Офис
+            - paragraph [ref=e176]: Кыргызская Республика, г. Бишкек
+        - listitem [ref=e177]:
+          - img [ref=e179]
+          - generic [ref=e181]:
+            - paragraph [ref=e182]: Телефон
+            - link "+996 550 99 90 10" [ref=e183] [cursor=pointer]:
+              - /url: tel:+996550999010
+        - listitem [ref=e184]:
+          - img [ref=e186]
+          - generic [ref=e188]:
+            - paragraph [ref=e189]: Email
+            - link "aurva.kg@gmail.com" [ref=e190] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+    - generic [ref=e192]:
+      - generic [ref=e193]:
+        - generic [ref=e194]: Название компании / Имя *
+        - textbox "Название компании / Имя" [ref=e195]:
+          - /placeholder: ОсОО «Компания»
+      - generic [ref=e196]:
+        - generic [ref=e197]: Контактный телефон *
+        - textbox "Контактный телефон" [ref=e198]:
+          - /placeholder: +996 ___ ___ ___
+      - generic [ref=e199]:
+        - generic [ref=e200]: Email (опционально)
+        - textbox "Email (опционально)" [ref=e201]:
+          - /placeholder: you@company.kg
+      - button "Оставить заявку" [ref=e202] [cursor=pointer]
+      - paragraph [ref=e203]:
+        - text: Нажимая кнопку, вы соглашаетесь с
+        - link "политикой конфиденциальности" [ref=e204] [cursor=pointer]:
+          - /url: /privacy
+        - text: .
+  - contentinfo [ref=e205]:
+    - generic [ref=e206]:
+      - generic [ref=e207]:
+        - generic [ref=e208]:
+          - img "Логотип AURVA" [ref=e209]
+          - paragraph [ref=e210]: Ассоциация Участников Рынка Виртуальных Активов Кыргызской Республики.
+        - generic [ref=e211]:
+          - heading "Связь с нами" [level=3] [ref=e212]
+          - list [ref=e213]:
+            - listitem [ref=e214]:
+              - link "aurva.kg@gmail.com" [ref=e215] [cursor=pointer]:
+                - /url: mailto:aurva.kg@gmail.com
+                - img [ref=e216]
+                - generic [ref=e218]: aurva.kg@gmail.com
+            - listitem [ref=e219]:
+              - link "+996 550 99 90 10" [ref=e220] [cursor=pointer]:
+                - /url: tel:+996550999010
+                - img [ref=e221]
+                - generic [ref=e223]: +996 550 99 90 10
+            - listitem [ref=e224]:
+              - generic [ref=e225]: Ассоциация активна · Основано в 2024
+        - generic [ref=e227]:
+          - heading "Навигация" [level=3] [ref=e228]
+          - list [ref=e229]:
+            - listitem [ref=e230]:
+              - link "О нас" [ref=e231] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e232]:
+              - link "Направления" [ref=e233] [cursor=pointer]:
+                - /url: "#directions"
+            - listitem [ref=e234]:
+              - link "Преимущества" [ref=e235] [cursor=pointer]:
+                - /url: "#benefits"
+            - listitem [ref=e236]:
+              - link "Участники" [ref=e237] [cursor=pointer]:
+                - /url: "#members"
+            - listitem [ref=e238]:
+              - link "Новости" [ref=e239] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e240]:
+              - link "Курсы" [ref=e241] [cursor=pointer]:
+                - /url: /courses
+      - generic [ref=e242]:
+        - paragraph [ref=e243]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e244]:
+          - link "Политика конфиденциальности" [ref=e245] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e246] [cursor=pointer]:
+            - /url: /charter

@@ -1,0 +1,103 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - heading "Профиль" [level=1] [ref=e78]
+          - paragraph [ref=e79]: Управление профилем и настройками
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - heading "Информация о пользователе" [level=3] [ref=e83]
+              - paragraph [ref=e84]: Ваши данные в системе
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - img [ref=e88]
+                - generic [ref=e91]:
+                  - paragraph [ref=e92]: Администратор
+                  - paragraph [ref=e93]: admin@aurva.kg
+              - generic [ref=e95]:
+                - generic [ref=e96]:
+                  - paragraph [ref=e97]: Роль
+                  - paragraph [ref=e98]: Администратор
+                - generic [ref=e99]:
+                  - paragraph [ref=e100]: ID
+                  - paragraph [ref=e101]: "#b5fc44cd-78c5-4fcb-8154-95826446ae82"
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "Изменить пароль" [level=3] [ref=e104]
+              - paragraph [ref=e105]: Обновите свой пароль для безопасности
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - text: Текущий пароль
+                - generic [ref=e109]:
+                  - img [ref=e110]
+                  - textbox [ref=e113]
+              - generic [ref=e114]:
+                - text: Новый пароль
+                - generic [ref=e115]:
+                  - img [ref=e116]
+                  - textbox [ref=e119]
+              - generic [ref=e120]:
+                - text: Подтвердите новый пароль
+                - generic [ref=e121]:
+                  - img [ref=e122]
+                  - textbox [ref=e125]
+              - button "Изменить пароль" [ref=e126] [cursor=pointer]
+  - region "Notifications alt+T"

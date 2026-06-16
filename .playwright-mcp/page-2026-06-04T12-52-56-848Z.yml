@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "AURVA — на главную" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img "Логотип AURVA" [ref=e5]
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - paragraph [ref=e8]: "404"
+      - heading "Страница не найдена" [level=1] [ref=e9]
+      - paragraph [ref=e10]: К сожалению, запрошенная страница не существует или была перемещена. Проверьте адрес или вернитесь на главную.
+      - generic [ref=e11]:
+        - link "На главную" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - img [ref=e13]
+          - text: На главную
+        - link "Новости" [ref=e15] [cursor=pointer]:
+          - /url: /news
+          - img [ref=e16]
+          - text: Новости
+  - contentinfo [ref=e18]:
+    - paragraph [ref=e20]: © 2024 AURVA. Ассоциация Участников Рынка Виртуальных Активов Кыргызстана

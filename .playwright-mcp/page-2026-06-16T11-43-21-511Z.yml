@@ -1,0 +1,163 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "AURVA Logo" [ref=e7]
+      - generic [ref=e8]:
+        - link "Главная" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "О нас" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - link "Направления" [ref=e11] [cursor=pointer]:
+          - /url: /#directions
+        - link "Преимущества" [ref=e12] [cursor=pointer]:
+          - /url: /#benefits
+        - link "Новости" [ref=e13] [cursor=pointer]:
+          - /url: /news
+        - link "Курсы" [ref=e14] [cursor=pointer]:
+          - /url: /courses
+      - generic [ref=e15]:
+        - button "Переключить тему" [ref=e16] [cursor=pointer]:
+          - img [ref=e17]
+        - link "Кабинет" [ref=e19] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e20]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e22] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: 
+          - text: Образовательное направление
+        - heading "Курсы и обучение AURVA" [level=1] [ref=e28]:
+          - text: Курсы и обучение
+          - text: AURVA
+        - paragraph [ref=e29]: Ассоциация развивает образовательные программы для специалистов рынка виртуальных активов Кыргызстана — от регуляторных требований и комплаенса до практического подключения к инфраструктуре регулятора. Мы помогаем участникам рынка работать прозрачно, безопасно и в соответствии с законодательством.
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: "6"
+          - generic [ref=e33]: направлений
+        - generic [ref=e34]:
+          - generic [ref=e35]: 24/7
+          - generic [ref=e36]: онлайн-доступ
+        - generic [ref=e37]:
+          - generic [ref=e39]: 
+          - generic [ref=e40]: видео-уроки
+        - generic [ref=e41]:
+          - generic [ref=e43]: 
+          - generic [ref=e44]: для участников
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - heading "Чему мы обучаем" [level=2] [ref=e47]
+        - paragraph [ref=e48]: Программы охватывают ключевые направления, важные для участников рынка виртуальных активов.
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e52]: 
+          - heading "Регуляторика и взаимодействие с ГСФР" [level=3] [ref=e53]
+          - paragraph [ref=e54]: Требования законодательства Кыргызской Республики, порядок предоставления информации регулятору, отчётность и надзор.
+        - generic [ref=e55]:
+          - generic [ref=e57]: 
+          - heading "Техническое подключение" [level=3] [ref=e58]
+          - paragraph [ref=e59]: Настройка защищённого электронного канала связи (ЗЭКС), установка и работа с АРМ, VPN и почтовые сервисы для обмена с регулятором.
+        - generic [ref=e60]:
+          - generic [ref=e62]: 
+          - heading "ПОД/ФТ и комплаенс" [level=3] [ref=e63]
+          - paragraph [ref=e64]: Противодействие отмыванию денег и финансированию терроризма, построение антиотмывочных процедур и лучшие практики комплаенса.
+        - generic [ref=e65]:
+          - generic [ref=e67]: 
+          - heading "Виртуальные активы и блокчейн" [level=3] [ref=e68]
+          - paragraph [ref=e69]: Основы криптовалют, токенов и блокчейн-технологий, обзор рынка, ключевые понятия и тренды индустрии.
+        - generic [ref=e70]:
+          - generic [ref=e72]: 
+          - heading "Финансовая грамотность" [level=3] [ref=e73]
+          - paragraph [ref=e74]: Повышение осведомлённости участников и пользователей о цифровых финансах, рисках и безопасном обращении с активами.
+        - generic [ref=e75]:
+          - generic [ref=e77]: 
+          - heading "Международные стандарты" [level=3] [ref=e78]
+          - paragraph [ref=e79]: Интеграция с мировыми практиками регулирования и стандартами индустрии виртуальных активов.
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - heading "Как проходит обучение" [level=2] [ref=e83]
+        - list [ref=e84]:
+          - listitem [ref=e85]:
+            - generic [ref=e86]: 
+            - generic [ref=e87]: Онлайн-формат. Видео-уроки и пошаговые инструкции, доступные в удобное время.
+          - listitem [ref=e88]:
+            - generic [ref=e89]: 
+            - generic [ref=e90]: Практические материалы. Документы, шаблоны и ссылки на необходимое программное обеспечение.
+          - listitem [ref=e91]:
+            - generic [ref=e92]: 
+            - generic [ref=e93]: Доступ в личном кабинете. Программы открываются участникам Ассоциации после авторизации.
+          - listitem [ref=e94]:
+            - generic [ref=e95]: 
+            - generic [ref=e96]: Регулярные обновления. Содержание дополняется по мере изменения требований и развития рынка.
+      - generic [ref=e97]:
+        - heading "Для кого" [level=2] [ref=e98]
+        - list [ref=e99]:
+          - listitem [ref=e100]:
+            - generic [ref=e101]: 
+            - generic [ref=e102]: Сотрудники комплаенс-подразделений банков и финансовых организаций.
+          - listitem [ref=e103]:
+            - generic [ref=e104]: 
+            - generic [ref=e105]: Провайдеры услуг в сфере виртуальных активов и их специалисты.
+          - listitem [ref=e106]:
+            - generic [ref=e107]: 
+            - generic [ref=e108]: Новые участники рынка, проходящие подключение к инфраструктуре регулятора.
+          - listitem [ref=e109]:
+            - generic [ref=e110]: 
+            - generic [ref=e111]: Специалисты, желающие повысить квалификацию в сфере цифровых активов.
+    - generic [ref=e113]:
+      - heading "Доступ к курсам — в личном кабинете" [level=2] [ref=e115]
+      - paragraph [ref=e116]: Образовательные программы доступны участникам Ассоциации. Войдите в личный кабинет, чтобы начать обучение, или присоединяйтесь к AURVA.
+      - generic [ref=e117]:
+        - link "Личный кабинет" [ref=e118] [cursor=pointer]:
+          - /url: /cabinet
+          - generic [ref=e119]: 
+          - text: Личный кабинет
+        - link "Стать участником" [ref=e120] [cursor=pointer]:
+          - /url: /#contact
+  - contentinfo [ref=e121]:
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - img "AURVA Logo" [ref=e126]
+          - generic [ref=e127]: Связь с нами
+          - generic [ref=e128]:
+            - link "Email" [ref=e129] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+              - generic [ref=e130]: 
+              - generic [ref=e131]: Email
+            - link "Телефон" [ref=e132] [cursor=pointer]:
+              - /url: tel:+996550999010
+              - generic [ref=e133]: 
+              - generic [ref=e134]: Телефон
+        - generic [ref=e135]:
+          - generic [ref=e140]: Ассоциация активна
+          - generic [ref=e142]: Основано в 2024
+        - generic [ref=e143]:
+          - generic [ref=e144]: Навигация
+          - generic [ref=e145]:
+            - link "О нас" [ref=e146] [cursor=pointer]:
+              - /url: /about
+            - link "Направления" [ref=e147] [cursor=pointer]:
+              - /url: /#directions
+            - link "Преимущества" [ref=e148] [cursor=pointer]:
+              - /url: /#benefits
+            - link "Участники" [ref=e149] [cursor=pointer]:
+              - /url: /#members
+            - link "Новости" [ref=e150] [cursor=pointer]:
+              - /url: /news
+            - link "Курсы" [ref=e151] [cursor=pointer]:
+              - /url: /courses
+      - generic [ref=e152]:
+        - generic [ref=e153]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e154]:
+          - link "Политика конфиденциальности" [ref=e155] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e156] [cursor=pointer]:
+            - /url: /charter

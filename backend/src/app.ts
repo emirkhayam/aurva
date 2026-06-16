@@ -87,7 +87,10 @@ const createApp = (): Application => {
         frameSrc: [
           "'self'",
           "https://my.spline.design",
-          "https://www.googletagmanager.com"
+          "https://www.googletagmanager.com",
+          "https://www.youtube.com",
+          "https://www.youtube-nocookie.com",
+          "https://www.openstreetmap.org"
         ],
         scriptSrcAttr: ["'unsafe-inline'"],
         upgradeInsecureRequests: isDev ? null : []
@@ -156,6 +159,14 @@ const createApp = (): Application => {
 
   app.get('/courses', (_req: Request, res: Response) => {
     sendHtmlNoCaching(res, path.join(__dirname, '../public/courses.html'));
+  });
+
+  app.get('/privacy', (_req: Request, res: Response) => {
+    sendHtmlNoCaching(res, path.join(__dirname, '../public/privacy.html'));
+  });
+
+  app.get('/charter', (_req: Request, res: Response) => {
+    sendHtmlNoCaching(res, path.join(__dirname, '../public/charter.html'));
   });
 
   // Cabinet pages (SPA-like, all served from cabinet.html)

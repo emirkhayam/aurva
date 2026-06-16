@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "AURVA — на главную" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "AURVA Logo" [ref=e7]
+      - generic [ref=e8]:
+        - button "Переключить тему" [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+        - button "Открыть меню" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - link "Кабинет" [ref=e15] [cursor=pointer]:
+          - /url: /cabinet
+          - img [ref=e16]
+          - text: Кабинет
+        - link "Подать заявку" [ref=e18] [cursor=pointer]:
+          - /url: /#contact
+  - main [ref=e19]:
+    - paragraph [ref=e22]: Загрузка курсов...
+    - text:  
+  - contentinfo [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - img "AURVA Logo" [ref=e28]
+          - generic [ref=e29]: Связь с нами
+          - generic [ref=e30]:
+            - link "Email" [ref=e31] [cursor=pointer]:
+              - /url: mailto:aurva.kg@gmail.com
+              - generic [ref=e32]: 
+              - generic [ref=e33]: Email
+            - link "Телефон" [ref=e34] [cursor=pointer]:
+              - /url: tel:+996550999010
+              - generic [ref=e35]: 
+              - generic [ref=e36]: Телефон
+        - generic [ref=e37]:
+          - generic [ref=e42]: Ассоциация активна
+          - generic [ref=e43]:
+            - generic [ref=e44]: AURVA::КР
+            - generic [ref=e45]: "|"
+            - generic [ref=e46]: Основано в 2024
+        - generic [ref=e47]:
+          - generic [ref=e48]: Навигация
+          - generic [ref=e49]:
+            - link "О нас" [ref=e50] [cursor=pointer]:
+              - /url: /about
+            - link "Направления" [ref=e51] [cursor=pointer]:
+              - /url: /#directions
+            - link "Преимущества" [ref=e52] [cursor=pointer]:
+              - /url: /#benefits
+            - link "Участники" [ref=e53] [cursor=pointer]:
+              - /url: /#members
+            - link "Новости" [ref=e54] [cursor=pointer]:
+              - /url: /news
+            - link "Курсы" [ref=e55] [cursor=pointer]:
+              - /url: /courses
+      - generic [ref=e56]:
+        - generic [ref=e57]: © 2024 Ассоциация Участников Рынка Виртуальных Активов. Все права защищены.
+        - generic [ref=e58]:
+          - link "Политика конфиденциальности" [ref=e59] [cursor=pointer]:
+            - /url: /privacy
+          - link "Устав" [ref=e60] [cursor=pointer]:
+            - /url: /charter

@@ -1,0 +1,169 @@
+- generic [ref=e2]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - img "AURVA" [ref=e32]
+        - paragraph [ref=e33]: Админ-панель
+      - navigation [ref=e34]:
+        - link "Дашборд" [ref=e35] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e36]
+          - text: Дашборд
+        - link "Заявки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e42]
+          - text: Заявки
+        - link "Новости" [ref=e45] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e46]
+          - text: Новости
+        - link "Участники" [ref=e49] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e50]
+          - text: Участники
+        - link "Партнеры" [ref=e55] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e56]
+          - text: Партнеры
+        - link "Команда" [ref=e61] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e62]
+          - text: Команда
+        - link "Настройки" [ref=e67] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e68]
+          - text: Настройки
+        - paragraph [ref=e72]: Кабинет
+        - link "Пользователи" [ref=e73] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e74]
+          - text: Пользователи
+        - link "Курсы" [ref=e79] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e80]
+          - text: Курсы
+        - link "Профиль" [ref=e83] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e84]
+          - text: Профиль
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - paragraph [ref=e89]: Администратор
+          - paragraph [ref=e90]: admin@aurva.kg
+        - button "Основной сайт" [ref=e91] [cursor=pointer]:
+          - img [ref=e92]
+          - text: Основной сайт
+        - button "Выйти" [ref=e96] [cursor=pointer]:
+          - img [ref=e97]
+          - text: Выйти
+    - main [ref=e100]:
+      - generic [ref=e102]:
+        - generic [ref=e104]:
+          - heading "Дашборд" [level=1] [ref=e105]
+          - paragraph [ref=e106]: Обзор системы управления AURVA
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - heading "НОВОСТИ" [level=3] [ref=e110]
+              - img [ref=e111]
+            - generic [ref=e114]:
+              - generic [ref=e115]: "43"
+              - paragraph [ref=e116]: Всего новостей
+          - generic [ref=e117]:
+            - generic [ref=e118]:
+              - heading "УЧАСТНИКИ" [level=3] [ref=e119]
+              - img [ref=e120]
+            - generic [ref=e125]:
+              - generic [ref=e126]: "11"
+              - paragraph [ref=e127]: Всего участников
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - heading "ПОЛЬЗОВАТЕЛИ" [level=3] [ref=e130]
+              - img [ref=e131]
+            - generic [ref=e135]:
+              - generic [ref=e136]: "2"
+              - paragraph [ref=e137]: Пользователей кабинета
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - heading "КУРСЫ" [level=3] [ref=e140]
+              - img [ref=e141]
+            - generic [ref=e144]:
+              - generic [ref=e145]: "4"
+              - paragraph [ref=e146]: Всего курсов
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - heading "ЗАЯВКИ" [level=3] [ref=e149]
+              - img [ref=e150]
+            - generic [ref=e153]:
+              - generic [ref=e154]: "2"
+              - paragraph [ref=e155]: Всего заявок
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - heading "Последние новости" [level=3] [ref=e159]:
+                - img [ref=e160]
+                - text: Последние новости
+              - button "Все" [ref=e163] [cursor=pointer]:
+                - text: Все
+                - img [ref=e164]
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [ref=e169]:
+                  - paragraph [ref=e170]: АУРВА на KIT форуме 2026
+                  - paragraph [ref=e171]: 16 июня 2026 г.
+                - generic [ref=e172]: Опубл.
+              - generic [ref=e173]:
+                - generic [ref=e174]:
+                  - paragraph [ref=e175]: АУРВА продолжает обучение сотрудников комплаенс-отделов банков
+                  - paragraph [ref=e176]: 16 июня 2026 г.
+                - generic [ref=e177]: Опубл.
+              - generic [ref=e178]:
+                - generic [ref=e179]:
+                  - paragraph [ref=e180]: АУРВА провела обучение для банков
+                  - paragraph [ref=e181]: 16 июня 2026 г.
+                - generic [ref=e182]: Опубл.
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - paragraph [ref=e185]: В Посольстве США состоялось вручение сертификатов участникам программы Open World
+                  - paragraph [ref=e186]: 16 июня 2026 г.
+                - generic [ref=e187]: Опубл.
+              - generic [ref=e188]:
+                - generic [ref=e189]:
+                  - paragraph [ref=e190]: Представители АУРВА в США
+                  - paragraph [ref=e191]: 16 июня 2026 г.
+                - generic [ref=e192]: Опубл.
+          - generic [ref=e193]:
+            - heading "Заявки по статусам" [level=3] [ref=e195]:
+              - img [ref=e196]
+              - text: Заявки по статусам
+            - generic [ref=e199]:
+              - generic [ref=e201]:
+                - generic [ref=e202]: Новые
+                - generic [ref=e203]: "2"
+              - generic [ref=e207]:
+                - generic [ref=e208]: Связались
+                - generic [ref=e209]: "0"
+              - generic [ref=e212]:
+                - generic [ref=e213]: Обработаны
+                - generic [ref=e214]: "0"
+              - generic [ref=e217]:
+                - generic [ref=e218]: Отклонены
+                - generic [ref=e219]: "0"
+        - generic [ref=e221]:
+          - heading "Быстрые действия" [level=3] [ref=e223]:
+            - img [ref=e224]
+            - text: Быстрые действия
+          - generic [ref=e228]:
+            - button "Добавить новость" [ref=e229] [cursor=pointer]:
+              - img [ref=e230]
+              - text: Добавить новость
+            - button "Добавить курс" [ref=e231] [cursor=pointer]:
+              - img [ref=e232]
+              - text: Добавить курс
+            - button "Просмотр заявок" [ref=e233] [cursor=pointer]:
+              - img [ref=e234]
+              - text: Просмотр заявок
+            - button "Участники" [ref=e237] [cursor=pointer]:
+              - img [ref=e238]
+              - text: Участники
+  - region "Notifications alt+T"

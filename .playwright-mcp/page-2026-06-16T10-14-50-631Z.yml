@@ -1,0 +1,61 @@
+- generic [ref=e2]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - img "AURVA" [ref=e32]
+        - paragraph [ref=e33]: Админ-панель
+      - navigation [ref=e34]:
+        - link "Дашборд" [ref=e35] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e36]
+          - text: Дашборд
+        - link "Заявки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e42]
+          - text: Заявки
+        - link "Новости" [ref=e45] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e46]
+          - text: Новости
+        - link "Участники" [ref=e49] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e50]
+          - text: Участники
+        - link "Партнеры" [ref=e55] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e56]
+          - text: Партнеры
+        - link "Команда" [ref=e61] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e62]
+          - text: Команда
+        - link "Настройки" [ref=e67] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e68]
+          - text: Настройки
+        - paragraph [ref=e72]: Кабинет
+        - link "Пользователи" [ref=e73] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e74]
+          - text: Пользователи
+        - link "Курсы" [ref=e79] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e80]
+          - text: Курсы
+        - link "Профиль" [ref=e83] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e84]
+          - text: Профиль
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - paragraph [ref=e89]: Администратор
+          - paragraph [ref=e90]: admin@aurva.kg
+        - button "Основной сайт" [ref=e91] [cursor=pointer]:
+          - img [ref=e92]
+          - text: Основной сайт
+        - button "Выйти" [ref=e96] [cursor=pointer]:
+          - img [ref=e97]
+          - text: Выйти
+    - main [ref=e100]:
+      - paragraph [ref=e103]: Загрузка дашборда...
+  - region "Notifications alt+T"

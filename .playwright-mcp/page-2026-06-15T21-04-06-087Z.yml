@@ -1,0 +1,475 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к основному содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "EVDE" [ref=e5] [cursor=pointer]:
+        - /url: /ru
+        - generic [ref=e6]: EVDE
+      - navigation [ref=e7]:
+        - link "Листинг" [ref=e8] [cursor=pointer]:
+          - /url: /ru/listing
+        - link "Новости" [ref=e9] [cursor=pointer]:
+          - /url: /ru/news
+        - link "Документы" [ref=e10] [cursor=pointer]:
+          - /url: /ru/documents
+        - link "Онбординг" [ref=e11] [cursor=pointer]:
+          - /url: /ru/onboarding
+        - link "Контакты" [ref=e12] [cursor=pointer]:
+          - /url: /ru/contacts
+        - button "Ещё ▾" [ref=e14] [cursor=pointer]:
+          - text: Ещё
+          - generic [ref=e15]: ▾
+      - generic [ref=e16]:
+        - button "Вход для клиентов" [ref=e18] [cursor=pointer]:
+          - text: Вход для клиентов
+          - img [ref=e19]
+        - button "Язык / Language" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+          - text: RU
+          - img [ref=e28]
+        - 'button "Тема: как на устройстве — нажмите, чтобы сменить" [ref=e30] [cursor=pointer]':
+          - img [ref=e31]
+  - main [ref=e34]:
+    - generic [ref=e36]:
+      - generic [ref=e37]: Первая универсальная цифровая биржа Кыргызстана
+      - heading "Биржа нового поколения" [level=1] [ref=e38]:
+        - generic [ref=e40]: Биржа
+        - generic [ref=e42]: нового
+        - generic [ref=e44]: поколения
+      - paragraph [ref=e45]: Торгуйте акциями, облигациями и цифровыми активами через один лицензированный счёт.
+      - generic [ref=e46]:
+        - generic [ref=e47] [cursor=pointer]:
+          - link "Начать торговать" [ref=e48]:
+            - /url: /ru/onboarding
+          - generic [ref=e49]: Начать торговать
+          - img [ref=e50]
+        - generic [ref=e52] [cursor=pointer]:
+          - link "Как это работает" [ref=e53]:
+            - /url: /ru/about
+          - generic [ref=e54]: Как это работает
+          - img [ref=e55]
+    - generic [ref=e59]:
+      - generic [ref=e61]:
+        - generic [ref=e62]: Лицензия FSRFM KR
+        - generic [ref=e64]: Бишкек, Кыргызстан
+        - generic [ref=e66]: IPO · Asia Steel · 19%
+        - generic [ref=e68]: KYC / AML · FATF standards
+        - generic [ref=e70]: Депозитарий · Securities
+      - generic [ref=e73]:
+        - generic [ref=e74]: Лицензия FSRFM KR
+        - generic [ref=e76]: Бишкек, Кыргызстан
+        - generic [ref=e78]: IPO · Asia Steel · 19%
+        - generic [ref=e80]: KYC / AML · FATF standards
+        - generic [ref=e82]: Депозитарий · Securities
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - text: Актуальное IPO
+        - heading "ОАО «Азия Сталь»" [level=2] [ref=e90]:
+          - generic [ref=e92]: ОАО
+          - generic [ref=e94]: «Азия
+          - generic [ref=e96]: Сталь»
+        - paragraph [ref=e98]: Привилегированные именные акции · IPO на EVDE
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: 0%
+            - generic [ref=e104]: годовых · фиксированно
+          - link "Сайт эмитента" [ref=e105] [cursor=pointer]:
+            - /url: https://asiasteel.kg/ipo.html
+            - generic [ref=e106]: Сайт эмитента
+            - img [ref=e107]
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - term [ref=e111]: Объём эмиссии
+            - definition [ref=e112]: 1,6 млрд KGS
+          - generic [ref=e113]:
+            - term [ref=e114]: Цена акции
+            - definition [ref=e115]: 4 000 сом
+          - generic [ref=e116]:
+            - term [ref=e117]: Мин. пакет
+            - definition [ref=e118]: 8 000 сом (2 акции)
+          - generic [ref=e119]:
+            - term [ref=e120]: Выплаты
+            - definition [ref=e121]: Ежеквартально
+          - generic [ref=e122]:
+            - term [ref=e123]: Старт продаж
+            - definition [ref=e124]: Ноябрь 2025
+          - generic [ref=e125]:
+            - term [ref=e126]: Андеррайтер
+            - definition [ref=e127]: ОсОО «Финансовый Альянс»
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - text: Актуальное
+          - heading "Новости" [level=2] [ref=e135]:
+            - generic [ref=e137]: Новости
+        - link "Все новости" [ref=e138] [cursor=pointer]:
+          - /url: /ru/news
+          - text: Все новости
+          - img [ref=e140]
+      - region "Новости" [ref=e143]:
+        - link "ОАО «Азия Сталь» — начало размещения акций" [ref=e144] [cursor=pointer]:
+          - /url: /ru/news/asia-steel-placement-shares
+          - generic [ref=e145]:
+            - img [ref=e146]
+            - generic [ref=e149]:
+              - generic [ref=e150]:
+                - generic [ref=e151]: IPO
+                - time [ref=e152]: 5 ноября 2025 г.
+              - heading "ОАО «Азия Сталь» — начало размещения акций" [level=3] [ref=e153]
+              - paragraph [ref=e154]: Размещение именных привилегированных акций ОАО «Азия Сталь». 19% годовых, ежеквартальные выплаты, цена акции 4 000 сом, минимальный пакет 8 000 сом, объём эмиссии 1,6 млрд KGS. Андеррайтер — ОсОО «Финансовый Альянс».
+              - generic [ref=e155]:
+                - text: Подробнее
+                - img [ref=e156]
+        - button "Предыдущая новость" [ref=e158] [cursor=pointer]:
+          - img [ref=e159]
+        - button "Следующая новость" [ref=e161] [cursor=pointer]:
+          - img [ref=e162]
+        - generic [ref=e164]:
+          - button "Перейти к новости 1" [ref=e165] [cursor=pointer]
+          - button "Перейти к новости 2" [ref=e166] [cursor=pointer]
+          - button "Перейти к новости 3" [ref=e167] [cursor=pointer]
+          - button "Перейти к новости 4" [ref=e168] [cursor=pointer]
+          - button "Перейти к новости 5" [ref=e169] [cursor=pointer]
+          - button "Перейти к новости 6" [ref=e170] [cursor=pointer]
+    - generic [ref=e175]:
+      - generic [ref=e176]:
+        - text: Что такое EVDE
+        - heading "Направления биржи" [level=2] [ref=e177]:
+          - generic [ref=e179]: Направления
+          - generic [ref=e181]: биржи
+        - paragraph [ref=e183]: EVDE — лицензированный организатор торгов. Работаем с валютным, фондовым, товарным рынком и рынком виртуальных активов; ведём депозитарную деятельность и организуем размещение ценных бумаг.
+      - generic [ref=e184]:
+        - article [ref=e186]:
+          - generic [ref=e187]: "01"
+          - heading "Валютный рынок" [level=3] [ref=e188]
+          - paragraph [ref=e189]: Организация торгов в сегменте валютного рынка.
+        - article [ref=e191]:
+          - generic [ref=e192]: "02"
+          - heading "Фондовый рынок" [level=3] [ref=e193]
+          - paragraph [ref=e194]: Облигации, акции и иные инструменты денежного рынка.
+        - article [ref=e196]:
+          - generic [ref=e197]: "03"
+          - heading "Рынок виртуальных активов" [level=3] [ref=e198]
+          - paragraph [ref=e199]: Криптоактивы, деривативы, торговля в рамках лицензированной инфраструктуры.
+        - article [ref=e201]:
+          - generic [ref=e202]: "04"
+          - heading "Депозитарий" [level=3] [ref=e203]
+          - paragraph [ref=e204]: Депозитарная деятельность на основании лицензии регулятора.
+    - generic [ref=e209]:
+      - generic [ref=e210]:
+        - text: Куда смотреть дальше
+        - heading "Разделы сайта" [level=2] [ref=e211]:
+          - generic [ref=e213]: Разделы
+          - generic [ref=e215]: сайта
+      - generic [ref=e216]:
+        - link "Листинг" [ref=e218] [cursor=pointer]:
+          - /url: /ru/listing
+          - generic [ref=e219]: Листинг
+          - img [ref=e221]
+        - link "Онбординг" [ref=e224] [cursor=pointer]:
+          - /url: /ru/onboarding
+          - generic [ref=e225]: Онбординг
+          - img [ref=e227]
+        - link "Документы" [ref=e230] [cursor=pointer]:
+          - /url: /ru/documents
+          - generic [ref=e231]: Документы
+          - img [ref=e233]
+        - link "Новости" [ref=e236] [cursor=pointer]:
+          - /url: /ru/news
+          - generic [ref=e237]: Новости
+          - img [ref=e239]
+        - link "Контакты" [ref=e242] [cursor=pointer]:
+          - /url: /ru/contacts
+          - generic [ref=e243]: Контакты
+          - img [ref=e245]
+        - link "Участники" [ref=e248] [cursor=pointer]:
+          - /url: /ru/members
+          - generic [ref=e249]: Участники
+          - img [ref=e251]
+    - generic [ref=e256]:
+      - generic [ref=e258]:
+        - text: Наши партнёры
+        - heading "Партнёры и контрагенты EVDE" [level=2] [ref=e259]:
+          - generic [ref=e261]: Партнёры
+          - generic [ref=e263]: и
+          - generic [ref=e265]: контрагенты
+          - generic [ref=e267]: EVDE
+        - paragraph [ref=e269]: "Партнёрская сеть биржи: технологические провайдеры, банки-партнёры, KYC/AML-инфраструктура и страхование."
+      - generic [ref=e271]:
+        - generic [ref=e273]:
+          - link [ref=e274] [cursor=pointer]:
+            - /url: https://www.kraken.com/
+            - generic [ref=e275]:
+              - generic [ref=e276]: Kraken
+              - generic [ref=e277]: Криптобиржа
+          - link [ref=e279] [cursor=pointer]:
+            - /url: https://royal.inc/
+            - generic [ref=e280]:
+              - generic [ref=e281]: Royal Pure Gold
+              - generic [ref=e282]: royal.inc
+          - link [ref=e284] [cursor=pointer]:
+            - /url: https://onealpha.io/
+            - generic [ref=e285]:
+              - generic [ref=e286]: OneAlpha
+              - generic [ref=e287]: onealpha.io
+          - link [ref=e289] [cursor=pointer]:
+            - /url: https://mbank.kg/
+            - img [ref=e290]
+            - generic [ref=e291]:
+              - generic [ref=e292]: MBANK
+              - generic [ref=e293]: mbank.kg
+          - link [ref=e295] [cursor=pointer]:
+            - /url: https://omegacapital.kg/
+            - generic [ref=e296]:
+              - generic [ref=e297]: Omega Capital
+              - generic [ref=e298]: omegacapital.kg
+          - link [ref=e300] [cursor=pointer]:
+            - /url: https://kcsd.kz/
+            - img [ref=e301]
+            - generic [ref=e302]:
+              - generic [ref=e303]: KCSD Kazakhstan
+              - generic [ref=e304]: Депозитарий · kcsd.kz
+          - link [ref=e306] [cursor=pointer]:
+            - /url: https://sumsub.com/
+            - generic [ref=e307]:
+              - generic [ref=e308]: Sumsub
+              - generic [ref=e309]: KYC / AML
+          - link [ref=e311] [cursor=pointer]:
+            - /url: http://sakbol.kg/
+            - img [ref=e312]
+            - generic [ref=e313]:
+              - generic [ref=e314]: Sak Bol Insurance
+              - generic [ref=e315]: sakbol.kg
+        - generic [ref=e318]:
+          - link [ref=e319] [cursor=pointer]:
+            - /url: https://www.kraken.com/
+            - generic [ref=e320]:
+              - generic [ref=e321]: Kraken
+              - generic [ref=e322]: Криптобиржа
+          - link [ref=e324] [cursor=pointer]:
+            - /url: https://royal.inc/
+            - generic [ref=e325]:
+              - generic [ref=e326]: Royal Pure Gold
+              - generic [ref=e327]: royal.inc
+          - link [ref=e329] [cursor=pointer]:
+            - /url: https://onealpha.io/
+            - generic [ref=e330]:
+              - generic [ref=e331]: OneAlpha
+              - generic [ref=e332]: onealpha.io
+          - link [ref=e334] [cursor=pointer]:
+            - /url: https://mbank.kg/
+            - img [ref=e335]
+            - generic [ref=e336]:
+              - generic [ref=e337]: MBANK
+              - generic [ref=e338]: mbank.kg
+          - link [ref=e340] [cursor=pointer]:
+            - /url: https://omegacapital.kg/
+            - generic [ref=e341]:
+              - generic [ref=e342]: Omega Capital
+              - generic [ref=e343]: omegacapital.kg
+          - link [ref=e345] [cursor=pointer]:
+            - /url: https://kcsd.kz/
+            - img [ref=e346]
+            - generic [ref=e347]:
+              - generic [ref=e348]: KCSD Kazakhstan
+              - generic [ref=e349]: Депозитарий · kcsd.kz
+          - link [ref=e351] [cursor=pointer]:
+            - /url: https://sumsub.com/
+            - generic [ref=e352]:
+              - generic [ref=e353]: Sumsub
+              - generic [ref=e354]: KYC / AML
+          - link [ref=e356] [cursor=pointer]:
+            - /url: http://sakbol.kg/
+            - img [ref=e357]
+            - generic [ref=e358]:
+              - generic [ref=e359]: Sak Bol Insurance
+              - generic [ref=e360]: sakbol.kg
+    - generic [ref=e367]:
+      - generic [ref=e368]:
+        - text: Безопасность и доверие
+        - heading "Лицензированная инфраструктура" [level=2] [ref=e369]:
+          - generic [ref=e371]: Лицензированная
+          - generic [ref=e373]: инфраструктура
+        - paragraph [ref=e375]: EVDE работает на основании лицензий регулятора и применяет международные стандарты противодействия отмыванию средств.
+      - generic [ref=e376]:
+        - article [ref=e378]:
+          - generic [ref=e379]: "01"
+          - heading "Лицензия FSRFM KR" [level=3] [ref=e380]
+          - paragraph [ref=e381]: Служба регулирования и надзора за финансовым рынком при Минэкономе Кыргызской Республики
+        - article [ref=e383]:
+          - generic [ref=e384]: "02"
+          - heading "KYC / AML стандарты" [level=3] [ref=e385]
+          - paragraph [ref=e386]: Полный комплекс проверок клиентов, мониторинг операций, отчётность в Службу финансовой разведки КР
+        - article [ref=e388]:
+          - generic [ref=e389]: "03"
+          - heading "Депозитарная деятельность" [level=3] [ref=e390]
+          - paragraph [ref=e391]: Лицензия на ведение реестров и учёт ценных бумаг — активы клиентов сегрегированы
+        - article [ref=e393]:
+          - generic [ref=e394]: "04"
+          - heading "Аудит и отчётность" [level=3] [ref=e395]
+          - paragraph [ref=e396]: Ежегодный аудит по МСФО, квартальная финансовая отчётность публикуется на сайте
+    - generic [ref=e401]:
+      - text: Биржа Кыргызстана
+      - heading "Открыть счёт на EVDE" [level=2] [ref=e402]:
+        - generic [ref=e404]: Открыть
+        - generic [ref=e406]: счёт
+        - generic [ref=e408]: на
+        - generic [ref=e410]: EVDE
+      - generic [ref=e411]:
+        - paragraph [ref=e412]: Для частных инвесторов, бизнеса, брокеров и эмитентов.
+        - generic [ref=e413]:
+          - generic [ref=e414] [cursor=pointer]:
+            - link "Открыть счёт" [ref=e415]:
+              - /url: /ru/onboarding
+            - generic [ref=e416]: Открыть счёт
+            - img [ref=e417]
+          - generic [ref=e419] [cursor=pointer]:
+            - link "Связаться с командой" [ref=e420]:
+              - /url: /ru/contacts
+            - generic [ref=e421]: Связаться с командой
+            - img [ref=e422]
+    - generic [ref=e429]:
+      - generic [ref=e430]:
+        - text: Видео
+        - heading "EVDE в эфире" [level=2] [ref=e431]:
+          - generic [ref=e433]: EVDE
+          - generic [ref=e435]: в
+          - generic [ref=e437]: эфире
+        - paragraph [ref=e439]: Выступления, интервью и репортажи о бирже.
+      - generic [ref=e440]:
+        - generic [ref=e442]:
+          - figure [ref=e443]:
+            - button "EVDE" [ref=e444] [cursor=pointer]:
+              - img "EVDE" [ref=e445]
+              - img [ref=e448]
+              - generic [ref=e450]:
+                - img [ref=e451]
+                - text: YouTube
+          - link "Смотреть на YouTube" [ref=e453] [cursor=pointer]:
+            - /url: https://youtu.be/b7JUO3xnvlM
+            - text: Смотреть на YouTube
+            - img [ref=e455]
+        - generic [ref=e458]:
+          - figure [ref=e459]:
+            - button "EVDE" [ref=e460] [cursor=pointer]:
+              - img "EVDE" [ref=e461]
+              - img [ref=e464]
+              - generic [ref=e466]:
+                - img [ref=e467]
+                - text: YouTube
+          - link "Смотреть на YouTube" [ref=e469] [cursor=pointer]:
+            - /url: https://youtu.be/9lLX97WtxEY
+            - text: Смотреть на YouTube
+            - img [ref=e471]
+  - contentinfo [ref=e473]:
+    - generic [ref=e474]:
+      - generic [ref=e475]:
+        - generic [ref=e476]:
+          - generic [ref=e478]: EVDE
+          - paragraph [ref=e479]: Envoys Vision Digital Exchange — цифровая биржа Кыргызстана.
+          - generic [ref=e480]:
+            - link "Telegram" [ref=e481] [cursor=pointer]:
+              - /url: https://t.me/envoys_vision
+              - img [ref=e482]
+            - link "Instagram" [ref=e484] [cursor=pointer]:
+              - /url: https://www.instagram.com/envoys.vision/
+              - img [ref=e485]
+            - link "Twitter" [ref=e489] [cursor=pointer]:
+              - /url: https://twitter.com/envoysvisionde
+              - img [ref=e490]
+            - link "TikTok" [ref=e492] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@envoys.vision
+              - img [ref=e493]
+            - link "Email" [ref=e495] [cursor=pointer]:
+              - /url: mailto:office@envoys.vision
+              - img [ref=e496]
+        - generic [ref=e499]:
+          - generic [ref=e500]: О нас
+          - list [ref=e501]:
+            - listitem [ref=e502]:
+              - link "О бирже" [ref=e503] [cursor=pointer]:
+                - /url: /ru/about
+            - listitem [ref=e504]:
+              - link "Участники" [ref=e505] [cursor=pointer]:
+                - /url: /ru/members
+            - listitem [ref=e506]:
+              - link "Документы" [ref=e507] [cursor=pointer]:
+                - /url: /ru/documents
+            - listitem [ref=e508]:
+              - link "Финансовая отчётность" [ref=e509] [cursor=pointer]:
+                - /url: /ru/statement
+            - listitem [ref=e510]:
+              - link "Новости" [ref=e511] [cursor=pointer]:
+                - /url: /ru/news
+            - listitem [ref=e512]:
+              - link "Новости компаний" [ref=e513] [cursor=pointer]:
+                - /url: /ru/company-news
+            - listitem [ref=e514]:
+              - link "Раскрытие информации" [ref=e515] [cursor=pointer]:
+                - /url: /ru/disclosures
+        - generic [ref=e516]:
+          - generic [ref=e517]: Поддержка
+          - list [ref=e518]:
+            - listitem [ref=e519]:
+              - link "Онбординг" [ref=e520] [cursor=pointer]:
+                - /url: /ru/onboarding
+            - listitem [ref=e521]:
+              - link "Листинг" [ref=e522] [cursor=pointer]:
+                - /url: /ru/listing
+            - listitem [ref=e523]:
+              - link "FAQ" [ref=e524] [cursor=pointer]:
+                - /url: /ru/faq
+            - listitem [ref=e525]:
+              - link "Реклама и коммуникации" [ref=e526] [cursor=pointer]:
+                - /url: /ru/communications
+            - listitem [ref=e527]:
+              - link "Нормативная база" [ref=e528] [cursor=pointer]:
+                - /url: /ru/legislation
+            - listitem [ref=e529]:
+              - link "Раскрытие рисков" [ref=e530] [cursor=pointer]:
+                - /url: /ru/risk-disclosure
+        - generic [ref=e531]:
+          - generic [ref=e532]: Сервисы
+          - list [ref=e533]:
+            - listitem [ref=e534]:
+              - link "Крипто-биржа" [ref=e535] [cursor=pointer]:
+                - /url: https://crypto.envoys.kg/ru/login
+            - listitem [ref=e536]:
+              - link "Личный кабинет" [ref=e537] [cursor=pointer]:
+                - /url: https://client.envoys.kg
+        - generic [ref=e538]:
+          - generic [ref=e539]: Связаться
+          - list [ref=e540]:
+            - listitem [ref=e541]:
+              - link "+996 998 818 878" [ref=e542] [cursor=pointer]:
+                - /url: tel:+996998818878
+            - listitem [ref=e543]:
+              - link "+996 220 142 170" [ref=e544] [cursor=pointer]:
+                - /url: tel:+996220142170
+            - listitem [ref=e545]:
+              - link "office@envoys.vision" [ref=e546] [cursor=pointer]:
+                - /url: mailto:office@envoys.vision
+            - listitem [ref=e547]:
+              - link "Контакты" [ref=e548] [cursor=pointer]:
+                - /url: /ru/contacts
+      - generic [ref=e549]:
+        - generic [ref=e550]: © 2021–2026 ОАО «Envoys Vision Digital Exchange» · envoys.vision · Бишкек
+        - generic [ref=e551]:
+          - link "Политика конфиденциальности" [ref=e552] [cursor=pointer]:
+            - /url: /ru/privacy
+          - link "Положения и условия" [ref=e553] [cursor=pointer]:
+            - /url: /ru/terms
+          - link "Политика AML" [ref=e554] [cursor=pointer]:
+            - /url: /ru/aml
+          - link "AB & AC Policy" [ref=e555] [cursor=pointer]:
+            - /url: /ru/ab-ac-policy
+          - link "Устав" [ref=e556] [cursor=pointer]:
+            - /url: /docs/policies/charter.pdf
+      - paragraph [ref=e557]: "Предупреждение о рисках: Виртуальные активы не являются средством платежа и не обеспечиваются государством. Приобретение виртуальных активов может привести к полной потере денежных средств. Торговля финансовыми инструментами связана с высоким уровнем риска. EVDE — лицензированный организатор торгов; материалы сайта не являются инвестиционной рекомендацией."
+  - generic [ref=e559]:
+    - generic [ref=e562]: IPO ОАО «Азия Сталь» · 19% годовых · старт ноябрь 2025
+    - button "Dismiss" [ref=e563] [cursor=pointer]:
+      - generic [ref=e564]: ×
+  - alert [ref=e565]

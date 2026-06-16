@@ -34,7 +34,7 @@ export default function Members() {
     try {
       setLoading(true);
       // Get all members (both active and inactive) with high limit
-      const response = await api.get('/members?limit=100');
+      const response = await api.get('/members?limit=100&isActive=all');
       const data = response.data.members || response.data.data || response.data;
       setMembers(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -61,11 +61,11 @@ export default function Members() {
   const handleEdit = (member: Member) => {
     setEditing(member);
     setName(member.name);
-    setDescription(member.description);
+    setDescription(member.description || '');
     setWebsite(member.website || '');
     setIsActive(member.isActive);
     setDisplayOrder(member.displayOrder);
-    setJoinedDate(member.joinedDate.split('T')[0]);
+    setJoinedDate(member.joinedDate ? member.joinedDate.split('T')[0] : '');
     setLogoUrl(member.logoUrl || '');
     setShowForm(true);
   };
@@ -300,7 +300,7 @@ export default function Members() {
                         )}
                       </div>
                       <CardDescription>
-                        Вступил: {formatDate(member.joinedDate)} • Порядок: {member.displayOrder}
+                        {member.joinedDate ? `Вступил: ${formatDate(member.joinedDate)} • ` : ''}Порядок: {member.displayOrder}
                       </CardDescription>
                     </div>
                   </div>

@@ -1,0 +1,145 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Курсы" [level=1] [ref=e79]
+            - paragraph [ref=e80]: Управление курсами личного кабинета
+          - button "Добавить курс" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - text: Добавить курс
+        - generic [ref=e83]:
+          - generic [ref=e85]:
+            - generic [ref=e87]:
+              - generic [ref=e89]:
+                - generic [ref=e90]:
+                  - heading "Информационное взаимодействие с ГСФР (Предоставление информации в ГСФР)" [level=3] [ref=e91]
+                  - img [ref=e92]
+                - paragraph [ref=e95]: "Порядок: • 26 марта 2026 г. в 10:48"
+              - generic [ref=e96]: Опубликован
+            - generic [ref=e97]:
+              - paragraph [ref=e98]: Краткое руководство по техническому взаимодействию с ГСФР. Обзор Защищённого электронного канала связи (ЗЭКС) и Автоматизированного рабочего места (АРМ).
+              - generic [ref=e99]:
+                - button "Уроки" [ref=e100] [cursor=pointer]:
+                  - img [ref=e101]
+                  - text: Уроки
+                - button "Редактировать" [ref=e103] [cursor=pointer]:
+                  - img [ref=e104]
+                  - text: Редактировать
+                - button [ref=e107] [cursor=pointer]:
+                  - img [ref=e108]
+          - generic [ref=e111]:
+            - generic [ref=e113]:
+              - generic [ref=e115]:
+                - generic [ref=e116]:
+                  - heading "Установка и настройка защищённого электронного канала связи" [level=3] [ref=e117]
+                  - img [ref=e118]
+                - paragraph [ref=e121]: "Порядок: • 26 марта 2026 г. в 11:42"
+              - generic [ref=e122]: Опубликован
+            - generic [ref=e123]:
+              - paragraph [ref=e124]: Практическое руководство по установке и настройке VPN и Outlook для работы с ЗЭКС.
+              - generic [ref=e125]:
+                - button "Уроки" [ref=e126] [cursor=pointer]:
+                  - img [ref=e127]
+                  - text: Уроки
+                - button "Редактировать" [ref=e129] [cursor=pointer]:
+                  - img [ref=e130]
+                  - text: Редактировать
+                - button [ref=e133] [cursor=pointer]:
+                  - img [ref=e134]
+          - generic [ref=e137]:
+            - generic [ref=e139]:
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - heading "Установка АРМ и его компонентов" [level=3] [ref=e143]
+                  - img [ref=e144]
+                - paragraph [ref=e147]: "Порядок: • 26 марта 2026 г. в 11:51"
+              - generic [ref=e148]: Опубликован
+            - generic [ref=e149]:
+              - paragraph [ref=e150]: Пошаговая установка программного обеспечения АРМ для работы с ГСФР.
+              - generic [ref=e151]:
+                - button "Уроки" [ref=e152] [cursor=pointer]:
+                  - img [ref=e153]
+                  - text: Уроки
+                - button "Редактировать" [ref=e155] [cursor=pointer]:
+                  - img [ref=e156]
+                  - text: Редактировать
+                - button [ref=e159] [cursor=pointer]:
+                  - img [ref=e160]
+          - generic [ref=e163]:
+            - generic [ref=e165]:
+              - generic [ref=e167]:
+                - generic [ref=e168]:
+                  - heading "Работа с интерфейсом и функционалом АРМ" [level=3] [ref=e169]
+                  - img [ref=e170]
+                - paragraph [ref=e173]: "Порядок: • 26 марта 2026 г. в 11:54"
+              - generic [ref=e174]: Опубликован
+            - generic [ref=e175]:
+              - paragraph [ref=e176]: Обзор интерфейса АРМ, формирование и отправка сообщений, работа с квитанциями.
+              - generic [ref=e177]:
+                - button "Уроки" [ref=e178] [cursor=pointer]:
+                  - img [ref=e179]
+                  - text: Уроки
+                - button "Редактировать" [ref=e181] [cursor=pointer]:
+                  - img [ref=e182]
+                  - text: Редактировать
+                - button [ref=e185] [cursor=pointer]:
+                  - img [ref=e186]
+  - region "Notifications alt+T"

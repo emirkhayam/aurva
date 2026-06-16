@@ -1,0 +1,265 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - img "AURVA" [ref=e6]
+        - paragraph [ref=e7]: Админ-панель
+      - navigation [ref=e8]:
+        - link "Дашборд" [ref=e9] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e10]
+          - text: Дашборд
+        - link "Заявки" [ref=e15] [cursor=pointer]:
+          - /url: /admin/contacts
+          - img [ref=e16]
+          - text: Заявки
+        - link "Новости" [ref=e19] [cursor=pointer]:
+          - /url: /admin/news
+          - img [ref=e20]
+          - text: Новости
+        - link "Участники" [ref=e23] [cursor=pointer]:
+          - /url: /admin/members
+          - img [ref=e24]
+          - text: Участники
+        - link "Партнеры" [ref=e29] [cursor=pointer]:
+          - /url: /admin/partners
+          - img [ref=e30]
+          - text: Партнеры
+        - link "Команда" [ref=e35] [cursor=pointer]:
+          - /url: /admin/team
+          - img [ref=e36]
+          - text: Команда
+        - link "Настройки" [ref=e41] [cursor=pointer]:
+          - /url: /admin/settings
+          - img [ref=e42]
+          - text: Настройки
+        - paragraph [ref=e46]: Кабинет
+        - link "Пользователи" [ref=e47] [cursor=pointer]:
+          - /url: /admin/clients
+          - img [ref=e48]
+          - text: Пользователи
+        - link "Курсы" [ref=e53] [cursor=pointer]:
+          - /url: /admin/courses
+          - img [ref=e54]
+          - text: Курсы
+        - link "Профиль" [ref=e57] [cursor=pointer]:
+          - /url: /admin/profile
+          - img [ref=e58]
+          - text: Профиль
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Администратор
+          - paragraph [ref=e64]: admin@aurva.kg
+        - button "Основной сайт" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - text: Основной сайт
+        - button "Выйти" [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Выйти
+    - main [ref=e74]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Участники" [level=1] [ref=e79]
+            - paragraph [ref=e80]: Управление участниками ассоциации
+          - button "Добавить участника" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - text: Добавить участника
+        - generic [ref=e83]:
+          - generic [ref=e85]:
+            - generic [ref=e87]:
+              - generic [ref=e89]:
+                - generic [ref=e90]:
+                  - heading "BitHub" [level=3] [ref=e91]
+                  - img [ref=e92]
+                - paragraph [ref=e97]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e98]: Неактивный
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: ���������� �������������� ����� �����������, ��������������� ���������� � ������� ������ �� ������ �������� �������
+              - link "https://bithub.kg" [ref=e101] [cursor=pointer]:
+                - /url: https://bithub.kg
+                - text: https://bithub.kg
+                - img [ref=e102]
+              - generic [ref=e106]:
+                - button "Редактировать" [active] [ref=e107] [cursor=pointer]:
+                  - img [ref=e108]
+                  - text: Редактировать
+                - button [ref=e111] [cursor=pointer]:
+                  - img [ref=e112]
+          - generic [ref=e115]:
+            - generic [ref=e117]:
+              - generic [ref=e119]:
+                - generic [ref=e120]:
+                  - heading "Envoys" [level=3] [ref=e121]
+                  - img [ref=e122]
+                - paragraph [ref=e127]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e128]: Неактивный
+            - generic [ref=e129]:
+              - paragraph [ref=e130]: ������������� ��������� ��� �������� Web3 � ��������-������� � ������� ����������� ����
+              - link "https://envoys.vision" [ref=e131] [cursor=pointer]:
+                - /url: https://envoys.vision
+                - text: https://envoys.vision
+                - img [ref=e132]
+              - generic [ref=e136]:
+                - button "Редактировать" [ref=e137] [cursor=pointer]:
+                  - img [ref=e138]
+                  - text: Редактировать
+                - button [ref=e141] [cursor=pointer]:
+                  - img [ref=e142]
+          - generic [ref=e145]:
+            - generic [ref=e147]:
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - heading "Royal Inc." [level=3] [ref=e151]
+                  - img [ref=e152]
+                - paragraph [ref=e157]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e158]: Неактивный
+            - generic [ref=e159]:
+              - paragraph [ref=e160]: ��������������� ��������, ������������������ �� �������� �������� � ������������� ���������� ��������
+              - link "https://www.royal.inc" [ref=e161] [cursor=pointer]:
+                - /url: https://www.royal.inc
+                - text: https://www.royal.inc
+                - img [ref=e162]
+              - generic [ref=e166]:
+                - button "Редактировать" [ref=e167] [cursor=pointer]:
+                  - img [ref=e168]
+                  - text: Редактировать
+                - button [ref=e171] [cursor=pointer]:
+                  - img [ref=e172]
+          - generic [ref=e175]:
+            - generic [ref=e177]:
+              - generic [ref=e179]:
+                - generic [ref=e180]:
+                  - heading "KLN" [level=3] [ref=e181]
+                  - img [ref=e182]
+                - paragraph [ref=e187]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e188]: Неактивный
+            - generic [ref=e189]:
+              - paragraph [ref=e190]: ������� ��������� ������� ��� ��������������� �����, �������������� �������� �������������� � �������
+              - link "https://kln.kg" [ref=e191] [cursor=pointer]:
+                - /url: https://kln.kg
+                - text: https://kln.kg
+                - img [ref=e192]
+              - generic [ref=e196]:
+                - button "Редактировать" [ref=e197] [cursor=pointer]:
+                  - img [ref=e198]
+                  - text: Редактировать
+                - button [ref=e201] [cursor=pointer]:
+                  - img [ref=e202]
+          - generic [ref=e205]:
+            - generic [ref=e207]:
+              - generic [ref=e209]:
+                - generic [ref=e210]:
+                  - heading "WeChange" [level=3] [ref=e211]
+                  - img [ref=e212]
+                - paragraph [ref=e217]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e218]: Неактивный
+            - generic [ref=e219]:
+              - paragraph [ref=e220]: Криптовалютная биржа и платформа для обмена цифровых активов в Кыргызстане
+              - link "https://www.wechange.kg" [ref=e221] [cursor=pointer]:
+                - /url: https://www.wechange.kg
+                - text: https://www.wechange.kg
+                - img [ref=e222]
+              - generic [ref=e226]:
+                - button "Редактировать" [ref=e227] [cursor=pointer]:
+                  - img [ref=e228]
+                  - text: Редактировать
+                - button [ref=e231] [cursor=pointer]:
+                  - img [ref=e232]
+          - generic [ref=e235]:
+            - generic [ref=e237]:
+              - generic [ref=e239]:
+                - generic [ref=e240]:
+                  - heading "prime finance" [level=3] [ref=e241]
+                  - img [ref=e242]
+                - paragraph [ref=e247]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e248]: Неактивный
+            - generic [ref=e249]:
+              - paragraph
+              - generic [ref=e250]:
+                - button "Редактировать" [ref=e251] [cursor=pointer]:
+                  - img [ref=e252]
+                  - text: Редактировать
+                - button [ref=e255] [cursor=pointer]:
+                  - img [ref=e256]
+          - generic [ref=e259]:
+            - generic [ref=e261]:
+              - generic [ref=e263]:
+                - generic [ref=e264]:
+                  - heading "Relopay" [level=3] [ref=e265]
+                  - img [ref=e266]
+                - paragraph [ref=e271]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e272]: Неактивный
+            - generic [ref=e273]:
+              - paragraph
+              - generic [ref=e274]:
+                - button "Редактировать" [ref=e275] [cursor=pointer]:
+                  - img [ref=e276]
+                  - text: Редактировать
+                - button [ref=e279] [cursor=pointer]:
+                  - img [ref=e280]
+          - generic [ref=e283]:
+            - generic [ref=e285]:
+              - generic [ref=e287]:
+                - generic [ref=e288]:
+                  - heading "Azimut Capital" [level=3] [ref=e289]
+                  - img [ref=e290]
+                - paragraph [ref=e295]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e296]: Неактивный
+            - generic [ref=e297]:
+              - paragraph
+              - generic [ref=e298]:
+                - button "Редактировать" [ref=e299] [cursor=pointer]:
+                  - img [ref=e300]
+                  - text: Редактировать
+                - button [ref=e303] [cursor=pointer]:
+                  - img [ref=e304]
+          - generic [ref=e307]:
+            - generic [ref=e309]:
+              - generic [ref=e311]:
+                - generic [ref=e312]:
+                  - heading "Standard Development" [level=3] [ref=e313]
+                  - img [ref=e314]
+                - paragraph [ref=e319]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e320]: Неактивный
+            - generic [ref=e321]:
+              - paragraph
+              - generic [ref=e322]:
+                - button "Редактировать" [ref=e323] [cursor=pointer]:
+                  - img [ref=e324]
+                  - text: Редактировать
+                - button [ref=e327] [cursor=pointer]:
+                  - img [ref=e328]
+          - generic [ref=e331]:
+            - generic [ref=e333]:
+              - generic [ref=e335]:
+                - generic [ref=e336]:
+                  - heading "TradeWave" [level=3] [ref=e337]
+                  - img [ref=e338]
+                - paragraph [ref=e343]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e344]: Неактивный
+            - generic [ref=e345]:
+              - paragraph
+              - generic [ref=e346]:
+                - button "Редактировать" [ref=e347] [cursor=pointer]:
+                  - img [ref=e348]
+                  - text: Редактировать
+                - button [ref=e351] [cursor=pointer]:
+                  - img [ref=e352]
+          - generic [ref=e355]:
+            - generic [ref=e357]:
+              - generic [ref=e359]:
+                - generic [ref=e360]:
+                  - heading "OSON X" [level=3] [ref=e361]
+                  - img [ref=e362]
+                - paragraph [ref=e367]: "Вступил: Invalid Date • Порядок:"
+              - generic [ref=e368]: Неактивный
+            - generic [ref=e369]:
+              - paragraph
+              - generic [ref=e370]:
+                - button "Редактировать" [ref=e371] [cursor=pointer]:
+                  - img [ref=e372]
+                  - text: Редактировать
+                - button [ref=e375] [cursor=pointer]:
+                  - img [ref=e376]
+  - region "Notifications alt+T"

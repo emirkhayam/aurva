@@ -1,0 +1,38 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - link "AURVA" [ref=e7] [cursor=pointer]:
+      - /url: /
+      - img "AURVA" [ref=e8]
+    - heading "Вход в кабинет" [level=1] [ref=e9]
+    - paragraph [ref=e10]: Войдите для доступа к личному кабинету участника
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: Email
+        - textbox "Email" [ref=e15]:
+          - /placeholder: example@company.com
+      - generic [ref=e16]:
+        - generic [ref=e17]: Пароль
+        - generic [ref=e18]:
+          - textbox "Пароль" [ref=e19]:
+            - /placeholder: Введите пароль
+          - button "Показать пароль" [ref=e20] [cursor=pointer]:
+            - img [ref=e21]
+      - button "Войти" [ref=e24] [cursor=pointer]:
+        - generic [ref=e25]: Войти
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - img [ref=e28]
+        - text: "Dev: быстрый вход"
+      - button "testuser@aurva.kg (клиент)" [ref=e30] [cursor=pointer]
+      - button "admin@aurva.kg (админка)" [ref=e31] [cursor=pointer]:
+        - img [ref=e32]
+        - text: admin@aurva.kg (админка)
+    - generic [ref=e34]:
+      - text: Нет аккаунта?
+      - link "Зарегистрироваться" [ref=e35] [cursor=pointer]:
+        - /url: /cabinet/register
+  - link "На главную" [ref=e37] [cursor=pointer]:
+    - /url: /
+    - img [ref=e38]
+    - text: На главную

@@ -52,7 +52,8 @@ const createApp = (): Application => {
           "https://www.google-analytics.com",
           "https://googleads.g.doubleclick.net",
           "https://my.spline.design",
-          "https://cdn.jsdelivr.net"
+          "https://cdn.jsdelivr.net",
+          "https://static.cloudflareinsights.com"
         ],
         styleSrc: [
           "'self'",
@@ -82,7 +83,9 @@ const createApp = (): Application => {
           "https://www.google.com",
           "https://analytics.google.com",
           "https://googleads.g.doubleclick.net",
-          "https://*.supabase.co"
+          "https://*.supabase.co",
+          "https://cloudflareinsights.com",
+          "https://static.cloudflareinsights.com"
         ],
         frameSrc: [
           "'self'",
